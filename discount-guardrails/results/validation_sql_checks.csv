@@ -1,0 +1,25 @@
+CHECK_ID,CHECK_NAME,CHECK_RULE,EXPECTED,ACTUAL,STATUS
+V12,Profit change if ROW_ID 3407 is removed (% of total profit),max,0.1,0.0,PASS
+V1a,ORDERS row count,equal,9994.0,9994.0,PASS
+V1b,CUSTOMER row count,equal,793.0,793.0,PASS
+V1c,PRODUCT row count,equal,1862.0,1862.0,PASS
+V1d,EMPLOYEES row count,equal,9.0,9.0,PASS
+V2a,Duplicate ROW_ID values,equal,0.0,0.0,PASS
+V2b,Duplicate product IDs,equal,0.0,0.0,PASS
+V2c,Duplicate customer IDs,equal,0.0,0.0,PASS
+V3a,Order lines with no matching customer,equal,0.0,0.0,PASS
+V3b,Order lines with no matching product,equal,0.0,0.0,PASS
+V4,Fact view row count (no join fan-out),equal,9994.0,9994.0,PASS
+V5a,Total sales in raw ORDERS,equal,2297200.86,2297200.86,PASS
+V5b,Total profit in raw ORDERS,equal,286397.02,286397.02,PASS
+V5c,Total sales in fact view,equal,2297200.86,2297200.86,PASS
+V5d,Total profit in fact view,equal,286397.02,286397.02,PASS
+V6a,Lines with no discount band,equal,0.0,0.0,PASS
+V6b,Distinct discount levels,equal,12.0,12.0,PASS
+V6c,Distinct discount bands,equal,4.0,4.0,PASS
+V7a,First order date (as yyyymmdd),equal,20140103.0,20140103.0,PASS
+V7b,Last order date (as yyyymmdd),equal,20171230.0,20171230.0,PASS
+V7c,Lines shipped before they were ordered,equal,0.0,0.0,PASS
+V8a,Scenario at 80% ceiling: modelled minus observed profit,equal,0.0,0.0,PASS
+V8b,"Scenario at 20% ceiling, 0% volume kept: modelled minus (profit of lines at or below 20%)",equal,0.0,0.0,PASS
+V8c,Re-priced at own discount: total difference from observed profit,equal,0.0,0.0,PASS

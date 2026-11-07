@@ -1,0 +1,44 @@
+relationship 40b5d706-5440-5063-8699-8dfca91d3edd
+	fromColumn: Appointments.'Patient Key'
+	toColumn: Patient.'Patient Key'
+
+relationship 5619ac2f-db80-5c4c-9409-2b356cf52f0f
+	fromColumn: Appointments.'Clinic Key'
+	toColumn: Clinic.'Clinic Key'
+
+relationship d80fbf29-5bd0-5385-9d74-2dbb832d4c1c
+	fromColumn: Appointments.'Doctor Key'
+	toColumn: Doctor.'Doctor Key'
+
+relationship b5e93e11-cbc9-5ca8-a9f4-ec1bf3a09886
+	fromColumn: Appointments.'Scheduled Date Key'
+	toColumn: Date.'Date Key'
+
+relationship e29fcc32-3d2c-5bfe-9620-0bcfaca0ea6d
+	fromColumn: Reminders.'Appointment Key'
+	toColumn: Appointments.'Appointment Key'
+
+relationship 8c04d271-39f5-52f0-a33f-3d16ebf6f5bb
+	fromColumn: Payments.'Appointment Key'
+	toColumn: Appointments.'Appointment Key'
+
+relationship 18eeef58-9925-5ac1-9cb6-2bd5af43ba5c
+	fromColumn: 'Telemedicine Sessions'.'Appointment Key'
+	toColumn: Appointments.'Appointment Key'
+
+relationship 1e7c1380-a326-5f1c-8290-7879ed451fd6
+	fromColumn: 'Pilot Assignments'.'Appointment Key'
+	toColumn: Appointments.'Appointment Key'
+
+relationship 4cf20228-ca0c-5362-9efe-8c89a73c4be6
+	fromColumn: 'Schedule Sessions'.'Clinic Key'
+	toColumn: Clinic.'Clinic Key'
+
+relationship dde69574-0a7c-5d2f-ba5e-894b2dbf67ae
+	fromColumn: 'Schedule Sessions'.'Doctor Key'
+	toColumn: Doctor.'Doctor Key'
+
+relationship 252b4acb-61de-5cd9-bc6b-4451b4379f7d
+	fromColumn: 'Schedule Sessions'.'Session Date Key'
+	toColumn: Date.'Date Key'
+

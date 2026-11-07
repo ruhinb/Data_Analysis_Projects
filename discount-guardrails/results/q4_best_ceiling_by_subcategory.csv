@@ -1,0 +1,52 @@
+CATEGORY,SUB_CATEGORY,VOLUME_RETAINED,BEST_MAX_DISCOUNT,OBSERVED_PROFIT,MODELLED_PROFIT,PROFIT_CHANGE
+Furniture,Bookcases,0.75,0.2,-3472.56,8042.03,11514.59
+Furniture,Bookcases,0.5,0.2,-3472.56,7903.09,11375.65
+Furniture,Bookcases,0.25,0.2,-3472.56,7764.15,11236.7
+Furniture,Chairs,0.75,0.2,26590.17,35775.03,9184.87
+Furniture,Chairs,0.5,0.2,26590.17,34959.12,8368.95
+Furniture,Chairs,0.25,0.2,26590.17,34143.2,7553.03
+Furniture,Furnishings,0.75,0.2,13059.14,19528.83,6469.69
+Furniture,Furnishings,0.5,0.2,13059.14,19353.82,6294.68
+Furniture,Furnishings,0.25,0.2,13059.14,19178.81,6119.67
+Furniture,Tables,0.75,0.2,-17725.48,12074.4,29799.88
+Furniture,Tables,0.5,0.2,-17725.48,12373.84,30099.33
+Furniture,Tables,0.25,0.2,-17725.48,12673.29,30398.77
+Office Supplies,Appliances,0.75,0.2,18138.01,27906.12,9768.11
+Office Supplies,Appliances,0.5,0.2,18138.01,27526.63,9388.62
+Office Supplies,Appliances,0.25,0.2,18138.01,27147.14,9009.13
+Office Supplies,Art,0.75,0.8,6527.79,6527.79,-0.0
+Office Supplies,Art,0.5,0.8,6527.79,6527.79,-0.0
+Office Supplies,Art,0.25,0.8,6527.79,6527.79,-0.0
+Office Supplies,Binders,0.75,0.2,30221.76,98606.38,68384.61
+Office Supplies,Binders,0.5,0.2,30221.76,88648.34,58426.57
+Office Supplies,Binders,0.25,0.2,30221.76,78690.3,48468.54
+Office Supplies,Envelopes,0.75,0.8,6964.18,6964.18,0.0
+Office Supplies,Envelopes,0.5,0.8,6964.18,6964.18,0.0
+Office Supplies,Envelopes,0.25,0.8,6964.18,6964.18,0.0
+Office Supplies,Fasteners,0.75,0.8,949.52,949.52,-0.0
+Office Supplies,Fasteners,0.5,0.8,949.52,949.52,-0.0
+Office Supplies,Fasteners,0.25,0.8,949.52,949.52,-0.0
+Office Supplies,Labels,0.75,0.8,5546.25,5546.25,-0.0
+Office Supplies,Labels,0.5,0.8,5546.25,5546.25,-0.0
+Office Supplies,Labels,0.25,0.8,5546.25,5546.25,-0.0
+Office Supplies,Paper,0.75,0.8,34053.57,34053.57,-0.0
+Office Supplies,Paper,0.5,0.8,34053.57,34053.57,-0.0
+Office Supplies,Paper,0.25,0.8,34053.57,34053.57,-0.0
+Office Supplies,Storage,0.75,0.8,21278.83,21278.83,-0.0
+Office Supplies,Storage,0.5,0.8,21278.83,21278.83,-0.0
+Office Supplies,Storage,0.25,0.8,21278.83,21278.83,-0.0
+Office Supplies,Supplies,0.75,0.8,-1189.1,-1189.1,0.0
+Office Supplies,Supplies,0.5,0.8,-1189.1,-1189.1,0.0
+Office Supplies,Supplies,0.25,0.8,-1189.1,-1189.1,0.0
+Technology,Accessories,0.75,0.8,41936.64,41936.64,-0.0
+Technology,Accessories,0.5,0.8,41936.64,41936.64,-0.0
+Technology,Accessories,0.25,0.8,41936.64,41936.64,-0.0
+Technology,Copiers,0.75,0.2,55617.82,59302.03,3684.21
+Technology,Copiers,0.5,0.2,55617.82,57346.3,1728.48
+Technology,Copiers,0.25,0.8,55617.82,55617.82,0.0
+Technology,Machines,0.75,0.2,3384.76,52635.28,49250.52
+Technology,Machines,0.5,0.2,3384.76,46070.22,42685.47
+Technology,Machines,0.25,0.2,3384.76,39505.17,36120.41
+Technology,Phones,0.75,0.2,44515.73,54696.51,10180.78
+Technology,Phones,0.5,0.2,44515.73,53431.52,8915.78
+Technology,Phones,0.25,0.2,44515.73,52166.52,7650.79

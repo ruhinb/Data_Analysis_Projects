@@ -1,0 +1,79 @@
+/*
+00_load.sql
+Creates the four raw tables and loads them from the CSV files in /data.
+
+Before running (SQL Server in Docker), copy the CSVs into the container:
+
+docker cp "<path-to-repo>/data/CUSTOMER.csv"  mssql_server:/var/opt/mssql/CUSTOMER.csv
+docker cp "<path-to-repo>/data/EMPLOYEES.csv" mssql_server:/var/opt/mssql/EMPLOYEES.csv
+docker cp "<path-to-repo>/data/ORDERS.csv"    mssql_server:/var/opt/mssql/ORDERS.csv
+docker cp "<path-to-repo>/data/PRODUCT.csv"   mssql_server:/var/opt/mssql/PRODUCT.csv
+*/
+
+SET DATEFORMAT mdy;
+
+IF OBJECT_ID('dbo.ORDERS','U')    IS NOT NULL DROP TABLE dbo.ORDERS;
+IF OBJECT_ID('dbo.CUSTOMER','U')  IS NOT NULL DROP TABLE dbo.CUSTOMER;
+IF OBJECT_ID('dbo.EMPLOYEES','U') IS NOT NULL DROP TABLE dbo.EMPLOYEES;
+IF OBJECT_ID('dbo.PRODUCT','U')   IS NOT NULL DROP TABLE dbo.PRODUCT;
+
+CREATE TABLE dbo.CUSTOMER (
+    ID VARCHAR(20) PRIMARY KEY,
+    NAME NVARCHAR(120),
+    SEGMENT VARCHAR(20),
+    COUNTRY VARCHAR(60),
+    CITY NVARCHAR(60),
+    STATE VARCHAR(40),
+    POSTAL_CODE VARCHAR(15),
+    REGION VARCHAR(20)
+);
+
+CREATE TABLE dbo.EMPLOYEES (
+    ID_EMPLOYEE INT PRIMARY KEY,
+    NAME NVARCHAR(120),
+    CITY NVARCHAR(60),
+    REGION VARCHAR(20)
+);
+
+-- careful: in this file the column names do not match their contents
+-- NAME = category, CATEGORY = sub-category, SUBCATEGORY = product name
+-- 01_fact_view.sql renames them properly
+CREATE TABLE dbo.PRODUCT (
+    ID VARCHAR(20) PRIMARY KEY,
+    NAME VARCHAR(30),
+    CATEGORY VARCHAR(40),
+    SUBCATEGORY NVARCHAR(220)
+);
+
+CREATE TABLE dbo.ORDERS (
+    ROW_ID INT PRIMARY KEY,
+    ORDER_ID VARCHAR(20),
+    ORDER_DATE DATE,
+    SHIP_DATE DATE,
+    SHIP_MODE VARCHAR(30),
+    CUSTOMER_ID VARCHAR(20) FOREIGN KEY REFERENCES dbo.CUSTOMER(ID),
+    PRODUCT_ID  VARCHAR(20) FOREIGN KEY REFERENCES dbo.PRODUCT(ID),
+    SALES DECIMAL(12,4),
+    QUANTITY INT,
+    DISCOUNT DECIMAL(5,2),
+    PROFIT DECIMAL(12,4),
+    ID_EMPLOYEE INT FOREIGN KEY REFERENCES dbo.EMPLOYEES(ID_EMPLOYEE)
+);
+
+BULK INSERT dbo.CUSTOMER  FROM '/var/opt/mssql/CUSTOMER.csv'
+    WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='0x0d0a', TABLOCK);
+BULK INSERT dbo.EMPLOYEES FROM '/var/opt/mssql/EMPLOYEES.csv'
+    WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='0x0d0a', TABLOCK);
+BULK INSERT dbo.PRODUCT   FROM '/var/opt/mssql/PRODUCT.csv'
+    WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='0x0d0a', TABLOCK);
+BULK INSERT dbo.ORDERS    FROM '/var/opt/mssql/ORDERS.csv'
+    WITH (FORMAT='CSV', FIRSTROW=2, FIELDTERMINATOR=',', ROWTERMINATOR='0x0d0a', TABLOCK);
+
+SELECT
+    'CUSTOMER' AS TABLE_NAME,
+    COUNT(*) AS ROW_COUNT
+FROM
+    dbo.CUSTOMER
+UNION ALL SELECT 'EMPLOYEES', COUNT(*) FROM dbo.EMPLOYEES
+UNION ALL SELECT 'PRODUCT',   COUNT(*) FROM dbo.PRODUCT
+UNION ALL SELECT 'ORDERS',    COUNT(*) FROM dbo.ORDERS;

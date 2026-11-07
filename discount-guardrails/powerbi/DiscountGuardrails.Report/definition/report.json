@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "Fluent2-CY26SU10",
+      "reportVersionAtImport": {
+        "visual": "2.11.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "DiscountGuardrails4f6c1d2e8a9b.json",
+      "reportVersionAtImport": {
+        "visual": "2.11.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "Fluent2-CY26SU10",
+          "path": "BaseThemes/Fluent2-CY26SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "DiscountGuardrails4f6c1d2e8a9b.json",
+          "path": "DiscountGuardrails4f6c1d2e8a9b.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "bg_overview207671759510881.png",
+          "path": "bg_overview207671759510881.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_groups022479403768397.png",
+          "path": "bg_groups022479403768397.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_whatif239179501738137.png",
+          "path": "bg_whatif239179501738137.png",
+          "type": "Image"
+        },
+        {
+          "name": "bg_monitor009574574687370.png",
+          "path": "bg_monitor009574574687370.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  },
+  "publicCustomVisuals": [
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
+  ]
+}

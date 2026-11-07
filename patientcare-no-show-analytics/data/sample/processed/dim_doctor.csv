@@ -1,0 +1,117 @@
+doctor_key,doctor_id,doctor_name,gender,specialty,subspecialty,designation,employment_type,primary_clinic_key,primary_clinic_id,joining_date,leaving_date,telemedicine_enabled,standard_consultation_fee_bdt,active_flag,data_quality_issue_count,has_data_quality_issue
+0,,Unknown doctor,Unknown,Unknown,,Unknown,Unknown,0,,,,,,,0,f
+1,DR0001,Dr. Rumana Ahmed,Female,ENT,Otology,Medical Officer,Full-time,1,CL001,2015-03-25,,t,1000.00,t,0,f
+2,DR0002,Dr. Samira Sarker,Female,ENT,Otology,Associate Consultant,Full-time,9,CL009,2021-04-21,,t,1000.00,t,0,f
+3,DR0003,Dr. Sumaiya Akter,Female,General Medicine,Family Medicine,Senior Consultant,Visiting,10,CL010,2015-01-19,,t,800.00,t,0,f
+4,DR0004,Dr. Abdullah Alam,Male,Orthopedics,Sports Injury,Consultant,Part-time,11,CL011,2017-09-06,,t,1300.00,t,0,f
+5,DR0005,Dr. Ahsan Kabir,Male,General Medicine,Adult Medicine,Medical Officer,Part-time,7,CL007,2019-04-01,,t,1000.00,t,0,f
+6,DR0006,Dr. Sabina Hasan,Female,Ophthalmology,Anterior Segment,Medical Officer,Part-time,14,CL014,2018-11-20,,f,1100.00,t,0,f
+7,DR0007,Dr. Hasan Sarker,Male,Ophthalmology,Anterior Segment,Associate Consultant,Part-time,11,CL011,2013-11-06,,f,1100.00,t,0,f
+8,DR0008,Dr. Rakib Hasan,Male,General Medicine,Internal Medicine,Senior Consultant,Full-time,14,CL014,2014-07-10,,f,800.00,t,0,f
+9,DR0009,Dr. Fariha Uddin,Female,Pediatrics,Child Health,Consultant,Visiting,3,CL003,2020-04-04,,t,900.00,t,0,f
+10,DR0010,Dr. Shafiq Chowdhury,Male,Endocrinology,Diabetes & Metabolism,Medical Officer,Full-time,1,CL001,2021-01-07,,t,1400.00,t,0,f
+11,DR0011,Dr. Fariha Rashid,Female,Neurology,Headache Medicine,Associate Consultant,Full-time,1,CL001,2015-08-11,,t,1600.00,t,0,f
+12,DR0012,Dr. Hasan Jahan,Male,Obstetrics & Gynecology,Maternal Health,Associate Consultant,Part-time,2,CL002,2017-04-29,,f,1200.00,t,0,f
+13,DR0013,Dr. Sharmin Uddin,Female,Obstetrics & Gynecology,Obstetrics,Medical Officer,Visiting,3,CL003,2017-06-19,,t,1200.00,t,0,f
+14,DR0014,Dr. Nabil Chowdhury,Male,Neurology,General Neurology,Consultant,Part-time,9,CL009,2017-01-18,,t,1700.00,t,0,f
+15,DR0015,Dr. Afsana Kabir,Female,Psychiatry,Community Mental Health,Medical Officer,Full-time,12,CL012,2013-03-26,,f,1500.00,t,0,f
+16,DR0016,Dr. Nusrat Kabir,Female,Pediatrics,Adolescent Medicine,Consultant,Full-time,7,CL007,2020-07-27,,f,1100.00,t,0,f
+17,DR0017,Dr. Rashed Rahman,Male,Ophthalmology,General Ophthalmology,Associate Consultant,Full-time,3,CL003,2021-09-12,,t,1200.00,t,0,f
+18,DR0018,Dr. Ahsan Alam,Male,Pediatrics,General Pediatrics,Associate Consultant,Part-time,11,CL011,2017-10-20,,f,1100.00,t,0,f
+19,DR0019,Dr. Maliha Rahman,Female,General Medicine,Adult Medicine,Consultant,Visiting,8,CL008,2013-05-01,,t,800.00,t,0,f
+20,DR0020,Dr. Rashed Ahmed,Male,Neurology,Headache Medicine,Senior Consultant,Visiting,7,CL007,2016-01-17,,f,1700.00,t,0,f
+21,DR0021,Dr. Fahim Haque,Male,Gastroenterology,Hepatology,Consultant,Full-time,7,CL007,2017-07-30,,t,1500.00,t,0,f
+22,DR0022,Dr. Shafiq Alam,Male,General Medicine,Internal Medicine,Consultant,Visiting,4,CL004,2018-10-05,,t,800.00,t,0,f
+23,DR0023,Dr. Nadia Ahmed,Female,Neurology,Headache Medicine,Senior Consultant,Visiting,1,CL001,2020-05-26,,f,1600.00,t,0,f
+24,DR0024,Dr. Hasan Hossain,Male,Dermatology,Clinical Dermatology,Associate Consultant,Part-time,1,CL001,2018-08-12,,f,1100.00,t,0,f
+25,DR0025,Dr. Abdullah Hossain,Male,Cardiology,Preventive Cardiology,Medical Officer,Full-time,13,CL013,2018-05-25,,t,1500.00,t,0,f
+26,DR0026,Dr. Tasnim Karim,Female,Ophthalmology,Anterior Segment,Medical Officer,Part-time,1,CL001,2016-04-23,,t,1100.00,t,0,f
+27,DR0027,Dr. Umme Akter,Female,Dermatology,Clinical Dermatology,Associate Consultant,Visiting,4,CL004,2015-08-20,,t,1000.00,t,0,f
+28,DR0028,Dr. Shafiq Rashid,Male,General Medicine,Adult Medicine,Consultant,Full-time,9,CL009,2019-03-21,,t,900.00,t,0,f
+29,DR0029,Dr. Tanvir Alam,Male,General Medicine,Adult Medicine,Senior Consultant,Full-time,14,CL014,2018-11-14,,f,800.00,t,0,f
+30,DR0030,Dr. Zahid Karim,Male,General Medicine,Internal Medicine,Consultant,Visiting,11,CL011,2020-10-13,,f,800.00,t,0,f
+31,DR0031,Dr. Masud Miah,Male,Orthopedics,Sports Injury,Consultant,Full-time,12,CL012,2015-11-02,,t,1300.00,t,0,f
+32,DR0032,Dr. Tanvir Jahan,Male,Obstetrics & Gynecology,Gynecology,Associate Consultant,Visiting,11,CL011,2014-12-23,,f,1300.00,t,0,f
+33,DR0033,Dr. Humaira Ahmed,Female,Psychiatry,Adult Psychiatry,Consultant,Full-time,8,CL008,2019-03-04,,t,1500.00,t,0,f
+34,DR0034,Dr. Farzana Miah,Female,General Medicine,Internal Medicine,Medical Officer,Part-time,2,CL002,2017-01-28,,t,800.00,t,0,f
+35,DR0035,Dr. Saif Ahmed,Male,Cardiology,Preventive Cardiology,Medical Officer,Full-time,2,CL002,2017-07-20,,f,1600.00,t,0,f
+36,DR0036,Dr. Shafiq Ahmed,Male,Orthopedics,General Orthopedics,Consultant,Visiting,1,CL001,2015-03-17,,t,1300.00,t,0,f
+37,DR0037,Dr. Farhan Khan,Male,Obstetrics & Gynecology,Gynecology,Consultant,Full-time,1,CL001,2018-09-09,,t,1400.00,t,0,f
+38,DR0038,Dr. Arif Uddin,Male,Obstetrics & Gynecology,Obstetrics,Consultant,Full-time,1,CL001,2019-05-24,,t,1200.00,t,0,f
+39,DR0039,Dr. Fariha Alam,Female,Pediatrics,Adolescent Medicine,Consultant,Full-time,14,CL014,2019-02-12,,f,900.00,t,0,f
+40,DR0040,Dr. Nafisa Hossain,Female,General Medicine,Internal Medicine,Consultant,Part-time,14,CL014,2015-08-20,,t,800.00,t,0,f
+41,DR0041,Dr. Mahmud Ahmed,Male,Pediatrics,General Pediatrics,Consultant,Full-time,2,CL002,2019-02-10,,t,1000.00,t,0,f
+42,DR0042,Dr. Farhan Sultana,Male,General Medicine,Family Medicine,Consultant,Full-time,7,CL007,2015-02-18,,f,900.00,t,0,f
+43,DR0043,Dr. Saif Akter,Male,Ophthalmology,General Ophthalmology,Consultant,Part-time,6,CL006,2018-03-25,,t,1100.00,t,0,f
+44,DR0044,Dr. Sumaiya Uddin,Female,Pediatrics,Adolescent Medicine,Senior Consultant,Full-time,5,CL005,2013-06-19,,t,900.00,t,0,f
+45,DR0045,Dr. Ahsan Haque,Male,Dermatology,Dermatologic Procedures,Consultant,Full-time,3,CL003,2018-07-30,,t,1000.00,t,0,f
+46,DR0046,Dr. Tasnim Uddin,Female,Dermatology,Dermatologic Procedures,Consultant,Full-time,2,CL002,2014-02-19,,f,1300.00,t,0,f
+47,DR0047,Dr. Nafis Haque,Male,Pediatrics,General Pediatrics,Associate Consultant,Full-time,14,CL014,2021-06-05,,f,900.00,t,0,f
+48,DR0048,Dr. Tanvir Chowdhury,Male,Obstetrics & Gynecology,Maternal Health,Consultant,Part-time,10,CL010,2013-03-14,,t,1200.00,t,0,f
+49,DR0049,Dr. Asif Miah,Male,Endocrinology,Diabetes & Metabolism,Associate Consultant,Part-time,12,CL012,2014-06-09,,t,1600.00,t,0,f
+50,DR0050,Dr. Shafiq Sultana,Male,Gastroenterology,Digestive Health,Consultant,Part-time,5,CL005,2013-04-07,,t,1500.00,t,0,f
+51,DR0051,Dr. Moin Alam,Male,Obstetrics & Gynecology,Maternal Health,Medical Officer,Visiting,14,CL014,2020-07-28,,t,1200.00,t,0,f
+52,DR0052,Dr. Anika Ahmed,Female,Psychiatry,Adult Psychiatry,Consultant,Visiting,14,CL014,2018-05-17,,t,1400.00,t,0,f
+53,DR0053,Dr. Fariha Akter,Female,Neurology,General Neurology,Senior Consultant,Visiting,3,CL003,2021-08-01,,t,1700.00,t,0,f
+54,DR0054,Dr. Umme Khan,Female,General Medicine,Internal Medicine,Associate Consultant,Full-time,6,CL006,2017-12-02,,t,800.00,t,0,f
+55,DR0055,Dr. Tahmina Chowdhury,Female,Orthopedics,General Orthopedics,Consultant,Full-time,2,CL002,2015-12-06,,f,1400.00,t,0,f
+56,DR0056,Dr. Sharmin Hossain,Female,Pediatrics,Adolescent Medicine,Medical Officer,Part-time,14,CL014,2021-02-04,,f,1000.00,t,0,f
+57,DR0057,Dr. Sadia Rahman,Female,Obstetrics & Gynecology,Maternal Health,Consultant,Visiting,4,CL004,2014-11-11,,f,1200.00,t,0,f
+58,DR0058,Dr. Mahjabin Sultana,Female,Gastroenterology,Digestive Health,Medical Officer,Part-time,4,CL004,2021-01-08,,f,1600.00,t,0,f
+59,DR0059,Dr. Zahid Akter,Male,Ophthalmology,General Ophthalmology,Consultant,Full-time,2,CL002,2019-03-18,,f,1100.00,t,0,f
+60,DR0060,Dr. Jannatul Alam,Female,General Medicine,Internal Medicine,Medical Officer,Part-time,10,CL010,2018-07-20,,t,800.00,t,0,f
+61,DR0061,Dr. Zarin Hossain,Female,Ophthalmology,General Ophthalmology,Senior Consultant,Part-time,14,CL014,2020-03-03,,t,1100.00,t,0,f
+62,DR0062,Dr. Masud Hossain,Male,Neurology,General Neurology,Medical Officer,Full-time,2,CL002,2020-02-11,,f,1600.00,t,0,f
+63,DR0063,Dr. Saif Hossain,Male,General Medicine,Family Medicine,Consultant,Visiting,9,CL009,2014-04-16,,t,900.00,t,0,f
+64,DR0064,Dr. Sumaiya Mahmud,Female,ENT,Otology,Senior Consultant,Visiting,12,CL012,2019-03-14,,t,1100.00,t,0,f
+65,DR0065,Dr. Arif Akter,Male,Orthopedics,General Orthopedics,Consultant,Full-time,12,CL012,2013-12-16,2023-03-17,t,1300.00,f,0,f
+66,DR0066,Dr. Sabina Karim,Female,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,2,CL002,2020-02-18,,t,1200.00,t,0,f
+67,DR0067,Dr. Shafiq Mahmud,Male,Pediatrics,Adolescent Medicine,Consultant,Part-time,14,CL014,2013-11-27,,f,900.00,t,0,f
+68,DR0068,Dr. Tariq Karim,Male,Dermatology,Clinical Dermatology,Consultant,Full-time,8,CL008,2014-03-13,,t,1000.00,t,0,f
+69,DR0069,Dr. Asif Hossain,Male,General Medicine,Adult Medicine,Senior Consultant,Part-time,7,CL007,2017-12-23,,f,900.00,t,0,f
+70,DR0070,Dr. Umme Alam,Female,Ophthalmology,General Ophthalmology,Consultant,Visiting,7,CL007,2013-08-31,,t,1100.00,t,0,f
+71,DR0071,Dr. Nafis Chowdhury,Male,Endocrinology,Thyroid Disorders,Medical Officer,Visiting,1,CL001,2016-04-05,,t,1400.00,t,0,f
+72,DR0072,Dr. Mahmud Hasan,Male,Orthopedics,Sports Injury,Senior Consultant,Full-time,9,CL009,2016-02-28,,f,1300.00,t,0,f
+73,DR0073,Dr. Tahmina Miah,Female,ENT,General ENT,Medical Officer,Full-time,10,CL010,2017-05-29,,t,1200.00,t,0,f
+74,DR0074,Dr. Nafisa Rahman,Female,General Medicine,Internal Medicine,Senior Consultant,Part-time,1,CL001,2014-12-02,,t,800.00,t,0,f
+75,DR0075,Dr. Sharmin Sarker,Female,Psychiatry,Community Mental Health,Consultant,Part-time,1,CL001,2020-12-31,,f,1400.00,t,0,f
+76,DR0076,Dr. Sharmin Alam,Female,Cardiology,Preventive Cardiology,Medical Officer,Part-time,11,CL011,2018-10-11,,t,1600.00,t,0,f
+77,DR0077,Dr. Nusrat Hasan,Female,Orthopedics,Sports Injury,Associate Consultant,Visiting,2,CL002,2020-09-13,,f,1300.00,t,0,f
+78,DR0078,Dr. Masud Ahmed,Male,Gastroenterology,Hepatology,Consultant,Full-time,2,CL002,2013-03-10,,t,1500.00,t,0,f
+79,DR0079,Dr. Mehedi Haque,Male,Dermatology,Dermatologic Procedures,Medical Officer,Full-time,1,CL001,2021-03-12,,t,1100.00,t,0,f
+80,DR0080,Dr. Maliha Mahmud,Female,Pediatrics,Adolescent Medicine,Consultant,Full-time,14,CL014,2015-05-28,,f,1000.00,t,0,f
+81,DR0081,Dr. Zarin Rashid,Female,Orthopedics,Sports Injury,Consultant,Part-time,1,CL001,2014-02-17,,t,1300.00,t,0,f
+82,DR0082,Dr. Nabil Sultana,Male,Gastroenterology,Digestive Health,Senior Consultant,Visiting,5,CL005,2019-03-02,,t,1500.00,t,0,f
+83,DR0083,Dr. Tasnim Chowdhury,Female,Dermatology,Clinical Dermatology,Senior Consultant,Part-time,10,CL010,2020-07-17,,t,1100.00,t,0,f
+84,DR0084,Dr. Tariq Alam,Male,General Medicine,Internal Medicine,Consultant,Full-time,5,CL005,2014-04-02,,t,800.00,t,0,f
+85,DR0085,Dr. Samira Kabir,Female,Endocrinology,Thyroid Disorders,Medical Officer,Part-time,12,CL012,2013-04-23,,f,1400.00,t,0,f
+86,DR0086,Dr. Tanvir Hossain,Male,Orthopedics,General Orthopedics,Consultant,Full-time,7,CL007,2013-10-07,,f,1400.00,t,0,f
+87,DR0087,Dr. Nadia Alam,Female,Dermatology,Clinical Dermatology,Consultant,Visiting,12,CL012,2014-05-14,,t,1000.00,t,0,f
+88,DR0088,Dr. Arif Karim,Male,General Medicine,Internal Medicine,Medical Officer,Full-time,2,CL002,2019-06-20,,f,800.00,t,0,f
+89,DR0089,Dr. Rakib Sultana,Male,Pediatrics,Child Health,Associate Consultant,Visiting,1,CL001,2014-01-30,,t,1000.00,t,0,f
+90,DR0090,Dr. Zahid Haque,Male,ENT,General ENT,Senior Consultant,Full-time,7,CL007,2019-11-09,,t,1100.00,t,0,f
+91,DR0091,Dr. Mehedi Siddique,Male,Orthopedics,General Orthopedics,Associate Consultant,Full-time,6,CL006,2019-04-27,,t,1200.00,t,0,f
+92,DR0092,Dr. Fahim Hasan,Male,Neurology,General Neurology,Consultant,Part-time,10,CL010,2017-03-30,,t,1700.00,t,0,f
+93,DR0093,Dr. Tahmina Hasan,Female,Cardiology,Clinical Cardiology,Senior Consultant,Part-time,6,CL006,2016-03-10,,f,1500.00,t,0,f
+94,DR0094,Dr. Ahsan Chowdhury,Male,Endocrinology,Diabetes & Metabolism,Medical Officer,Full-time,3,CL003,2015-10-06,,f,1400.00,t,0,f
+95,DR0095,Dr. Sadia Islam,Female,Ophthalmology,General Ophthalmology,Senior Consultant,Full-time,2,CL002,2019-10-23,,t,1100.00,t,0,f
+96,DR0096,Dr. Sharmin Khan,Female,General Medicine,Family Medicine,Consultant,Part-time,5,CL005,2014-07-16,,t,800.00,t,0,f
+97,DR0097,Dr. Humaira Siddique,Female,General Medicine,Internal Medicine,Medical Officer,Part-time,2,CL002,2014-07-15,,f,700.00,t,0,f
+98,DR0098,Dr. Raisa Hossain,Female,Pediatrics,Adolescent Medicine,Senior Consultant,Part-time,1,CL001,2016-04-18,,t,900.00,t,0,f
+99,DR0099,Dr. Afsana Haque,Female,Pediatrics,Child Health,Medical Officer,Visiting,4,CL004,2018-12-26,,f,800.00,t,0,f
+100,DR0100,Dr. Masud Siddique,Male,ENT,Otology,Consultant,Part-time,9,CL009,2018-07-04,,f,1100.00,t,0,f
+101,DR0101,Dr. Farhan Kabir,Male,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,9,CL009,2014-04-04,,t,1400.00,t,0,f
+102,DR0102,Dr. Sabina Siddique,Female,Dermatology,Dermatologic Procedures,Consultant,Part-time,4,CL004,2017-11-07,,f,1300.00,t,0,f
+103,DR0103,Dr. Zarin Alam,Female,Cardiology,Clinical Cardiology,Senior Consultant,Full-time,2,CL002,2014-08-26,,f,1500.00,t,0,f
+104,DR0104,Dr. Tanvir Karim,Male,Cardiology,Preventive Cardiology,Medical Officer,Part-time,10,CL010,2019-10-08,,f,1500.00,t,0,f
+105,DR0105,Dr. Farhan Rashid,Male,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,14,CL014,2016-10-25,,t,1200.00,t,0,f
+106,DR0106,Dr. Sabina Sultana,Female,Gastroenterology,Hepatology,Consultant,Visiting,4,CL004,2013-12-20,,t,1500.00,t,0,f
+107,DR0107,Dr. Ahsan Sarker,Male,Ophthalmology,General Ophthalmology,Senior Consultant,Full-time,2,CL002,2020-06-07,2023-05-18,f,1100.00,f,0,f
+108,DR0108,Dr. Hasan Chowdhury,Male,Obstetrics & Gynecology,Obstetrics,Consultant,Visiting,1,CL001,2013-11-09,,t,1300.00,t,0,f
+109,DR0109,Dr. Samira Akter,Female,Pediatrics,General Pediatrics,Consultant,Part-time,11,CL011,2016-06-04,,t,1100.00,t,0,f
+110,DR0110,Dr. Sadia Mahmud,Female,Cardiology,Clinical Cardiology,Consultant,Full-time,11,CL011,2014-09-19,,f,1500.00,t,0,f
+111,DR0111,Dr. Saif Hasan,Male,Pediatrics,General Pediatrics,Senior Consultant,Full-time,4,CL004,2017-01-25,,f,900.00,t,0,f
+112,DR0112,Dr. Nafis Rashid,Male,Endocrinology,Thyroid Disorders,Senior Consultant,Part-time,1,CL001,2013-03-22,,t,1400.00,t,0,f
+113,DR0113,Dr. Saif Khan,Male,Obstetrics & Gynecology,Obstetrics,Associate Consultant,Full-time,9,CL009,2018-02-17,,t,1200.00,t,0,f
+114,DR0114,Dr. Saif Sultana,Male,General Medicine,Family Medicine,Consultant,Visiting,8,CL008,2015-05-27,,t,800.00,t,0,f
+115,DR0115,Dr. Jannatul Khan,Female,General Medicine,Internal Medicine,Associate Consultant,Visiting,12,CL012,2015-03-10,,t,700.00,t,0,f

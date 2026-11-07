@@ -1,0 +1,36 @@
+relationship b0003710-25a3-5947-a8bf-260f6380984c
+	fromColumn: Sales.'Order Date'
+	toColumn: Date.Date
+
+relationship 7b187522-b227-5865-87a0-356ae4ec090f
+	fromColumn: Sales.'Slot Key'
+	toColumn: 'Time Slot'.'Slot Key'
+
+relationship b1d82b9b-2073-5a1f-aff5-cff5aba7fa31
+	fromColumn: Sales.'Pizza Key'
+	toColumn: Pizza.'Pizza Key'
+
+relationship dc87869a-4426-52b7-b9e7-c6f7c2c9f2a9
+	fromColumn: Orders.'Order Date'
+	toColumn: Date.Date
+
+relationship 29a8a04b-d0a4-50e3-b209-45131066d60c
+	fromColumn: Orders.'Slot Key'
+	toColumn: 'Time Slot'.'Slot Key'
+
+relationship 0ea7a8e3-6521-58d2-99ac-cd9022fa5610
+	fromColumn: Staffing.Date
+	toColumn: Date.Date
+
+relationship e5aaba97-ade9-5fdc-ad26-aa16f5728ef9
+	fromColumn: Staffing.'Slot Key'
+	toColumn: 'Time Slot'.'Slot Key'
+
+relationship 5afa417f-a21a-5a07-ae8d-fb674ea47db9
+	fromColumn: 'Pizza Ingredient'.'Pizza Key'
+	toColumn: Pizza.'Pizza Key'
+
+relationship 2639c796-1498-5f86-ae4f-4871904cd25e
+	fromColumn: 'Pizza Ingredient'.'Ingredient Key'
+	toColumn: Ingredient.'Ingredient Key'
+

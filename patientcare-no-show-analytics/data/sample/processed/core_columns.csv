@@ -1,0 +1,285 @@
+table_name,ordinal_position,column_name,data_type
+data_quality_issues,1,data_quality_issue_key,integer
+data_quality_issues,2,check_stage,text
+data_quality_issues,3,source_table,text
+data_quality_issues,4,source_raw_row_id,integer
+data_quality_issues,5,business_key,text
+data_quality_issues,6,column_name,text
+data_quality_issues,7,issue_type,text
+data_quality_issues,8,severity,text
+data_quality_issues,9,raw_value,text
+data_quality_issues,10,issue_description,text
+data_quality_issues,11,detected_at,timestamp with time zone
+dim_clinic,1,clinic_key,bigint
+dim_clinic,2,clinic_id,text
+dim_clinic,3,clinic_name,text
+dim_clinic,4,facility_type,text
+dim_clinic,5,ownership_model,text
+dim_clinic,6,division,text
+dim_clinic,7,district,text
+dim_clinic,8,city_area,text
+dim_clinic,9,urban_rural,text
+dim_clinic,10,opening_date,date
+dim_clinic,11,operating_start_time,time without time zone
+dim_clinic,12,operating_end_time,time without time zone
+dim_clinic,13,consultation_room_count,integer
+dim_clinic,14,telemedicine_enabled,boolean
+dim_clinic,15,active_flag,boolean
+dim_clinic,16,data_quality_issue_count,bigint
+dim_clinic,17,has_data_quality_issue,boolean
+dim_date,1,date_key,integer
+dim_date,2,full_date,date
+dim_date,3,day_of_month,integer
+dim_date,4,day_of_week_number,integer
+dim_date,5,day_name,text
+dim_date,6,iso_week_number,integer
+dim_date,7,month_number,integer
+dim_date,8,month_name,text
+dim_date,9,month_year,text
+dim_date,10,month_year_sort,integer
+dim_date,11,quarter_number,integer
+dim_date,12,quarter_label,text
+dim_date,13,year_number,integer
+dim_date,14,is_weekend,boolean
+dim_date,15,project_analysis_period,text
+dim_date,16,project_period_sort,integer
+dim_doctor,1,doctor_key,bigint
+dim_doctor,2,doctor_id,text
+dim_doctor,3,doctor_name,text
+dim_doctor,4,gender,text
+dim_doctor,5,specialty,text
+dim_doctor,6,subspecialty,text
+dim_doctor,7,designation,text
+dim_doctor,8,employment_type,text
+dim_doctor,9,primary_clinic_key,bigint
+dim_doctor,10,primary_clinic_id,text
+dim_doctor,11,joining_date,date
+dim_doctor,12,leaving_date,date
+dim_doctor,13,telemedicine_enabled,boolean
+dim_doctor,14,standard_consultation_fee_bdt,numeric
+dim_doctor,15,active_flag,boolean
+dim_doctor,16,data_quality_issue_count,bigint
+dim_doctor,17,has_data_quality_issue,boolean
+dim_patient,1,patient_key,bigint
+dim_patient,2,patient_id,text
+dim_patient,3,registration_date,date
+dim_patient,4,birth_date,date
+dim_patient,5,gender,text
+dim_patient,6,marital_status,text
+dim_patient,7,division,text
+dim_patient,8,district,text
+dim_patient,9,upazila,text
+dim_patient,10,urban_rural,text
+dim_patient,11,preferred_language,text
+dim_patient,12,contact_consent,boolean
+dim_patient,13,sms_opt_in,boolean
+dim_patient,14,whatsapp_opt_in,boolean
+dim_patient,15,chronic_condition_flag,boolean
+dim_patient,16,chronic_condition_group,text
+dim_patient,17,disability_support_required,boolean
+dim_patient,18,patient_status,text
+dim_patient,19,data_quality_issue_count,bigint
+dim_patient,20,has_data_quality_issue,boolean
+dim_patient,21,chronic_condition_segment,text
+fact_appointment_events,1,event_key,bigint
+fact_appointment_events,2,event_id,text
+fact_appointment_events,3,appointment_key,bigint
+fact_appointment_events,4,appointment_id,text
+fact_appointment_events,5,event_date_key,integer
+fact_appointment_events,6,event_sequence,integer
+fact_appointment_events,7,event_type,text
+fact_appointment_events,8,event_at,timestamp without time zone
+fact_appointment_events,9,from_status,text
+fact_appointment_events,10,to_status,text
+fact_appointment_events,11,actor_type,text
+fact_appointment_events,12,reason_code,text
+fact_appointment_events,13,data_quality_issue_count,bigint
+fact_appointment_events,14,has_data_quality_issue,boolean
+fact_appointments,1,appointment_key,bigint
+fact_appointments,2,appointment_id,text
+fact_appointments,3,appointment_record_id,text
+fact_appointments,4,record_version,integer
+fact_appointments,5,available_version_count,bigint
+fact_appointments,6,patient_key,bigint
+fact_appointments,7,clinic_key,bigint
+fact_appointments,8,doctor_key,bigint
+fact_appointments,9,booked_date_key,integer
+fact_appointments,10,scheduled_date_key,integer
+fact_appointments,11,cancellation_date_key,integer
+fact_appointments,12,consultation_date_key,integer
+fact_appointments,13,specialty,text
+fact_appointments,14,booked_at,timestamp without time zone
+fact_appointments,15,scheduled_start_at,timestamp without time zone
+fact_appointments,16,scheduled_end_at,timestamp without time zone
+fact_appointments,17,check_in_at,timestamp without time zone
+fact_appointments,18,consultation_start_at,timestamp without time zone
+fact_appointments,19,consultation_end_at,timestamp without time zone
+fact_appointments,20,appointment_status,text
+fact_appointments,21,booking_channel,text
+fact_appointments,22,consultation_mode,text
+fact_appointments,23,visit_type,text
+fact_appointments,24,priority_level,text
+fact_appointments,25,reason_code,text
+fact_appointments,26,is_follow_up,boolean
+fact_appointments,27,parent_appointment_id,text
+fact_appointments,28,referral_source,text
+fact_appointments,29,cancellation_at,timestamp without time zone
+fact_appointments,30,cancellation_reason,text
+fact_appointments,31,rescheduled_from_appointment_id,text
+fact_appointments,32,source_system,text
+fact_appointments,33,source_created_at,timestamp without time zone
+fact_appointments,34,source_updated_at,timestamp without time zone
+fact_appointments,35,patient_reference_valid,boolean
+fact_appointments,36,clinic_reference_valid,boolean
+fact_appointments,37,doctor_reference_valid,boolean
+fact_appointments,38,scheduled_start_valid,boolean
+fact_appointments,39,data_quality_issue_count,bigint
+fact_appointments,40,has_data_quality_issue,boolean
+fact_appointments,41,lead_time_days,integer
+fact_appointments,42,lead_time_band,text
+fact_appointments,43,lead_time_band_sort,integer
+fact_appointments,44,scheduled_time_band,text
+fact_appointments,45,scheduled_time_band_sort,integer
+fact_appointments,46,patient_age_at_appointment,integer
+fact_appointments,47,patient_age_band,text
+fact_appointments,48,patient_age_band_sort,integer
+fact_appointments,49,pilot_target_segment,text
+fact_appointments,50,reminder_delivery_group,text
+fact_feedback,1,feedback_key,bigint
+fact_feedback,2,survey_id,text
+fact_feedback,3,appointment_key,bigint
+fact_feedback,4,appointment_id,text
+fact_feedback,5,survey_sent_date_key,integer
+fact_feedback,6,responded_date_key,integer
+fact_feedback,7,survey_sent_at,timestamp without time zone
+fact_feedback,8,responded_at,timestamp without time zone
+fact_feedback,9,overall_rating,integer
+fact_feedback,10,wait_time_rating,integer
+fact_feedback,11,doctor_rating,integer
+fact_feedback,12,booking_experience_rating,integer
+fact_feedback,13,telemedicine_rating,integer
+fact_feedback,14,recommend_score_nps,integer
+fact_feedback,15,complaint_flag,boolean
+fact_feedback,16,complaint_category,text
+fact_feedback,17,follow_up_required,boolean
+fact_feedback,18,data_quality_issue_count,bigint
+fact_feedback,19,has_data_quality_issue,boolean
+fact_payments,1,payment_key,bigint
+fact_payments,2,payment_id,text
+fact_payments,3,payment_record_id,text
+fact_payments,4,record_version,integer
+fact_payments,5,available_version_count,bigint
+fact_payments,6,appointment_key,bigint
+fact_payments,7,appointment_id,text
+fact_payments,8,transaction_date_key,integer
+fact_payments,9,refund_date_key,integer
+fact_payments,10,invoice_id,text
+fact_payments,11,payer_type,text
+fact_payments,12,payment_method,text
+fact_payments,13,gross_amount_bdt,numeric
+fact_payments,14,discount_amount_bdt,numeric
+fact_payments,15,net_amount_bdt,numeric
+fact_payments,16,amount_paid_bdt,numeric
+fact_payments,17,payment_status,text
+fact_payments,18,transaction_at,timestamp without time zone
+fact_payments,19,refund_amount_bdt,numeric
+fact_payments,20,refund_at,timestamp without time zone
+fact_payments,21,insurance_claim_id,text
+fact_payments,22,claim_status,text
+fact_payments,23,data_quality_issue_count,bigint
+fact_payments,24,has_data_quality_issue,boolean
+fact_reminder_pilot_assignment,1,pilot_assignment_key,bigint
+fact_reminder_pilot_assignment,2,pilot_record_id,text
+fact_reminder_pilot_assignment,3,appointment_key,bigint
+fact_reminder_pilot_assignment,4,appointment_id,text
+fact_reminder_pilot_assignment,5,clinic_key,bigint
+fact_reminder_pilot_assignment,6,clinic_id,text
+fact_reminder_pilot_assignment,7,assignment_date_key,integer
+fact_reminder_pilot_assignment,8,scheduled_date_key,integer
+fact_reminder_pilot_assignment,9,assignment_date,date
+fact_reminder_pilot_assignment,10,scheduled_date,date
+fact_reminder_pilot_assignment,11,assignment_month,text
+fact_reminder_pilot_assignment,12,assignment_group,text
+fact_reminder_pilot_assignment,13,intervention_type,text
+fact_reminder_pilot_assignment,14,intervention_delivery_status,text
+fact_reminder_pilot_assignment,15,pilot_outcome,text
+fact_reminder_pilot_assignment,16,attendance_eligible_flag,boolean
+fact_reminder_pilot_assignment,17,no_show_flag,boolean
+fact_reminder_pilot_assignment,18,analysis_exclusion_reason,text
+fact_reminder_pilot_assignment,19,randomisation_block,text
+fact_reminder_pilot_assignment,20,assignment_method,text
+fact_reminder_pilot_assignment,21,pilot_phase,text
+fact_reminders,1,reminder_key,bigint
+fact_reminders,2,reminder_id,text
+fact_reminders,3,appointment_key,bigint
+fact_reminders,4,appointment_id,text
+fact_reminders,5,scheduled_send_date_key,integer
+fact_reminders,6,sent_date_key,integer
+fact_reminders,7,delivered_date_key,integer
+fact_reminders,8,read_date_key,integer
+fact_reminders,9,reminder_type,text
+fact_reminders,10,channel,text
+fact_reminders,11,provider_name,text
+fact_reminders,12,attempt_number,integer
+fact_reminders,13,scheduled_send_at,timestamp without time zone
+fact_reminders,14,sent_at,timestamp without time zone
+fact_reminders,15,delivery_status,text
+fact_reminders,16,delivered_at,timestamp without time zone
+fact_reminders,17,read_at,timestamp without time zone
+fact_reminders,18,failure_reason,text
+fact_reminders,19,template_code,text
+fact_reminders,20,language,text
+fact_reminders,21,provider_message_id,text
+fact_reminders,22,data_quality_issue_count,bigint
+fact_reminders,23,has_data_quality_issue,boolean
+fact_reporting_process_log,1,reporting_log_key,bigint
+fact_reporting_process_log,2,report_log_id,text
+fact_reporting_process_log,3,reporting_week_date_key,integer
+fact_reporting_process_log,4,reporting_week_start,date
+fact_reporting_process_log,5,process_phase,text
+fact_reporting_process_log,6,reporting_method,text
+fact_reporting_process_log,7,data_preparation_minutes,integer
+fact_reporting_process_log,8,validation_minutes,integer
+fact_reporting_process_log,9,formatting_minutes,integer
+fact_reporting_process_log,10,distribution_minutes,integer
+fact_reporting_process_log,11,total_reporting_minutes,integer
+fact_schedule_sessions,1,schedule_session_key,bigint
+fact_schedule_sessions,2,schedule_session_id,text
+fact_schedule_sessions,3,session_date_key,integer
+fact_schedule_sessions,4,clinic_key,bigint
+fact_schedule_sessions,5,doctor_key,bigint
+fact_schedule_sessions,6,session_date,date
+fact_schedule_sessions,7,planned_start_time,time without time zone
+fact_schedule_sessions,8,planned_end_time,time without time zone
+fact_schedule_sessions,9,slot_length_minutes,integer
+fact_schedule_sessions,10,planned_slots,integer
+fact_schedule_sessions,11,blocked_slots,integer
+fact_schedule_sessions,12,overbook_allowed,boolean
+fact_schedule_sessions,13,session_status,text
+fact_schedule_sessions,14,session_cancel_reason,text
+fact_schedule_sessions,15,roster_batch_id,text
+fact_schedule_sessions,16,data_quality_issue_count,bigint
+fact_schedule_sessions,17,has_data_quality_issue,boolean
+fact_telemedicine_sessions,1,telemedicine_session_key,bigint
+fact_telemedicine_sessions,2,telemedicine_session_id,text
+fact_telemedicine_sessions,3,appointment_key,bigint
+fact_telemedicine_sessions,4,appointment_id,text
+fact_telemedicine_sessions,5,scheduled_date_key,integer
+fact_telemedicine_sessions,6,platform_name,text
+fact_telemedicine_sessions,7,scheduled_start_at,timestamp without time zone
+fact_telemedicine_sessions,8,patient_join_at,timestamp without time zone
+fact_telemedicine_sessions,9,doctor_join_at,timestamp without time zone
+fact_telemedicine_sessions,10,session_start_at,timestamp without time zone
+fact_telemedicine_sessions,11,session_end_at,timestamp without time zone
+fact_telemedicine_sessions,12,session_status,text
+fact_telemedicine_sessions,13,disconnect_count,integer
+fact_telemedicine_sessions,14,average_latency_ms,integer
+fact_telemedicine_sessions,15,audio_quality_score,numeric
+fact_telemedicine_sessions,16,video_quality_score,numeric
+fact_telemedicine_sessions,17,technical_issue_flag,boolean
+fact_telemedicine_sessions,18,issue_category,text
+fact_telemedicine_sessions,19,device_type,text
+fact_telemedicine_sessions,20,network_type,text
+fact_telemedicine_sessions,21,recording_consent,boolean
+fact_telemedicine_sessions,22,data_quality_issue_count,bigint
+fact_telemedicine_sessions,23,has_data_quality_issue,boolean

@@ -1,0 +1,34 @@
+CHECK_ID,CHECK_NAME,METHOD,CHECK_RULE,EXPECTED,ACTUAL,STATUS
+V12,Profit change if ROW_ID 3407 is removed (% of total profit),SQL (90_tests.sql),max,0.1,0.0,PASS
+V1a,ORDERS row count,SQL (90_tests.sql),equal,9994.0,9994.0,PASS
+V1b,CUSTOMER row count,SQL (90_tests.sql),equal,793.0,793.0,PASS
+V1c,PRODUCT row count,SQL (90_tests.sql),equal,1862.0,1862.0,PASS
+V1d,EMPLOYEES row count,SQL (90_tests.sql),equal,9.0,9.0,PASS
+V2a,Duplicate ROW_ID values,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V2b,Duplicate product IDs,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V2c,Duplicate customer IDs,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V3a,Order lines with no matching customer,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V3b,Order lines with no matching product,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V4,Fact view row count (no join fan-out),SQL (90_tests.sql),equal,9994.0,9994.0,PASS
+V5a,Total sales in raw ORDERS,SQL (90_tests.sql),equal,2297200.86,2297200.86,PASS
+V5b,Total profit in raw ORDERS,SQL (90_tests.sql),equal,286397.02,286397.02,PASS
+V5c,Total sales in fact view,SQL (90_tests.sql),equal,2297200.86,2297200.86,PASS
+V5d,Total profit in fact view,SQL (90_tests.sql),equal,286397.02,286397.02,PASS
+V6a,Lines with no discount band,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V6b,Distinct discount levels,SQL (90_tests.sql),equal,12.0,12.0,PASS
+V6c,Distinct discount bands,SQL (90_tests.sql),equal,4.0,4.0,PASS
+V7a,First order date (as yyyymmdd),SQL (90_tests.sql),equal,20140103.0,20140103.0,PASS
+V7b,Last order date (as yyyymmdd),SQL (90_tests.sql),equal,20171230.0,20171230.0,PASS
+V7c,Lines shipped before they were ordered,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V8a,Scenario at 80% ceiling: modelled minus observed profit,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V8b,"Scenario at 20% ceiling, 0% volume kept: modelled minus (profit of lines at or below 20%)",SQL (90_tests.sql),equal,0.0,0.0,PASS
+V8c,Re-priced at own discount: total difference from observed profit,SQL (90_tests.sql),equal,0.0,0.0,PASS
+V9a,Scenario model: largest gap between Python and SQL across 25 scenarios ($),pandas recompute (cross_checks.py),within 0.01,0.0,0.0,PASS
+V10a,Monitoring procedure (@Quarters=6): distinct quarters returned,pandas recompute (cross_checks.py),within 0,6.0,6.0,PASS
+V10b,Monitoring procedure: newest quarter is Q4-2017 (1 = yes),pandas recompute (cross_checks.py),within 0,1.0,1.0,PASS
+V10c,Monitoring procedure: total profit in last 6 quarters vs pandas ($),pandas recompute (cross_checks.py),within 1.0,147402.73,147402.79,PASS
+V10d,"Monitoring procedure (@Quarters=4, by state): distinct quarters returned",pandas recompute (cross_checks.py),within 0,4.0,4.0,PASS
+V11a,Band x sub-category cells missing on one side,pandas recompute (cross_checks.py),within 0,0.0,0.0,PASS
+V11b,Band x sub-category: largest profit gap SQL vs pandas ($),pandas recompute (cross_checks.py),within 0.01,0.0,0.0,PASS
+V11c,Band x sub-category: largest line-count gap,pandas recompute (cross_checks.py),within 0,0.0,0.0,PASS
+V13,"Scenario procedure (20%, 0.50) vs scenario grid: largest profit gap ($)",pandas recompute (cross_checks.py),within 0.01,0.0,0.0,PASS

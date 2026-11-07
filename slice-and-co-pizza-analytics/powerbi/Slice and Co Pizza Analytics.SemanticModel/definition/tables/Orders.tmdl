@@ -1,0 +1,91 @@
+/// Fact: one row per order (header). Holds order-level timing such as the gap to the previous order.
+table Orders
+	lineageTag: 0740f424-18bf-4314-bb4f-e11534efa828
+
+	column 'Order ID'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: d05f1b50-e571-4f9e-afd4-fe8af7a18701
+		summarizeBy: none
+		sourceColumn: Order ID
+
+	/// Foreign key to Date.
+	column 'Order Date'
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: a752da7b-8950-42a5-b3d6-0d81028ac69e
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Order Time'
+		dataType: dateTime
+		isHidden
+		formatString: h:mm:ss AM/PM
+		lineageTag: 0d4ebab4-cf3a-47fb-a4b7-ca15f1d69189
+		summarizeBy: none
+		sourceColumn: Order Time
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	/// Foreign key to Time Slot.
+	column 'Slot Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f947c5e4-c217-49e5-bc71-c54df6ed5a43
+		summarizeBy: none
+		sourceColumn: Slot Key
+
+	column 'Order Lines'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 731dab32-648d-4a41-94ac-77aa208470ac
+		summarizeBy: sum
+		sourceColumn: Order Lines
+
+	column 'Order Pizzas'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ba4ef8b7-24de-4cc8-9f3d-6e18cbbb13c1
+		summarizeBy: sum
+		sourceColumn: Order Pizzas
+
+	column 'Order Revenue'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: ea2c4af7-1198-4810-9ac0-1173a5049365
+		summarizeBy: sum
+		sourceColumn: Order Revenue
+
+	/// Minutes since the previous order on the same day; blank for the first order of the day.
+	column 'Minutes Since Previous Order'
+		dataType: double
+		isHidden
+		formatString: #,##0.0
+		lineageTag: 0555e09f-49a6-4eb2-a45d-ad65ebc133e2
+		summarizeBy: none
+		sourceColumn: Minutes Since Previous Order
+
+	/// Single pizza or Multiple pizzas.
+	column 'Order Type'
+		dataType: string
+		lineageTag: 1990aeee-9213-4537-a264-0da97e8117cb
+		summarizeBy: none
+		sourceColumn: Order Type
+
+	partition Orders = m
+		mode: import
+		source =
+				let
+				    Source = #"Order Header"
+				in
+				    Source
+

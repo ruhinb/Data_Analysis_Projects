@@ -1,0 +1,256 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "917c3f59afeab1721eac",
+  "position": {
+    "x": 908,
+    "y": 250,
+    "z": 1011,
+    "height": 166,
+    "width": 346,
+    "tabOrder": 1011
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Appointments"
+                    }
+                  },
+                  "Property": "Booking Channel"
+                }
+              },
+              "queryRef": "Appointments.Booking Channel",
+              "nativeQueryRef": "Booking Channel",
+              "active": true
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.Baseline No-show Rate",
+              "nativeQueryRef": "Baseline No-show Rate",
+              "active": false
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Baseline Eligible Appointments"
+                }
+              },
+              "queryRef": "_Measures.Baseline Eligible Appointments",
+              "nativeQueryRef": "Baseline Eligible Appointments",
+              "active": false
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "All-clinic Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.All-clinic Baseline No-show Rate",
+              "nativeQueryRef": "All-clinic Baseline No-show Rate",
+              "active": false
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": 153.0,\n  \"height\": 149.0,\n  \"autosize\": {\n    \"type\": \"pad\"\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"rule\",\n        \"strokeWidth\": 3,\n        \"strokeCap\": \"round\",\n        \"opacity\": 0.6\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Booking Channel\",\n          \"type\": \"nominal\",\n          \"sort\": {\n            \"field\": \"Baseline No-show Rate\",\n            \"op\": \"max\",\n            \"order\": \"descending\"\n          },\n          \"title\": null,\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"Baseline No-show Rate\"\n        },\n        \"x2\": {\n          \"datum\": 0\n        },\n        \"color\": {\n          \"condition\": {\n            \"test\": \"datum[''Booking Channel''] == ''Walk-in''\",\n            \"value\": \"#EB6834\"\n          },\n          \"value\": \"#F4B393\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"circle\",\n        \"size\": 150,\n        \"opacity\": 1,\n        \"stroke\": \"white\",\n        \"strokeWidth\": 2\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Booking Channel\",\n          \"type\": \"nominal\",\n          \"sort\": {\n            \"field\": \"Baseline No-show Rate\",\n            \"op\": \"max\",\n            \"order\": \"descending\"\n          },\n          \"title\": null,\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"Baseline No-show Rate\"\n        },\n        \"color\": {\n          \"condition\": {\n            \"test\": \"datum[''Booking Channel''] == ''Walk-in''\",\n            \"value\": \"#EB6834\"\n          },\n          \"value\": \"#F4B393\"\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"Booking Channel\"\n          },\n          {\n            \"field\": \"Baseline No-show Rate\",\n            \"format\": \".1%\"\n          },\n          {\n            \"field\": \"Baseline Eligible Appointments\",\n            \"format\": \",\"\n          }\n        ]\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"format(datum[''Baseline No-show Rate''], ''.1%'')\",\n          \"as\": \"r\"\n        },\n        {\n          \"joinaggregate\": [\n            {\n              \"op\": \"max\",\n              \"field\": \"Baseline No-show Rate\",\n              \"as\": \"mx\"\n            }\n          ]\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 16,\n        \"fontSize\": 10.5,\n        \"fontWeight\": 600,\n        \"color\": \"#101828\"\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Booking Channel\",\n          \"type\": \"nominal\",\n          \"sort\": {\n            \"field\": \"Baseline No-show Rate\",\n            \"op\": \"max\",\n            \"order\": \"descending\"\n          },\n          \"title\": null,\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"mx\"\n        },\n        \"text\": {\n          \"field\": \"r\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''n='' + format(datum[''Baseline Eligible Appointments''], '','')\",\n          \"as\": \"n\"\n        },\n        {\n          \"joinaggregate\": [\n            {\n              \"op\": \"max\",\n              \"field\": \"Baseline No-show Rate\",\n              \"as\": \"mx\"\n            }\n          ]\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 58,\n        \"fontSize\": 9,\n        \"color\": \"#667085\"\n      },\n      \"encoding\": {\n        \"y\": {\n          \"field\": \"Booking Channel\",\n          \"type\": \"nominal\",\n          \"sort\": {\n            \"field\": \"Baseline No-show Rate\",\n            \"op\": \"max\",\n            \"order\": \"descending\"\n          },\n          \"title\": null,\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"mx\"\n        },\n        \"text\": {\n          \"field\": \"n\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"aggregate\": [\n            {\n              \"op\": \"max\",\n              \"field\": \"All-clinic Baseline No-show Rate\",\n              \"as\": \"net\"\n            }\n          ]\n        }\n      ],\n      \"mark\": {\n        \"type\": \"rule\",\n        \"strokeDash\": [\n          4,\n          3\n        ],\n        \"color\": \"#344054\",\n        \"opacity\": 0.55\n      },\n      \"encoding\": {\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"net\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"aggregate\": [\n            {\n              \"op\": \"max\",\n              \"field\": \"All-clinic Baseline No-show Rate\",\n              \"as\": \"net\"\n            }\n          ]\n        },\n        {\n          \"calculate\": \"''all-clinic avg '' + format(datum.net, ''.1%'')\",\n          \"as\": \"lab\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"center\",\n        \"baseline\": \"bottom\",\n        \"dy\": -2,\n        \"fontSize\": 9,\n        \"color\": \"#344054\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              0.2\n            ]\n          },\n          \"axis\": null,\n          \"field\": \"net\"\n        },\n        \"y\": {\n          \"value\": 0\n        },\n        \"text\": {\n          \"field\": \"lab\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"background\": null,\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": null\n  },\n  \"padding\": 2,\n  \"axis\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#667085\",\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontSize\": 10,\n    \"titleColor\": \"#667085\",\n    \"titleFontWeight\": \"normal\",\n    \"domain\": false,\n    \"ticks\": false,\n    \"gridColor\": \"#EEF0F4\",\n    \"labelPadding\": 6\n  },\n  \"legend\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10.5,\n    \"labelColor\": \"#344054\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 70,\n    \"title\": null,\n    \"orient\": \"top\",\n    \"direction\": \"horizontal\",\n    \"columnPadding\": 14\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 11,\n    \"color\": \"#344054\"\n  },\n  \"title\": {\n    \"font\": \"Segoe UI\"\n  },\n  \"concat\": {\n    \"spacing\": 8\n  }\n}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "166D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "346D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

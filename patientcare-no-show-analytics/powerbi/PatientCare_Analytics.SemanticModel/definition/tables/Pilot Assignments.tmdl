@@ -1,0 +1,136 @@
+/// One row per appointment in the reminder pilot, with its group and outcome. Source: core.fact_reminder_pilot_assignment.
+table 'Pilot Assignments'
+	lineageTag: 92206345-b7d8-52ee-8c99-7e41b8e63f8c
+
+	/// Links to Appointments.
+	column 'Appointment Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 0c4c5e18-81e0-5708-9078-4b7f948ff0f9
+		summarizeBy: none
+		sourceColumn: Appointment Key
+
+		annotation SummarizationSetBy = User
+
+	/// Date the appointment was assigned to a pilot group.
+	column 'Assignment Date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: ce93d577-2955-5d5b-a803-ada8eb691367
+		summarizeBy: none
+		sourceColumn: Assignment Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Scheduled date of the appointment.
+	column 'Appointment Date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: d50768bd-ac98-5e61-be14-7a16c01ab7b0
+		summarizeBy: none
+		sourceColumn: Appointment Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Month of assignment (yyyy-mm); groups were balanced within each clinic and month.
+	column 'Assignment Month'
+		dataType: string
+		lineageTag: c73dfa39-b4fe-598c-8862-78f5cdac0562
+		summarizeBy: none
+		sourceColumn: Assignment Month
+
+		annotation SummarizationSetBy = User
+
+	/// Standard reminder or enhanced reminder (24-hour message plus 2-hour follow-up).
+	column 'Reminder Group'
+		dataType: string
+		lineageTag: 24da111d-da44-504d-88af-3d914aec2e2b
+		summarizeBy: none
+		sourceColumn: Reminder Group
+		sortByColumn: 'Reminder Group Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Reminder sequence: standard reminder process, or 24-hour message plus 2-hour follow-up.
+	column 'Reminder Type'
+		dataType: string
+		lineageTag: 0d398dba-30ae-54a9-aee2-d1ddcb047f90
+		summarizeBy: none
+		sourceColumn: Reminder Type
+
+		annotation SummarizationSetBy = User
+
+	/// Enhanced reminder delivery: Delivered, Failed or Pending; Not applicable for the standard group.
+	column 'Delivery Status'
+		dataType: string
+		lineageTag: 790d9b0c-79ea-557d-b365-ff57b998ad95
+		summarizeBy: none
+		sourceColumn: Delivery Status
+
+		annotation SummarizationSetBy = User
+
+	/// Final appointment status: Completed, No-show, Cancelled, Rescheduled or Status review required.
+	column 'Pilot Outcome'
+		dataType: string
+		lineageTag: d1ae9d0c-76a1-52b9-8401-abce9bf21da1
+		summarizeBy: none
+		sourceColumn: Pilot Outcome
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the appointment counts in the no-show comparison (completed or no-show).
+	column 'Attendance Eligible'
+		dataType: string
+		lineageTag: 8a07066d-be4a-509a-9196-3732f074a034
+		summarizeBy: none
+		sourceColumn: Attendance Eligible
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the patient did not attend.
+	column 'Is No-show'
+		dataType: string
+		lineageTag: bd2e8f9b-221f-5ac3-9114-5b646d7f5f4a
+		summarizeBy: none
+		sourceColumn: Is No-show
+
+		annotation SummarizationSetBy = User
+
+	/// Why an appointment was excluded from the comparison.
+	column 'Exclusion Reason'
+		dataType: string
+		lineageTag: 710e531c-5574-56c1-85cd-e81e88ae8046
+		summarizeBy: none
+		sourceColumn: Exclusion Reason
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Reminder Group: standard first.
+	column 'Reminder Group Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 4e3a082c-68c5-50b7-b086-2edb6881b45a
+		summarizeBy: none
+		sourceColumn: Reminder Group Sort
+
+		annotation SummarizationSetBy = User
+
+	partition 'Pilot Assignments' = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_reminder_pilot_assignment", {"appointment_key", "assignment_date", "scheduled_date", "assignment_month", "assignment_group", "intervention_type", "intervention_delivery_status", "pilot_outcome", "attendance_eligible_flag", "no_show_flag", "analysis_exclusion_reason"}, {"attendance_eligible_flag", "no_show_flag"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"appointment_key", Int64.Type}, {"assignment_date", type date}, {"scheduled_date", type date}, {"assignment_month", type text}, {"assignment_group", type text}, {"intervention_type", type text}, {"intervention_delivery_status", type text}, {"pilot_outcome", type text}, {"analysis_exclusion_reason", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"appointment_key", "Appointment Key"}, {"assignment_date", "Assignment Date"}, {"scheduled_date", "Appointment Date"}, {"assignment_month", "Assignment Month"}, {"assignment_group", "Reminder Group"}, {"intervention_type", "Reminder Type"}, {"intervention_delivery_status", "Delivery Status"}, {"pilot_outcome", "Pilot Outcome"}, {"attendance_eligible_flag", "Attendance Eligible"}, {"no_show_flag", "Is No-show"}, {"analysis_exclusion_reason", "Exclusion Reason"}}),
+				    AddedReminderGroupSort = Table.AddColumn(RenamedColumns, "Reminder Group Sort", each if [Reminder Group] = "Standard reminder" then 1 else 2, Int64.Type)
+				in
+				    AddedReminderGroupSort
+
+	annotation PBI_ResultType = Table
+

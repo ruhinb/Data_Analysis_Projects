@@ -1,0 +1,73 @@
+/// Doctors on the register, plus an Unknown row. Source: core.dim_doctor.
+table Doctor
+	lineageTag: 58e5e1d5-60cc-5894-9d37-d5b2648478c0
+
+	/// Surrogate key; 0 is the Unknown row.
+	column 'Doctor Key'
+		dataType: int64
+		isHidden
+		isKey
+		lineageTag: 5bf61abd-7658-5421-aa15-042b30d424ce
+		summarizeBy: none
+		sourceColumn: Doctor Key
+
+		annotation SummarizationSetBy = User
+
+	/// Anonymised doctor name.
+	column Doctor
+		dataType: string
+		lineageTag: bdcb0651-dfcc-5162-98b9-54b4625d3245
+		summarizeBy: none
+		sourceColumn: Doctor
+
+		annotation SummarizationSetBy = User
+
+	/// Gender of the doctor.
+	column 'Doctor Gender'
+		dataType: string
+		lineageTag: 39edef9e-c0cd-5953-95ad-f4c0c9478751
+		summarizeBy: none
+		sourceColumn: Doctor Gender
+
+		annotation SummarizationSetBy = User
+
+	/// Specialty the doctor is registered under.
+	column 'Doctor Specialty'
+		dataType: string
+		lineageTag: c1a214c1-b883-51e0-9846-b72c1b6ac583
+		summarizeBy: none
+		sourceColumn: Doctor Specialty
+
+		annotation SummarizationSetBy = User
+
+	/// Job title, for example Consultant or Medical Officer.
+	column Designation
+		dataType: string
+		lineageTag: d8461f3b-753c-56ab-8c46-7edf5468f39b
+		summarizeBy: none
+		sourceColumn: Designation
+
+		annotation SummarizationSetBy = User
+
+	/// Full-time, part-time or visiting.
+	column 'Employment Type'
+		dataType: string
+		lineageTag: ed05e6e7-5240-5b65-b651-8fd00d27f1cc
+		summarizeBy: none
+		sourceColumn: Employment Type
+
+		annotation SummarizationSetBy = User
+
+	partition Doctor = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = fnLoadTable("dim_doctor", {"doctor_key", "doctor_name", "gender", "specialty", "designation", "employment_type"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"doctor_key", Int64.Type}, {"doctor_name", type text}, {"gender", type text}, {"specialty", type text}, {"designation", type text}, {"employment_type", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"doctor_key", "Doctor Key"}, {"doctor_name", "Doctor"}, {"gender", "Doctor Gender"}, {"specialty", "Doctor Specialty"}, {"designation", "Designation"}, {"employment_type", "Employment Type"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

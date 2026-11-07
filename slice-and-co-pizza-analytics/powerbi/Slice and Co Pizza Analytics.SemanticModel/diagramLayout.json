@@ -1,0 +1,166 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1374.3854980927154,
+            "y": 475.16770763279419
+          },
+          "nodeIndex": "_Measures",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 273.39523259079317,
+            "y": 176.33206105206318
+          },
+          "nodeIndex": "Date",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1140.3854980927151,
+            "y": -50
+          },
+          "nodeIndex": "Ingredient",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1658.3854980927154,
+            "y": 549.16770763279419
+          },
+          "nodeIndex": "Investigation Date",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 206.65629277004314,
+            "y": 904.33541526558838
+          },
+          "nodeIndex": "Orders",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 563.64344059519453,
+            "y": 83.410832586313745
+          },
+          "nodeIndex": "Pizza",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 853.60016508614717,
+            "y": 64.270499423387037
+          },
+          "nodeIndex": "Pizza Ingredient",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1942.3854980927154,
+            "y": 561.16770763279419
+          },
+          "nodeIndex": "Rank By",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 792.21147775023383,
+            "y": 438.75924550841444
+          },
+          "nodeIndex": "Sales",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 543.59188843323034
+          },
+          "nodeIndex": "Staffing",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 499.39017588700887,
+            "y": 676.78241168100021
+          },
+          "nodeIndex": "Time Slot",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2226.3854980927154,
+            "y": 561.16770763279419
+          },
+          "nodeIndex": "Trend Metric",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

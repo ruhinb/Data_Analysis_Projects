@@ -1,0 +1,1035 @@
+{
+  "compatibilityLevel": 1606,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"DataFolder\", \"Orders\", \"Product\", \"Customer\", \"Discount Band\", \"Volume Kept\", \"Max Discount\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "expressions": [
+      {
+        "name": "DataFolder",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ],
+        "description": "Folder that holds ORDERS.csv, PRODUCT.csv and CUSTOMER.csv. Must end with a backslash.",
+        "expression": "\"D:\\Projects\\discount-guardrails\\data\\\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "kind": "m",
+        "lineageTag": "0c0bb97d-5898-5beb-a579-f10a9bdff235"
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4072ec21-4f2b-53bd-a217-6879c473f9fa",
+        "fromColumn": "Product ID",
+        "fromTable": "Orders",
+        "toColumn": "Product ID",
+        "toTable": "Product"
+      },
+      {
+        "name": "dc0141f6-efa1-50c7-8a3d-68ddebb31b13",
+        "fromColumn": "Customer ID",
+        "fromTable": "Orders",
+        "toColumn": "Customer ID",
+        "toTable": "Customer"
+      },
+      {
+        "name": "88b6debd-36e1-5988-905a-0d2efc841501",
+        "fromColumn": "Band Key",
+        "fromTable": "Orders",
+        "toColumn": "Band Key",
+        "toTable": "Discount Band"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Orders",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Row ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "f0785c3c-752c-5002-9c8b-bf01ebc15af8",
+            "sourceColumn": "Row ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Order ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ab91415c-9a2f-5a07-a6f0-ca80c1ece58d",
+            "sourceColumn": "Order ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Order Date",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              }
+            ],
+            "dataType": "dateTime",
+            "formatString": "Long Date",
+            "lineageTag": "62d98d25-99e5-5c2c-aadb-b76005530110",
+            "sourceColumn": "Order Date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "c78ac083-c849-5d90-ae6e-3ba491fe2241",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "da7f6b26-1336-5fc8-9366-bed2cd95a45a",
+            "sourceColumn": "Product ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sales Amount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
+            "lineageTag": "17a3cec1-7a1f-5f6e-9717-2ea4183f7b76",
+            "sourceColumn": "Sales Amount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quantity",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "164ee7de-fcf5-5700-b1c0-001d13e55693",
+            "sourceColumn": "Quantity",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Discount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "0%",
+            "isHidden": true,
+            "lineageTag": "06020ebe-c4b6-5f2f-a3a6-7765c8e9a10f",
+            "sourceColumn": "Discount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Profit Amount",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
+            "lineageTag": "d0b85d51-1822-52b5-9b7b-d6f8fa1ca001",
+            "sourceColumn": "Profit Amount",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Implied Cost",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "decimal",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "isHidden": true,
+            "lineageTag": "8493bb86-3dd4-5049-afcc-895e5b85ca0e",
+            "sourceColumn": "Implied Cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Band Key",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "4025624c-5ab1-5dc7-ac93-5a7dbff16d51",
+            "sourceColumn": "Band Key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Year",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "de309cf6-5bc7-5409-867a-c39b0931ed34",
+            "sourceColumn": "Year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter Index",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "9ee722cf-62b2-52d8-9d72-a5cf04bb303b",
+            "sourceColumn": "Quarter Index",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Quarter Label",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5a434bad-ae02-55e9-9e7b-5e5e5bb4834c",
+            "sortByColumn": "Quarter Index",
+            "sourceColumn": "Quarter Label",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "e74abda5-f890-5490-94bf-d58a5a2bcac5",
+        "measures": [
+          {
+            "name": "Sales",
+            "description": "Sales after discount",
+            "displayFolder": "1 Core",
+            "expression": "SUM ( Orders[Sales Amount] )",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "88659c2e-82bb-5571-8736-1eb4ff146bed"
+          },
+          {
+            "name": "Profit",
+            "description": "Profit as supplied in the data",
+            "displayFolder": "1 Core",
+            "expression": "SUM ( Orders[Profit Amount] )",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "979abe7d-2852-53e2-a675-9df4e78fbb1c"
+          },
+          {
+            "name": "Orders Count",
+            "displayFolder": "1 Core",
+            "expression": "DISTINCTCOUNT ( Orders[Order ID] )",
+            "formatString": "#,0",
+            "lineageTag": "cc6689de-3e46-5aac-bae9-1183dc3c7963"
+          },
+          {
+            "name": "Customers Count",
+            "displayFolder": "1 Core",
+            "expression": "DISTINCTCOUNT ( Orders[Customer ID] )",
+            "formatString": "#,0",
+            "lineageTag": "08ca20db-4975-5902-a39c-47cb8b456201"
+          },
+          {
+            "name": "Profit per Dollar",
+            "description": "Profit margin shown as profit on every $1 sold",
+            "displayFolder": "1 Core",
+            "expression": "DIVIDE ( [Profit], [Sales] )",
+            "formatString": "0.00",
+            "lineageTag": "ce842887-dec4-5469-a45c-5a44d1d4acab"
+          },
+          {
+            "name": "Full Price Profit per Dollar",
+            "displayFolder": "1 Core",
+            "expression": "CALCULATE ( [Profit per Dollar], Orders[Discount] = 0, REMOVEFILTERS ( 'Discount Band' ) )",
+            "formatString": "0.00",
+            "lineageTag": "e89723eb-fdd2-5847-9bc9-163ab2510599"
+          },
+          {
+            "name": "Same Products Full Price per Dollar",
+            "description": "What these same products earn per $1 at full price, weighted by their sales (the mix baseline from SQL Q2)",
+            "displayFolder": "1 Core",
+            "expression": [
+              "VAR SubCats =",
+              "    ADDCOLUMNS (",
+              "        VALUES ( 'Product'[Sub-category] ),",
+              "        \"@Sales\", [Sales],",
+              "        \"@Base\", CALCULATE ( [Profit per Dollar], Orders[Discount] = 0, REMOVEFILTERS ( 'Discount Band' ) )",
+              "    )",
+              "RETURN",
+              "    DIVIDE ( SUMX ( SubCats, [@Sales] * [@Base] ), SUMX ( SubCats, [@Sales] ) )"
+            ],
+            "formatString": "0.00",
+            "lineageTag": "9d1e8710-dffb-5b3e-a724-123a5c0ec031"
+          },
+          {
+            "name": "Years Count",
+            "displayFolder": "1 Core",
+            "expression": "DISTINCTCOUNT ( Orders[Year] )",
+            "formatString": "#,0",
+            "lineageTag": "31a2890e-b456-5867-ac7d-b810d6ff079a"
+          },
+          {
+            "name": "Heavy Sales",
+            "description": "Sales on lines with more than 20% off",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( [Sales], Orders[Discount] > 0.2 )",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "0c319731-f5f7-5472-8402-3773223eaf04"
+          },
+          {
+            "name": "Heavy Profit",
+            "description": "Net profit on lines with more than 20% off",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( [Profit], Orders[Discount] > 0.2 )",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "74490ff5-4775-5857-9335-081106ff90ae"
+          },
+          {
+            "name": "Heavy Loss",
+            "description": "Gross loss on loss-making lines with more than 20% off (positive number)",
+            "displayFolder": "2 Heavy discount",
+            "expression": "- CALCULATE ( [Profit], Orders[Discount] > 0.2, Orders[Profit Amount] < 0 )",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "212df8dc-366e-59d6-8d7c-830b3fed2674"
+          },
+          {
+            "name": "Heavy Customers",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( DISTINCTCOUNT ( Orders[Customer ID] ), Orders[Discount] > 0.2 )",
+            "formatString": "#,0",
+            "lineageTag": "cea29ddc-b36a-5f40-8b79-c0b4bb2a1540"
+          },
+          {
+            "name": "Heavy Orders",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( DISTINCTCOUNT ( Orders[Order ID] ), Orders[Discount] > 0.2 )",
+            "formatString": "#,0",
+            "lineageTag": "2b63250b-9fde-54d3-b4e5-eaa49aaa6fa5"
+          },
+          {
+            "name": "Lines Count",
+            "displayFolder": "1 Core",
+            "expression": "COUNTROWS ( Orders )",
+            "formatString": "#,0",
+            "lineageTag": "21120deb-4ad9-5ca7-8fbc-5a0569572369"
+          },
+          {
+            "name": "First Year",
+            "displayFolder": "1 Core",
+            "expression": "MIN ( Orders[Year] )",
+            "formatString": "0",
+            "lineageTag": "9a464170-22fa-5c28-8251-54e167752c4b"
+          },
+          {
+            "name": "Last Year",
+            "displayFolder": "1 Core",
+            "expression": "MAX ( Orders[Year] )",
+            "formatString": "0",
+            "lineageTag": "b1031913-51ee-52cc-a071-dd5d6185cabe"
+          },
+          {
+            "name": "Heavy Lines",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( COUNTROWS ( Orders ), Orders[Discount] > 0.2 )",
+            "formatString": "#,0",
+            "lineageTag": "f1228e7b-4b43-5d05-ab0a-4397ca4bbc7e"
+          },
+          {
+            "name": "Heavy Loss Lines",
+            "displayFolder": "2 Heavy discount",
+            "expression": "CALCULATE ( COUNTROWS ( Orders ), Orders[Discount] > 0.2, Orders[Profit Amount] < 0 )",
+            "formatString": "#,0",
+            "lineageTag": "d7c9a9a1-517c-53e4-b1e7-891df614a713"
+          },
+          {
+            "name": "Years With Heavy Loss",
+            "displayFolder": "2 Heavy discount",
+            "expression": "COUNTROWS ( FILTER ( VALUES ( Orders[Year] ), [Heavy Profit] < 0 ) )",
+            "formatString": "#,0",
+            "lineageTag": "6127aa42-699b-5525-a1ab-82ef5ba6d1b5"
+          },
+          {
+            "name": "Kept Share",
+            "description": "Share of capped volume customers still buy; defaults to half",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": "SELECTEDVALUE ( 'Volume Kept'[Share Kept], 0.5 )",
+            "formatString": "0%",
+            "lineageTag": "a3c8e84b-b3cb-58e7-ab25-835c1cde68f4"
+          },
+          {
+            "name": "Kept Label",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": "SELECTEDVALUE ( 'Volume Kept'[Customers Who Still Buy], \"Half\" )",
+            "lineageTag": "e25ecb4a-0962-5ab0-892e-3a80da68ca40"
+          },
+          {
+            "name": "Cap Value",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": "SELECTEDVALUE ( 'Max Discount'[Cap], 0.2 )",
+            "formatString": "0%",
+            "lineageTag": "e4c42363-2dd0-5347-8617-7adfb81f65e2"
+          },
+          {
+            "name": "Profit Change at Cap",
+            "description": "MODELLED: profit change if lines above the cap were re-priced at the cap, cost unchanged, with [Share Kept] of the volume kept",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": [
+              "VAR CapLevel = [Cap Value]",
+              "VAR Kept = [Kept Share]",
+              "RETURN",
+              "    SUMX (",
+              "        FILTER ( Orders, Orders[Discount] > CapLevel ),",
+              "        Kept * ( Orders[Sales Amount] / ( 1 - Orders[Discount] ) * ( 1 - CapLevel ) - Orders[Implied Cost] ) - Orders[Profit Amount]",
+              "    ) + 0"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "3afec2de-83c6-5c5e-8e2f-cd738f85c9e0"
+          },
+          {
+            "name": "Profit Change 20",
+            "description": "MODELLED: profit change with a 20% cap",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": [
+              "VAR Kept = [Kept Share]",
+              "RETURN",
+              "    SUMX (",
+              "        FILTER ( Orders, Orders[Discount] > 0.2 ),",
+              "        Kept * ( Orders[Sales Amount] / ( 1 - Orders[Discount] ) * 0.8 - Orders[Implied Cost] ) - Orders[Profit Amount]",
+              "    ) + 0"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "d53ac28f-fa82-55bc-95b1-d63dd5987508"
+          },
+          {
+            "name": "Modelled Profit 20",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": "[Profit] + [Profit Change 20]",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "a59a8130-cd3f-5a70-8974-c1be95f62e6a"
+          },
+          {
+            "name": "Change All Kept",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": [
+              "SUMX (",
+              "    FILTER ( Orders, Orders[Discount] > 0.2 ),",
+              "    ( Orders[Sales Amount] / ( 1 - Orders[Discount] ) * 0.8 - Orders[Implied Cost] ) - Orders[Profit Amount]",
+              ") + 0"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "8a5df368-db9b-5971-9625-b231cebd3118"
+          },
+          {
+            "name": "Change None Kept",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": "- CALCULATE ( [Profit], Orders[Discount] > 0.2 ) + 0",
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "f918199d-5d5c-5d99-8280-e35f49cd79f0"
+          },
+          {
+            "name": "Change Whole Orders Lost",
+            "description": "MODELLED worse case: every order with a capped line is lost entirely",
+            "displayFolder": "3 Scenario (modelled)",
+            "expression": [
+              "VAR AffectedOrders = CALCULATETABLE ( VALUES ( Orders[Order ID] ), Orders[Discount] > 0.2 )",
+              "RETURN",
+              "    - CALCULATE ( [Profit], TREATAS ( AffectedOrders, Orders[Order ID] ) ) + 0"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "22233967-348d-57d2-b868-a46c4e247344"
+          },
+          {
+            "name": "Latest Quarter Index",
+            "displayFolder": "4 Monitor",
+            "expression": "CALCULATE ( MAX ( Orders[Quarter Index] ), ALL ( ) )",
+            "formatString": "0",
+            "lineageTag": "18fc9cef-2786-50ae-a8f4-b0b221fe5a77"
+          },
+          {
+            "name": "Latest Quarter Label",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index]",
+              "RETURN CALCULATE ( MAX ( Orders[Quarter Label] ), ALL ( ), Orders[Quarter Index] = Q )"
+            ],
+            "lineageTag": "0541be9f-ef7b-53c4-9235-7a3a61c99261"
+          },
+          {
+            "name": "Previous Quarter Label",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index] - 1",
+              "RETURN CALCULATE ( MAX ( Orders[Quarter Label] ), ALL ( ), Orders[Quarter Index] = Q )"
+            ],
+            "lineageTag": "88e4d06d-3598-5158-b7a7-6b4026746678"
+          },
+          {
+            "name": "Latest Q Sales",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index]",
+              "RETURN CALCULATE ( [Sales], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "c6761604-fcf1-5c14-9146-7d48b5aa831d"
+          },
+          {
+            "name": "Previous Q Sales",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index] - 1",
+              "RETURN CALCULATE ( [Sales], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "85c8a366-dea1-594b-a64e-a745b09085ac"
+          },
+          {
+            "name": "Latest Q Profit",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index]",
+              "RETURN CALCULATE ( [Profit], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "2591494c-90ee-577a-b6d2-31a84fe1e395"
+          },
+          {
+            "name": "Previous Q Profit",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index] - 1",
+              "RETURN CALCULATE ( [Profit], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "39c0ddb4-9b8c-5072-8f3a-5e6280d9817a"
+          },
+          {
+            "name": "Latest Q Heavy Sales",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index]",
+              "RETURN CALCULATE ( [Heavy Sales], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "528c9746-32ac-5760-b9ee-0a6029952618"
+          },
+          {
+            "name": "Previous Q Heavy Sales",
+            "displayFolder": "4 Monitor",
+            "expression": [
+              "VAR Q = [Latest Quarter Index] - 1",
+              "RETURN CALCULATE ( [Heavy Sales], Orders[Quarter Index] = Q )"
+            ],
+            "formatString": "\\$#,0;-\\$#,0;\\$#,0",
+            "lineageTag": "efb3a587-1907-5da0-b1e7-2f52165edb91"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Orders",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"ORDERS.csv\"), [Columns=12, Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"ROW_ID\", Int64.Type}, {\"ORDER_ID\", type text}, {\"ORDER_DATE\", type date}, {\"CUSTOMER_ID\", type text}, {\"PRODUCT_ID\", type text}, {\"SALES\", Currency.Type}, {\"QUANTITY\", Int64.Type}, {\"DISCOUNT\", type number}, {\"PROFIT\", Currency.Type}}, \"en-US\"),",
+                "    Kept = Table.SelectColumns(Typed, {\"ROW_ID\", \"ORDER_ID\", \"ORDER_DATE\", \"CUSTOMER_ID\", \"PRODUCT_ID\", \"SALES\", \"QUANTITY\", \"DISCOUNT\", \"PROFIT\"}),",
+                "    Renamed = Table.RenameColumns(Kept, {{\"ROW_ID\", \"Row ID\"}, {\"ORDER_ID\", \"Order ID\"}, {\"ORDER_DATE\", \"Order Date\"}, {\"CUSTOMER_ID\", \"Customer ID\"}, {\"PRODUCT_ID\", \"Product ID\"}, {\"SALES\", \"Sales Amount\"}, {\"QUANTITY\", \"Quantity\"}, {\"DISCOUNT\", \"Discount\"}, {\"PROFIT\", \"Profit Amount\"}}),",
+                "    // implied cost = sales - profit (the data has no cost field)",
+                "    AddCost = Table.AddColumn(Renamed, \"Implied Cost\", each [Sales Amount] - [Profit Amount], Currency.Type),",
+                "    // same four bands as dbo.fct_order_line in the SQL project",
+                "    AddBand = Table.AddColumn(AddCost, \"Band Key\", each if [Discount] = 0 then 1 else if [Discount] <= 0.2 then 2 else if [Discount] <= 0.5 then 3 else 4, Int64.Type),",
+                "    AddYear = Table.AddColumn(AddBand, \"Year\", each Date.Year([Order Date]), Int64.Type),",
+                "    AddQuarterIndex = Table.AddColumn(AddYear, \"Quarter Index\", each Date.Year([Order Date]) * 4 + Date.QuarterOfYear([Order Date]) - 1, Int64.Type),",
+                "    AddQuarterLabel = Table.AddColumn(AddQuarterIndex, \"Quarter Label\", each {\"Jan–Mar\", \"Apr–Jun\", \"Jul–Sep\", \"Oct–Dec\"}{Date.QuarterOfYear([Order Date]) - 1} & \" \" & Text.From(Date.Year([Order Date])), type text)",
+                "in",
+                "    AddQuarterLabel"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Product ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "bf109ac6-b526-5d95-a46a-7c2390329346",
+            "sourceColumn": "Product ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "bee8212f-7caa-571e-873c-fe75cb2d3671",
+            "sourceColumn": "Category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Sub-category",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "cfa311be-d3c1-5fda-b037-ecee031229ab",
+            "sourceColumn": "Sub-category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Product Name",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "618d033d-977d-5f40-a069-dfaf47804f1a",
+            "sourceColumn": "Product Name",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "f099e4ce-78d6-5b87-875f-0c0a8e20b820",
+        "partitions": [
+          {
+            "name": "Product",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"PRODUCT.csv\"), [Columns=4, Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"ID\", type text}, {\"NAME\", type text}, {\"CATEGORY\", type text}, {\"SUBCATEGORY\", type text}}),",
+                "    // the source column names do not match their contents: NAME = category, CATEGORY = sub-category, SUBCATEGORY = product name",
+                "    Renamed = Table.RenameColumns(Typed, {{\"ID\", \"Product ID\"}, {\"NAME\", \"Category\"}, {\"CATEGORY\", \"Sub-category\"}, {\"SUBCATEGORY\", \"Product Name\"}})",
+                "in",
+                "    Renamed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Customer ID",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "isHidden": true,
+            "lineageTag": "81013fee-d4b1-5192-92c0-f05f190802cb",
+            "sourceColumn": "Customer ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Segment",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "42ccc899-724d-510f-a157-a78391c1a8c6",
+            "sourceColumn": "Segment",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "State",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "5a6c8f93-38a3-523c-bda5-a5ead0c87518",
+            "sourceColumn": "State",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Region",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "46712af9-0ab2-5979-bdb8-05f50653454f",
+            "sourceColumn": "Region",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "99a20a92-e0a8-5975-8a4f-8bfae9410e66",
+        "partitions": [
+          {
+            "name": "Customer",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(DataFolder & \"CUSTOMER.csv\"), [Columns=8, Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Kept = Table.SelectColumns(Promoted, {\"ID\", \"SEGMENT\", \"STATE\", \"REGION\"}),",
+                "    Typed = Table.TransformColumnTypes(Kept, {{\"ID\", type text}, {\"SEGMENT\", type text}, {\"STATE\", type text}, {\"REGION\", type text}}),",
+                "    Renamed = Table.RenameColumns(Typed, {{\"ID\", \"Customer ID\"}, {\"SEGMENT\", \"Segment\"}, {\"STATE\", \"State\"}, {\"REGION\", \"Region\"}})",
+                "in",
+                "    Renamed"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Discount Band",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Band Key",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "44ca7739-9c95-528c-abac-45d816d239c8",
+            "sourceColumn": "Band Key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Band",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "14220829-badc-5646-8149-924bf08216d5",
+            "sortByColumn": "Band Sort",
+            "sourceColumn": "Band",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Band Detail",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "8d4bc8ea-8209-5ea2-8220-71a200e4d3d6",
+            "sourceColumn": "Band Detail",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Band Sort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "612bb76f-4d0c-5b6e-b180-e06c99b7de6d",
+            "sourceColumn": "Band Sort",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "033f3ab7-74a0-524d-b294-a6eb41648b52",
+        "partitions": [
+          {
+            "name": "Discount Band",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [#\"Band Key\" = Int64.Type, Band = text, #\"Band Detail\" = text, #\"Band Sort\" = Int64.Type], {",
+                "        {1, \"Full price\", \"No discount\", 1},",
+                "        {2, \"Small discount\", \"Up to 20% off\", 2},",
+                "        {3, \"Heavy discount\", \"21–50% off\", 3},",
+                "        {4, \"Clearance\", \"Over 50% off\", 4}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Volume Kept",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Customers Who Still Buy",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "d35994be-f60e-548f-8705-71de45eb608e",
+            "sortByColumn": "Kept Sort",
+            "sourceColumn": "Customers Who Still Buy",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Share Kept",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "0%",
+            "lineageTag": "f92ceeca-1c0a-5331-8dea-cc9d96e4876c",
+            "sourceColumn": "Share Kept",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Kept Sort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "37f6ff16-b2f5-5b10-89b6-cd0f23e6377c",
+            "sourceColumn": "Kept Sort",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "bbdf03de-e9a7-5a6f-a087-e30cc618e6d7",
+        "partitions": [
+          {
+            "name": "Volume Kept",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [#\"Customers Who Still Buy\" = text, #\"Share Kept\" = number, #\"Kept Sort\" = Int64.Type], {",
+                "        {\"None\", 0, 1}, {\"A quarter\", 0.25, 2}, {\"Half\", 0.5, 3}, {\"Most\", 0.75, 4}, {\"All\", 1, 5}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Max Discount",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "Cap Label",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "f6eae35a-2f0a-5eba-9e46-0ac79ef3e591",
+            "sortByColumn": "Cap Sort",
+            "sourceColumn": "Cap Label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cap",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "double",
+            "formatString": "0%",
+            "lineageTag": "51db5961-0814-5274-bd7f-45162736fdf8",
+            "sourceColumn": "Cap",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cap Sort",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "isHidden": true,
+            "lineageTag": "8a6f9673-b406-5e2c-9699-9e16942351bc",
+            "sourceColumn": "Cap Sort",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "ea924683-28ba-51b8-bf05-e33b4c2303a2",
+        "partitions": [
+          {
+            "name": "Max Discount",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = #table(type table [#\"Cap Label\" = text, Cap = number, #\"Cap Sort\" = Int64.Type], {",
+                "        {\"Max 20% off\", 0.2, 1}, {\"Max 30% off\", 0.3, 2}, {\"Max 40% off\", 0.4, 3}, {\"Max 50% off\", 0.5, 4}})",
+                "in",
+                "    Source"
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+/// One row per video consultation. Source: core.fact_telemedicine_sessions.
+table 'Telemedicine Sessions'
+	lineageTag: 0610dc61-818f-5092-8f00-f6f08853edbe
+
+	/// Links to Appointments.
+	column 'Appointment Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 89cc219c-82c3-55f0-988f-3f04fe8cab88
+		summarizeBy: none
+		sourceColumn: Appointment Key
+
+		annotation SummarizationSetBy = User
+
+	/// Video platform used.
+	column Platform
+		dataType: string
+		lineageTag: e4171828-ec85-5561-9800-199ee95b24ec
+		summarizeBy: none
+		sourceColumn: Platform
+
+		annotation SummarizationSetBy = User
+
+	/// Completed, Completed with issue, Patient did not join, Rescheduled or Cancelled.
+	column 'Session Status'
+		dataType: string
+		lineageTag: 2aea89eb-4316-55a1-bee0-f54d65c3be3d
+		summarizeBy: none
+		sourceColumn: Session Status
+
+		annotation SummarizationSetBy = User
+
+	/// Device the patient joined from.
+	column 'Device Type'
+		dataType: string
+		lineageTag: 01e3bf73-9ca3-5c1d-9d95-7eecc1c947cf
+		summarizeBy: none
+		sourceColumn: Device Type
+
+		annotation SummarizationSetBy = User
+
+	/// Internet connection the patient used: Wi-Fi, 4G or 3G.
+	column 'Network Type'
+		dataType: string
+		lineageTag: fde9f1de-1bd1-5c03-b35a-dfedd489299b
+		summarizeBy: none
+		sourceColumn: Network Type
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the session had a technical problem.
+	column 'Had Technical Issue'
+		dataType: string
+		lineageTag: c796f31f-942c-52f9-881b-21b1500c75ea
+		summarizeBy: none
+		sourceColumn: Had Technical Issue
+
+		annotation SummarizationSetBy = User
+
+	/// Kind of technical problem.
+	column 'Issue Category'
+		dataType: string
+		lineageTag: 39ea4a56-b3df-5189-9e6c-d326d31eca88
+		summarizeBy: none
+		sourceColumn: Issue Category
+
+		annotation SummarizationSetBy = User
+
+	/// Average connection delay during the session.
+	column 'Average Latency (milliseconds)'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5511f1e1-002b-5d54-bce0-5c52786b3cd2
+		summarizeBy: none
+		sourceColumn: Average Latency (milliseconds)
+
+		annotation SummarizationSetBy = User
+
+	/// Audio quality rating, up to 5.
+	column 'Audio Quality Score'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 15013311-05c8-5574-b538-374e29707e6b
+		summarizeBy: none
+		sourceColumn: Audio Quality Score
+
+		annotation SummarizationSetBy = User
+
+	/// Video quality rating, up to 5.
+	column 'Video Quality Score'
+		dataType: double
+		formatString: 0.0
+		lineageTag: 41199761-fdc5-5371-aca9-67106c8a6913
+		summarizeBy: none
+		sourceColumn: Video Quality Score
+
+		annotation SummarizationSetBy = User
+
+	partition 'Telemedicine Sessions' = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_telemedicine_sessions", {"appointment_key", "platform_name", "session_status", "device_type", "network_type", "technical_issue_flag", "issue_category", "average_latency_ms", "audio_quality_score", "video_quality_score"}, {"technical_issue_flag"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"appointment_key", Int64.Type}, {"platform_name", type text}, {"session_status", type text}, {"device_type", type text}, {"network_type", type text}, {"issue_category", type text}, {"average_latency_ms", Int64.Type}, {"audio_quality_score", type number}, {"video_quality_score", type number}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"appointment_key", "Appointment Key"}, {"platform_name", "Platform"}, {"session_status", "Session Status"}, {"device_type", "Device Type"}, {"network_type", "Network Type"}, {"technical_issue_flag", "Had Technical Issue"}, {"issue_category", "Issue Category"}, {"average_latency_ms", "Average Latency (milliseconds)"}, {"audio_quality_score", "Audio Quality Score"}, {"video_quality_score", "Video Quality Score"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

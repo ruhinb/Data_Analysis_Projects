@@ -1,0 +1,197 @@
+/// Calendar, one row per day, plus an Unknown row for appointments with an unreadable date. Source: core.dim_date.
+table Date
+	lineageTag: d39c7e54-5f69-5ead-abd2-04bd7eb470f5
+
+	/// Surrogate key (yyyymmdd); 0 is the Unknown row.
+	column 'Date Key'
+		dataType: int64
+		isHidden
+		lineageTag: c5a8c276-3c19-573b-9c9f-3e2d11999270
+		summarizeBy: none
+		sourceColumn: Date Key
+
+		annotation SummarizationSetBy = User
+
+	/// Calendar date.
+	column Date
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 771bfef0-c179-5198-ad97-661da860110c
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Day of the week, 1 = Monday. Sorts Day and Weekday.
+	column 'Day Number'
+		dataType: int64
+		isHidden
+		lineageTag: 1ac6cd34-d3ac-58f6-bca3-80a8fff7b19b
+		summarizeBy: none
+		sourceColumn: Day Number
+
+		annotation SummarizationSetBy = User
+
+	/// Day name, for example Monday.
+	column Day
+		dataType: string
+		lineageTag: 91cd2d1c-2220-50c8-86ad-f57e5b031c5c
+		summarizeBy: none
+		sourceColumn: Day
+		sortByColumn: 'Day Number'
+
+		annotation SummarizationSetBy = User
+
+	/// Month and year, for example Jan 2023.
+	column Month
+		dataType: string
+		lineageTag: e6fd353c-c0dc-5971-bdf8-7a8366dc2942
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Month in calendar order (yyyymm).
+	column 'Month Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 3b51bf4d-58c7-53e7-8a19-c13a5b0cf569
+		summarizeBy: none
+		sourceColumn: Month Sort
+
+		annotation SummarizationSetBy = User
+
+	/// Quarter of the year, 1 to 4.
+	column 'Quarter Number'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 87b0f9a4-a225-5886-898a-8e3afb5400c8
+		summarizeBy: none
+		sourceColumn: Quarter Number
+
+		annotation SummarizationSetBy = User
+
+	/// Quarter and year, for example Q1 2023.
+	column Quarter
+		dataType: string
+		lineageTag: 57e9c2d6-3a1e-55b5-adc6-be11d6dd5e64
+		summarizeBy: none
+		sourceColumn: Quarter
+		sortByColumn: 'Quarter Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Calendar year.
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: cdadb0a3-7c18-5bb3-ae91-45b1b699bceb
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = User
+
+	/// Project phase the date falls in: pre-project history, pre-pilot baseline (3 Oct 2022 to 29 Apr 2023) or pilot.
+	column 'Analysis Period'
+		dataType: string
+		lineageTag: 8a97d25e-f8b2-538c-a619-97dc569c7692
+		summarizeBy: none
+		sourceColumn: Analysis Period
+		sortByColumn: 'Analysis Period Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Analysis Period in project order.
+	column 'Analysis Period Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 85d34676-5b8e-58ec-98a0-41313e9c0ddd
+		summarizeBy: none
+		sourceColumn: Analysis Period Sort
+
+		annotation SummarizationSetBy = User
+
+	/// Three-letter day name, for example Mon.
+	column Weekday
+		dataType: string
+		lineageTag: 77a98b73-dafb-5b58-9053-2db40deed124
+		summarizeBy: none
+		sourceColumn: Weekday
+		sortByColumn: 'Day Number'
+
+		annotation SummarizationSetBy = User
+
+	/// First day of the month, for date axes and time intelligence.
+	column 'Month Start'
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 6b47adf6-3a49-5b61-8405-6449116f4340
+		summarizeBy: none
+		sourceColumn: Month Start
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Monday of the week.
+	column 'Week Start'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: f8c7217f-5a83-54ad-97fe-9c9605c089de
+		summarizeBy: none
+		sourceColumn: Week Start
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Sorts Quarter in calendar order.
+	column 'Quarter Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 563607a3-d736-5986-8935-9936c2265769
+		summarizeBy: none
+		sourceColumn: Quarter Sort
+
+		annotation SummarizationSetBy = User
+
+	hierarchy Calendar
+		lineageTag: 1fba1256-c251-57f1-a1a2-4ed76f6d1268
+
+		level Year
+			lineageTag: 00772917-52d9-516b-9b69-e3becc5d9b1c
+			column: Year
+
+		level Quarter
+			lineageTag: f5f5a619-e8e8-5df8-af70-7eab10e932c6
+			column: Quarter
+
+		level Month
+			lineageTag: b21597c4-a86f-516c-b3e9-c2c811e3127d
+			column: Month
+
+		level Date
+			lineageTag: 60735c3b-e135-5f86-a8c2-95aa17eff1b9
+			column: Date
+
+	partition Date = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = fnLoadTable("dim_date", {"date_key", "full_date", "day_of_week_number", "day_name", "month_year", "month_year_sort", "quarter_number", "quarter_label", "year_number", "project_analysis_period", "project_period_sort"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"date_key", Int64.Type}, {"full_date", type date}, {"day_of_week_number", Int64.Type}, {"day_name", type text}, {"month_year", type text}, {"month_year_sort", Int64.Type}, {"quarter_number", Int64.Type}, {"quarter_label", type text}, {"year_number", Int64.Type}, {"project_analysis_period", type text}, {"project_period_sort", Int64.Type}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"date_key", "Date Key"}, {"full_date", "Date"}, {"day_of_week_number", "Day Number"}, {"day_name", "Day"}, {"month_year", "Month"}, {"month_year_sort", "Month Sort"}, {"quarter_number", "Quarter Number"}, {"quarter_label", "Quarter"}, {"year_number", "Year"}, {"project_analysis_period", "Analysis Period"}, {"project_period_sort", "Analysis Period Sort"}}),
+				    AddedWeekday = Table.AddColumn(RenamedColumns, "Weekday", each if [Day] = null then null else Text.Start([Day], 3), type text),
+				    AddedMonthStart = Table.AddColumn(AddedWeekday, "Month Start", each if [Date] = null then null else Date.StartOfMonth([Date]), type date),
+				    AddedWeekStart = Table.AddColumn(AddedMonthStart, "Week Start", each if [Date] = null then null else Date.StartOfWeek([Date], Day.Monday), type date),
+				    AddedQuarterSort = Table.AddColumn(AddedWeekStart, "Quarter Sort", each if [Year] = null then 0 else [Year] * 10 + [Quarter Number], Int64.Type)
+				in
+				    AddedQuarterSort
+
+	annotation PBI_ResultType = Table
+

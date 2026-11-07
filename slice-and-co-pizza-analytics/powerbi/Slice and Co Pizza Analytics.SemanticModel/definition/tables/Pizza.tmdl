@@ -1,0 +1,103 @@
+/// Dimension: one row per pizza and size (menu item). Pizza Key is a surrogate key created after removing duplicates.
+table Pizza
+	lineageTag: bc56f651-5290-425e-9ec4-fdb01e8a3253
+
+	column 'Pizza Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: b8c89ea2-0bf9-4ef2-9c74-db1d04d29614
+		summarizeBy: none
+		sourceColumn: Pizza Key
+
+	/// Source menu code, for example thai_ckn_l.
+	column 'Pizza ID'
+		dataType: string
+		lineageTag: dbba994e-b593-493b-bb31-e5a9a87acce9
+		summarizeBy: none
+		sourceColumn: Pizza ID
+
+	/// Menu code without the size suffix.
+	column 'Pizza Type'
+		dataType: string
+		isHidden
+		lineageTag: ddc1a212-8310-4284-b0e5-767ecad958a1
+		summarizeBy: none
+		sourceColumn: Pizza Type
+
+	column 'Pizza Name'
+		dataType: string
+		lineageTag: 0889ecff-485e-4a3f-adda-fa543dfb83e7
+		summarizeBy: none
+		sourceColumn: Pizza Name
+
+	/// Pizza name without 'The' and 'Pizza'.
+	column 'Short Name'
+		dataType: string
+		lineageTag: 6f55d15f-ce65-4b86-ae9c-a59ea33c9254
+		summarizeBy: none
+		sourceColumn: Short Name
+
+	column Category
+		dataType: string
+		lineageTag: 5ec97abc-784b-44e6-b799-352469bfbcd3
+		summarizeBy: none
+		sourceColumn: Category
+		sortByColumn: 'Category Sort'
+
+	column 'Category Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8ccb5335-d44a-4cc5-8aaa-414cad82646c
+		summarizeBy: none
+		sourceColumn: Category Sort
+
+	/// S, M, L, XL, XXL.
+	column Size
+		dataType: string
+		lineageTag: cd728462-3b23-40ab-bbca-0c5601ae0244
+		summarizeBy: none
+		sourceColumn: Size
+		sortByColumn: 'Size Sort'
+
+	column 'Size Name'
+		dataType: string
+		lineageTag: 8271141e-1ad4-4ebd-b63c-075a1a417cc1
+		summarizeBy: none
+		sourceColumn: Size Name
+		sortByColumn: 'Size Sort'
+
+	column 'Size Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4b484faf-b63a-4a2a-97a5-4481872a8f5b
+		summarizeBy: none
+		sourceColumn: Size Sort
+
+	column 'Menu Price'
+		dataType: decimal
+		formatString: $#,##0.00
+		lineageTag: 2ca42060-355f-42e0-8099-e536a7e48c93
+		summarizeBy: none
+		sourceColumn: Menu Price
+
+	/// Original comma-separated ingredient list; normalised into Ingredient and Pizza Ingredient.
+	column Ingredients
+		dataType: string
+		isHidden
+		lineageTag: d6bcb2c0-b1ec-4310-85da-7fba70f7f2ff
+		summarizeBy: none
+		sourceColumn: Ingredients
+
+	partition Pizza = m
+		mode: import
+		source =
+				let
+				    Source = #"Pizza Staging",
+				    #"Reordered Columns" = Table.SelectColumns(Source, {"Pizza Key", "Pizza ID", "Pizza Type", "Pizza Name", "Short Name", "Category", "Category Sort", "Size", "Size Name", "Size Sort", "Menu Price", "Ingredients"})
+				in
+				    #"Reordered Columns"
+

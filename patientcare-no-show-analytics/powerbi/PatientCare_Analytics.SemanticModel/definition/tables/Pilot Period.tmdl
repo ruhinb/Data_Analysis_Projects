@@ -1,0 +1,37 @@
+/// Rows of the pilot confidence-interval table: all pilot weeks, then each month. Helper table typed in Power Query, hidden from the field list.
+table 'Pilot Period'
+	isHidden
+	lineageTag: 540a8b28-d602-5578-9891-d6fc0f346cc6
+
+	/// Row of the forest plot: all pilot weeks, May 2023, June 2023.
+	column Period
+		dataType: string
+		isHidden
+		lineageTag: 73d1c04c-053d-5018-ac47-e5b0a7544b2a
+		summarizeBy: none
+		sourceColumn: Period
+		sortByColumn: 'Period Order'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Period.
+	column 'Period Order'
+		dataType: int64
+		isHidden
+		lineageTag: a911f7e8-512e-54f1-b256-39a63570aa4b
+		summarizeBy: none
+		sourceColumn: Period Order
+
+		annotation SummarizationSetBy = User
+
+	partition 'Pilot Period' = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [#"Period" = text, #"Period Order" = Int64.Type], {{"All pilot weeks", 1}, {"May 2023", 2}, {"June 2023", 3}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

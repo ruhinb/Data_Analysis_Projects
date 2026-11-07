@@ -1,0 +1,15 @@
+clinic_id,clinic_name,facility_type_raw,ownership_model_raw,division,district,city_area,urban_rural,opening_date,operating_start_time,operating_end_time,consultation_room_count,telemedicine_enabled_raw,active_flag_raw,source_updated_at,ingested_at
+CL001,Clinic 01,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka South City Corporation,Urban,2003-06-01,07:30:00,22:00:00,13,Yes,1,2023-06-18 03:10:00,2023-07-08 03:10:00
+CL002,Clinic 02,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka South City Corporation,Urban,2003-07-11,08:00:00,22:00:00,13,1,TRUE,2023-06-08 03:10:00,2023-07-08 03:10:00
+CL003,Clinic 03,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka North City Corporation,Urban,2015-03-24,08:00:00,22:00:00,12,yes,Y,2023-04-27 03:10:00,2023-07-08 03:10:00
+CL004,Clinic 04,Medical College Hospital,Partner facility,Chattogram,Chattogram,Chattogram City Corporation,Urban,2012-10-31,08:00:00,22:00:00,13,TRUE,Yes,2023-05-17 03:10:00,2023-07-08 03:10:00
+CL005,Clinic 05,Medical College Hospital,Partner facility,Chattogram,Cumilla,Cumilla Sadar Dakshin,Urban,2004-08-30,07:30:00,20:30:00,12,yes,1,2023-06-22 03:10:00,2023-07-08 03:10:00
+CL006,Clinic 06,Medical College Hospital,Partner facility,Sylhet,Sylhet,Sylhet Sadar,Urban,2014-08-14,08:00:00,20:30:00,11,1,TRUE,2023-06-08 03:10:00,2023-07-08 03:10:00
+CL007,Clinic 07,Medical College Hospital,Partner facility,Rajshahi,Rajshahi,Rajshahi City Corporation,Urban,2004-06-17,08:00:00,20:30:00,10,TRUE,TRUE,2023-04-28 03:10:00,2023-07-08 03:10:00
+CL008,Clinic 08,Medical College Hospital,Partner facility,Rajshahi,Bogura,Bogura Sadar,Urban,2015-12-25,08:00:00,20:30:00,11,Yes,TRUE,2023-05-19 03:10:00,2023-07-08 03:10:00
+CL009,Clinic 09,Medical College Hospital,Partner facility,Khulna,Khulna,Khulna Sadar,Urban,2000-09-25,07:30:00,20:30:00,11,Yes,yes,2023-05-21 03:10:00,2023-07-08 03:10:00
+CL010,Clinic 10,Medical College Hospital,Partner facility,Khulna,Jashore,Jashore Sadar,Urban,2011-02-19,08:00:00,20:30:00,13,Y,1,2023-05-04 03:10:00,2023-07-08 03:10:00
+CL011,Clinic 11,Medical College Hospital,Partner facility,Barishal,Barishal,Barishal Sadar,Urban,2002-04-26,08:00:00,20:30:00,10,FALSE,Yes,2023-07-04 03:10:00,2023-07-08 03:10:00
+CL012,Clinic 12,Medical College Hospital,Partner facility,Rangpur,Rangpur,Rangpur Sadar,Urban,2014-10-06,08:00:00,20:30:00,11,Y,Y,2023-04-26 03:10:00,2023-07-08 03:10:00
+CL013,Clinic 13,Medical College Hospital,Partner facility,Rangpur,Dinajpur,Dinajpur Sadar,Urban,2012-08-21,07:30:00,20:30:00,7,TRUE,yes,2023-06-28 03:10:00,2023-07-08 03:10:00
+CL014,Clinic 14,Medical College Hospital,Partner facility,Mymensingh,Mymensingh,Mymensingh Sadar,Urban,2002-01-23,08:00:00,20:30:00,8,0,Y,2023-06-10 03:10:00,2023-07-08 03:10:00

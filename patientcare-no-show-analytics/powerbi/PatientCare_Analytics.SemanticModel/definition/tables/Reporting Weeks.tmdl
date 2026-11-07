@@ -1,0 +1,109 @@
+/// One row per logged weekly reporting cycle, with minutes per stage. Source: core.fact_reporting_process_log.
+table 'Reporting Weeks'
+	lineageTag: 09ecc18d-e73f-5ced-af62-1f74fd00b705
+
+	/// Monday of the reporting week.
+	column 'Week Starting'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: a9726580-f4db-55e1-813e-cfc4511f993d
+		summarizeBy: none
+		sourceColumn: Week Starting
+
+		annotation SummarizationSetBy = User
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Before automation or after automation.
+	column 'Process Phase'
+		dataType: string
+		lineageTag: 8fdd69be-fd4d-5a6f-b2ce-80f383c5f34f
+		summarizeBy: none
+		sourceColumn: Process Phase
+		sortByColumn: 'Process Phase Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Manual spreadsheet process or Automated Power BI process.
+	column 'Reporting Method'
+		dataType: string
+		lineageTag: 1a4a2e55-4327-57df-8956-27074f054d73
+		summarizeBy: none
+		sourceColumn: Reporting Method
+
+		annotation SummarizationSetBy = User
+
+	/// Minutes spent extracting and cleaning data.
+	column 'Preparation (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 17d35693-e5c2-51d0-b11c-707a5fd6b8f0
+		summarizeBy: none
+		sourceColumn: Preparation (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Minutes spent checking the numbers.
+	column 'Validation (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: e4c215cc-4458-5eb6-9ee5-ff210ea8b881
+		summarizeBy: none
+		sourceColumn: Validation (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Minutes spent formatting the report.
+	column 'Formatting (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: f3a2f7c0-73db-595a-8bd8-eb540d189c74
+		summarizeBy: none
+		sourceColumn: Formatting (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Minutes spent sending the report.
+	column 'Distribution (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: ec6f6853-9dbe-5c3f-98c7-199a9482a0c6
+		summarizeBy: none
+		sourceColumn: Distribution (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Total minutes for the weekly report.
+	column 'Total (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: c615498c-c8dd-536c-8456-d56e10094bbb
+		summarizeBy: none
+		sourceColumn: Total (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Process Phase: before first.
+	column 'Process Phase Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 290cd901-42c4-58b5-bee2-6a2f4ad7ae32
+		summarizeBy: none
+		sourceColumn: Process Phase Sort
+
+		annotation SummarizationSetBy = User
+
+	partition 'Reporting Weeks' = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_reporting_process_log", {"reporting_week_start", "process_phase", "reporting_method", "data_preparation_minutes", "validation_minutes", "formatting_minutes", "distribution_minutes", "total_reporting_minutes"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"reporting_week_start", type date}, {"process_phase", type text}, {"reporting_method", type text}, {"data_preparation_minutes", Int64.Type}, {"validation_minutes", Int64.Type}, {"formatting_minutes", Int64.Type}, {"distribution_minutes", Int64.Type}, {"total_reporting_minutes", Int64.Type}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"reporting_week_start", "Week Starting"}, {"process_phase", "Process Phase"}, {"reporting_method", "Reporting Method"}, {"data_preparation_minutes", "Preparation (minutes)"}, {"validation_minutes", "Validation (minutes)"}, {"formatting_minutes", "Formatting (minutes)"}, {"distribution_minutes", "Distribution (minutes)"}, {"total_reporting_minutes", "Total (minutes)"}}),
+				    AddedProcessPhaseSort = Table.AddColumn(RenamedColumns, "Process Phase Sort", each if [Process Phase] = "Before automation" then 1 else 2, Int64.Type)
+				in
+				    AddedProcessPhaseSort
+
+	annotation PBI_ResultType = Table
+

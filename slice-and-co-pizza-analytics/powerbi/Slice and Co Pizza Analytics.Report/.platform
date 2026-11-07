@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Slice and Co Pizza Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "89e6d574-e454-5c1b-8738-fa6a59fb994a"
+  }
+}

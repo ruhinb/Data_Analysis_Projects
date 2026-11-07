@@ -1,0 +1,407 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "6a526516cb10bcccb91f",
+  "position": {
+    "x": 440,
+    "y": 538,
+    "z": 1019,
+    "height": 166,
+    "width": 408,
+    "tabOrder": 1019
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "Weekday"
+                }
+              },
+              "queryRef": "Date.Weekday",
+              "nativeQueryRef": "Weekday",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Appointments"
+                    }
+                  },
+                  "Property": "Time of Day"
+                }
+              },
+              "queryRef": "Appointments.Time of Day",
+              "nativeQueryRef": "Time of Day",
+              "active": true
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Valid Appointments"
+                }
+              },
+              "queryRef": "_Measures.Valid Appointments",
+              "nativeQueryRef": "Valid Appointments",
+              "active": false
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": 368,\n  \"height\": 144,\n  \"transform\": [\n    {\n      \"joinaggregate\": [\n        {\n          \"op\": \"min\",\n          \"field\": \"Valid Appointments\",\n          \"as\": \"lo\"\n        },\n        {\n          \"op\": \"max\",\n          \"field\": \"Valid Appointments\",\n          \"as\": \"hi\"\n        }\n      ]\n    },\n    {\n      \"calculate\": \"(datum[''Valid Appointments''] - datum.lo) / max(datum.hi - datum.lo, 1e-9)\",\n      \"as\": \"t\"\n    },\n    {\n      \"calculate\": \"format(datum[''Valid Appointments''] / 1000, ''.1f'') + ''k''\",\n      \"as\": \"vtxt\"\n    }\n  ],\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 6\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"Time of Day\",\n          \"type\": \"ordinal\",\n          \"sort\": [\n            \"Early AM\",\n            \"Late AM\",\n            \"Afternoon\",\n            \"Evening\"\n          ],\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              \"Early AM\",\n              \"Late AM\",\n              \"Afternoon\",\n              \"Evening\"\n            ],\n            \"paddingInner\": 0.06\n          },\n          \"axis\": {\n            \"orient\": \"top\",\n            \"labelAngle\": 0,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10\n          }\n        },\n        \"y\": {\n          \"field\": \"Weekday\",\n          \"type\": \"ordinal\",\n          \"sort\": [\n            \"Mon\",\n            \"Tue\",\n            \"Wed\",\n            \"Thu\",\n            \"Fri\",\n            \"Sat\",\n            \"Sun\"\n          ],\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              \"Mon\",\n              \"Tue\",\n              \"Wed\",\n              \"Thu\",\n              \"Fri\",\n              \"Sat\",\n              \"Sun\"\n            ],\n            \"paddingInner\": 0.1\n          },\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"color\": {\n          \"field\": \"Valid Appointments\",\n          \"type\": \"quantitative\",\n          \"legend\": null,\n          \"scale\": {\n            \"range\": [\n              \"#EFECFC\",\n              \"#4A3AA7\"\n            ]\n          }\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"Weekday\"\n          },\n          {\n            \"field\": \"Time of Day\"\n          },\n          {\n            \"field\": \"Valid Appointments\",\n            \"format\": \",\"\n          }\n        ]\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"text\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"dy\": 0\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"Time of Day\",\n          \"type\": \"ordinal\",\n          \"sort\": [\n            \"Early AM\",\n            \"Late AM\",\n            \"Afternoon\",\n            \"Evening\"\n          ],\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              \"Early AM\",\n              \"Late AM\",\n              \"Afternoon\",\n              \"Evening\"\n            ],\n            \"paddingInner\": 0.06\n          },\n          \"axis\": {\n            \"orient\": \"top\",\n            \"labelAngle\": 0,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10\n          }\n        },\n        \"y\": {\n          \"field\": \"Weekday\",\n          \"type\": \"ordinal\",\n          \"sort\": [\n            \"Mon\",\n            \"Tue\",\n            \"Wed\",\n            \"Thu\",\n            \"Fri\",\n            \"Sat\",\n            \"Sun\"\n          ],\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              \"Mon\",\n              \"Tue\",\n              \"Wed\",\n              \"Thu\",\n              \"Fri\",\n              \"Sat\",\n              \"Sun\"\n            ],\n            \"paddingInner\": 0.1\n          },\n          \"axis\": {\n            \"labelColor\": \"#344054\",\n            \"labelFontSize\": 10.5\n          }\n        },\n        \"text\": {\n          \"field\": \"vtxt\"\n        },\n        \"color\": {\n          \"condition\": {\n            \"test\": \"datum.t >= 0.5\",\n            \"value\": \"#FFFFFF\"\n          },\n          \"value\": \"#101828\"\n        }\n      }\n    }\n  ],\n  \"autosize\": {\n    \"type\": \"pad\"\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"background\": null,\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": null\n  },\n  \"padding\": 2,\n  \"axis\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#667085\",\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontSize\": 10,\n    \"titleColor\": \"#667085\",\n    \"titleFontWeight\": \"normal\",\n    \"domain\": false,\n    \"ticks\": false,\n    \"gridColor\": \"#EEF0F4\",\n    \"labelPadding\": 6\n  },\n  \"legend\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10.5,\n    \"labelColor\": \"#344054\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 70,\n    \"title\": null,\n    \"orient\": \"top\",\n    \"direction\": \"horizontal\",\n    \"columnPadding\": 14\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 11,\n    \"color\": \"#344054\"\n  },\n  \"title\": {\n    \"font\": \"Segoe UI\"\n  },\n  \"concat\": {\n    \"spacing\": 8\n  }\n}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "166D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "408D"
+                }
+              }
+            },
+            "supportFieldConfiguration": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Weekday\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Time of Day\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Valid Appointments\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false}}'"
+                }
+              }
+            },
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "consolidateFieldParameters": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3aab87ddb6e959900eff",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Appointments"
+              }
+            },
+            "Property": "Time of Day"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Appointments",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "Time of Day"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Midday'"
+                            }
+                          }
+                        ],
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Unknown'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "ba89f4c2dec5f3e49589",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Date"
+              }
+            },
+            "Property": "Weekday"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "Date",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "f"
+                              }
+                            },
+                            "Property": "Weekday"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "'Unk'"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

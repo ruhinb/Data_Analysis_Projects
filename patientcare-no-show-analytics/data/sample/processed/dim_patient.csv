@@ -1,0 +1,500 @@
+patient_key,patient_id,registration_date,birth_date,gender,marital_status,division,district,upazila,urban_rural,preferred_language,contact_consent,sms_opt_in,whatsapp_opt_in,chronic_condition_flag,chronic_condition_group,disability_support_required,patient_status,data_quality_issue_count,has_data_quality_issue,chronic_condition_segment
+0,,,,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,,,,,,,Unknown,0,f,Unknown
+1,PT0000139,2020-05-13,1993-01-01,Female,Married,Dhaka,Munshiganj,,Semi-urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+2,PT0000308,2019-03-26,2004-01-01,Male,Not applicable,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+3,PT0000359,2019-03-14,1980-01-01,Male,Single,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+4,PT0000365,2021-10-08,1995-01-01,Female,Not stated,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+5,PT0000404,2020-02-07,1989-01-01,Male,Single,Dhaka,Faridpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+6,PT0000508,2018-10-20,1991-01-01,Female,Single,Sylhet,Habiganj,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+7,PT0000753,2019-09-24,1932-01-01,Male,Widowed,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+8,PT0000803,2020-10-27,1963-01-01,Male,Married,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+9,PT0000907,2021-10-24,1944-01-01,Male,Married,Sylhet,Habiganj,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+10,PT0000944,2018-04-10,1998-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+11,PT0000963,2019-01-06,1988-01-01,Female,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla & English,t,t,f,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+12,PT0001184,2019-09-04,1989-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+13,PT0001233,2022-06-13,2021-01-01,Female,Not applicable,Khulna,Jashore,,Semi-urban,English,f,f,f,f,,f,Active,0,f,No chronic condition recorded
+14,PT0001265,2022-09-12,2001-01-01,Female,Widowed,Sylhet,Sylhet,,Urban,English,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+15,PT0001353,2023-05-29,1980-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+16,PT0001372,2020-08-10,1980-01-01,Not stated,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla & English,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+17,PT0001399,2019-07-05,1991-01-01,Male,Married,Rajshahi,Rajshahi,,Urban,Bangla,f,f,t,f,,f,Active,0,f,No chronic condition recorded
+18,PT0001471,2022-07-03,2012-01-01,Female,Not applicable,Khulna,Khulna,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+19,PT0001553,2020-02-26,1980-01-01,Male,Married,Dhaka,Faridpur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+20,PT0001557,2019-04-29,2012-01-01,Not stated,Not applicable,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+21,PT0001676,2019-12-07,1941-01-01,Female,Single,Dhaka,Faridpur,,Semi-urban,Bangla,t,t,t,f,,t,Active,0,f,No chronic condition recorded
+22,PT0002033,2019-03-20,1988-01-01,Female,Single,Dhaka,Faridpur,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+23,PT0002115,2021-02-17,1988-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+24,PT0002312,2018-04-09,1955-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+25,PT0002424,2019-05-26,1978-01-01,Male,Widowed,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+26,PT0002519,2018-12-25,1981-01-01,Male,Married,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+27,PT0002555,2022-02-12,1995-01-01,Male,Single,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+28,PT0002573,2020-04-23,1988-01-01,Male,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+29,PT0002579,2021-06-07,1948-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Diabetes,t,Active,0,f,Chronic condition recorded
+30,PT0002593,2018-10-10,1985-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+31,PT0002615,2021-01-09,1966-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+32,PT0002618,2018-09-01,1991-01-01,Female,Single,Barishal,Barishal,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+33,PT0002723,2020-10-09,1952-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+34,PT0002727,2022-08-19,1998-01-01,Female,Single,Dhaka,Gazipur,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+35,PT0002751,2018-05-26,1999-01-01,Male,Married,Rangpur,Rangpur,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+36,PT0002833,2019-08-05,1968-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+37,PT0002896,2022-01-14,1975-01-01,Female,Divorced,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,t,Active,0,f,No chronic condition recorded
+38,PT0003038,2022-12-11,2006-01-01,Male,Not applicable,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+39,PT0003119,2019-10-04,2010-01-01,Male,Not applicable,Rangpur,Rangpur,,Urban,Bangla & English,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+40,PT0003131,2019-08-28,1994-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+41,PT0003223,2020-04-18,1982-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+42,PT0003358,2022-10-12,1978-01-01,Male,Single,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+43,PT0003361,2019-01-21,1973-01-01,Male,Single,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+44,PT0003371,2021-03-04,1976-01-01,Male,Single,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+45,PT0003372,2020-08-17,1967-01-01,Male,Married,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+46,PT0003384,2022-06-12,1990-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+47,PT0003401,2021-06-25,1974-01-01,Female,Single,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+48,PT0003426,2020-10-06,2014-01-01,Female,Not applicable,Sylhet,Sylhet,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+49,PT0003504,2021-01-15,1996-01-01,Female,Single,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+50,PT0003589,2018-07-17,2013-01-01,Female,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+51,PT0003617,2021-07-18,1968-01-01,Female,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+52,PT0003680,2018-12-16,1972-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+53,PT0003709,2018-08-07,1988-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+54,PT0003765,2022-01-06,2012-01-01,Male,Not applicable,Chattogram,Chattogram,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+55,PT0003803,2020-11-06,1932-01-01,Male,Not stated,Chattogram,Chattogram,,Urban,Bangla,t,f,f,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+56,PT0003808,2019-04-24,1925-01-01,Not stated,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+57,PT0003825,2020-01-26,2018-01-01,Female,Not applicable,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+58,PT0003957,2021-10-10,1993-01-01,Female,Single,Rangpur,Rangpur,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+59,PT0003987,2019-07-26,2000-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+60,PT0004089,2022-10-07,1969-01-01,Female,Widowed,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+61,PT0004163,2022-04-10,1977-01-01,Male,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+62,PT0004378,2018-06-23,2004-01-01,Female,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+63,PT0004397,2022-12-03,2009-01-01,Other,Not applicable,Khulna,Khulna,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+64,PT0004492,2021-04-19,1995-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+65,PT0004516,2018-01-16,1980-01-01,Female,Married,Khulna,Khulna,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+66,PT0004585,2021-06-10,1993-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+67,PT0004590,2019-03-22,1954-01-01,Male,Widowed,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+68,PT0004607,2018-06-13,2002-01-01,Female,Not applicable,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Dormant,0,f,No chronic condition recorded
+69,PT0004608,2019-12-15,2019-01-01,Female,Not applicable,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+70,PT0004645,2021-05-21,1968-01-01,Female,Married,Khulna,Khulna,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+71,PT0004656,2018-04-27,1974-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+72,PT0004695,2021-01-29,2019-01-01,Male,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+73,PT0004718,2018-11-26,1998-01-01,Not stated,Divorced,Sylhet,Habiganj,,Semi-urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+74,PT0004734,2018-06-19,2010-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+75,PT0004829,2022-05-09,1966-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+76,PT0004935,2019-01-09,1952-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+77,PT0004947,2021-04-12,1993-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+78,PT0005047,2018-01-28,1939-01-01,Female,Divorced,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+79,PT0005216,2022-07-24,1988-01-01,Female,Not stated,Chattogram,Cox's Bazar,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+80,PT0005277,2022-08-04,1950-01-01,Female,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+81,PT0005516,2021-05-11,1983-01-01,Female,Married,Rangpur,Rangpur,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+82,PT0005548,2018-06-25,1981-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+83,PT0005557,2018-01-22,2003-01-01,Male,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+84,PT0005566,2021-12-18,2000-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+85,PT0005612,2020-10-11,2014-01-01,Female,Not applicable,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+86,PT0005732,2021-04-08,1964-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+87,PT0005857,2018-05-04,1957-01-01,Male,Married,Dhaka,Munshiganj,,Semi-urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+88,PT0006188,2018-12-16,1947-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+89,PT0006189,2021-04-01,1986-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+90,PT0006320,2018-02-03,1987-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+91,PT0006480,2021-11-15,1972-01-01,Female,Single,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+92,PT0006514,2020-10-01,2020-01-01,Male,Not applicable,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,t,Active,0,f,No chronic condition recorded
+93,PT0006612,2021-02-06,1936-01-01,Female,Widowed,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,f,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+94,PT0006683,2020-06-12,2018-01-01,Female,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+95,PT0006867,2020-05-31,2012-01-01,Female,Not applicable,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+96,PT0006930,2020-01-19,1994-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+97,PT0006971,2020-04-10,1982-01-01,Male,Single,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+98,PT0006992,2022-01-19,2009-01-01,Female,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+99,PT0007034,2018-03-06,1995-01-01,Female,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+100,PT0007270,2019-09-11,1964-01-01,Female,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+101,PT0007278,2018-02-19,1943-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+102,PT0007384,2019-01-26,1963-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+103,PT0007505,2020-07-18,1982-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+104,PT0007561,2020-10-11,1980-01-01,Female,Widowed,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+105,PT0007647,2019-01-15,2016-01-01,Female,Not applicable,Dhaka,Faridpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+106,PT0007666,2020-03-20,1972-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+107,PT0007756,2020-02-16,1966-01-01,Female,Widowed,Khulna,Jashore,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+108,PT0007759,2022-03-08,1981-01-01,Female,Widowed,Dhaka,Faridpur,,Semi-urban,Bangla & English,f,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+109,PT0007761,2022-01-16,1996-01-01,Male,Single,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+110,PT0007887,2020-10-26,1983-01-01,Female,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,f,f,f,f,,f,Active,0,f,No chronic condition recorded
+111,PT0007893,2020-08-09,1940-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+112,PT0007954,2022-06-02,1962-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+113,PT0008019,2018-02-05,1971-01-01,Female,Single,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+114,PT0008034,2020-02-14,1949-01-01,Female,Married,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+115,PT0008058,2022-06-05,1979-01-01,Male,Single,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+116,PT0008182,2018-08-05,1981-01-01,Female,Single,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+117,PT0008340,2021-02-03,1996-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+118,PT0008411,2021-12-19,2021-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+119,PT0008461,2023-04-14,1994-01-01,Male,Widowed,Rajshahi,Rajshahi,,Urban,Bangla & English,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+120,PT0008571,2021-11-08,1988-01-01,Female,Divorced,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+121,PT0008657,2019-05-28,1934-01-01,Female,Widowed,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+122,PT0008671,2022-02-16,1967-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+123,PT0008695,2019-06-13,1991-01-01,Male,Married,Rajshahi,Rajshahi,,Urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+124,PT0008707,2021-01-22,1982-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+125,PT0008923,2018-01-07,2005-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+126,PT0008935,2021-02-25,1969-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+127,PT0009052,2020-10-07,1951-01-01,Male,Married,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+128,PT0009067,2021-02-26,1990-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+129,PT0009157,2020-06-12,2016-01-01,Female,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+130,PT0009180,2022-06-12,2004-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+131,PT0009182,2020-05-19,1943-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+132,PT0009184,2021-03-09,2002-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+133,PT0009228,2018-07-13,1990-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+134,PT0009276,2020-06-22,2018-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+135,PT0009279,2018-10-29,1963-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+136,PT0009303,2021-01-22,1996-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+137,PT0009353,2022-10-06,2001-01-01,Male,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+138,PT0009505,2020-09-17,2005-01-01,Male,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+139,PT0009512,2021-05-11,1999-01-01,Male,Divorced,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+140,PT0009521,2020-01-19,1942-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,English,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+141,PT0009610,2020-10-24,1992-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+142,PT0009871,2020-10-26,1963-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+143,PT0009993,2018-12-07,1966-01-01,Male,Not stated,Khulna,Jashore,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+144,PT0009997,2018-12-18,1942-01-01,Female,Single,Chattogram,Chattogram,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+145,PT0010171,2020-11-15,2016-01-01,Male,Not applicable,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+146,PT0010398,2020-01-20,1983-01-01,Male,Married,Dhaka,Faridpur,,Semi-urban,English,f,f,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+147,PT0010400,2018-01-25,1947-01-01,Female,Married,Dhaka,Faridpur,,Semi-urban,Bangla & English,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+148,PT0010405,2019-06-25,2000-01-01,Female,Widowed,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+149,PT0010408,2019-06-29,1997-01-01,Male,Single,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+150,PT0010417,2021-07-29,1985-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+151,PT0010493,2020-08-18,2002-01-01,Female,Not stated,Dhaka,Narayanganj,,Semi-urban,Bangla & English,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+152,PT0010634,2021-06-29,1951-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+153,PT0010636,2020-01-27,2013-01-01,Female,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+154,PT0010776,2019-04-29,1962-01-01,Female,Single,Sylhet,Sylhet,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+155,PT0010932,2018-07-19,1941-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+156,PT0010955,2020-10-29,1987-01-01,Female,Not stated,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+157,PT0010967,2021-04-14,1996-01-01,Male,Not stated,Sylhet,Habiganj,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+158,PT0010971,2022-06-08,2000-01-01,Male,Single,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+159,PT0011007,2021-07-23,1941-01-01,Female,Widowed,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+160,PT0011024,2021-07-16,1991-01-01,Female,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+161,PT0011108,2018-02-03,2016-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+162,PT0011153,2018-06-23,1963-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+163,PT0011211,2022-11-03,1972-01-01,Male,Married,Khulna,Khulna,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+164,PT0011213,2022-01-09,1964-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+165,PT0011245,2018-09-17,1942-01-01,Female,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+166,PT0011252,2018-05-09,1991-01-01,Male,Single,Chattogram,Cumilla,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+167,PT0011277,2022-06-26,1972-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+168,PT0011334,2018-05-21,1950-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+169,PT0011383,2022-07-05,1989-01-01,Female,Widowed,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+170,PT0011433,2022-05-19,1984-01-01,Female,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+171,PT0011461,2022-04-10,2002-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+172,PT0011479,2019-11-15,1989-01-01,Male,Single,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+173,PT0011558,2019-10-23,1943-01-01,Female,Single,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,f,t,Diabetes,t,Active,0,f,Chronic condition recorded
+174,PT0011769,2018-11-21,1968-01-01,Female,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,f,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+175,PT0011846,2019-05-07,2010-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla & English,f,f,t,f,,f,Active,0,f,No chronic condition recorded
+176,PT0011889,2018-04-13,2007-01-01,Male,Not applicable,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+177,PT0011899,2018-01-12,2006-01-01,Female,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+178,PT0012142,2021-07-17,1980-01-01,Male,Single,Rangpur,Dinajpur,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+179,PT0012213,2022-05-05,1968-01-01,Male,Married,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+180,PT0012238,2019-07-01,2004-01-01,Female,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+181,PT0012331,2018-04-21,1961-01-01,Male,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,f,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+182,PT0012367,2020-09-13,1960-01-01,Female,Not stated,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+183,PT0012440,2020-01-26,2009-01-01,Male,Not applicable,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+184,PT0012480,2018-05-28,1975-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+185,PT0012523,2022-03-22,1948-01-01,Female,Single,Khulna,Khulna,,Urban,Bangla & English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+186,PT0012595,2018-03-12,1975-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+187,PT0012843,2019-01-06,1975-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,f,t,f,f,,t,Active,0,f,No chronic condition recorded
+188,PT0012901,2019-04-24,1993-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+189,PT0012993,2018-12-15,1986-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+190,PT0013009,2018-02-23,1945-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+191,PT0013074,2019-05-25,1934-01-01,Female,Married,Khulna,Khulna,,Urban,Bangla,t,f,f,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+192,PT0013139,2018-10-29,1987-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+193,PT0013291,2018-12-20,1974-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+194,PT0013505,2020-03-31,2009-01-01,Male,Not applicable,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+195,PT0013542,2021-09-09,1968-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+196,PT0013571,2018-01-04,1966-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+197,PT0013722,2019-02-15,1987-01-01,Female,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+198,PT0013799,2020-09-19,1973-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,t,f,,t,Active,0,f,No chronic condition recorded
+199,PT0013905,2021-02-09,1973-01-01,Male,Single,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+200,PT0013933,2020-07-18,1995-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+201,PT0014019,2019-12-01,1987-01-01,Female,Single,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+202,PT0014080,2022-08-10,1997-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,f,,t,Active,0,f,No chronic condition recorded
+203,PT0014109,2021-05-11,1953-01-01,Male,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+204,PT0014177,2019-07-08,2001-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+205,PT0014240,2018-01-04,1993-01-01,Female,Single,Sylhet,Sylhet,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+206,PT0014329,2020-07-09,1987-01-01,Male,Single,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+207,PT0014371,2019-05-09,2007-01-01,Female,Not applicable,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+208,PT0014496,2019-04-05,1979-01-01,Male,Not stated,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+209,PT0014711,2020-09-17,1998-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+210,PT0014721,2022-04-08,1985-01-01,Female,Married,Sylhet,Sylhet,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+211,PT0014748,2022-09-18,1947-01-01,Male,Married,Sylhet,Sylhet,,Urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+212,PT0014774,2020-04-10,1980-01-01,Female,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+213,PT0014884,2018-04-11,1998-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+214,PT0014952,2020-02-08,1999-01-01,Female,Married,Rangpur,Rangpur,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+215,PT0014960,2019-04-08,1943-01-01,Male,Married,Dhaka,Narayanganj,,Semi-urban,English,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+216,PT0015154,2020-08-05,1992-01-01,Male,Widowed,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+217,PT0015512,2018-02-13,1989-01-01,Male,Married,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+218,PT0015555,2019-11-17,1990-01-01,Female,Married,Rangpur,Dinajpur,,Semi-urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+219,PT0015637,2019-04-18,1984-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+220,PT0015639,2018-11-15,1976-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+221,PT0015674,2018-03-14,1989-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,f,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+222,PT0015742,2020-08-27,1969-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+223,PT0015776,2021-12-04,2015-01-01,Male,Not applicable,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+224,PT0015864,2019-08-31,1963-01-01,Female,Divorced,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+225,PT0015880,2020-08-31,1930-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+226,PT0015981,2018-11-14,1999-01-01,Male,Divorced,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+227,PT0015984,2022-07-31,1998-01-01,Male,Not stated,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+228,PT0016020,2020-03-31,2002-01-01,Not stated,Not applicable,Rangpur,Rangpur,,Urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+229,PT0016091,2022-01-22,1989-01-01,Female,Married,Dhaka,Faridpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+230,PT0016166,2021-05-09,1992-01-01,Female,Widowed,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+231,PT0016223,2019-06-10,2002-01-01,Female,Not applicable,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+232,PT0016262,2021-08-13,1994-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+233,PT0016297,2019-12-20,2004-01-01,Male,Not applicable,Dhaka,Faridpur,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+234,PT0016384,2021-01-15,1979-01-01,Female,Widowed,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+235,PT0016532,2018-05-07,1967-01-01,Male,Not stated,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+236,PT0016554,2018-03-01,1986-01-01,Female,Married,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+237,PT0016607,2019-04-11,1974-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+238,PT0016820,2021-02-15,1946-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+239,PT0016861,2018-07-03,1975-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+240,PT0016917,2020-05-22,2009-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+241,PT0016929,2018-11-04,1973-01-01,Female,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+242,PT0016964,2020-11-27,1991-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+243,PT0016988,2020-12-05,1963-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+244,PT0017093,2018-09-27,1993-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+245,PT0017158,2021-11-14,1973-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+246,PT0017270,2018-12-01,1994-01-01,Male,Not stated,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+247,PT0017304,2022-01-03,1933-01-01,Male,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,t,Diabetes,t,Active,0,f,Chronic condition recorded
+248,PT0017310,2020-05-31,1960-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+249,PT0017386,2022-08-22,1999-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+250,PT0017432,2018-08-05,1965-01-01,Male,Single,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+251,PT0017443,2021-12-03,1942-01-01,Female,Married,Sylhet,Sylhet,,Urban,Bangla & English,t,t,t,f,,t,Active,0,f,No chronic condition recorded
+252,PT0017517,2018-10-30,1975-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+253,PT0017614,2018-08-12,1994-01-01,Female,Married,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+254,PT0017771,2021-08-19,1982-01-01,Male,Widowed,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+255,PT0017895,2021-10-22,1950-01-01,,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,1,t,No chronic condition recorded
+256,PT0017934,2019-03-16,1952-01-01,Female,Not stated,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+257,PT0018013,2019-09-20,1977-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+258,PT0018021,2019-09-11,1953-01-01,Female,Single,Sylhet,Sylhet,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+259,PT0018139,2021-08-13,1998-01-01,Female,Single,Barishal,Barishal,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+260,PT0018214,2020-09-29,1976-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+261,PT0018273,2022-02-08,2000-01-01,Male,Married,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+262,PT0018403,2019-01-22,1948-01-01,Female,Married,Rangpur,Rangpur,,Urban,Bangla,t,f,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+263,PT0018412,2018-07-23,1978-01-01,Female,Divorced,Sylhet,Sylhet,,Urban,Bangla & English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+264,PT0018452,2018-09-03,1976-01-01,Female,Not stated,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+265,PT0018579,2021-01-22,1962-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+266,PT0018724,2019-06-13,1976-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+267,PT0018760,2022-02-25,1938-01-01,,Married,Dhaka,Faridpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,1,t,No chronic condition recorded
+268,PT0018788,2020-08-21,1998-01-01,Female,Divorced,Mymensingh,Jamalpur,,Semi-urban,Bangla & English,t,t,f,f,,t,Active,0,f,No chronic condition recorded
+269,PT0018841,2020-04-11,1988-01-01,Male,Married,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+270,PT0018897,2020-07-05,2013-01-01,Female,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+271,PT0018924,2018-07-21,1942-01-01,Male,Single,Chattogram,Chattogram,,Urban,Bangla,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+272,PT0018974,2020-05-15,2010-01-01,Female,Not applicable,Sylhet,Habiganj,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+273,PT0018989,2020-04-08,1965-01-01,Male,Married,Chattogram,Chattogram,,Semi-urban,Bangla & English,t,f,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+274,PT0019077,2018-03-10,1954-01-01,Male,Married,Barishal,Barishal,,Urban,English,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+275,PT0019135,2022-10-17,1950-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+276,PT0019137,2019-11-10,1959-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+277,PT0019175,2021-03-06,1997-01-01,Male,Married,Khulna,Khulna,,Urban,Bangla,f,f,t,f,,f,Active,0,f,No chronic condition recorded
+278,PT0019182,2021-11-18,2007-01-01,Male,Not applicable,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+279,PT0019382,2021-01-20,1993-01-01,Female,Single,Dhaka,Dhaka,,Urban,English,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+280,PT0019458,2018-11-09,1939-01-01,Male,Not stated,Chattogram,Chattogram,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+281,PT0019480,2021-08-29,1967-01-01,Female,Not stated,Dhaka,Dhaka,,Urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+282,PT0019655,2018-07-08,1930-01-01,Female,Single,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+283,PT0019660,2021-03-09,2008-01-01,Female,Not applicable,Dhaka,Munshiganj,,Semi-urban,Bangla & English,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+284,PT0019683,2019-06-03,1979-01-01,Female,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+285,PT0019721,2019-09-16,2010-01-01,Female,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+286,PT0019934,2020-09-03,2014-01-01,Male,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+287,PT0020285,2022-01-11,1942-01-01,Male,Widowed,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+288,PT0020298,2020-10-11,1982-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+289,PT0020346,2022-09-08,1956-01-01,Male,Married,Sylhet,Sylhet,,Urban,Bangla & English,t,f,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+290,PT0020392,2021-03-07,1949-01-01,Male,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+291,PT0020470,2021-09-03,1934-01-01,Female,Widowed,Dhaka,Dhaka,,Urban,Bangla,t,f,f,f,,t,Active,0,f,No chronic condition recorded
+292,PT0020552,2020-08-01,1993-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+293,PT0020631,2021-01-16,1966-01-01,Male,Not stated,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+294,PT0020641,2022-03-29,1995-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+295,PT0020804,2021-11-28,1955-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,f,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+296,PT0020876,2021-01-15,1969-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+297,PT0020895,2020-05-11,1996-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+298,PT0021052,2019-08-27,1944-01-01,Female,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+299,PT0021168,2018-07-14,1982-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+300,PT0021318,2018-03-20,1967-01-01,Female,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+301,PT0021635,2018-06-17,1947-01-01,Male,Widowed,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+302,PT0021664,2020-04-07,1998-01-01,Male,Married,Dhaka,Dhaka,,Urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+303,PT0021746,2018-09-09,1969-01-01,Male,Single,Dhaka,Dhaka,,Urban,English,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+304,PT0021752,2023-02-24,1993-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+305,PT0021787,2019-07-19,1968-01-01,Female,Married,Rangpur,Rangpur,,Urban,Bangla & English,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+306,PT0021816,2019-02-25,1986-01-01,Male,Divorced,Khulna,Jashore,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+307,PT0021880,2020-07-02,2010-01-01,Female,Not applicable,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,f,,f,Deceased,0,f,No chronic condition recorded
+308,PT0021960,2021-07-02,1989-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+309,PT0021973,2021-01-31,1966-01-01,Female,Single,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+310,PT0021997,2020-02-19,1962-01-01,Female,Single,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+311,PT0022155,2022-09-04,1966-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+312,PT0022192,2020-03-24,1985-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+313,PT0022442,2020-04-14,2009-01-01,Male,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+314,PT0022477,2020-02-29,1980-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+315,PT0022494,2023-03-30,2017-01-01,Male,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+316,PT0022581,2018-01-26,1943-01-01,Male,Single,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+317,PT0022605,2021-04-17,1948-01-01,Male,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+318,PT0022607,2018-03-08,1949-01-01,Female,Married,Barishal,Barishal,,Urban,Bangla,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+319,PT0022638,2020-04-20,1999-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+320,PT0022712,2022-01-25,1990-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+321,PT0022722,2020-02-29,1967-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,f,f,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+322,PT0022731,2019-11-14,1947-01-01,Male,Married,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+323,PT0022796,2023-04-12,1974-01-01,Female,Single,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+324,PT0022848,2021-04-20,1953-01-01,Female,Married,Rajshahi,Bogura,,Semi-urban,English,t,f,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+325,PT0022915,2022-12-20,1971-01-01,Female,Divorced,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+326,PT0023030,2019-10-31,1995-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+327,PT0023038,2022-07-29,1970-01-01,Male,Single,Chattogram,Cox's Bazar,,Urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+328,PT0023046,2018-10-24,1956-01-01,Male,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+329,PT0023139,2020-08-25,2004-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+330,PT0023207,2019-03-30,1956-01-01,Not stated,Single,Rajshahi,Bogura,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+331,PT0023334,2019-08-28,1944-01-01,Female,Single,Dhaka,Dhaka,,Urban,English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+332,PT0023342,2021-02-06,1988-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+333,PT0023407,2018-05-26,1966-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+334,PT0023418,2021-02-15,1985-01-01,Female,Single,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+335,PT0023437,2020-07-24,1981-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+336,PT0023648,2021-01-23,1981-01-01,Female,Not stated,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+337,PT0023678,2018-01-13,1988-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+338,PT0023732,2020-06-08,1969-01-01,Female,Widowed,Dhaka,Munshiganj,,Semi-urban,Bangla,t,f,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+339,PT0024040,2018-07-05,2006-01-01,Female,Not applicable,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+340,PT0024158,2019-10-04,1967-01-01,Female,Widowed,Rangpur,Dinajpur,,Semi-urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+341,PT0024169,2019-02-21,1954-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+342,PT0024230,2020-08-02,1999-01-01,Male,Single,Chattogram,Chattogram,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+343,PT0024284,2021-03-10,1983-01-01,Male,Married,Sylhet,Habiganj,,Semi-urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+344,PT0024321,2018-09-25,1968-01-01,Female,Married,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+345,PT0024348,2018-05-21,1976-01-01,Male,Single,Rangpur,Rangpur,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+346,PT0024405,2019-10-07,1982-01-01,Female,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+347,PT0024464,2021-06-11,1949-01-01,Female,Widowed,Rangpur,Rangpur,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+348,PT0024577,2023-05-04,1972-01-01,Female,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+349,PT0024629,2020-01-07,1954-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+350,PT0024683,2018-03-09,2000-01-01,Male,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+351,PT0024739,2019-04-29,1991-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+352,PT0024804,2019-02-24,2012-01-01,Female,Not applicable,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+353,PT0024806,2020-01-28,1951-01-01,Female,Married,Sylhet,Sylhet,,Urban,Bangla & English,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+354,PT0024891,2021-04-14,1968-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+355,PT0024896,2019-05-24,1967-01-01,Male,Widowed,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+356,PT0024950,2018-08-24,1978-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+357,PT0025078,2020-05-13,1985-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,f,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+358,PT0025093,2018-03-20,1999-01-01,Male,Not stated,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+359,PT0025154,2021-03-26,1997-01-01,Male,Married,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+360,PT0025170,2022-04-08,1951-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,f,f,,f,Deceased,0,f,No chronic condition recorded
+361,PT0025239,2023-05-27,1996-01-01,Not stated,Divorced,Chattogram,Chattogram,,Semi-urban,English,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+362,PT0025285,2018-04-13,1949-01-01,Male,Single,Khulna,Jashore,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+363,PT0025341,2022-02-03,1971-01-01,Male,Not stated,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+364,PT0025377,2018-06-16,1975-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+365,PT0025502,2019-03-17,1996-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+366,PT0025503,2021-02-05,1980-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+367,PT0025831,2021-10-01,1932-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,f,f,f,,t,Active,0,f,No chronic condition recorded
+368,PT0025849,2021-11-26,1973-01-01,Male,Divorced,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+369,PT0025917,2018-10-08,1996-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+370,PT0025941,2018-06-05,1967-01-01,Female,Married,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+371,PT0025979,2020-01-09,2010-01-01,Female,Not applicable,Dhaka,Munshiganj,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+372,PT0026035,2020-03-15,1982-01-01,Male,Divorced,Khulna,Khulna,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+373,PT0026060,2021-10-24,2011-01-01,Female,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+374,PT0026152,2021-09-26,2018-01-01,Male,Not applicable,Rangpur,Rangpur,,Urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+375,PT0026183,2021-06-18,1988-01-01,Male,Divorced,Sylhet,Sylhet,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+376,PT0026202,2020-05-22,1943-01-01,Female,Married,Dhaka,Dhaka,,Urban,English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+377,PT0026219,2018-10-06,2015-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+378,PT0026298,2021-01-02,1960-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla & English,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+379,PT0026315,2019-05-26,2018-01-01,Female,Not applicable,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+380,PT0026372,2020-07-01,1947-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+381,PT0026416,2019-09-29,1977-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+382,PT0026443,2019-11-14,1987-01-01,Female,Single,Khulna,Khulna,,Urban,English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+383,PT0026495,2018-03-19,1985-01-01,Female,Not stated,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+384,PT0026523,2018-04-12,1939-01-01,Female,Married,Dhaka,Dhaka,,Urban,English,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+385,PT0026551,2019-04-03,1980-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+386,PT0026637,2020-11-30,1988-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+387,PT0026672,2018-09-11,2013-01-01,Female,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+388,PT0026886,2019-07-05,1934-01-01,Female,Single,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+389,PT0027013,2020-01-21,2000-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+390,PT0027066,2020-01-28,1930-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+391,PT0027082,2020-03-27,1980-01-01,Male,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+392,PT0027223,2022-03-24,2003-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+393,PT0027393,2023-02-14,2007-01-01,Male,Not applicable,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+394,PT0027542,2018-10-15,1952-01-01,Male,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+395,PT0027762,2022-07-23,1972-01-01,Male,Divorced,Dhaka,Dhaka,,Urban,Bangla,f,t,t,f,,f,Active,0,f,No chronic condition recorded
+396,PT0027772,2020-09-14,1959-01-01,Female,Married,Rangpur,Rangpur,,Urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+397,PT0027789,2021-06-15,2001-01-01,Female,Single,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+398,PT0027899,2021-08-27,1985-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+399,PT0027969,2018-01-19,1967-01-01,Male,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+400,PT0027988,2020-07-15,1963-01-01,Female,Married,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+401,PT0028057,2019-03-31,2001-01-01,Male,Not applicable,Khulna,Khulna,,Urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+402,PT0028084,2020-02-22,2005-01-01,Male,Not applicable,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+403,PT0028168,2021-04-11,1994-01-01,Male,Not stated,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+404,PT0028426,2020-01-04,1987-01-01,Male,Single,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+405,PT0028450,2020-06-14,1981-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+406,PT0028467,2020-07-20,1985-01-01,Female,Married,Sylhet,Sylhet,,Urban,English,t,f,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+407,PT0028519,2022-09-24,2013-01-01,Female,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+408,PT0028791,2019-11-08,1946-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+409,PT0028855,2019-09-22,1926-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,t,Active,0,f,No chronic condition recorded
+410,PT0028932,2022-03-03,1998-01-01,Female,Married,Sylhet,Sylhet,,Urban,Bangla,t,t,t,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+411,PT0029014,2018-06-26,1985-01-01,Female,Widowed,Sylhet,Sylhet,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+412,PT0029089,2020-02-21,2011-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+413,PT0029103,2019-12-25,2011-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+414,PT0029132,2020-03-24,2003-01-01,Male,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+415,PT0029237,2020-02-06,1970-01-01,Male,Married,Sylhet,Sylhet,,Urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+416,PT0029271,2020-07-23,2001-01-01,Female,Not stated,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+417,PT0029353,2019-12-29,1994-01-01,Female,Married,Sylhet,Sylhet,,Urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+418,PT0029541,2022-01-20,1978-01-01,Male,Married,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+419,PT0029554,2020-05-14,1989-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+420,PT0029676,2019-04-10,1955-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+421,PT0029690,2020-01-18,1970-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla,t,f,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+422,PT0029878,2018-05-24,2003-01-01,Female,Not applicable,Chattogram,Cumilla,,Semi-urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+423,PT0029885,2019-04-11,1964-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+424,PT0030122,2019-10-19,1950-01-01,Male,Single,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+425,PT0030292,2022-05-17,1974-01-01,Male,Married,Khulna,Khulna,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+426,PT0030370,2018-07-16,2001-01-01,Male,Not applicable,Dhaka,Faridpur,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+427,PT0030455,2019-12-02,1960-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+428,PT0030514,2019-04-05,2003-01-01,Male,Not applicable,Chattogram,Chattogram,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+429,PT0030560,2018-07-30,1997-01-01,Male,Not stated,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+430,PT0030594,2019-08-11,1955-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Respiratory,f,Active,0,f,Chronic condition recorded
+431,PT0030612,2021-07-11,1992-01-01,Female,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+432,PT0030641,2022-06-20,1988-01-01,Female,Married,Sylhet,Sylhet,,Urban,Bangla,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+433,PT0030668,2019-09-19,1965-01-01,Male,Married,Rangpur,Dinajpur,,Semi-urban,Bangla,t,f,f,t,Cardiovascular,f,Active,0,f,Chronic condition recorded
+434,PT0030693,2019-04-30,1962-01-01,Male,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+435,PT0030701,2021-04-11,1972-01-01,Female,Not stated,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,t,Respiratory,f,Active,0,f,Chronic condition recorded
+436,PT0030727,2021-03-21,2019-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+437,PT0030737,2021-11-18,1973-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+438,PT0030743,2019-12-05,2015-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+439,PT0030822,2018-05-11,1994-01-01,Female,Married,Chattogram,Cumilla,,Semi-urban,Bangla & English,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+440,PT0030901,2021-01-12,1992-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla,t,t,t,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+441,PT0030908,2021-03-01,1983-01-01,Female,Single,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+442,PT0030970,2018-07-01,1971-01-01,Male,Single,Dhaka,Munshiganj,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+443,PT0030990,2020-05-25,1995-01-01,Female,Single,Dhaka,Gazipur,,Semi-urban,English,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+444,PT0031126,2021-11-27,1999-01-01,Male,Married,Rajshahi,Rajshahi,,Urban,Bangla,f,t,f,f,,f,Active,0,f,No chronic condition recorded
+445,PT0031239,2020-06-16,1975-01-01,Male,Married,Chattogram,Chattogram,,Urban,English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+446,PT0031265,2020-03-24,1991-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+447,PT0031326,2021-12-24,1993-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+448,PT0031332,2018-02-26,1983-01-01,Female,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+449,PT0031357,2019-08-24,1947-01-01,Male,Single,Dhaka,Dhaka,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+450,PT0031484,2019-08-16,1981-01-01,Male,Married,Sylhet,Habiganj,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+451,PT0031514,2018-01-06,2012-01-01,Male,Not applicable,Dhaka,Gazipur,,Semi-urban,English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+452,PT0031547,2019-01-26,1992-01-01,Male,Single,Khulna,Jashore,,Semi-urban,Bangla & English,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+453,PT0031560,2018-11-24,1991-01-01,Female,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+454,PT0031574,2018-11-26,1974-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+455,PT0031612,2019-11-12,1994-01-01,Female,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+456,PT0031679,2021-12-27,1970-01-01,Male,Not stated,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+457,PT0031750,2018-05-06,1985-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+458,PT0031824,2019-06-16,2014-01-01,Male,Not applicable,Rangpur,Rangpur,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+459,PT0031870,2023-04-29,1981-01-01,Male,Single,Chattogram,Cox's Bazar,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+460,PT0031884,2018-06-06,1954-01-01,Male,Married,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+461,PT0031889,2018-06-18,1971-01-01,Male,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+462,PT0031899,2018-07-15,1981-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+463,PT0031930,2020-02-17,1982-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+464,PT0031949,2020-02-02,1975-01-01,Male,Married,Dhaka,Gazipur,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+465,PT0031977,2019-12-16,1995-01-01,Male,Married,Dhaka,Munshiganj,,Semi-urban,English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+466,PT0032002,2020-12-06,1951-01-01,Female,Single,Dhaka,Dhaka,,Urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+467,PT0032046,2021-06-02,1976-01-01,Male,Not stated,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+468,PT0032116,2021-08-10,2007-01-01,Male,Not applicable,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+469,PT0032125,2021-04-21,1989-01-01,Female,Single,Chattogram,Chattogram,,Urban,English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+470,PT0032299,2018-10-29,1984-01-01,Not stated,Single,Rajshahi,Bogura,,Semi-urban,English,t,f,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+471,PT0032335,2021-09-13,1975-01-01,Female,Married,Dhaka,Faridpur,,Semi-urban,Bangla & English,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+472,PT0032444,2021-10-31,1965-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,t,Diabetes,f,Active,0,f,Chronic condition recorded
+473,PT0032726,2020-10-16,1998-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+474,PT0032857,2020-07-31,1947-01-01,Female,Married,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+475,PT0032975,2022-04-15,2009-01-01,Male,Not applicable,Sylhet,Habiganj,,Semi-urban,Bangla,f,f,t,f,,f,Active,0,f,No chronic condition recorded
+476,PT0033142,2019-05-25,1973-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,f,t,Multiple/other,f,Active,0,f,Chronic condition recorded
+477,PT0033254,2018-05-13,2017-01-01,Female,Not applicable,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+478,PT0033383,2019-03-12,1960-01-01,Male,Single,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+479,PT0033384,2018-05-22,1983-01-01,Female,Married,Dhaka,Munshiganj,,Semi-urban,Bangla,t,f,t,f,,f,Active,0,f,No chronic condition recorded
+480,PT0033420,2021-03-02,1980-01-01,Male,Married,Dhaka,Narayanganj,,Semi-urban,Bangla & English,t,t,f,t,Diabetes,f,Active,0,f,Chronic condition recorded
+481,PT0033480,2022-04-30,1955-01-01,Female,Married,Rajshahi,Rajshahi,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+482,PT0033576,2019-12-22,1979-01-01,Female,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+483,PT0033579,2020-07-21,1990-01-01,Male,Married,Dhaka,Dhaka,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+484,PT0033583,2019-08-16,1940-01-01,Female,Single,Mymensingh,Jamalpur,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+485,PT0033605,2021-10-01,1934-01-01,Male,Married,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,f,t,f,,t,Active,0,f,No chronic condition recorded
+486,PT0033805,2018-10-19,1980-01-01,Male,Single,Chattogram,Chattogram,,Urban,Bangla,t,f,t,f,,f,Inactive,0,f,No chronic condition recorded
+487,PT0033910,2018-04-24,1981-01-01,Male,Single,Chattogram,Cumilla,,Semi-urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+488,PT0033972,2020-05-15,1992-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+489,PT0033978,2021-09-10,1983-01-01,Male,Single,Khulna,Khulna,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+490,PT0034037,2018-01-13,1961-01-01,Female,Married,Barishal,Barishal,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+491,PT0034187,2019-12-30,1987-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+492,PT0034197,2019-06-13,1983-01-01,Female,Married,Khulna,Jashore,,Semi-urban,Bangla & English,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+493,PT0034228,2019-08-05,1953-01-01,Female,Divorced,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,f,t,Hypertension,f,Active,0,f,Chronic condition recorded
+494,PT0034231,2020-01-22,1988-01-01,Female,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded
+495,PT0034280,2021-12-14,1969-01-01,Male,Married,Rajshahi,Bogura,,Semi-urban,Bangla,t,f,f,f,,f,Active,0,f,No chronic condition recorded
+496,PT0034292,2018-11-26,1984-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,t,t,Hypertension,f,Active,0,f,Chronic condition recorded
+497,PT0034297,2019-12-23,2018-01-01,Male,Not applicable,Mymensingh,Mymensingh,,Semi-urban,Bangla,t,t,t,f,,f,Active,0,f,No chronic condition recorded
+498,PT0034416,2019-05-21,1964-01-01,Male,Married,Chattogram,Chattogram,,Urban,Bangla,t,t,f,f,,f,Active,0,f,No chronic condition recorded

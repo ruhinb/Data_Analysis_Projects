@@ -1,0 +1,36 @@
+/// Dimension: unique ingredients split from the comma-separated source field.
+table Ingredient
+	lineageTag: ad5906d3-808b-4faa-bb52-70093b812789
+
+	column Ingredient
+		dataType: string
+		lineageTag: 1d288955-6dc0-4202-bc59-a76fc066d7f8
+		summarizeBy: none
+		sourceColumn: Ingredient
+
+	column 'Ingredient Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 8ef0277f-75a4-40a7-accb-021215a214c9
+		summarizeBy: none
+		sourceColumn: Ingredient Key
+
+	partition Ingredient = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(#"Pizza Staging", {"Ingredients"}),
+				    #"Split Ingredients" = Table.TransformColumns(Source, {{"Ingredients", each List.Transform(Text.Split(_, ","), Text.Trim), type list}}),
+				    #"Expanded Ingredients" = Table.ExpandListColumn(#"Split Ingredients", "Ingredients"),
+				    #"Renamed Ingredient" = Table.RenameColumns(#"Expanded Ingredients", {{"Ingredients", "Ingredient"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Ingredient"),
+				    #"Sorted Ingredients" = Table.Sort(#"Removed Duplicates", {{"Ingredient", Order.Ascending}}),
+				    #"Added Ingredient Key" = Table.AddIndexColumn(#"Sorted Ingredients", "Ingredient Key", 1, 1, Int64.Type),
+				    #"Changed Types" = Table.TransformColumnTypes(#"Added Ingredient Key", {{"Ingredient", type text}})
+				in
+				    #"Changed Types"
+
+	annotation PBI_ResultType = Table
+

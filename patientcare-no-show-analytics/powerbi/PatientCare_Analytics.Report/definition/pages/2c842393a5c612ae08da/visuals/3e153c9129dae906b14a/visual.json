@@ -1,0 +1,252 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "3e153c9129dae906b14a",
+  "position": {
+    "x": 480,
+    "y": 494,
+    "z": 1020,
+    "width": 354,
+    "height": 170,
+    "tabOrder": 1020
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Annual Fees Kept (All Semi-urban)"
+                }
+              },
+              "queryRef": "_Measures.Annual Fees Kept (All Semi-urban)",
+              "nativeQueryRef": "Annual Fees Kept (All Semi-urban)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Annual Fees Kept Low (All Semi-urban)"
+                }
+              },
+              "queryRef": "_Measures.Annual Fees Kept Low (All Semi-urban)",
+              "nativeQueryRef": "Annual Fees Kept Low (All Semi-urban)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Annual Fees Kept High (All Semi-urban)"
+                }
+              },
+              "queryRef": "_Measures.Annual Fees Kept High (All Semi-urban)",
+              "nativeQueryRef": "Annual Fees Kept High (All Semi-urban)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Annual Fees Kept (Semi-urban Mornings)"
+                }
+              },
+              "queryRef": "_Measures.Annual Fees Kept (Semi-urban Mornings)",
+              "nativeQueryRef": "Annual Fees Kept (Semi-urban Mornings)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": 204,\n  \"height\": 146,\n  \"transform\": [\n    {\n      \"calculate\": \"sequence(0, 13)\",\n      \"as\": \"mm\"\n    },\n    {\n      \"flatten\": [\n        \"mm\"\n      ]\n    },\n    {\n      \"calculate\": \"datum.mm / 12 * datum[''Annual Fees Kept (All Semi-urban)'']\",\n      \"as\": \"all\"\n    },\n    {\n      \"calculate\": \"datum.mm / 12 * datum[''Annual Fees Kept Low (All Semi-urban)'']\",\n      \"as\": \"lo\"\n    },\n    {\n      \"calculate\": \"datum.mm / 12 * datum[''Annual Fees Kept High (All Semi-urban)'']\",\n      \"as\": \"hi\"\n    },\n    {\n      \"calculate\": \"datum.mm / 12 * datum[''Annual Fees Kept (Semi-urban Mornings)'']\",\n      \"as\": \"morn\"\n    }\n  ],\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"area\",\n        \"color\": \"rgba(27,175,122,0.13)\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"lo\"\n        },\n        \"y2\": {\n          \"field\": \"hi\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"color\": \"rgba(27,175,122,0.45)\",\n        \"strokeWidth\": 1,\n        \"strokeDash\": [\n          2,\n          2\n        ]\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"hi\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"color\": \"rgba(27,175,122,0.45)\",\n        \"strokeWidth\": 1,\n        \"strokeDash\": [\n          2,\n          2\n        ]\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"lo\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"color\": \"#0E8A5F\",\n        \"strokeWidth\": 2,\n        \"strokeDash\": [\n          5,\n          4\n        ]\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"morn\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"color\": \"#1BAF7A\",\n        \"strokeWidth\": 2.6\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"all\"\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"mm\",\n            \"title\": \"Months\"\n          },\n          {\n            \"field\": \"all\",\n            \"format\": \",.0f\",\n            \"title\": \"All semi-urban (BDT)\"\n          },\n          {\n            \"field\": \"lo\",\n            \"format\": \",.0f\",\n            \"title\": \"95% low\"\n          },\n          {\n            \"field\": \"hi\",\n            \"format\": \",.0f\",\n            \"title\": \"95% high\"\n          },\n          {\n            \"field\": \"morn\",\n            \"format\": \",.0f\",\n            \"title\": \"Mornings only (BDT)\"\n          }\n        ]\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"circle\",\n        \"size\": 60,\n        \"color\": \"#1BAF7A\",\n        \"stroke\": \"white\",\n        \"strokeWidth\": 1.5,\n        \"opacity\": 1\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"all\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"circle\",\n        \"size\": 40,\n        \"color\": \"#0E8A5F\",\n        \"stroke\": \"white\",\n        \"strokeWidth\": 1.5,\n        \"opacity\": 1\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"morn\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        },\n        {\n          \"calculate\": \"(datum.all) >= 1e6 ? ''BDT '' + format((datum.all) / 1e6, ''.1f'') + ''M'' : ''BDT '' + format((datum.all) / 1e3, ''.0f'') + ''k''\",\n          \"as\": \"t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 8,\n        \"dy\": -10,\n        \"fontSize\": 11.5,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"all\"\n        },\n        \"text\": {\n          \"field\": \"t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 8,\n        \"dy\": 3,\n        \"fontSize\": 9,\n        \"color\": \"#667085\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"all\"\n        },\n        \"text\": {\n          \"value\": \"all semi-urban\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        },\n        {\n          \"calculate\": \"(datum.morn) >= 1e6 ? ''BDT '' + format((datum.morn) / 1e6, ''.1f'') + ''M'' : ''BDT '' + format((datum.morn) / 1e3, ''.0f'') + ''k''\",\n          \"as\": \"t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 8,\n        \"dy\": 3,\n        \"fontSize\": 11.5,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"morn\"\n        },\n        \"text\": {\n          \"field\": \"t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"dx\": 8,\n        \"dy\": 16,\n        \"fontSize\": 9,\n        \"color\": \"#667085\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"field\": \"mm\",\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              12\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              6,\n              12\n            ],\n            \"grid\": false,\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 10,\n            \"labelExpr\": \"datum.value == 0 ? ''Now'' : datum.value + '' mo''\"\n          }\n        },\n        \"y\": {\n          \"type\": \"quantitative\",\n          \"title\": null,\n          \"scale\": {\n            \"domain\": [\n              0,\n              2700000\n            ],\n            \"nice\": false\n          },\n          \"axis\": {\n            \"values\": [\n              0,\n              500000,\n              1000000,\n              1500000\n            ],\n            \"labelExpr\": \"datum.value == 0 ? ''0'' : format(datum.value / 1e6, ''.1f'') + ''M''\",\n            \"labelColor\": \"#667085\",\n            \"labelFontSize\": 9.5,\n            \"gridColor\": \"#EEF1F6\",\n            \"domain\": false,\n            \"ticks\": false\n          },\n          \"field\": \"morn\"\n        },\n        \"text\": {\n          \"value\": \"mornings only\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        },\n        {\n          \"calculate\": \"''shaded = 95% range, BDT '' + format(datum.lo / 1e6, ''.2f'') + ''\\u2013'' + format(datum.hi / 1e6, ''.2f'') + ''M''\",\n          \"as\": \"t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"top\",\n        \"fontSize\": 9.5,\n        \"color\": \"#0E8A5F\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": -36\n        },\n        \"y\": {\n          \"value\": 40\n        },\n        \"text\": {\n          \"field\": \"t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        },\n        {\n          \"calculate\": \"''\\u2248 '' + ((datum.all) >= 1e6 ? ''BDT '' + format((datum.all) / 1e6, ''.1f'') + ''M'' : ''BDT '' + format((datum.all) / 1e3, ''.0f'') + ''k'') + '' a year''\",\n          \"as\": \"t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"top\",\n        \"fontSize\": 19,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": -36\n        },\n        \"y\": {\n          \"value\": 0\n        },\n        \"text\": {\n          \"field\": \"t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.mm == 12\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"top\",\n        \"fontSize\": 10,\n        \"color\": \"#667085\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": -36\n        },\n        \"y\": {\n          \"value\": 25\n        },\n        \"text\": {\n          \"value\": \"kept if every semi-urban patient gets it\"\n        }\n      }\n    }\n  ],\n  \"autosize\": {\n    \"type\": \"pad\"\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"background\": null,\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": null\n  },\n  \"padding\": 2,\n  \"axis\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#667085\",\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontSize\": 10,\n    \"titleColor\": \"#667085\",\n    \"titleFontWeight\": \"normal\",\n    \"domain\": false,\n    \"ticks\": false,\n    \"gridColor\": \"#EEF0F4\",\n    \"labelPadding\": 6\n  },\n  \"legend\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10.5,\n    \"labelColor\": \"#344054\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 70,\n    \"title\": null,\n    \"orient\": \"top\",\n    \"direction\": \"horizontal\",\n    \"columnPadding\": 14\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 11,\n    \"color\": \"#344054\"\n  },\n  \"title\": {\n    \"font\": \"Segoe UI\"\n  },\n  \"concat\": {\n    \"spacing\": 8\n  }\n}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "170D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "354D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

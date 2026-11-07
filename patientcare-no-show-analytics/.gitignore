@@ -1,0 +1,20 @@
+# Full data files stay out of the public repo (see data/README.md)
+data/raw/*.csv
+data/processed/*.csv
+
+# Private reference files are never part of this project
+private_reference/
+*private*.csv
+
+# Local editor settings (contain database usernames)
+.vscode/settings.json
+
+# Power BI local files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+*.pbix.bak
+
+# OS files
+.DS_Store
+__MACOSX/
+Thumbs.db

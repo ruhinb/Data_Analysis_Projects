@@ -1,0 +1,5 @@
+# Keep the CSVs byte-for-byte: 00_load.sql expects Windows (CRLF) line endings
+*.csv -text
+# Power BI and image files
+*.png binary
+*.pdf binary

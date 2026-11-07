@@ -1,0 +1,98 @@
+/// The 14 clinics, plus an Unknown row. Source: core.dim_clinic.
+table Clinic
+	lineageTag: 88c035a4-61e8-5473-a329-bd3eab88f253
+
+	/// Surrogate key; 0 is the Unknown row.
+	column 'Clinic Key'
+		dataType: int64
+		isHidden
+		isKey
+		lineageTag: 15c0aed3-a846-58b8-a446-b01d1b305442
+		summarizeBy: none
+		sourceColumn: Clinic Key
+
+		annotation SummarizationSetBy = User
+
+	/// Anonymised clinic name, for example Clinic 01.
+	column Clinic
+		dataType: string
+		lineageTag: 6dafa413-b4e3-5f24-8b5b-fdf558085f90
+		summarizeBy: none
+		sourceColumn: Clinic
+
+		annotation SummarizationSetBy = User
+
+	/// Type of facility, for example Medical College Hospital.
+	column 'Facility Type'
+		dataType: string
+		lineageTag: 0c35865a-4c3a-5337-ab9a-845bf49128a2
+		summarizeBy: none
+		sourceColumn: Facility Type
+
+		annotation SummarizationSetBy = User
+
+	/// Administrative division the clinic is in.
+	column 'Clinic Division'
+		dataType: string
+		lineageTag: cd2b3a73-9376-51da-bb86-d0555876eee4
+		summarizeBy: none
+		sourceColumn: Clinic Division
+
+		annotation SummarizationSetBy = User
+
+	/// District the clinic is in.
+	column 'Clinic District'
+		dataType: string
+		lineageTag: 75934a3c-2dd6-5a2a-a7a3-8137b0a8b052
+		summarizeBy: none
+		sourceColumn: Clinic District
+
+		annotation SummarizationSetBy = User
+
+	/// Number of consultation rooms.
+	column 'Consultation Rooms'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a16271e-25eb-5209-a029-072287cedcbe
+		summarizeBy: none
+		sourceColumn: Consultation Rooms
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the clinic offers video consultations.
+	column 'Telemedicine Enabled'
+		dataType: string
+		lineageTag: 9250062a-a3a3-5477-94bc-8f1795140b41
+		summarizeBy: none
+		sourceColumn: Telemedicine Enabled
+
+		annotation SummarizationSetBy = User
+
+	hierarchy 'Clinic Location'
+		lineageTag: cb4b9440-0667-5350-b96b-25b2e12ef930
+
+		level 'Clinic Division'
+			lineageTag: d5867dd7-f8a1-5b9f-ac00-deebfda790c4
+			column: 'Clinic Division'
+
+		level 'Clinic District'
+			lineageTag: 8c2e0ecc-9e20-5d2a-8fda-cce01047453f
+			column: 'Clinic District'
+
+		level Clinic
+			lineageTag: f347769c-1d5e-5601-ae8f-21c43fb322db
+			column: Clinic
+
+	partition Clinic = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = fnLoadTable("dim_clinic", {"clinic_key", "clinic_name", "facility_type", "division", "district", "consultation_room_count", "telemedicine_enabled"}, {"telemedicine_enabled"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"clinic_key", Int64.Type}, {"clinic_name", type text}, {"facility_type", type text}, {"division", type text}, {"district", type text}, {"consultation_room_count", Int64.Type}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"clinic_key", "Clinic Key"}, {"clinic_name", "Clinic"}, {"facility_type", "Facility Type"}, {"division", "Clinic Division"}, {"district", "Clinic District"}, {"consultation_room_count", "Consultation Rooms"}, {"telemedicine_enabled", "Telemedicine Enabled"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

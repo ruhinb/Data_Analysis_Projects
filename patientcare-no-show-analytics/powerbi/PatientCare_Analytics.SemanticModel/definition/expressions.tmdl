@@ -1,0 +1,60 @@
+/// Where the tables load from: CSV (the files in DataFolder) or PostgreSQL (the core schema of the warehouse).
+expression SourceType = "CSV" meta [IsParameterQuery=true, List={"CSV", "PostgreSQL"}, DefaultValue="CSV", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 923e1f4e-30f3-53eb-9459-bddebe5f25fb
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// Folder that holds the CSV files exported by the SQL pipeline (data/processed). Used when SourceType is CSV.
+expression DataFolder = "D:\Projects\patientcare-no-show-analytics\data\processed\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6414f57e-700b-507a-b8b1-f709656936a7
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// PostgreSQL server, optionally with a port, for example localhost or localhost:5432. Used when SourceType is PostgreSQL.
+expression PostgreSQLServer = "localhost" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: c58fb631-5006-52e5-ac9a-3d9665640bb6
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// PostgreSQL database created by the SQL pipeline. Used when SourceType is PostgreSQL.
+expression PostgreSQLDatabase = "patientcare_analytics" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 99d61dc1-3271-5a14-ae0b-1cdecf097117
+	queryGroup: Parameters
+
+	annotation PBI_ResultType = Text
+
+/// Loads one table from the CSV folder or from PostgreSQL (core schema), keeps the listed columns and turns true/false columns into Yes/No.
+expression fnLoadTable =
+		(tableName as text, columns as list, optional yesNoColumns as list) as table =>
+		let
+		    // One loader for every table, so switching between the CSV export and the PostgreSQL warehouse is a single parameter
+		    FromPostgreSQL = () => PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase){[Schema = "core", Item = tableName]}[Data],
+		    FromCsv = () =>
+		        Table.PromoteHeaders(
+		            Csv.Document(
+		                File.Contents(Text.TrimEnd(DataFolder, "\") & "\" & tableName & ".csv"),
+		                [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+		            ),
+		            [PromoteAllScalars = true]
+		        ),
+		    Source = if SourceType = "PostgreSQL" then FromPostgreSQL() else FromCsv(),
+		    KeptColumns = Table.SelectColumns(Source, columns),
+		    // true/false (PostgreSQL) and t/f (CSV) both become Yes/No
+		    ToYesNo = (value) =>
+		        if value = true or value = "t" or value = "true" then "Yes"
+		        else if value = false or value = "f" or value = "false" then "No"
+		        else null,
+		    YesNoColumns = Table.TransformColumns(
+		        KeptColumns,
+		        List.Transform(if yesNoColumns = null then {} else yesNoColumns, (name) => {name, ToYesNo, type text})
+		    )
+		in
+		    YesNoColumns
+	lineageTag: ba2dd56e-ccc2-5ba8-9c5f-15ac6bda7ca9
+	queryGroup: Functions
+
+	annotation PBI_ResultType = Function
+

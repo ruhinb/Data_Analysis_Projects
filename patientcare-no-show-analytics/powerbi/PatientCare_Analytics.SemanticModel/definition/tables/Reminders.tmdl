@@ -1,0 +1,92 @@
+/// One row per reminder attempt (SMS, WhatsApp or call). Source: core.fact_reminders.
+table Reminders
+	lineageTag: ed4cd89b-6106-59a9-96b0-2d57d6802e76
+
+	/// Links to Appointments.
+	column 'Appointment Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 6a7b056b-0886-5e48-8b30-1ff412eecdd9
+		summarizeBy: none
+		sourceColumn: Appointment Key
+
+		annotation SummarizationSetBy = User
+
+	/// 24-hour reminder or 2-hour reminder.
+	column 'Reminder Type'
+		dataType: string
+		lineageTag: 338e16e2-79f7-5710-83bf-a51f7b383e95
+		summarizeBy: none
+		sourceColumn: Reminder Type
+
+		annotation SummarizationSetBy = User
+
+	/// SMS, WhatsApp or call.
+	column 'Reminder Channel'
+		dataType: string
+		lineageTag: 89548b74-18de-5454-ba1c-2f3e0934715c
+		summarizeBy: none
+		sourceColumn: Reminder Channel
+
+		annotation SummarizationSetBy = User
+
+	/// Service that sent the message.
+	column 'Message Provider'
+		dataType: string
+		lineageTag: 42cbbf1a-998c-5351-b936-b72077c54905
+		summarizeBy: none
+		sourceColumn: Message Provider
+
+		annotation SummarizationSetBy = User
+
+	/// Attempt number for this reminder, starting at 1.
+	column 'Attempt Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f7a1ddb-2b6c-5379-b975-ddd108ed26e6
+		summarizeBy: none
+		sourceColumn: Attempt Number
+
+		annotation SummarizationSetBy = User
+
+	/// Delivered, Failed, Pending or Unknown.
+	column 'Delivery Status'
+		dataType: string
+		lineageTag: c044c636-dccf-55b1-8d02-20f4069c5b75
+		summarizeBy: none
+		sourceColumn: Delivery Status
+
+		annotation SummarizationSetBy = User
+
+	/// Why delivery failed, when it did.
+	column 'Failure Reason'
+		dataType: string
+		lineageTag: d124338a-6eac-535f-b6df-1f8593c0e0f5
+		summarizeBy: none
+		sourceColumn: Failure Reason
+
+		annotation SummarizationSetBy = User
+
+	/// Language the message was sent in.
+	column 'Message Language'
+		dataType: string
+		lineageTag: 8803a0aa-8396-52bb-b5a6-66a36c16235e
+		summarizeBy: none
+		sourceColumn: Message Language
+
+		annotation SummarizationSetBy = User
+
+	partition Reminders = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_reminders", {"appointment_key", "reminder_type", "channel", "provider_name", "attempt_number", "delivery_status", "failure_reason", "language"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"appointment_key", Int64.Type}, {"reminder_type", type text}, {"channel", type text}, {"provider_name", type text}, {"attempt_number", Int64.Type}, {"delivery_status", type text}, {"failure_reason", type text}, {"language", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"appointment_key", "Appointment Key"}, {"reminder_type", "Reminder Type"}, {"channel", "Reminder Channel"}, {"provider_name", "Message Provider"}, {"attempt_number", "Attempt Number"}, {"delivery_status", "Delivery Status"}, {"failure_reason", "Failure Reason"}, {"language", "Message Language"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

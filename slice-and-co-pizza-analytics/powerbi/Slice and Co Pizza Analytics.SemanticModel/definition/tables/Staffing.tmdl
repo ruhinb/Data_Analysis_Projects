@@ -1,0 +1,200 @@
+/// Fact: one row per trading day x half-hour (9:30 AM - 11:00 PM). Demand comes from Sales; recommended roster follows the rules in docs/methodology.md.
+table Staffing
+	lineageTag: a00a6191-08b0-42ae-90da-5eafb1efcf65
+
+	/// Foreign key to Date.
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: a2ccf19c-0a2c-48e5-a9e0-3fe826f11036
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Foreign key to Time Slot.
+	column 'Slot Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 542f888e-7862-4adb-ab3b-889390457285
+		summarizeBy: none
+		sourceColumn: Slot Key
+
+	/// Orders in the half-hour: No orders, Low (1-2), Moderate (3-4), High (5+).
+	column 'Demand Band'
+		dataType: string
+		lineageTag: 8445c939-f490-4ed4-b609-05982a5ed34e
+		summarizeBy: none
+		sourceColumn: Demand Band
+		sortByColumn: 'Demand Band Sort'
+
+	column 'Demand Band Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1c3e00de-a251-43bf-a9f7-ce3a8f325eb1
+		summarizeBy: none
+		sourceColumn: Demand Band Sort
+
+	column 'Slot Orders'
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: a8725c47-de47-4248-8734-cf02cac5da02
+		summarizeBy: sum
+		sourceColumn: Slot Orders
+
+	column 'Slot Pizzas'
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 5f67afe1-9e9f-4b75-ae66-5897af75812d
+		summarizeBy: sum
+		sourceColumn: Slot Pizzas
+
+	column 'Slot Revenue'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: f28e1a8f-697c-43ea-8409-b85fac256769
+		summarizeBy: sum
+		sourceColumn: Slot Revenue
+
+	column 'Shift Managers'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 93fb190a-5330-4fa2-ae17-4d35d2cb3855
+		summarizeBy: sum
+		sourceColumn: Shift Managers
+
+	column 'Kitchen Crew'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0c80d581-3067-4869-9926-f81fe1f6c5a5
+		summarizeBy: sum
+		sourceColumn: Kitchen Crew
+
+	column 'Service Crew'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 9aa60daf-181a-42f3-be02-987450b3575c
+		summarizeBy: sum
+		sourceColumn: Service Crew
+
+	column 'Prep Utility'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3c5aac39-1099-4fe9-8547-72b9e9c5b83a
+		summarizeBy: sum
+		sourceColumn: Prep Utility
+
+	column 'Scheduled Staff'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ee502e1a-ea5f-454f-8c09-4d186beffe05
+		summarizeBy: sum
+		sourceColumn: Scheduled Staff
+
+	column 'Scheduled Labour Hours'
+		dataType: double
+		isHidden
+		formatString: #,##0.00
+		lineageTag: 7e1c77d3-5486-4931-93f0-9da1415d0603
+		summarizeBy: sum
+		sourceColumn: Scheduled Labour Hours
+
+	column 'Scheduled Labour Cost'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: 72934d9f-a1e0-4c57-90e6-dde17dbc22a0
+		summarizeBy: sum
+		sourceColumn: Scheduled Labour Cost
+
+	column 'Recommended Kitchen'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 42aa112d-3b32-49cb-aeb0-9d132023d604
+		summarizeBy: sum
+		sourceColumn: Recommended Kitchen
+
+	column 'Recommended Service'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e3f88aa-4c49-4f41-9c93-8b1b80ad3eaf
+		summarizeBy: sum
+		sourceColumn: Recommended Service
+
+	column 'Recommended Prep'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 25d646f9-6f13-498a-8f0a-90b85c9b28aa
+		summarizeBy: sum
+		sourceColumn: Recommended Prep
+
+	column 'Recommended Staff'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 204f14e5-9bc7-4571-ba5a-0729a0b3e15b
+		summarizeBy: sum
+		sourceColumn: Recommended Staff
+
+	column 'Recommended Labour Hours'
+		dataType: double
+		isHidden
+		formatString: #,##0.00
+		lineageTag: 8991c99b-a988-4d9e-bc94-be1e731fc048
+		summarizeBy: sum
+		sourceColumn: Recommended Labour Hours
+
+	column 'Recommended Labour Cost'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: d676a879-3cb1-422b-b776-8a652551ea0e
+		summarizeBy: sum
+		sourceColumn: Recommended Labour Cost
+
+	/// Scheduled minus recommended people.
+	column 'Staffing Gap'
+		dataType: int64
+		isHidden
+		formatString: +0;-0;0
+		lineageTag: 8d3e4a1e-61fd-4503-85fa-3db769fa4932
+		summarizeBy: none
+		sourceColumn: Staffing Gap
+
+	partition Staffing = m
+		mode: import
+		source =
+				let
+				    Source = #"Raw Roster",
+				    SlotDemand = Table.Group(#"Order Header", {"Order Date", "Slot Key"}, {{"Slot Orders", each Table.RowCount(_), Int64.Type}, {"Slot Pizzas", each List.Sum([Order Pizzas]), Int64.Type}, {"Slot Revenue", each List.Sum([Order Revenue]), Currency.Type}}),
+				    #"Merged Slot Demand" = Table.NestedJoin(Source, {"Date", "Slot Key"}, SlotDemand, {"Order Date", "Slot Key"}, "Demand", JoinKind.LeftOuter),
+				    #"Expanded Slot Demand" = Table.ExpandTableColumn(#"Merged Slot Demand", "Demand", {"Slot Orders", "Slot Pizzas", "Slot Revenue"}),
+				    #"Replaced Empty Demand" = Table.ReplaceValue(#"Expanded Slot Demand", null, 0, Replacer.ReplaceValue, {"Slot Orders", "Slot Pizzas", "Slot Revenue"}),
+				    #"Added Demand Band" = Table.AddColumn(#"Replaced Empty Demand", "Demand Band", each if [Slot Orders] = 0 then "No orders" else if [Slot Orders] <= 2 then "Low" else if [Slot Orders] <= 4 then "Moderate" else "High", type text),
+				    #"Added Demand Band Sort" = Table.AddColumn(#"Added Demand Band", "Demand Band Sort", each List.PositionOf({"No orders", "Low", "Moderate", "High"}, [Demand Band]) + 1, Int64.Type),
+				    #"Added Recommended Kitchen" = Table.AddColumn(#"Added Demand Band Sort", "Recommended Kitchen", each List.Max({1, Number.RoundUp([Slot Pizzas] * DemandBuffer / PizzasPerCookPerSlot)}), Int64.Type),
+				    #"Added Recommended Service" = Table.AddColumn(#"Added Recommended Kitchen", "Recommended Service", each List.Max({1, Number.RoundUp([Slot Orders] * DemandBuffer / OrdersPerServerPerSlot)}), Int64.Type),
+				    #"Added Recommended Prep" = Table.AddColumn(#"Added Recommended Service", "Recommended Prep", each if [Slot Key] >= 570 and [Slot Key] < 1050 then 1 else 0, Int64.Type),
+				    #"Added Recommended Staff" = Table.AddColumn(#"Added Recommended Prep", "Recommended Staff", each 1 + [Recommended Kitchen] + [Recommended Service] + [Recommended Prep], Int64.Type),
+				    #"Added Recommended Labour Hours" = Table.AddColumn(#"Added Recommended Staff", "Recommended Labour Hours", each [Recommended Staff] * 0.5, type number),
+				    #"Added Recommended Labour Cost" = Table.AddColumn(#"Added Recommended Labour Hours", "Recommended Labour Cost", each 0.5 * (16.02 + [Recommended Kitchen] * 11.74 + [Recommended Service] * 9.47 + [Recommended Prep] * 9.79), Currency.Type),
+				    #"Added Staffing Gap" = Table.AddColumn(#"Added Recommended Labour Cost", "Staffing Gap", each [Scheduled Staff] - [Recommended Staff], Int64.Type),
+				    #"Removed Redundant Attributes" = Table.SelectColumns(#"Added Staffing Gap", {"Date", "Slot Key", "Demand Band", "Demand Band Sort", "Slot Orders", "Slot Pizzas", "Slot Revenue", "Shift Managers", "Kitchen Crew", "Service Crew", "Prep Utility", "Scheduled Staff", "Scheduled Labour Hours", "Scheduled Labour Cost", "Recommended Kitchen", "Recommended Service", "Recommended Prep", "Recommended Staff", "Recommended Labour Hours", "Recommended Labour Cost", "Staffing Gap"}),
+				    #"Changed Types" = Table.TransformColumnTypes(#"Removed Redundant Attributes", {{"Slot Orders", Int64.Type}, {"Slot Pizzas", Int64.Type}, {"Slot Revenue", Currency.Type}})
+				in
+				    #"Changed Types"
+

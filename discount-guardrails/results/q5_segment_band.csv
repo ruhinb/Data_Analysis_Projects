@@ -1,0 +1,13 @@
+SEGMENT,DISCOUNT_BAND,LINES,TOTAL_SALES,TOTAL_PROFIT,MARGIN_PCT,SHARE_OF_SEGMENT_SALES_PCT
+Consumer,1. No Discount,2461,532517.1,157901.96,29.7,45.9
+Consumer,2. Standard (up to 20%),1995,439661.55,48107.41,10.9,37.9
+Consumer,3. Deep (over 20% to 50%),284,153179.99,-27328.06,-17.8,13.2
+Consumer,4. Clearance (over 50%),451,36042.71,-44562.1,-123.6,3.1
+Corporate,1. No Discount,1427,358857.72,102150.78,28.5,50.8
+Corporate,2. Standard (up to 20%),1173,247915.76,29599.11,11.9,35.1
+Corporate,3. Deep (over 20% to 50%),159,82879.83,-20580.27,-24.8,11.7
+Corporate,4. Clearance (over 50%),261,16493.05,-19190.5,-116.4,2.3
+Home Office,1. No Discount,910,196533.65,60934.86,31.0,45.7
+Home Office,2. Standard (up to 20%),635,158944.93,23078.95,14.5,37.0
+Home Office,3. Deep (over 20% to 50%),94,62481.6,-10908.67,-17.5,14.5
+Home Office,4. Clearance (over 50%),144,11692.98,-12806.46,-109.5,2.7

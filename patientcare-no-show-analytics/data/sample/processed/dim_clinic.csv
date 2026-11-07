@@ -1,0 +1,16 @@
+clinic_key,clinic_id,clinic_name,facility_type,ownership_model,division,district,city_area,urban_rural,opening_date,operating_start_time,operating_end_time,consultation_room_count,telemedicine_enabled,active_flag,data_quality_issue_count,has_data_quality_issue
+0,,Unknown clinic,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,,,,,,,0,f
+1,CL001,Clinic 01,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka South City Corporation,Urban,2003-06-01,07:30:00,22:00:00,13,t,t,0,f
+2,CL002,Clinic 02,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka South City Corporation,Urban,2003-07-11,08:00:00,22:00:00,13,t,t,0,f
+3,CL003,Clinic 03,Medical College Hospital,Partner facility,Dhaka,Dhaka,Dhaka North City Corporation,Urban,2015-03-24,08:00:00,22:00:00,12,t,t,0,f
+4,CL004,Clinic 04,Medical College Hospital,Partner facility,Chattogram,Chattogram,Chattogram City Corporation,Urban,2012-10-31,08:00:00,22:00:00,13,t,t,0,f
+5,CL005,Clinic 05,Medical College Hospital,Partner facility,Chattogram,Cumilla,Cumilla Sadar Dakshin,Urban,2004-08-30,07:30:00,20:30:00,12,t,t,0,f
+6,CL006,Clinic 06,Medical College Hospital,Partner facility,Sylhet,Sylhet,Sylhet Sadar,Urban,2014-08-14,08:00:00,20:30:00,11,t,t,0,f
+7,CL007,Clinic 07,Medical College Hospital,Partner facility,Rajshahi,Rajshahi,Rajshahi City Corporation,Urban,2004-06-17,08:00:00,20:30:00,10,t,t,0,f
+8,CL008,Clinic 08,Medical College Hospital,Partner facility,Rajshahi,Bogura,Bogura Sadar,Urban,2015-12-25,08:00:00,20:30:00,11,t,t,0,f
+9,CL009,Clinic 09,Medical College Hospital,Partner facility,Khulna,Khulna,Khulna Sadar,Urban,2000-09-25,07:30:00,20:30:00,11,t,t,0,f
+10,CL010,Clinic 10,Medical College Hospital,Partner facility,Khulna,Jashore,Jashore Sadar,Urban,2011-02-19,08:00:00,20:30:00,13,t,t,0,f
+11,CL011,Clinic 11,Medical College Hospital,Partner facility,Barishal,Barishal,Barishal Sadar,Urban,2002-04-26,08:00:00,20:30:00,10,f,t,0,f
+12,CL012,Clinic 12,Medical College Hospital,Partner facility,Rangpur,Rangpur,Rangpur Sadar,Urban,2014-10-06,08:00:00,20:30:00,11,t,t,0,f
+13,CL013,Clinic 13,Medical College Hospital,Partner facility,Rangpur,Dinajpur,Dinajpur Sadar,Urban,2012-08-21,07:30:00,20:30:00,7,t,t,0,f
+14,CL014,Clinic 14,Medical College Hospital,Partner facility,Mymensingh,Mymensingh,Mymensingh Sadar,Urban,2002-01-23,08:00:00,20:30:00,8,f,t,0,f

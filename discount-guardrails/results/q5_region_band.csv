@@ -1,0 +1,17 @@
+REGION,DISCOUNT_BAND,LINES,TOTAL_SALES,TOTAL_PROFIT,MARGIN_PCT,SHARE_OF_REGION_SALES_PCT
+Central,1. No Discount,1079,232490.39,66438.48,28.6,44.8
+Central,2. Standard (up to 20%),936,202360.77,22498.78,11.1,39.0
+Central,3. Deep (over 20% to 50%),134,75059.22,-13157.71,-17.5,14.5
+Central,4. Clearance (over 50%),222,8889.75,-12170.2,-136.9,1.7
+East,1. No Discount,1359,324727.19,96995.29,29.9,53.1
+East,2. Standard (up to 20%),1027,205913.35,25999.77,12.6,33.7
+East,3. Deep (over 20% to 50%),157,66598.21,-14103.35,-21.2,10.9
+East,4. Clearance (over 50%),219,14495.56,-14287.4,-98.6,2.4
+South,1. No Discount,789,163767.09,49437.72,30.2,40.7
+South,2. Standard (up to 20%),609,138354.94,18706.07,13.5,34.4
+South,3. Deep (over 20% to 50%),84,78826.92,-12147.87,-15.4,19.6
+South,4. Clearance (over 50%),144,21083.03,-25820.79,-122.5,5.2
+West,1. No Discount,1571,366923.8,108116.12,29.5,48.0
+West,2. Standard (up to 20%),1231,299893.18,33580.85,11.2,39.2
+West,3. Deep (over 20% to 50%),162,78057.07,-19408.08,-24.9,10.2
+West,4. Clearance (over 50%),271,19760.4,-24280.66,-122.9,2.6

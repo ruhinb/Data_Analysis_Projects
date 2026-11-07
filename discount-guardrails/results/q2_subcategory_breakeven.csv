@@ -1,0 +1,18 @@
+CATEGORY,SUB_CATEGORY,HIGHEST_PROFITABLE_DISCOUNT,LOWEST_LOSS_MAKING_DISCOUNT,MAX_DISCOUNT_GIVEN
+Furniture,Bookcases,0.2,0.32,0.7
+Furniture,Chairs,0.2,0.3,0.3
+Furniture,Furnishings,0.2,0.6,0.6
+Furniture,Tables,0.0,0.2,0.5
+Office Supplies,Appliances,0.2,0.8,0.8
+Office Supplies,Art,0.2,,0.2
+Office Supplies,Binders,0.2,0.7,0.8
+Office Supplies,Envelopes,0.2,,0.2
+Office Supplies,Fasteners,0.2,,0.2
+Office Supplies,Labels,0.2,,0.2
+Office Supplies,Paper,0.2,,0.2
+Office Supplies,Storage,0.0,0.2,0.2
+Office Supplies,Supplies,0.0,0.2,0.2
+Technology,Accessories,0.2,,0.2
+Technology,Copiers,0.2,,0.4
+Technology,Machines,0.2,0.7,0.7
+Technology,Phones,0.2,0.4,0.4

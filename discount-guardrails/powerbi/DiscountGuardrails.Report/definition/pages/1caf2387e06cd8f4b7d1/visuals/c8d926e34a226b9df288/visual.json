@@ -1,0 +1,244 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c8d926e34a226b9df288",
+  "position": {
+    "x": 43,
+    "y": 639,
+    "z": 1000,
+    "width": 1194,
+    "height": 46,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Product Name"
+                }
+              },
+              "queryRef": "Product.Product Name",
+              "nativeQueryRef": "Product Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Sub-category"
+                }
+              },
+              "queryRef": "Product.Sub-category",
+              "nativeQueryRef": "Sub-category"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Heavy Loss"
+                }
+              },
+              "queryRef": "Orders.Heavy Loss",
+              "nativeQueryRef": "Heavy Loss"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Five products with the largest heavy-discount losses\",\"width\":1194,\"height\":46,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"},{\"name\":\"all\",\"source\":\"dataset\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum[''Heavy Loss''] > 0\"},{\"type\":\"collect\",\"sort\":{\"field\":\"Heavy Loss\",\"order\":\"descending\"}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"joinaggregate\",\"fields\":[\"Heavy Loss\"],\"ops\":[\"sum\"],\"as\":[\"tot\"]}]},{\"name\":\"top\",\"source\":\"all\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.r1 <= 5\"}]},{\"name\":\"topagg\",\"source\":\"top\",\"transform\":[{\"type\":\"aggregate\",\"fields\":[\"Heavy Loss\",\"tot\"],\"ops\":[\"sum\",\"max\"],\"as\":[\"s\",\"tot\"]}]}],\"signals\":[{\"name\":\"share\",\"update\":\"data(''topagg'')[0] ? data(''topagg'')[0].s / data(''topagg'')[0].tot : 0\"},{\"name\":\"n\",\"update\":\"length(data(''top''))\"}],\"marks\":[{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"value\":13},\"fontSize\":{\"value\":14.5},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#111827\"},\"text\":{\"signal\":\"n + '' products to check first''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"value\":33},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"n > 0 ? format(share, ''.0%'') + '' of all heavy-discount losses'' : ''No heavy-discount losses here''\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"top\"},\"encode\":{\"update\":{\"x\":{\"signal\":\"222 + (datum.r1 - 1) * 194.40 + 12\"},\"y\":{\"value\":13},\"text\":{\"signal\":\"''−'' + format(datum[''Heavy Loss''], ''$,.0f'')\"},\"fontSize\":{\"value\":18},\"fontWeight\":{\"value\":700},\"fill\":{\"value\":\"#B42318\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"top\"},\"encode\":{\"update\":{\"x\":{\"signal\":\"222 + (datum.r1 - 1) * 194.40 + 12\"},\"y\":{\"value\":34},\"text\":{\"field\":\"Product Name\"},\"limit\":{\"value\":174},\"fontSize\":{\"value\":12},\"fill\":{\"value\":\"#374151\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,44 @@
+/// Disconnected slicer table: trading days to investigate on the Trading Day Investigation page.
+table 'Investigation Date'
+	lineageTag: 04d0cc3a-03c0-4e3d-b9ed-b4e534efbf1d
+
+	column Date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 29a8fd07-af8d-49d6-89fd-500e4b1146e0
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// 1 = strongest anomaly; orders the slicer so the default selection is the most unusual day.
+	column 'Investigation Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 31439c0e-bbab-4f56-8205-2e2acda4f648
+		summarizeBy: none
+		sourceColumn: Investigation Sort
+
+	/// Date label with its anomaly flag, strongest anomalies first.
+	column 'Investigate a Date'
+		dataType: string
+		lineageTag: e7824f73-456c-4eb4-a635-185131db57ff
+		summarizeBy: none
+		sourceColumn: Investigate a Date
+		sortByColumn: 'Investigation Sort'
+
+	partition 'Investigation Date' = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectRows(#"Date", each [Is Trading Day] = true),
+				    #"Selected Columns" = Table.SelectColumns(Source, {"Date", "Anomaly Type", "Revenue Z-Score"}),
+				    #"Sorted by Anomaly Strength" = Table.Sort(Table.AddColumn(#"Selected Columns", "Strength", each Number.Abs([#"Revenue Z-Score"]), type number), {{"Strength", Order.Descending}, {"Date", Order.Ascending}}),
+				    #"Added Investigation Sort" = Table.AddIndexColumn(#"Sorted by Anomaly Strength", "Investigation Sort", 1, 1, Int64.Type),
+				    #"Added Date Label" = Table.AddColumn(#"Added Investigation Sort", "Investigate a Date", each Date.ToText([Date], "ddd d MMM yyyy", "en-US") & (if [Anomaly Type] = "Normal" then "" else "  •  " & [Anomaly Type]), type text),
+				    #"Removed Anomaly Type" = Table.RemoveColumns(#"Added Date Label", {"Anomaly Type", "Revenue Z-Score", "Strength"})
+				in
+				    #"Removed Anomaly Type"
+

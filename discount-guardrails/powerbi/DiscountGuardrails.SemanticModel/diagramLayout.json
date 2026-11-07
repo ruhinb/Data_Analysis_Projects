@@ -1,0 +1,100 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 618.3718807637091,
+            "y": 444.66360266583581
+          },
+          "nodeIndex": "Customer",
+          "nodeLineageTag": "99a20a92-e0a8-5975-8a4f-8bfae9410e66",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 360.87584714621585
+          },
+          "nodeIndex": "Discount Band",
+          "nodeLineageTag": "033f3ab7-74a0-524d-b294-a6eb41648b52",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852.3718807637091,
+            "y": 259.33180133291785
+          },
+          "nodeIndex": "Max Discount",
+          "nodeLineageTag": "ea924683-28ba-51b8-bf05-e33b4c2303a2",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.20413330133209,
+            "y": 176.21276718336074
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "e74abda5-f890-5490-94bf-d58a5a2bcac5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 367.9532852031723,
+            "y": -50
+          },
+          "nodeIndex": "Product",
+          "nodeLineageTag": "f099e4ce-78d6-5b87-875f-0c0a8e20b820",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.3718807637092,
+            "y": 259.33180133291785
+          },
+          "nodeIndex": "Volume Kept",
+          "nodeLineageTag": "bbdf03de-e9a7-5a6f-a087-e30cc618e6d7",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

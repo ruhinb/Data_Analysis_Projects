@@ -1,0 +1,47 @@
+/// One row per payment (latest version). Used to price a missed visit. Source: core.fact_payments.
+table Payments
+	lineageTag: c0fb997c-7609-5161-8ad4-ecf99272e7cd
+
+	/// Links to Appointments.
+	column 'Appointment Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: c368f28f-debe-514a-9e50-c50ff3ecf181
+		summarizeBy: none
+		sourceColumn: Appointment Key
+
+		annotation SummarizationSetBy = User
+
+	/// Amount charged after discounts, in Bangladeshi taka.
+	column 'Net Amount (BDT)'
+		dataType: decimal
+		formatString: "BDT "#,0
+		lineageTag: 29e6e265-8d56-5b74-9939-bfdc354c4ca7
+		summarizeBy: none
+		sourceColumn: Net Amount (BDT)
+
+		annotation SummarizationSetBy = User
+
+	/// Paid, Partial, Pending, Failed, Refunded or Pending refund.
+	column 'Payment Status'
+		dataType: string
+		lineageTag: a937b42b-a25d-5c0b-b91a-0127f215f2ca
+		summarizeBy: none
+		sourceColumn: Payment Status
+
+		annotation SummarizationSetBy = User
+
+	partition Payments = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_payments", {"appointment_key", "net_amount_bdt", "payment_status"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"appointment_key", Int64.Type}, {"net_amount_bdt", Currency.Type}, {"payment_status", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"appointment_key", "Appointment Key"}, {"net_amount_bdt", "Net Amount (BDT)"}, {"payment_status", "Payment Status"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

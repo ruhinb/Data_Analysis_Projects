@@ -1,0 +1,300 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "453aa877e393accaddf1",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "width": 1280,
+    "height": 720,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Product.Category",
+              "nativeQueryRef": "Category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Sub-category"
+                }
+              },
+              "queryRef": "Product.Sub-category",
+              "nativeQueryRef": "Sub-category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Discount Band"
+                    }
+                  },
+                  "Property": "Band Sort"
+                }
+              },
+              "queryRef": "Discount Band.Band Sort",
+              "nativeQueryRef": "Band Sort"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Sales"
+                }
+              },
+              "queryRef": "Orders.Sales",
+              "nativeQueryRef": "Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit"
+                }
+              },
+              "queryRef": "Orders.Profit",
+              "nativeQueryRef": "Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Heavy Loss"
+                }
+              },
+              "queryRef": "Orders.Heavy Loss",
+              "nativeQueryRef": "Heavy Loss"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Lines Count"
+                }
+              },
+              "queryRef": "Orders.Lines Count",
+              "nativeQueryRef": "Lines Count"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Product groups page: page text and the three camps\",\"width\":1280,\"height\":720,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"},{\"name\":\"gm\",\"source\":\"dataset\",\"transform\":[{\"type\":\"formula\",\"as\":\"hS\",\"expr\":\"datum[''Band Sort''] >= 3 ? datum.Sales : 0\"},{\"type\":\"formula\",\"as\":\"hP\",\"expr\":\"datum[''Band Sort''] >= 3 ? datum.Profit : 0\"},{\"type\":\"formula\",\"as\":\"hL\",\"expr\":\"datum[''Band Sort''] >= 3 ? (datum[''Lines Count''] || 0) : 0\"},{\"type\":\"formula\",\"as\":\"sS\",\"expr\":\"datum[''Band Sort''] == 2 ? datum.Sales : 0\"},{\"type\":\"formula\",\"as\":\"sP\",\"expr\":\"datum[''Band Sort''] == 2 ? datum.Profit : 0\"},{\"type\":\"formula\",\"as\":\"fS\",\"expr\":\"datum[''Band Sort''] == 1 ? datum.Sales : 0\"},{\"type\":\"formula\",\"as\":\"fP\",\"expr\":\"datum[''Band Sort''] == 1 ? datum.Profit : 0\"},{\"type\":\"formula\",\"as\":\"loss\",\"expr\":\"datum[''Heavy Loss''] || 0\"}]},{\"name\":\"subs\",\"source\":\"gm\",\"transform\":[{\"type\":\"aggregate\",\"groupby\":[\"Sub-category\"],\"fields\":[\"hS\",\"hP\",\"hL\",\"sS\",\"sP\",\"fS\",\"fP\",\"loss\"],\"ops\":[\"sum\",\"sum\",\"sum\",\"sum\",\"sum\",\"sum\",\"sum\",\"sum\"],\"as\":[\"hS\",\"hP\",\"hLines\",\"sS\",\"sP\",\"fS\",\"fP\",\"hl\"]},{\"type\":\"formula\",\"as\":\"campA\",\"expr\":\"datum.hS > 0 && datum.hP < 0\"},{\"type\":\"formula\",\"as\":\"campB\",\"expr\":\"datum.sS > 0 && datum.sP < 0\"},{\"type\":\"formula\",\"as\":\"smallPpd\",\"expr\":\"datum.sS > 0 ? datum.sP / datum.sS : 0\"},{\"type\":\"formula\",\"as\":\"fullPpd\",\"expr\":\"datum.fS > 0 ? datum.fP / datum.fS : 0\"},{\"type\":\"formula\",\"as\":\"cPpd\",\"expr\":\"datum.sS > 0 ? datum.smallPpd : datum.fullPpd\"}]},{\"name\":\"A\",\"source\":\"subs\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.campA\"},{\"type\":\"collect\",\"sort\":{\"field\":\"hl\",\"order\":\"descending\"}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"formula\",\"as\":\"r\",\"expr\":\"datum.r1 - 1\"}]},{\"name\":\"Aagg\",\"source\":\"A\",\"transform\":[{\"type\":\"aggregate\",\"fields\":[\"hl\",\"hl\"],\"ops\":[\"max\",\"sum\"],\"as\":[\"mx\",\"tot\"]}]},{\"name\":\"B\",\"source\":\"subs\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.campB\"},{\"type\":\"collect\",\"sort\":{\"field\":\"smallPpd\"}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"formula\",\"as\":\"r\",\"expr\":\"datum.r1 - 1\"}]},{\"name\":\"Bboth\",\"source\":\"B\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.campA\"}]},{\"name\":\"C\",\"source\":\"subs\",\"transform\":[{\"type\":\"filter\",\"expr\":\"!datum.campA && !datum.campB\"},{\"type\":\"collect\",\"sort\":{\"field\":\"cPpd\",\"order\":\"descending\"}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"formula\",\"as\":\"r\",\"expr\":\"datum.r1 - 1\"}]},{\"name\":\"Cdeep\",\"source\":\"C\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.hS > 0\"}]}],\"signals\":[{\"name\":\"m\",\"update\":\"data(''dataset'')[0] || {}\"},{\"name\":\"maxHL\",\"update\":\"data(''Aagg'')[0] && data(''Aagg'')[0].mx > 0 ? data(''Aagg'')[0].mx : 1\"},{\"name\":\"totHL\",\"update\":\"data(''Aagg'')[0] && data(''Aagg'')[0].tot > 0 ? data(''Aagg'')[0].tot : 1\"}],\"marks\":[{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":33},\"fontSize\":{\"value\":15},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Discount Guardrails\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":49.5},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"Office supplies sales · 2014–2017\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":388.5},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Overview\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":498.4},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"value\":\"Product groups\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":628.5},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"What if we cap?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":770.7},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Quarterly check-up\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":889},\"y\":{\"value\":40},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"Year\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1083},\"y\":{\"value\":40},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"Region\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":24},\"y\":{\"value\":116},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Each needs a different action. Heavy discount = more than 20% off.\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":127},\"y\":{\"value\":164},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(122, 26, 18)\"},\"text\":{\"value\":\"Cap discounts at 20%\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"value\":186.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(122, 26, 18)\"},\"text\":{\"value\":\"They lost money on almost every heavily discounted sale\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":604.1},\"y\":{\"value\":164},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 65, 0)\"},\"text\":{\"value\":\"Review prices\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":520.1},\"y\":{\"value\":186.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 65, 0)\"},\"text\":{\"value\":\"They lose money even with a small discount\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":988.5},\"y\":{\"value\":164},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(15, 77, 48)\"},\"text\":{\"value\":\"Fine as they are\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":904.5},\"y\":{\"value\":186.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(15, 77, 48)\"},\"text\":{\"value\":\"Profitable at every discount they were given\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":24},\"y\":{\"value\":90.5},\"fontSize\":{\"value\":24},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"''Our '' + length(data(''subs'')) + '' product groups fall into three camps''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":81.1},\"y\":{\"value\":164.0},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"signal\":\"length(data(''A'')) + (length(data(''A'')) == 1 ? '' GROUP'' : '' GROUPS'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":558.1},\"y\":{\"value\":164.0},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"signal\":\"length(data(''B'')) + (length(data(''B'')) == 1 ? '' GROUP'' : '' GROUPS'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":942.6},\"y\":{\"value\":164.0},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"signal\":\"length(data(''C'')) + (length(data(''C'')) == 1 ? '' GROUP'' : '' GROUPS'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Lost on heavily discounted sales\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"A\"},\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"signal\":\"257 + datum.r * 23\"},\"text\":{\"field\":\"Sub-category\"},\"fontSize\":{\"value\":13},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"rect\",\"from\":{\"data\":\"A\"},\"encode\":{\"update\":{\"x\":{\"value\":149},\"x2\":{\"value\":404.1},\"yc\":{\"signal\":\"257 + datum.r * 23\"},\"height\":{\"value\":12},\"fill\":{\"value\":\"#F3F4F6\"},\"cornerRadius\":{\"value\":6}}}},{\"type\":\"rect\",\"from\":{\"data\":\"A\"},\"encode\":{\"update\":{\"x\":{\"value\":149},\"width\":{\"signal\":\"max(4, datum.hl / maxHL * 255.10000000000002)\"},\"yc\":{\"signal\":\"257 + datum.r * 23\"},\"height\":{\"value\":12},\"fill\":{\"value\":\"#E05545\"},\"cornerRadius\":{\"value\":6}}}},{\"type\":\"text\",\"from\":{\"data\":\"A\"},\"encode\":{\"update\":{\"x\":{\"value\":468.1},\"align\":{\"value\":\"right\"},\"y\":{\"signal\":\"257 + datum.r * 23\"},\"text\":{\"signal\":\"(abs(datum.hl) >= 1e6 ? format(datum.hl / 1e6, ''$.2f'') + ''M'' : (abs(datum.hl) >= 1e5 ? format(datum.hl / 1e3, ''$.0f'') + ''K'' : (abs(datum.hl) >= 1e3 ? format(datum.hl / 1e3, ''$.1f'') + ''K'' : format(datum.hl, ''$.0f''))))\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"signal\":\"257 + length(data(''A'')) * 23 + 4\"},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"length(data(''A'')) >= 3 ? data(''A'')[0][''Sub-category''] + '', '' + data(''A'')[1][''Sub-category''] + '' and '' + data(''A'')[2][''Sub-category''] + '' alone: '' + format((data(''A'')[0].hl + data(''A'')[1].hl + data(''A'')[2].hl) / totHL, ''.0%'') + '' of these losses'' : (length(data(''A'')) == 0 ? ''No group lost money on heavy discounts in this selection.'' : '''')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":520.1},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Profit per $1 sold\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":760.6},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Full price\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":852.6},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Up to 20% off\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"B\"},\"encode\":{\"update\":{\"x\":{\"value\":520.1},\"y\":{\"signal\":\"263 + datum.r * 34\"},\"text\":{\"field\":\"Sub-category\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"B\"},\"encode\":{\"update\":{\"x\":{\"value\":760.6},\"align\":{\"value\":\"right\"},\"y\":{\"signal\":\"263 + datum.r * 34\"},\"text\":{\"signal\":\"(datum.fullPpd >= 0 ? ''+'' : '''') + ((datum.fullPpd) <= -1 ? ''−$'' + format(abs(datum.fullPpd), ''.2f'') : ((datum.fullPpd) < 0 ? ''−'' : '''') + format(abs(datum.fullPpd) * 100, ''.0f'') + ''¢'')\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"signal\":\"datum.fullPpd >= 0 ? ''#157347'' : ''#B42318''\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"B\"},\"encode\":{\"update\":{\"x\":{\"value\":852.6},\"align\":{\"value\":\"right\"},\"y\":{\"signal\":\"263 + datum.r * 34\"},\"text\":{\"signal\":\"((datum.smallPpd) <= -1 ? ''−$'' + format(abs(datum.smallPpd), ''.2f'') : ((datum.smallPpd) < 0 ? ''−'' : '''') + format(abs(datum.smallPpd) * 100, ''.0f'') + ''¢'')\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":700},\"fill\":{\"value\":\"#B42318\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"rule\",\"from\":{\"data\":\"B\"},\"encode\":{\"update\":{\"x\":{\"value\":520.1},\"x2\":{\"value\":852.6},\"y\":{\"signal\":\"263 + datum.r * 34 + 17\"},\"stroke\":{\"value\":\"#F3F4F6\"}}}},{\"type\":\"rect\",\"encode\":{\"update\":{\"x\":{\"value\":520.1},\"x2\":{\"value\":852.6},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 4\"},\"height\":{\"value\":74},\"fill\":{\"value\":\"#F9FAFB\"},\"cornerRadius\":{\"value\":10}}}},{\"type\":\"symbol\",\"encode\":{\"update\":{\"x\":{\"value\":540.1},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 24\"},\"shape\":{\"value\":\"circle\"},\"size\":{\"value\":196},\"fill\":{\"value\":\"transparent\"},\"stroke\":{\"value\":\"#6B7280\"},\"strokeWidth\":{\"value\":1.3}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":540.1},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 24.5\"},\"text\":{\"value\":\"i\"},\"fontSize\":{\"value\":11},\"fontWeight\":{\"value\":700},\"fill\":{\"value\":\"#6B7280\"},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":558.1},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 24 + 0\"},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#374151\"},\"text\":{\"signal\":\"length(data(''B'')) > 0 ? \\\"A 20% cap won''t fix these.\\\" : ''No group loses money at small''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":558.1},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 24 + 18\"},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#374151\"},\"text\":{\"signal\":\"length(data(''B'')) > 0 ? ''Check their list prices and costs first.'' : ''discounts in this selection.''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":558.1},\"y\":{\"signal\":\"263 + length(data(''B'')) * 34 + 24 + 36\"},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#374151\"},\"text\":{\"signal\":\"length(data(''Bboth'')) == 1 ? data(''Bboth'')[0][''Sub-category''] + '' is in both camps.'' : (length(data(''Bboth'')) > 1 ? length(data(''Bboth'')) + '' of these are in both camps.'' : '''')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":904.5},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Group\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1237.0},\"y\":{\"value\":233},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Profit per $1, up to 20% off\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"C\"},\"encode\":{\"update\":{\"x\":{\"value\":904.5},\"y\":{\"signal\":\"257 + datum.r * 22\"},\"text\":{\"field\":\"Sub-category\"},\"fontSize\":{\"value\":13},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"C\"},\"encode\":{\"update\":{\"x\":{\"value\":1237.0},\"align\":{\"value\":\"right\"},\"y\":{\"signal\":\"257 + datum.r * 22\"},\"text\":{\"signal\":\"(datum.cPpd >= 0 ? ''+'' : '''') + ((datum.cPpd) <= -1 ? ''−$'' + format(abs(datum.cPpd), ''.2f'') : ((datum.cPpd) < 0 ? ''−'' : '''') + format(abs(datum.cPpd) * 100, ''.0f'') + ''¢'')\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"signal\":\"datum.cPpd >= 0 ? ''#157347'' : ''#B42318''\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":904.5},\"y\":{\"signal\":\"257 + length(data(''C'')) * 22 + 6\"},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"length(data(''Cdeep'')) > 0 ? data(''Cdeep'')[0][''Sub-category''] + '' stayed profitable above 20% off,'' : ''''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":904.5},\"y\":{\"signal\":\"257 + length(data(''C'')) * 22 + 23\"},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"length(data(''Cdeep'')) > 0 ? ''but on only '' + data(''Cdeep'')[0].hLines + (data(''Cdeep'')[0].hLines == 1 ? '' sale.'' : '' sales.'') : ''''\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

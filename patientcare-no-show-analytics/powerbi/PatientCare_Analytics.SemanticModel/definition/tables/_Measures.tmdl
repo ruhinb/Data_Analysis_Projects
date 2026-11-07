@@ -1,0 +1,851 @@
+/// Holds every measure, grouped into numbered display folders.
+table _Measures
+	lineageTag: 2e12dbdd-0d5d-5dbe-849b-1b93ed978b88
+
+	/// All appointments in the model, including the 23 with an invalid scheduled date.
+	measure 'Total Appointments' = COUNTROWS ( Appointments )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 3797c0e6-3708-55f4-a450-82d8eb5027d4
+
+	/// Appointments with a valid scheduled date (73,692 in total). Base for all attendance measures.
+	measure 'Valid Appointments' =
+			CALCULATE (
+			    [Total Appointments],
+			    KEEPFILTERS ( Appointments[Has Valid Scheduled Date] = "Yes" )
+			)
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: e96afbe4-c07a-5a24-be04-b7f2aa39164e
+
+	/// Patients in the patient register, excluding the Unknown row.
+	measure 'Registered Patients' =
+			CALCULATE (
+			    COUNTROWS ( Patient ),
+			    KEEPFILTERS ( Patient[Patient Key] <> 0 )
+			)
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: dbb47bb1-23db-57c3-928c-2129bff7e5f2
+
+	/// Registered patients with at least one valid appointment.
+	measure 'Active Patients' =
+			CALCULATE (
+			    DISTINCTCOUNT ( Appointments[Patient Key] ),
+			    KEEPFILTERS ( Appointments[Patient Key] <> 0 ),
+			    KEEPFILTERS ( Appointments[Has Valid Scheduled Date] = "Yes" )
+			)
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 1ef8a1c4-148d-5eba-8415-9a020a654c3e
+
+	/// Clinics in the data (all 14), excluding the Unknown row.
+	measure Clinics =
+			CALCULATE (
+			    COUNTROWS ( Clinic ),
+			    KEEPFILTERS ( Clinic[Clinic Key] <> 0 )
+			)
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 8a0993c5-e3c8-58da-b9af-380832d82153
+
+	/// Doctors on the register, excluding the Unknown row.
+	measure Doctors =
+			CALCULATE (
+			    COUNTROWS ( Doctor ),
+			    KEEPFILTERS ( Doctor[Doctor Key] <> 0 )
+			)
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 912029b6-57d1-534e-a9f5-dd904f796257
+
+	/// SMS, WhatsApp and call reminder attempts.
+	measure 'Reminder Attempts' = COUNTROWS ( Reminders )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: d2ebe7cf-c582-5de2-b035-4b9939ddb1b4
+
+	/// Video consultation sessions.
+	measure 'Telemedicine Session Count' = COUNTROWS ( 'Telemedicine Sessions' )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: d631adac-69b6-5200-b08a-54ea470af70a
+
+	/// Planned doctor clinic sessions from the roster.
+	measure 'Doctor Sessions' = COUNTROWS ( 'Schedule Sessions' )
+		formatString: #,0
+		displayFolder: 1 Volume
+		lineageTag: 14abf002-8255-59d5-98dd-e5cf124f7bb1
+
+	/// Valid appointments with status Completed.
+	measure 'Completed Appointments' =
+			CALCULATE (
+			    [Valid Appointments],
+			    KEEPFILTERS ( Appointments[Appointment Status] = "Completed" )
+			)
+		formatString: #,0
+		displayFolder: 2 Attendance
+		lineageTag: f9fc5891-cbef-5498-872d-485e80cffc52
+
+	/// Valid appointments where the patient did not attend.
+	measure 'No-show Appointments' =
+			CALCULATE (
+			    [Valid Appointments],
+			    KEEPFILTERS ( Appointments[Appointment Status] = "No-show" )
+			)
+		formatString: #,0
+		displayFolder: 2 Attendance
+		lineageTag: f4cb2469-3b3a-549a-8cb1-01b6a93ccd13
+
+	/// Valid appointments cancelled before the visit.
+	measure 'Cancelled Appointments' =
+			CALCULATE (
+			    [Valid Appointments],
+			    KEEPFILTERS ( Appointments[Appointment Status] = "Cancelled" )
+			)
+		formatString: #,0
+		displayFolder: 2 Attendance
+		lineageTag: 83c02dbe-26dd-551c-a107-2d38cc327f1f
+
+	/// Valid appointments moved to another time.
+	measure 'Rescheduled Appointments' =
+			CALCULATE (
+			    [Valid Appointments],
+			    KEEPFILTERS ( Appointments[Appointment Status] = "Rescheduled" )
+			)
+		formatString: #,0
+		displayFolder: 2 Attendance
+		lineageTag: 8f7e5cb9-1b81-5848-98bf-3b0f3c9a3805
+
+	/// Completed plus no-show appointments: the denominator of the no-show rate.
+	measure 'Attendance-Eligible Appointments' = [Completed Appointments] + [No-show Appointments]
+		formatString: #,0
+		displayFolder: 2 Attendance
+		lineageTag: 7ba85fa4-9c75-5591-9a51-f2989999e346
+
+	/// No-shows as a share of attendance-eligible appointments.
+	measure 'No-show Rate' = DIVIDE ( [No-show Appointments], [Attendance-Eligible Appointments] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Attendance
+		lineageTag: b356eb2a-8ca3-5aa2-8c46-a8df7636b76f
+
+	/// Share of active patients with more than one valid appointment.
+	measure 'Repeat Patient Rate' =
+			VAR PatientVisits =
+			    ADDCOLUMNS (
+			        FILTER ( VALUES ( Appointments[Patient Key] ), Appointments[Patient Key] <> 0 ),
+			        "@Visits", [Valid Appointments]
+			    )
+			VAR RepeatPatients =
+			    COUNTROWS ( FILTER ( PatientVisits, [@Visits] > 1 ) )
+			RETURN
+			    DIVIDE ( RepeatPatients, [Active Patients] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Attendance
+		lineageTag: 158c17d1-938e-52fb-bca4-707e7f985f24
+
+	/// Share of valid appointments that are follow-up visits.
+	measure 'Follow-up Share' =
+			DIVIDE (
+			    CALCULATE ( [Valid Appointments], KEEPFILTERS ( Appointments[Visit Type] = "Follow-up" ) ),
+			    [Valid Appointments]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Attendance
+		lineageTag: 46689a1c-96b6-54f4-abec-653961b16b1a
+
+	/// Share of valid appointments held by video.
+	measure 'Telemedicine Share' =
+			DIVIDE (
+			    CALCULATE ( [Valid Appointments], KEEPFILTERS ( Appointments[Consultation Mode] = "Telemedicine" ) ),
+			    [Valid Appointments]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Attendance
+		lineageTag: 799dd03c-56d0-5e14-abe1-6b962d91e029
+
+	/// No-show rate in the pre-pilot baseline (3 Oct 2022 to 29 Apr 2023). Follows other slicers.
+	measure 'Baseline No-show Rate' =
+			CALCULATE (
+			    [No-show Rate],
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: 3166aebc-9789-5ee2-89b3-221dd9b29992
+
+	/// Baseline no-show rate across all 14 clinics (the all-clinic average). Ignores all slicers, used as a reference line.
+	measure 'All-clinic Baseline No-show Rate' =
+			CALCULATE (
+			    [No-show Rate],
+			    REMOVEFILTERS ( Appointments ),
+			    REMOVEFILTERS ( Patient ),
+			    REMOVEFILTERS ( Clinic ),
+			    REMOVEFILTERS ( Doctor ),
+			    REMOVEFILTERS ( 'Date' ),
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: 5a7aea7e-b20a-54c0-8505-7ec8facb7e4e
+
+	/// Baseline no-show rate for semi-urban patients with morning appointments (the pilot segment).
+	measure 'Target Segment Baseline No-show Rate' =
+			CALCULATE (
+			    [Baseline No-show Rate],
+			    Appointments[Target Segment] = "Target: Semi-urban morning"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: 62b59c35-3665-56e0-8309-85fce5a6b9dd
+
+	/// Difference between the selected baseline no-show rate and the all-clinic average, in percentage points.
+	measure 'Baseline Gap vs All-clinic Average' = ( [Baseline No-show Rate] - [All-clinic Baseline No-show Rate] ) * 100
+		formatString: +0.0" pp";-0.0" pp";0.0" pp"
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: c995d90a-7e84-5c81-9956-dc50b39e1315
+
+	/// Appointments assigned to the reminder pilot.
+	measure 'Pilot Appointments' = COUNTROWS ( 'Pilot Assignments' )
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot
+		lineageTag: e03abca1-4d54-5a81-8885-aab9269fd75d
+
+	/// Pilot appointments that ended as completed or no-show.
+	measure 'Pilot Eligible Appointments' =
+			CALCULATE (
+			    [Pilot Appointments],
+			    KEEPFILTERS ( 'Pilot Assignments'[Attendance Eligible] = "Yes" )
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot
+		lineageTag: 9d2d2100-62ad-5151-b3d2-a302e078ef05
+
+	/// Pilot appointments where the patient did not attend.
+	measure 'Pilot No-shows' =
+			CALCULATE (
+			    [Pilot Appointments],
+			    KEEPFILTERS ( 'Pilot Assignments'[Is No-show] = "Yes" )
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot
+		lineageTag: 8287da5a-ec59-50a4-b867-0416d348a6c0
+
+	/// Pilot no-shows as a share of eligible pilot appointments.
+	measure 'Pilot No-show Rate' = DIVIDE ( [Pilot No-shows], [Pilot Eligible Appointments] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot
+		lineageTag: f7402298-f85e-5549-8407-1ef2e5776605
+
+	/// No-show rate for the standard reminder group.
+	measure 'Standard Group No-show Rate' =
+			CALCULATE (
+			    [Pilot No-show Rate],
+			    'Pilot Assignments'[Reminder Group] = "Standard reminder"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: eb64b054-25cb-5ea7-a478-a46fe6f64699
+
+	/// No-show rate for the enhanced reminder group.
+	measure 'Enhanced Group No-show Rate' =
+			CALCULATE (
+			    [Pilot No-show Rate],
+			    'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: 87111080-5da2-5e8e-9594-f10a258d8836
+
+	/// Standard minus enhanced no-show rate, in percentage points.
+	measure 'No-show Reduction (percentage points)' = ( [Standard Group No-show Rate] - [Enhanced Group No-show Rate] ) * 100
+		formatString: 0.0" pp"
+		displayFolder: 4 Reminder Pilot
+		lineageTag: 3f83c6b5-6aba-5048-a22b-c9166d33d6a3
+
+	/// Reduction as a share of the standard group no-show rate.
+	measure 'Relative No-show Reduction' =
+			DIVIDE (
+			    [Standard Group No-show Rate] - [Enhanced Group No-show Rate],
+			    [Standard Group No-show Rate]
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot
+		lineageTag: 69867453-2f55-51fe-b4be-0f4898479302
+
+	/// Enhanced-group eligible appointments multiplied by the no-show rate reduction.
+	measure 'Estimated Avoided No-shows' =
+			VAR EnhancedEligible =
+			    CALCULATE (
+			        [Pilot Eligible Appointments],
+			        'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			    )
+			RETURN
+			    EnhancedEligible * ( [Standard Group No-show Rate] - [Enhanced Group No-show Rate] )
+		formatString: "≈"#,0
+		displayFolder: 4 Reminder Pilot
+		lineageTag: d0fab3e5-2e16-541c-b99f-2783d9b38998
+
+	/// Share of enhanced reminders that were delivered.
+	measure 'Enhanced Group Delivery Rate' =
+			DIVIDE (
+			    CALCULATE (
+			        [Pilot Appointments],
+			        'Pilot Assignments'[Reminder Group] = "Enhanced reminder",
+			        'Pilot Assignments'[Delivery Status] = "Delivered"
+			    ),
+			    CALCULATE (
+			        [Pilot Appointments],
+			        'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			    )
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: da5283c3-40db-5868-9eb2-1a99208cb9f4
+
+	/// Average minutes spent on the weekly report.
+	measure 'Average Weekly Reporting Minutes' = AVERAGE ( 'Reporting Weeks'[Total (minutes)] )
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 5c001633-66e3-5d67-a2e5-1f08efb8f6d0
+
+	/// Average weekly reporting minutes before automation.
+	measure 'Minutes Before Automation' =
+			CALCULATE (
+			    [Average Weekly Reporting Minutes],
+			    'Reporting Weeks'[Process Phase] = "Before automation"
+			)
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 37f92efa-18b4-50ca-b69a-9f50835adab7
+
+	/// Average weekly reporting minutes after automation.
+	measure 'Minutes After Automation' =
+			CALCULATE (
+			    [Average Weekly Reporting Minutes],
+			    'Reporting Weeks'[Process Phase] = "After automation"
+			)
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 004a2dfe-0ec2-5f72-8c5c-3ebb4e8e077b
+
+	/// Minutes saved per week by automation.
+	measure 'Weekly Minutes Saved' = [Minutes Before Automation] - [Minutes After Automation]
+		formatString: 0" min"
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 799c7ab1-cf47-5050-846e-40d3d6af3a26
+
+	/// Hours saved per week by automation.
+	measure 'Weekly Hours Saved' = DIVIDE ( [Weekly Minutes Saved], 60 )
+		formatString: 0.0" h"
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 01d93641-f926-55cd-9786-ab941f3616f0
+
+	/// Weekly minutes saved as a share of the time before automation.
+	measure 'Reporting Time Reduction' = DIVIDE ( [Weekly Minutes Saved], [Minutes Before Automation] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 80362dae-cd85-5b37-bb7f-238b5a7e83df
+
+	/// Issues logged by the SQL pipeline.
+	measure 'Logged Data Quality Issues' = COUNTROWS ( 'Data Quality Issues' )
+		formatString: #,0
+		displayFolder: 6 Data Quality
+		lineageTag: 55904a29-b69c-5c4b-9f9f-d53261967788
+
+	/// Appointments kept in the model whose scheduled date could not be read.
+	measure 'Appointments With Invalid Date' =
+			CALCULATE (
+			    [Total Appointments],
+			    KEEPFILTERS ( Appointments[Has Valid Scheduled Date] = "No" )
+			)
+		formatString: #,0
+		displayFolder: 6 Data Quality
+		lineageTag: b58b6931-1137-53f5-ad97-7506102ffb2a
+
+	/// Completed appointments as a share of valid appointments.
+	measure 'Completed Share' = DIVIDE ( [Completed Appointments], [Valid Appointments] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Attendance
+		lineageTag: cf87e447-3357-544c-8390-d9c81fa98cff
+
+	/// Specialties with at least one valid appointment, excluding Not recorded.
+	measure 'Specialty Count' =
+			CALCULATE (
+			    DISTINCTCOUNT ( Appointments[Specialty] ),
+			    KEEPFILTERS ( Appointments[Specialty] <> "Not recorded" ),
+			    KEEPFILTERS ( Appointments[Has Valid Scheduled Date] = "Yes" )
+			)
+		formatString: 0
+		displayFolder: 1 Volume
+		lineageTag: 5d1a9fb6-9a1a-593d-ae88-3252dbb32194
+
+	/// Completed plus no-show appointments in the pre-pilot baseline.
+	measure 'Baseline Eligible Appointments' =
+			CALCULATE (
+			    [Attendance-Eligible Appointments],
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: #,0
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: f71cb214-e94d-52de-aca3-9181f497fa1f
+
+	/// No-show appointments in the pre-pilot baseline.
+	measure 'Baseline No-shows' =
+			CALCULATE (
+			    [No-show Appointments],
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: #,0
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: 83345baa-983e-5713-ad59-0e66e3353ea1
+
+	/// Baseline no-show rate for semi-urban patients.
+	measure 'Semi-urban Baseline No-show Rate' =
+			CALCULATE (
+			    [Baseline No-show Rate],
+			    Patient[Patient Area] = "Semi-urban"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: b8f61a6a-f979-5e52-9da6-5f4bef506c58
+
+	/// Baseline no-show rate for urban patients.
+	measure 'Urban Baseline No-show Rate' =
+			CALCULATE (
+			    [Baseline No-show Rate],
+			    Patient[Patient Area] = "Urban"
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Pre-pilot Baseline
+		lineageTag: 889cf161-b820-5757-a0fa-1d2e46e15fff
+
+	/// Eligible pilot appointments in the standard reminder group.
+	measure 'Standard Group Eligible Appointments' =
+			CALCULATE (
+			    [Pilot Eligible Appointments],
+			    'Pilot Assignments'[Reminder Group] = "Standard reminder"
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: 81e5b8d5-238b-5aeb-a18c-55db0f4b90c0
+
+	/// Eligible pilot appointments in the enhanced reminder group.
+	measure 'Enhanced Group Eligible Appointments' =
+			CALCULATE (
+			    [Pilot Eligible Appointments],
+			    'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: faf99804-8133-5305-ac77-02b91673177b
+
+	/// No-shows in the standard reminder group.
+	measure 'Standard Group No-shows' =
+			CALCULATE (
+			    [Pilot No-shows],
+			    'Pilot Assignments'[Reminder Group] = "Standard reminder"
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: a183e339-d6ac-5ffb-9ac4-c9ea465894c2
+
+	/// No-shows in the enhanced reminder group.
+	measure 'Enhanced Group No-shows' =
+			CALCULATE (
+			    [Pilot No-shows],
+			    'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: 621d4bc2-abf5-532f-b92d-79d1431ca92d
+
+	/// Lower end of the 95% confidence interval for the no-show reduction, in percentage points (unpooled standard error).
+	measure 'Reduction Lower Bound (percentage points)' =
+			VAR p1 = [Standard Group No-show Rate]
+			VAR p2 = [Enhanced Group No-show Rate]
+			VAR n1 = [Standard Group Eligible Appointments]
+			VAR n2 = [Enhanced Group Eligible Appointments]
+			VAR se =
+			    SQRT ( DIVIDE ( p1 * ( 1 - p1 ), n1 ) + DIVIDE ( p2 * ( 1 - p2 ), n2 ) )
+			RETURN
+			    IF ( n1 > 0 && n2 > 0, ( p1 - p2 - 1.96 * se ) * 100 )
+		formatString: 0.0
+		displayFolder: 4 Reminder Pilot\Statistics
+		lineageTag: cb1c1dd6-bf1d-5fda-971c-018fc0435fe0
+
+	/// Upper end of the 95% confidence interval for the no-show reduction, in percentage points (unpooled standard error).
+	measure 'Reduction Upper Bound (percentage points)' =
+			VAR p1 = [Standard Group No-show Rate]
+			VAR p2 = [Enhanced Group No-show Rate]
+			VAR n1 = [Standard Group Eligible Appointments]
+			VAR n2 = [Enhanced Group Eligible Appointments]
+			VAR se =
+			    SQRT ( DIVIDE ( p1 * ( 1 - p1 ), n1 ) + DIVIDE ( p2 * ( 1 - p2 ), n2 ) )
+			RETURN
+			    IF ( n1 > 0 && n2 > 0, ( p1 - p2 + 1.96 * se ) * 100 )
+		formatString: 0.0
+		displayFolder: 4 Reminder Pilot\Statistics
+		lineageTag: 48380feb-b800-5730-80d7-381af3010b22
+
+	/// Two-sided p-value of a two-proportion z-test (pooled) comparing the standard and enhanced no-show rates.
+	measure 'Pilot P-value' =
+			VAR n1 = [Standard Group Eligible Appointments]
+			VAR n2 = [Enhanced Group Eligible Appointments]
+			VAR x1 = [Standard Group No-shows]
+			VAR x2 = [Enhanced Group No-shows]
+			VAR pooled = DIVIDE ( x1 + x2, n1 + n2 )
+			VAR se =
+			    SQRT ( pooled * ( 1 - pooled ) * ( DIVIDE ( 1, n1 ) + DIVIDE ( 1, n2 ) ) )
+			VAR z = DIVIDE ( DIVIDE ( x1, n1 ) - DIVIDE ( x2, n2 ), se )
+			RETURN
+			    IF ( n1 > 0 && n2 > 0, 2 * ( 1 - NORM.S.DIST ( ABS ( z ), TRUE () ) ) )
+		formatString: 0.000
+		displayFolder: 4 Reminder Pilot\Statistics
+		lineageTag: 557b660c-fec2-504e-9f85-033049fe4efa
+
+	/// Pilot appointments in the enhanced reminder group.
+	measure 'Enhanced Group Reminders Sent' =
+			CALCULATE (
+			    [Pilot Appointments],
+			    'Pilot Assignments'[Reminder Group] = "Enhanced reminder"
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Groups
+		lineageTag: 8a986535-d1ee-5bad-bde4-04f1a5fdc09d
+
+	/// Appointments at each stage of the pilot funnel. Use with 'Pilot Stage'[Stage].
+	measure 'Pilot Stage Appointments' =
+			SWITCH (
+			    SELECTEDVALUE ( 'Pilot Stage'[Stage] ),
+			    "Assigned", [Pilot Appointments],
+			    "Attendance-eligible", [Pilot Eligible Appointments],
+			    "Attended", [Pilot Eligible Appointments] - [Pilot No-shows]
+			)
+		formatString: #,0
+		displayFolder: 4 Reminder Pilot\Pilot Flow
+		lineageTag: 53b5ed90-192c-53b2-9c58-c16ce11aa059
+
+	/// Average weekly minutes for the stage in 'Reporting Step'[Step].
+	measure 'Stage Minutes' =
+			SWITCH (
+			    SELECTEDVALUE ( 'Reporting Step'[Step] ),
+			    "Preparation", AVERAGE ( 'Reporting Weeks'[Preparation (minutes)] ),
+			    "Validation", AVERAGE ( 'Reporting Weeks'[Validation (minutes)] ),
+			    "Formatting", AVERAGE ( 'Reporting Weeks'[Formatting (minutes)] ),
+			    "Distribution", AVERAGE ( 'Reporting Weeks'[Distribution (minutes)] )
+			)
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: 64ae8e89-d969-59fb-a31c-2eb30a6ddc3e
+
+	/// Average weekly minutes saved in a stage: before minus after automation.
+	measure 'Stage Minutes Saved' =
+			CALCULATE ( [Stage Minutes], 'Reporting Weeks'[Process Phase] = "Before automation" )
+			    - CALCULATE ( [Stage Minutes], 'Reporting Weeks'[Process Phase] = "After automation" )
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: d6a548ec-6d67-5b55-9a9e-f2d251c8f9bd
+
+	/// Starting weekly total, then the minutes saved per stage as negative steps. The chart total is the weekly time after automation.
+	measure 'Waterfall Minutes' =
+			IF (
+			    SELECTEDVALUE ( 'Reporting Step'[Step] ) = "Before automation",
+			    [Minutes Before Automation],
+			    - [Stage Minutes Saved]
+			)
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: 61197262-8466-5568-9716-4bb800b3b35b
+
+	/// Hours saved over all logged weeks after automation, compared with the average week before automation.
+	measure 'Hours Saved After Automation' =
+			VAR BeforeAverage =
+			    CALCULATE ( [Average Weekly Reporting Minutes], REMOVEFILTERS ( 'Reporting Weeks' ), 'Reporting Weeks'[Process Phase] = "Before automation" )
+			VAR AfterWeeks =
+			    FILTER ( ALL ( 'Reporting Weeks' ), 'Reporting Weeks'[Process Phase] = "After automation" )
+			RETURN
+			    DIVIDE ( SUMX ( AfterWeeks, BeforeAverage - 'Reporting Weeks'[Total (minutes)] ), 60 )
+		formatString: 0.0" h"
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 5db06e18-b614-53f1-856c-8dcf142d84db
+
+	/// Running total of hours saved, week by week after automation.
+	measure 'Cumulative Hours Saved' =
+			VAR CurrentWeek = MAX ( 'Reporting Weeks'[Week Starting] )
+			VAR BeforeAverage =
+			    CALCULATE ( [Average Weekly Reporting Minutes], REMOVEFILTERS ( 'Reporting Weeks' ), 'Reporting Weeks'[Process Phase] = "Before automation" )
+			VAR WeeksSoFar =
+			    FILTER (
+			        ALL ( 'Reporting Weeks' ),
+			        'Reporting Weeks'[Process Phase] = "After automation"
+			            && 'Reporting Weeks'[Week Starting] <= CurrentWeek
+			    )
+			RETURN
+			    IF (
+			        SELECTEDVALUE ( 'Reporting Weeks'[Process Phase] ) = "After automation",
+			        DIVIDE ( SUMX ( WeeksSoFar, BeforeAverage - 'Reporting Weeks'[Total (minutes)] ), 60 )
+			    )
+		formatString: 0.0" h"
+		displayFolder: 5 Reporting Efficiency
+		lineageTag: 5d5f9545-dc9a-51c8-85ea-c6d99117ff16
+
+	/// Stage with the largest weekly time saving.
+	measure 'Biggest Saving Stage' =
+			VAR Stages =
+			    FILTER ( ALL ( 'Reporting Step'[Step] ), 'Reporting Step'[Step] <> "Before automation" )
+			RETURN
+			    MAXX ( TOPN ( 1, Stages, [Stage Minutes Saved], DESC ), 'Reporting Step'[Step] )
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: cc2f20b3-2edf-532d-8785-9906d914d73e
+
+	/// Weekly minutes saved in the stage with the largest saving.
+	measure 'Biggest Stage Saving' =
+			VAR Stages =
+			    FILTER ( ALL ( 'Reporting Step'[Step] ), 'Reporting Step'[Step] <> "Before automation" )
+			RETURN
+			    MAXX ( Stages, [Stage Minutes Saved] )
+		formatString: 0.0
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: c5f595f4-f499-5cc6-8e88-6b278a08b492
+
+	/// Logged issues with severity Error (wrong or impossible values).
+	measure 'Error Issues' =
+			CALCULATE (
+			    [Logged Data Quality Issues],
+			    KEEPFILTERS ( 'Data Quality Issues'[Severity] = "Error" )
+			)
+		formatString: #,0
+		displayFolder: 6 Data Quality
+		lineageTag: 8e51e0ab-28bc-5f49-a047-fadba540b79f
+
+	/// Logged issues with severity Warning (missing or unusual values).
+	measure 'Warning Issues' =
+			CALCULATE (
+			    [Logged Data Quality Issues],
+			    KEEPFILTERS ( 'Data Quality Issues'[Severity] = "Warning" )
+			)
+		formatString: #,0
+		displayFolder: 6 Data Quality
+		lineageTag: 5f4347de-6123-5e9c-9aeb-6180e4642e65
+
+	/// Share of the weekly saving that comes from the biggest stage.
+	measure 'Biggest Saving Share' = DIVIDE ( [Biggest Stage Saving], [Weekly Minutes Saved] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 5 Reporting Efficiency\By Stage
+		lineageTag: ee207922-a6bf-5edc-953d-c32c7171b36f
+
+	/// Standard-group no-show rate for the row in 'Pilot Period'.
+	measure 'Period Standard Rate' =
+			VAR SelectedPeriod = SELECTEDVALUE ( 'Pilot Period'[Period] )
+			RETURN
+			    SWITCH (
+			        SelectedPeriod,
+			        "All pilot weeks", [Standard Group No-show Rate],
+			        "May 2023", CALCULATE ( [Standard Group No-show Rate], 'Date'[Month] = "May 2023" ),
+			        "June 2023", CALCULATE ( [Standard Group No-show Rate], 'Date'[Month] = "Jun 2023" )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot\Forest Plot
+		lineageTag: 933cd394-8915-51a4-8e3c-560921b93020
+
+	/// Enhanced-group no-show rate for the row in 'Pilot Period'.
+	measure 'Period Enhanced Rate' =
+			VAR SelectedPeriod = SELECTEDVALUE ( 'Pilot Period'[Period] )
+			RETURN
+			    SWITCH (
+			        SelectedPeriod,
+			        "All pilot weeks", [Enhanced Group No-show Rate],
+			        "May 2023", CALCULATE ( [Enhanced Group No-show Rate], 'Date'[Month] = "May 2023" ),
+			        "June 2023", CALCULATE ( [Enhanced Group No-show Rate], 'Date'[Month] = "Jun 2023" )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Reminder Pilot\Forest Plot
+		lineageTag: 3ef5b07f-13f3-57b2-adb6-7c043ef2dfc9
+
+	/// No-show reduction in percentage points for the row in 'Pilot Period'.
+	measure 'Period Reduction (percentage points)' =
+			VAR SelectedPeriod = SELECTEDVALUE ( 'Pilot Period'[Period] )
+			RETURN
+			    SWITCH (
+			        SelectedPeriod,
+			        "All pilot weeks", [No-show Reduction (percentage points)],
+			        "May 2023", CALCULATE ( [No-show Reduction (percentage points)], 'Date'[Month] = "May 2023" ),
+			        "June 2023", CALCULATE ( [No-show Reduction (percentage points)], 'Date'[Month] = "Jun 2023" )
+			    )
+		formatString: 0.0
+		displayFolder: 4 Reminder Pilot\Forest Plot
+		lineageTag: 25ffe42d-fdc7-588b-8152-4274fa69aa8b
+
+	/// Lower end of the 95% interval for the row in 'Pilot Period'.
+	measure 'Period Lower Bound (percentage points)' =
+			VAR SelectedPeriod = SELECTEDVALUE ( 'Pilot Period'[Period] )
+			RETURN
+			    SWITCH (
+			        SelectedPeriod,
+			        "All pilot weeks", [Reduction Lower Bound (percentage points)],
+			        "May 2023", CALCULATE ( [Reduction Lower Bound (percentage points)], 'Date'[Month] = "May 2023" ),
+			        "June 2023", CALCULATE ( [Reduction Lower Bound (percentage points)], 'Date'[Month] = "Jun 2023" )
+			    )
+		formatString: 0.0
+		displayFolder: 4 Reminder Pilot\Forest Plot
+		lineageTag: 2bf568f2-18b7-580f-a912-d68d89520191
+
+	/// Upper end of the 95% interval for the row in 'Pilot Period'.
+	measure 'Period Upper Bound (percentage points)' =
+			VAR SelectedPeriod = SELECTEDVALUE ( 'Pilot Period'[Period] )
+			RETURN
+			    SWITCH (
+			        SelectedPeriod,
+			        "All pilot weeks", [Reduction Upper Bound (percentage points)],
+			        "May 2023", CALCULATE ( [Reduction Upper Bound (percentage points)], 'Date'[Month] = "May 2023" ),
+			        "June 2023", CALCULATE ( [Reduction Upper Bound (percentage points)], 'Date'[Month] = "Jun 2023" )
+			    )
+		formatString: 0.0
+		displayFolder: 4 Reminder Pilot\Forest Plot
+		lineageTag: d8e48d46-23c7-5a4b-a798-0d111d8c0320
+
+	/// Average net fee of a completed visit, in BDT, across all dates and patient areas (clinic and specialty slicers still apply). The price of one missed visit in every estimate.
+	measure 'Average Visit Fee' =
+			CALCULATE (
+			    AVERAGE ( Payments[Net Amount (BDT)] ),
+			    Appointments[Appointment Status] = "Completed",
+			    REMOVEFILTERS ( 'Date' ),
+			    REMOVEFILTERS ( Patient )
+			)
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: d0b5e138-0e74-5b2f-9fd8-f63493a38d26
+
+	/// Estimated fees not collected: no-shows multiplied by the average visit fee, in BDT.
+	measure 'Missed Visit Fees' = [No-show Appointments] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 7d4c4ea3-04a6-5cbb-a75e-7116263b7023
+
+	/// Estimated fees not collected in the pre-pilot baseline, in BDT.
+	measure 'Baseline Missed Visit Fees' =
+			CALCULATE (
+			    [Missed Visit Fees],
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 94d92937-aee3-5adf-a724-6ce0dc0488a9
+
+	/// No-shows the enhanced group would have had at the standard group rate.
+	measure 'Pilot Expected No-shows at Standard Rate' = [Enhanced Group Eligible Appointments] * [Standard Group No-show Rate]
+		formatString: #,0
+		displayFolder: 7 Money Estimates\Helpers
+		lineageTag: bdb65902-a151-5ceb-aa6e-399355ffc732
+
+	/// Estimated fees the enhanced group would have lost at the standard group no-show rate, in BDT.
+	measure 'Pilot Fees at Standard Rate' = [Pilot Expected No-shows at Standard Rate] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 63e48b31-8d40-5f40-8651-09e38d2e8b04
+
+	/// Estimated fees the enhanced group actually lost to no-shows, in BDT.
+	measure 'Pilot Fees Lost' = [Enhanced Group No-shows] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 4b7bcd44-d7d0-57ab-accf-e8905f5bf753
+
+	/// Estimated fees kept by the enhanced reminder during the pilot: avoided no-shows multiplied by the average visit fee, in BDT.
+	measure 'Pilot Fees Kept' = [Estimated Avoided No-shows] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 70374793-7be6-5579-a7ce-f37e6947425a
+
+	/// Pilot fees kept at the lower end of the 95% confidence interval, in BDT.
+	measure 'Pilot Fees Kept Low' = [Enhanced Group Eligible Appointments] * [Reduction Lower Bound (percentage points)] / 100 * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates\Ranges
+		lineageTag: ac5c67c5-872a-5a6e-8101-865d91229720
+
+	/// Pilot fees kept at the upper end of the 95% confidence interval, in BDT.
+	measure 'Pilot Fees Kept High' = [Enhanced Group Eligible Appointments] * [Reduction Upper Bound (percentage points)] / 100 * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates\Ranges
+		lineageTag: 530c0609-14ed-5c4a-84a3-3ae2fd5a8dc7
+
+	/// Days in the pre-pilot baseline window, used to turn baseline counts into yearly figures.
+	measure 'Baseline Days' =
+			CALCULATE (
+			    COUNTROWS ( 'Date' ),
+			    REMOVEFILTERS ( 'Date' ),
+			    'Date'[Analysis Period] = "Pre-pilot baseline"
+			)
+		formatString: 0
+		displayFolder: 7 Money Estimates\Helpers
+		lineageTag: 9e858aee-8add-5429-b4fe-289934d11b8e
+
+	/// Estimated fees kept per year if every semi-urban patient got the enhanced reminder and the 22.7% relative drop held, in BDT.
+	measure 'Annual Fees Kept (All Semi-urban)' =
+			VAR NoShows =
+			    CALCULATE ( [Baseline No-shows], Patient[Patient Area] = "Semi-urban" )
+			VAR PerYear =
+			    DIVIDE ( NoShows * 365, [Baseline Days] )
+			RETURN
+			    PerYear * [Relative No-show Reduction] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 982979a0-0a25-5309-9571-c8ed8368f6af
+
+	/// Lower end of the 95% range for the all-semi-urban projection, in BDT.
+	measure 'Annual Fees Kept Low (All Semi-urban)' =
+			VAR NoShows =
+			    CALCULATE ( [Baseline No-shows], Patient[Patient Area] = "Semi-urban" )
+			VAR PerYear =
+			    DIVIDE ( NoShows * 365, [Baseline Days] )
+			RETURN
+			    PerYear * DIVIDE ( [Reduction Lower Bound (percentage points)] / 100, [Standard Group No-show Rate] ) * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates\Ranges
+		lineageTag: 4c6f9764-4dbe-5ea5-8b9c-636c9bc6c94e
+
+	/// Upper end of the 95% range for the all-semi-urban projection, in BDT.
+	measure 'Annual Fees Kept High (All Semi-urban)' =
+			VAR NoShows =
+			    CALCULATE ( [Baseline No-shows], Patient[Patient Area] = "Semi-urban" )
+			VAR PerYear =
+			    DIVIDE ( NoShows * 365, [Baseline Days] )
+			RETURN
+			    PerYear * DIVIDE ( [Reduction Upper Bound (percentage points)] / 100, [Standard Group No-show Rate] ) * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates\Ranges
+		lineageTag: db86afa3-2e62-52f8-ae73-53dedbcbd4d6
+
+	/// Estimated fees kept per year for semi-urban morning appointments only (the slots the pilot tested), in BDT.
+	measure 'Annual Fees Kept (Semi-urban Mornings)' =
+			VAR NoShows =
+			    CALCULATE ( [Baseline No-shows], Appointments[Target Segment] = "Target: Semi-urban morning" )
+			VAR PerYear =
+			    DIVIDE ( NoShows * 365, [Baseline Days] )
+			RETURN
+			    PerYear * [Relative No-show Reduction] * [Average Visit Fee]
+		formatString: "BDT "#,0
+		displayFolder: 7 Money Estimates
+		lineageTag: 03962ea4-0cbf-5699-9af8-ece23fa102ad
+
+	column Placeholder
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a399c5d6-8110-5d41-b428-c0740ade4d58
+		summarizeBy: none
+		sourceColumn: Placeholder
+
+		annotation SummarizationSetBy = User
+
+	partition _Measures = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [Placeholder = Int64.Type], {})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

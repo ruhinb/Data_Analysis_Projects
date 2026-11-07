@@ -1,0 +1,230 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1646.6088488100982,
+            "y": 443.33322920665319
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "2e12dbdd-0d5d-5dbe-849b-1b93ed978b88",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 920.27859154867247,
+            "y": 482.88816491925479
+          },
+          "nodeIndex": "Appointments",
+          "nodeLineageTag": "0dc368cf-b7bf-5d54-a264-017394c14c4c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 564.405460071374,
+            "y": 590.798168368012
+          },
+          "nodeIndex": "Clinic",
+          "nodeLineageTag": "88c035a4-61e8-5473-a329-bd3eab88f253",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1930.6088488100982,
+            "y": 493.33322920665319
+          },
+          "nodeIndex": "Data Quality Issues",
+          "nodeLineageTag": "1ade3a4c-34c8-587b-a060-b68c0ced138d",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 634.0022219472786,
+            "y": 237.15167465952447
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "d39c7e54-5f69-5ead-abd2-04bd7eb470f5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 349.43626233463772,
+            "y": 166.15200115558446
+          },
+          "nodeIndex": "Doctor",
+          "nodeLineageTag": "58e5e1d5-60cc-5894-9d37-d5b2648478c0",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 907.87081475799471,
+            "y": 836.66645841330626
+          },
+          "nodeIndex": "Patient",
+          "nodeLineageTag": "ddb9a47f-cb89-5932-b3c1-88aa0add1f5e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 946.35899724418789,
+            "y": -50
+          },
+          "nodeIndex": "Payments",
+          "nodeLineageTag": "c0fb997c-7609-5161-8ad4-ecf99272e7cd",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1412.6088488100982,
+            "y": 453.70388397319016
+          },
+          "nodeIndex": "Pilot Assignments",
+          "nodeLineageTag": "92206345-b7d8-52ee-8c99-7e41b8e63f8c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2214.6088488100982,
+            "y": 529.33322920665319
+          },
+          "nodeIndex": "Pilot Period",
+          "nodeLineageTag": "540a8b28-d602-5578-9891-d6fc0f346cc6",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2498.6088488100982,
+            "y": 529.33322920665319
+          },
+          "nodeIndex": "Pilot Stage",
+          "nodeLineageTag": "7071b8da-7d88-5d06-9185-926951db6cad",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1207.3035374122112,
+            "y": 807.23502033841942
+          },
+          "nodeIndex": "Reminders",
+          "nodeLineageTag": "ed4cd89b-6106-59a9-96b0-2d57d6802e76",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2782.6088488100982,
+            "y": 529.33322920665319
+          },
+          "nodeIndex": "Reporting Step",
+          "nodeLineageTag": "893665a8-0553-52c0-afe5-0241663353b0",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3066.6088488100982,
+            "y": 445.33322920665319
+          },
+          "nodeIndex": "Reporting Weeks",
+          "nodeLineageTag": "09ecc18d-e73f-5ced-af62-1f74fd00b705",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 243.34405533951667
+          },
+          "nodeIndex": "Schedule Sessions",
+          "nodeLineageTag": "4f3ec678-45e4-5561-ba8a-ac2ec11d0cfa",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1289.7326371721783,
+            "y": 100.0007096867721
+          },
+          "nodeIndex": "Telemedicine Sessions",
+          "nodeLineageTag": "0610dc61-818f-5092-8f00-f6f08853edbe",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

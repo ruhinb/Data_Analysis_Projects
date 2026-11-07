@@ -1,0 +1,116 @@
+doctor_id,doctor_name,gender_raw,specialty_raw,subspecialty_raw,designation_raw,employment_type_raw,primary_clinic_id,joining_date,leaving_date,telemedicine_enabled_raw,standard_consultation_fee_bdt,active_flag_raw,source_updated_at,ingested_at
+DR0001,Dr. Rumana Ahmed,Female,ENT,Otology,Medical Officer,Full-time,CL001,2015-03-25,,Yes,1000,yes,2023-05-21 03:10:00,2023-07-08 03:10:00
+DR0002,Dr. Samira Sarker,female,ENT,Otology,Associate Consultant,Full-time,CL009,2021-04-21,,yes,1000,1,2023-04-20 03:10:00,2023-07-08 03:10:00
+DR0003,Dr. Sumaiya Akter,F,General Medicine,Family Medicine,Senior Consultant,Visiting,CL010,2015-01-19,,yes,800,TRUE,2023-05-01 03:10:00,2023-07-08 03:10:00
+DR0004,Dr. Abdullah Alam,M,Orthopedics,Sports Injury,Consultant,Part-time,CL011,2017-09-06,,TRUE,1300,Y,2023-04-07 03:10:00,2023-07-08 03:10:00
+DR0005,Dr. Ahsan Kabir,male,General Medicine,Adult Medicine,Medical Officer,Part-time,CL007,2019-04-01,,1,1000,Yes,2023-06-06 03:10:00,2023-07-08 03:10:00
+DR0006,Dr. Sabina Hasan,female,Ophthalmology,Anterior Segment,Medical Officer,Part-time,CL014,2018-11-20,,0,1100,TRUE,2023-05-17 03:10:00,2023-07-08 03:10:00
+DR0007,Dr. Hasan Sarker,M,Ophthalmology,Anterior Segment,Associate Consultant,Part-time,CL011,2013-11-06,,0,1100,yes,2023-06-09 03:10:00,2023-07-08 03:10:00
+DR0008,Dr. Rakib Hasan,Male,General Medicine,Internal Medicine,Senior Consultant,Full-time,CL014,2014-07-10,,N,800,1,2023-06-18 03:10:00,2023-07-08 03:10:00
+DR0009,Dr. Fariha Uddin,F,Pediatrics,Child Health,Consultant,Visiting,CL003,2020-04-04,,Y,900,TRUE,2023-03-31 03:10:00,2023-07-08 03:10:00
+DR0010,Dr. Shafiq Chowdhury,Male,Endocrinology,Diabetes & Metabolism,Medical Officer,Full-time,CL001,2021-01-07,,Yes,1400,Y,2023-05-28 03:10:00,2023-07-08 03:10:00
+DR0011,Dr. Fariha Rashid,female,Neurology,Headache Medicine,Associate Consultant,Full-time,CL001,2015-08-11,,Yes,1600,TRUE,2023-04-15 03:10:00,2023-07-08 03:10:00
+DR0012,Dr. Hasan Jahan,Male,Obstetrics & Gynecology,Maternal Health,Associate Consultant,Part-time,CL002,2017-04-29,,0,1200,Y,2023-05-21 03:10:00,2023-07-08 03:10:00
+DR0013,Dr. Sharmin Uddin,female,Obstetrics & Gynecology,Obstetrics,Medical Officer,Visiting,CL003,2017-06-19,,1,1200,Yes,2023-05-07 03:10:00,2023-07-08 03:10:00
+DR0014,Dr. Nabil Chowdhury,male,Neurology,General Neurology,Consultant,Part-time,CL009,2017-01-18,,yes,1700,1,2023-06-05 03:10:00,2023-07-08 03:10:00
+DR0015,Dr. Afsana Kabir,F,Psychiatry,Community Mental Health,Medical Officer,Full-time,CL012,2013-03-26,,N,1500,Y,2023-06-12 03:10:00,2023-07-08 03:10:00
+DR0016,Dr. Nusrat Kabir,F,Pediatrics,Adolescent Medicine,Consultant,Full-time,CL007,2020-07-27,,FALSE,1100,TRUE,2023-06-25 03:10:00,2023-07-08 03:10:00
+DR0017,Dr. Rashed Rahman,male,Ophthalmology,General Ophthalmology,Associate Consultant,Full-time,CL003,2021-09-12,,Yes,1200,Y,2023-06-24 03:10:00,2023-07-08 03:10:00
+DR0018,Dr. Ahsan Alam,M,Pediatrics,General Pediatrics,Associate Consultant,Part-time,CL011,2017-10-20,,N,1100,Yes,2023-04-01 03:10:00,2023-07-08 03:10:00
+DR0019,Dr. Maliha Rahman,female,General Medicine,Adult Medicine,Consultant,Visiting,CL008,2013-05-01,,Y,800,Y,2023-07-07 03:10:00,2023-07-08 03:10:00
+DR0020,Dr. Rashed Ahmed,Male,Neurology,Headache Medicine,Senior Consultant,Visiting,CL007,2016-01-17,,FALSE,1700,Y,2023-05-24 03:10:00,2023-07-08 03:10:00
+DR0021,Dr. Fahim Haque,Male,Gastroenterology,Hepatology,Consultant,Full-time,CL007,2017-07-30,,Yes,1500,Y,2023-06-30 03:10:00,2023-07-08 03:10:00
+DR0022,Dr. Shafiq Alam,Male,General Medicine,Internal Medicine,Consultant,Visiting,CL004,2018-10-05,,1,800,yes,2023-04-11 03:10:00,2023-07-08 03:10:00
+DR0023,Dr. Nadia Ahmed,Female,Neurology,Headache Medicine,Senior Consultant,Visiting,CL001,2020-05-26,,N,1600,1,2023-06-10 03:10:00,2023-07-08 03:10:00
+DR0024,Dr. Hasan Hossain,Male,Dermatology,Clinical Dermatology,Associate Consultant,Part-time,CL001,2018-08-12,,No,1100,Yes,2023-04-07 03:10:00,2023-07-08 03:10:00
+DR0025,Dr. Abdullah Hossain,male,Cardiology,Preventive Cardiology,Medical Officer,Full-time,CL013,2018-05-25,,Y,1500,TRUE,2023-06-20 03:10:00,2023-07-08 03:10:00
+DR0026,Dr. Tasnim Karim,Female,Ophthalmology,Anterior Segment,Medical Officer,Part-time,CL001,2016-04-23,,Y,1100,yes,2023-06-01 03:10:00,2023-07-08 03:10:00
+DR0027,Dr. Umme Akter,female,Dermatology,Clinical Dermatology,Associate Consultant,Visiting,CL004,2015-08-20,,Y,1000,1,2023-03-31 03:10:00,2023-07-08 03:10:00
+DR0028,Dr. Shafiq Rashid,M,General Medicine,Adult Medicine,Consultant,Full-time,CL009,2019-03-21,,Y,900,yes,2023-06-20 03:10:00,2023-07-08 03:10:00
+DR0029,Dr. Tanvir Alam,M,General Medicine,Adult Medicine,Senior Consultant,Full-time,CL014,2018-11-14,,no,800,1,2023-05-05 03:10:00,2023-07-08 03:10:00
+DR0030,Dr. Zahid Karim,M,General Medicine,Internal Medicine,Consultant,Visiting,CL011,2020-10-13,,FALSE,800,yes,2023-04-12 03:10:00,2023-07-08 03:10:00
+DR0031,Dr. Masud Miah,M,Orthopedics,Sports Injury,Consultant,Full-time,CL012,2015-11-02,,Y,1300,TRUE,2023-05-29 03:10:00,2023-07-08 03:10:00
+DR0032,Dr. Tanvir Jahan,M,Obstetrics & Gynecology,Gynecology,Associate Consultant,Visiting,CL011,2014-12-23,,no,1300,Yes,2023-04-16 03:10:00,2023-07-08 03:10:00
+DR0033,Dr. Humaira Ahmed,F,Psychiatry,Adult Psychiatry,Consultant,Full-time,CL008,2019-03-04,,Y,1500,1,2023-06-18 03:10:00,2023-07-08 03:10:00
+DR0034,Dr. Farzana Miah,F,General Medicine,Internal Medicine,Medical Officer,Part-time,CL002,2017-01-28,,Y,800,yes,2023-04-17 03:10:00,2023-07-08 03:10:00
+DR0035,Dr. Saif Ahmed,M,Cardiology,Preventive Cardiology,Medical Officer,Full-time,CL002,2017-07-20,,N,1600,TRUE,2023-06-09 03:10:00,2023-07-08 03:10:00
+DR0036,Dr. Shafiq Ahmed,Male,Orthopedics,General Orthopedics,Consultant,Visiting,CL001,2015-03-17,,yes,1300,1,2023-05-27 03:10:00,2023-07-08 03:10:00
+DR0037,Dr. Farhan Khan,Male,Obstetrics & Gynecology,Gynecology,Consultant,Full-time,CL001,2018-09-09,,1,1400,1,2023-05-04 03:10:00,2023-07-08 03:10:00
+DR0038,Dr. Arif Uddin,male,Obstetrics & Gynecology,Obstetrics,Consultant,Full-time,CL001,2019-05-24,,TRUE,1200,Y,2023-06-26 03:10:00,2023-07-08 03:10:00
+DR0039,Dr. Fariha Alam,Female,Pediatrics,Adolescent Medicine,Consultant,Full-time,CL014,2019-02-12,,0,900,1,2023-07-01 03:10:00,2023-07-08 03:10:00
+DR0040,Dr. Nafisa Hossain,F,General Medicine,Internal Medicine,Consultant,Part-time,CL014,2015-08-20,,TRUE,800,TRUE,2023-06-06 03:10:00,2023-07-08 03:10:00
+DR0041,Dr. Mahmud Ahmed,M,Pediatrics,General Pediatrics,Consultant,Full-time,CL002,2019-02-10,,Yes,1000,Yes,2023-05-08 03:10:00,2023-07-08 03:10:00
+DR0042,Dr. Farhan Sultana,M,General Medicine,Family Medicine,Consultant,Full-time,CL007,2015-02-18,,0,900,Yes,2023-06-27 03:10:00,2023-07-08 03:10:00
+DR0043,Dr. Saif Akter,male,Ophthalmology,General Ophthalmology,Consultant,Part-time,CL006,2018-03-25,,Yes,1100,Yes,2023-05-25 03:10:00,2023-07-08 03:10:00
+DR0044,Dr. Sumaiya Uddin,F,Pediatrics,Adolescent Medicine,Senior Consultant,Full-time,CL005,2013-06-19,,1,900,yes,2023-04-10 03:10:00,2023-07-08 03:10:00
+DR0045,Dr. Ahsan Haque,male,Dermatology,Dermatologic Procedures,Consultant,Full-time,CL003,2018-07-30,,Yes,1000,Y,2023-06-16 03:10:00,2023-07-08 03:10:00
+DR0046,Dr. Tasnim Uddin,F,Dermatology,Dermatologic Procedures,Consultant,Full-time,CL002,2014-02-19,,0,1300,Yes,2023-04-11 03:10:00,2023-07-08 03:10:00
+DR0047,Dr. Nafis Haque,Male,Pediatrics,General Pediatrics,Associate Consultant,Full-time,CL014,2021-06-05,,N,900,1,2023-06-16 03:10:00,2023-07-08 03:10:00
+DR0048,Dr. Tanvir Chowdhury,male,Obstetrics & Gynecology,Maternal Health,Consultant,Part-time,CL010,2013-03-14,,1,1200,Y,2023-06-10 03:10:00,2023-07-08 03:10:00
+DR0049,Dr. Asif Miah,male,Endocrinology,Diabetes & Metabolism,Associate Consultant,Part-time,CL012,2014-06-09,,1,1600,1,2023-04-10 03:10:00,2023-07-08 03:10:00
+DR0050,Dr. Shafiq Sultana,male,Gastroenterology,Digestive Health,Consultant,Part-time,CL005,2013-04-07,,yes,1500,1,2023-05-12 03:10:00,2023-07-08 03:10:00
+DR0051,Dr. Moin Alam,male,Obstetrics & Gynecology,Maternal Health,Medical Officer,Visiting,CL014,2020-07-28,,Y,1200,Yes,2023-05-09 03:10:00,2023-07-08 03:10:00
+DR0052,Dr. Anika Ahmed,Female,Psychiatry,Adult Psychiatry,Consultant,Visiting,CL014,2018-05-17,,Yes,1400,Y,2023-05-16 03:10:00,2023-07-08 03:10:00
+DR0053,Dr. Fariha Akter,female,Neurology,General Neurology,Senior Consultant,Visiting,CL003,2021-08-01,,1,1700,yes,2023-07-06 03:10:00,2023-07-08 03:10:00
+DR0054,Dr. Umme Khan,Female,General Medicine,Internal Medicine,Associate Consultant,Full-time,CL006,2017-12-02,,Yes,800,1,2023-07-06 03:10:00,2023-07-08 03:10:00
+DR0055,Dr. Tahmina Chowdhury,Female,Orthopedics,General Orthopedics,Consultant,Full-time,CL002,2015-12-06,,No,1400,TRUE,2023-04-05 03:10:00,2023-07-08 03:10:00
+DR0056,Dr. Sharmin Hossain,female,Pediatrics,Adolescent Medicine,Medical Officer,Part-time,CL014,2021-02-04,,N,1000,Y,2023-05-21 03:10:00,2023-07-08 03:10:00
+DR0057,Dr. Sadia Rahman,F,Obstetrics & Gynecology,Maternal Health,Consultant,Visiting,CL004,2014-11-11,,N,1200,yes,2023-03-31 03:10:00,2023-07-08 03:10:00
+DR0058,Dr. Mahjabin Sultana,Female,Gastroenterology,Digestive Health,Medical Officer,Part-time,CL004,2021-01-08,,no,1600,Y,2023-06-30 03:10:00,2023-07-08 03:10:00
+DR0059,Dr. Zahid Akter,male,Ophthalmology,General Ophthalmology,Consultant,Full-time,CL002,2019-03-18,,N,1100,1,2023-06-16 03:10:00,2023-07-08 03:10:00
+DR0060,Dr. Jannatul Alam,Female,General Medicine,Internal Medicine,Medical Officer,Part-time,CL010,2018-07-20,,Yes,800,Y,2023-06-06 03:10:00,2023-07-08 03:10:00
+DR0061,Dr. Zarin Hossain,F,Ophthalmology,General Ophthalmology,Senior Consultant,Part-time,CL014,2020-03-03,,yes,1100,TRUE,2023-06-12 03:10:00,2023-07-08 03:10:00
+DR0062,Dr. Masud Hossain,male,Neurology,General Neurology,Medical Officer,Full-time,CL002,2020-02-11,,0,1600,Y,2023-05-21 03:10:00,2023-07-08 03:10:00
+DR0063,Dr. Saif Hossain,M,General Medicine,Family Medicine,Consultant,Visiting,CL009,2014-04-16,,Y,900,TRUE,2023-04-04 03:10:00,2023-07-08 03:10:00
+DR0064,Dr. Sumaiya Mahmud,Female,ENT,Otology,Senior Consultant,Visiting,CL012,2019-03-14,,yes,1100,1,2023-04-05 03:10:00,2023-07-08 03:10:00
+DR0065,Dr. Arif Akter,male,Orthopedics,General Orthopedics,Consultant,Full-time,CL012,2013-12-16,2023-03-17,yes,1300,no,2023-05-13 03:10:00,2023-07-08 03:10:00
+DR0066,Dr. Sabina Karim,female,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,CL002,2020-02-18,,Y,1200,Y,2023-07-01 03:10:00,2023-07-08 03:10:00
+DR0067,Dr. Shafiq Mahmud,M,Pediatrics,Adolescent Medicine,Consultant,Part-time,CL014,2013-11-27,,N,900,1,2023-06-09 03:10:00,2023-07-08 03:10:00
+DR0068,Dr. Tariq Karim,M,Dermatology,Clinical Dermatology,Consultant,Full-time,CL008,2014-03-13,,Yes,1000,TRUE,2023-05-15 03:10:00,2023-07-08 03:10:00
+DR0069,Dr. Asif Hossain,male,General Medicine,Adult Medicine,Senior Consultant,Part-time,CL007,2017-12-23,,FALSE,900,Yes,2023-05-16 03:10:00,2023-07-08 03:10:00
+DR0070,Dr. Umme Alam,female,Ophthalmology,General Ophthalmology,Consultant,Visiting,CL007,2013-08-31,,Y,1100,yes,2023-06-04 03:10:00,2023-07-08 03:10:00
+DR0071,Dr. Nafis Chowdhury,Male,Endocrinology,Thyroid Disorders,Medical Officer,Visiting,CL001,2016-04-05,,1,1400,yes,2023-04-05 03:10:00,2023-07-08 03:10:00
+DR0072,Dr. Mahmud Hasan,male,Orthopedics,Sports Injury,Senior Consultant,Full-time,CL009,2016-02-28,,no,1300,Yes,2023-04-12 03:10:00,2023-07-08 03:10:00
+DR0073,Dr. Tahmina Miah,Female,ENT,General ENT,Medical Officer,Full-time,CL010,2017-05-29,,Y,1200,1,2023-06-14 03:10:00,2023-07-08 03:10:00
+DR0074,Dr. Nafisa Rahman,F,General Medicine,Internal Medicine,Senior Consultant,Part-time,CL001,2014-12-02,,TRUE,800,1,2023-05-28 03:10:00,2023-07-08 03:10:00
+DR0075,Dr. Sharmin Sarker,female,Psychiatry,Community Mental Health,Consultant,Part-time,CL001,2020-12-31,,N,1400,1,2023-04-03 03:10:00,2023-07-08 03:10:00
+DR0076,Dr. Sharmin Alam,F,Cardiology,Preventive Cardiology,Medical Officer,Part-time,CL011,2018-10-11,,Yes,1600,1,2023-04-08 03:10:00,2023-07-08 03:10:00
+DR0077,Dr. Nusrat Hasan,Female,Orthopedics,Sports Injury,Associate Consultant,Visiting,CL002,2020-09-13,,N,1300,1,2023-04-26 03:10:00,2023-07-08 03:10:00
+DR0078,Dr. Masud Ahmed,Male,Gastroenterology,Hepatology,Consultant,Full-time,CL002,2013-03-10,,1,1500,yes,2023-06-30 03:10:00,2023-07-08 03:10:00
+DR0079,Dr. Mehedi Haque,male,Dermatology,Dermatologic Procedures,Medical Officer,Full-time,CL001,2021-03-12,,Yes,1100,yes,2023-05-06 03:10:00,2023-07-08 03:10:00
+DR0080,Dr. Maliha Mahmud,Female,Pediatrics,Adolescent Medicine,Consultant,Full-time,CL014,2015-05-28,,FALSE,1000,Y,2023-05-12 03:10:00,2023-07-08 03:10:00
+DR0081,Dr. Zarin Rashid,F,Orthopedics,Sports Injury,Consultant,Part-time,CL001,2014-02-17,,1,1300,Yes,2023-05-09 03:10:00,2023-07-08 03:10:00
+DR0082,Dr. Nabil Sultana,M,Gastroenterology,Digestive Health,Senior Consultant,Visiting,CL005,2019-03-02,,Y,1500,Y,2023-06-29 03:10:00,2023-07-08 03:10:00
+DR0083,Dr. Tasnim Chowdhury,Female,Dermatology,Clinical Dermatology,Senior Consultant,Part-time,CL010,2020-07-17,,TRUE,1100,yes,2023-04-11 03:10:00,2023-07-08 03:10:00
+DR0084,Dr. Tariq Alam,male,General Medicine,Internal Medicine,Consultant,Full-time,CL005,2014-04-02,,Y,800,yes,2023-04-15 03:10:00,2023-07-08 03:10:00
+DR0085,Dr. Samira Kabir,Female,Endocrinology,Thyroid Disorders,Medical Officer,Part-time,CL012,2013-04-23,,no,1400,1,2023-06-21 03:10:00,2023-07-08 03:10:00
+DR0086,Dr. Tanvir Hossain,Male,Orthopedics,General Orthopedics,Consultant,Full-time,CL007,2013-10-07,,0,1400,TRUE,2023-06-05 03:10:00,2023-07-08 03:10:00
+DR0087,Dr. Nadia Alam,Female,Dermatology,Clinical Dermatology,Consultant,Visiting,CL012,2014-05-14,,Y,1000,yes,2023-05-19 03:10:00,2023-07-08 03:10:00
+DR0088,Dr. Arif Karim,Male,General Medicine,Internal Medicine,Medical Officer,Full-time,CL002,2019-06-20,,No,800,Yes,2023-04-25 03:10:00,2023-07-08 03:10:00
+DR0089,Dr. Rakib Sultana,Male,Pediatrics,Child Health,Associate Consultant,Visiting,CL001,2014-01-30,,TRUE,1000,Yes,2023-05-12 03:10:00,2023-07-08 03:10:00
+DR0090,Dr. Zahid Haque,Male,ENT,General ENT,Senior Consultant,Full-time,CL007,2019-11-09,,Yes,1100,TRUE,2023-04-13 03:10:00,2023-07-08 03:10:00
+DR0091,Dr. Mehedi Siddique,M,Orthopedics,General Orthopedics,Associate Consultant,Full-time,CL006,2019-04-27,,1,1200,1,2023-04-18 03:10:00,2023-07-08 03:10:00
+DR0092,Dr. Fahim Hasan,M,Neurology,General Neurology,Consultant,Part-time,CL010,2017-03-30,,yes,1700,TRUE,2023-05-26 03:10:00,2023-07-08 03:10:00
+DR0093,Dr. Tahmina Hasan,female,Cardiology,Clinical Cardiology,Senior Consultant,Part-time,CL006,2016-03-10,,N,1500,yes,2023-06-01 03:10:00,2023-07-08 03:10:00
+DR0094,Dr. Ahsan Chowdhury,M,Endocrinology,Diabetes & Metabolism,Medical Officer,Full-time,CL003,2015-10-06,,0,1400,TRUE,2023-04-01 03:10:00,2023-07-08 03:10:00
+DR0095,Dr. Sadia Islam,female,Ophthalmology,General Ophthalmology,Senior Consultant,Full-time,CL002,2019-10-23,,Yes,1100,Y,2023-05-18 03:10:00,2023-07-08 03:10:00
+DR0096,Dr. Sharmin Khan,Female,General Medicine,Family Medicine,Consultant,Part-time,CL005,2014-07-16,,1,800,Y,2023-04-11 03:10:00,2023-07-08 03:10:00
+DR0097,Dr. Humaira Siddique,Female,General Medicine,Internal Medicine,Medical Officer,Part-time,CL002,2014-07-15,,no,700,Y,2023-05-16 03:10:00,2023-07-08 03:10:00
+DR0098,Dr. Raisa Hossain,female,Pediatrics,Adolescent Medicine,Senior Consultant,Part-time,CL001,2016-04-18,,Yes,900,Yes,2023-06-09 03:10:00,2023-07-08 03:10:00
+DR0099,Dr. Afsana Haque,Female,Pediatrics,Child Health,Medical Officer,Visiting,CL004,2018-12-26,,N,800,TRUE,2023-06-13 03:10:00,2023-07-08 03:10:00
+DR0100,Dr. Masud Siddique,M,ENT,Otology,Consultant,Part-time,CL009,2018-07-04,,0,1100,1,2023-06-20 03:10:00,2023-07-08 03:10:00
+DR0101,Dr. Farhan Kabir,Male,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,CL009,2014-04-04,,yes,1400,yes,2023-06-10 03:10:00,2023-07-08 03:10:00
+DR0102,Dr. Sabina Siddique,F,Dermatology,Dermatologic Procedures,Consultant,Part-time,CL004,2017-11-07,,no,1300,yes,2023-04-27 03:10:00,2023-07-08 03:10:00
+DR0103,Dr. Zarin Alam,F,Cardiology,Clinical Cardiology,Senior Consultant,Full-time,CL002,2014-08-26,,No,1500,1,2023-05-24 03:10:00,2023-07-08 03:10:00
+DR0104,Dr. Tanvir Karim,Male,Cardiology,Preventive Cardiology,Medical Officer,Part-time,CL010,2019-10-08,,FALSE,1500,1,2023-05-22 03:10:00,2023-07-08 03:10:00
+DR0105,Dr. Farhan Rashid,M,Obstetrics & Gynecology,Maternal Health,Senior Consultant,Full-time,CL014,2016-10-25,,1,1200,1,2023-06-06 03:10:00,2023-07-08 03:10:00
+DR0106,Dr. Sabina Sultana,female,Gastroenterology,Hepatology,Consultant,Visiting,CL004,2013-12-20,,Yes,1500,TRUE,2023-06-09 03:10:00,2023-07-08 03:10:00
+DR0107,Dr. Ahsan Sarker,male,Ophthalmology,General Ophthalmology,Senior Consultant,Full-time,CL002,2020-06-07,2023-05-18,FALSE,1100,No,2023-06-02 03:10:00,2023-07-08 03:10:00
+DR0108,Dr. Hasan Chowdhury,Male,Obstetrics & Gynecology,Obstetrics,Consultant,Visiting,CL001,2013-11-09,,1,1300,yes,2023-04-01 03:10:00,2023-07-08 03:10:00
+DR0109,Dr. Samira Akter,F,Pediatrics,General Pediatrics,Consultant,Part-time,CL011,2016-06-04,,Y,1100,Yes,2023-06-23 03:10:00,2023-07-08 03:10:00
+DR0110,Dr. Sadia Mahmud,female,Cardiology,Clinical Cardiology,Consultant,Full-time,CL011,2014-09-19,,No,1500,yes,2023-04-17 03:10:00,2023-07-08 03:10:00
+DR0111,Dr. Saif Hasan,M,Pediatrics,General Pediatrics,Senior Consultant,Full-time,CL004,2017-01-25,,FALSE,900,TRUE,2023-04-07 03:10:00,2023-07-08 03:10:00
+DR0112,Dr. Nafis Rashid,M,Endocrinology,Thyroid Disorders,Senior Consultant,Part-time,CL001,2013-03-22,,yes,1400,yes,2023-04-06 03:10:00,2023-07-08 03:10:00
+DR0113,Dr. Saif Khan,Male,Obstetrics & Gynecology,Obstetrics,Associate Consultant,Full-time,CL009,2018-02-17,,Yes,1200,Yes,2023-04-05 03:10:00,2023-07-08 03:10:00
+DR0114,Dr. Saif Sultana,M,General Medicine,Family Medicine,Consultant,Visiting,CL008,2015-05-27,,yes,800,1,2023-05-04 03:10:00,2023-07-08 03:10:00
+DR0115,Dr. Jannatul Khan,female,General Medicine,Internal Medicine,Associate Consultant,Visiting,CL012,2015-03-10,,1,700,Y,2023-05-15 03:10:00,2023-07-08 03:10:00

@@ -1,0 +1,9 @@
+CATEGORY,SUB_CATEGORY,LOSS_LINES,DEEP_DISCOUNT_LOSS,SHARE_OF_DEEP_DISCOUNT_LOSS_PCT,LOSS_RANK
+Office Supplies,Binders,613,38510.5,27.8,1
+Furniture,Tables,172,30761.12,22.2,2
+Technology,Machines,44,30118.67,21.7,3
+Furniture,Bookcases,69,11097.76,8.0,4
+Office Supplies,Appliances,67,8629.64,6.2,5
+Furniture,Chairs,148,6737.12,4.9,6
+Technology,Phones,97,6715.78,4.8,7
+Furniture,Furnishings,138,5944.66,4.3,8

@@ -1,0 +1,64 @@
+{
+  "name": "Slice & Co.",
+  "dataColors": [
+    "#6C4FF8",
+    "#E8559A",
+    "#FF6B57",
+    "#0FAEAA",
+    "#FF8F3D",
+    "#4B8EF7",
+    "#A897FB"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#0D1B3D",
+  "tableAccent": "#6C4FF8",
+  "good": "#0E9F6E",
+  "neutral": "#FF8F3D",
+  "bad": "#E5484D",
+  "textClasses": {
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#36425C"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#0D1B3D"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 12,
+      "color": "#0D1B3D"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 24,
+      "color": "#0D1B3D"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "wordWrap": [
+          {
+            "show": true
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#F6F7FB"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

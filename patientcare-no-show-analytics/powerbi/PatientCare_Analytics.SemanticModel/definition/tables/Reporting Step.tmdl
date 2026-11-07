@@ -1,0 +1,37 @@
+/// Weekly reporting stages, plus the starting total used by the waterfall chart. Helper table typed in Power Query, hidden from the field list.
+table 'Reporting Step'
+	isHidden
+	lineageTag: 893665a8-0553-52c0-afe5-0241663353b0
+
+	/// Starting total, then each reporting stage, for the waterfall chart.
+	column Step
+		dataType: string
+		isHidden
+		lineageTag: 61a314f1-0304-5b0a-b25e-c1a0238e2fb3
+		summarizeBy: none
+		sourceColumn: Step
+		sortByColumn: 'Step Order'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Step.
+	column 'Step Order'
+		dataType: int64
+		isHidden
+		lineageTag: fbcf40a2-ae16-5d7c-bf56-859a0641c269
+		summarizeBy: none
+		sourceColumn: Step Order
+
+		annotation SummarizationSetBy = User
+
+	partition 'Reporting Step' = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [#"Step" = text, #"Step Order" = Int64.Type], {{"Before automation", 1}, {"Preparation", 2}, {"Validation", 3}, {"Formatting", 4}, {"Distribution", 5}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

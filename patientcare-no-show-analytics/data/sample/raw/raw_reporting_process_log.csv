@@ -1,0 +1,17 @@
+report_log_id,reporting_week_start,process_phase,reporting_method,data_preparation_minutes,validation_minutes,formatting_minutes,distribution_minutes
+RPT001,2023-01-09,Before automation,Manual spreadsheet process,127,61,43,22
+RPT002,2023-01-16,Before automation,Manual spreadsheet process,119,58,39,21
+RPT003,2023-01-23,Before automation,Manual spreadsheet process,134,63,42,22
+RPT004,2023-01-30,Before automation,Manual spreadsheet process,122,59,41,20
+RPT005,2023-02-06,Before automation,Manual spreadsheet process,116,56,39,19
+RPT006,2023-02-13,Before automation,Manual spreadsheet process,129,61,44,21
+RPT007,2023-02-20,Before automation,Manual spreadsheet process,114,55,40,20
+RPT008,2023-02-27,Before automation,Manual spreadsheet process,125,60,42,21
+RPT009,2023-05-22,After automation,Automated Power BI process,16,26,16,11
+RPT010,2023-05-29,After automation,Automated Power BI process,13,23,15,10
+RPT011,2023-06-05,After automation,Automated Power BI process,12,24,16,10
+RPT012,2023-06-12,After automation,Automated Power BI process,14,25,15,11
+RPT013,2023-06-19,After automation,Automated Power BI process,11,22,14,10
+RPT014,2023-06-26,After automation,Automated Power BI process,15,25,16,10
+RPT015,2023-07-03,After automation,Automated Power BI process,12,23,14,9
+RPT016,2023-07-10,After automation,Automated Power BI process,13,24,15,10

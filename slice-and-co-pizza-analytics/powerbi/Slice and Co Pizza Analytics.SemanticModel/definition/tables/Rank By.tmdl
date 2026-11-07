@@ -1,0 +1,27 @@
+/// Disconnected slicer table: ranking basis for the top and bottom five pizza tables.
+table 'Rank By'
+	lineageTag: e66754e7-ee21-424b-9993-e63d8dee5161
+
+	column 'Rank By'
+		dataType: string
+		lineageTag: 687b95d0-c7b3-4cb1-96c5-8779ff3855eb
+		summarizeBy: none
+		sourceColumn: Rank By
+		sortByColumn: 'Rank By Sort'
+
+	column 'Rank By Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8db6171d-56cc-421a-8c49-aff184877d66
+		summarizeBy: none
+		sourceColumn: Rank By Sort
+
+	partition 'Rank By' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [#"Rank By" = text, #"Rank By Sort" = Int64.Type], {{"Revenue", 1}, {"Quantity", 2}})
+				in
+				    Source
+

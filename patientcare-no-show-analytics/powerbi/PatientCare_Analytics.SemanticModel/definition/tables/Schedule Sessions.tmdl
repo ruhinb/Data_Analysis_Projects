@@ -1,0 +1,98 @@
+/// One row per planned doctor session at a clinic. Source: core.fact_schedule_sessions.
+table 'Schedule Sessions'
+	lineageTag: 4f3ec678-45e4-5561-ba8a-ac2ec11d0cfa
+
+	/// Links to Date.
+	column 'Session Date Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: c23692d0-ad72-5c52-a529-20a952330655
+		summarizeBy: none
+		sourceColumn: Session Date Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Clinic.
+	column 'Clinic Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 386471fa-b166-53a4-a0da-2f1fab099e65
+		summarizeBy: none
+		sourceColumn: Clinic Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Doctor.
+	column 'Doctor Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 96ec57b0-f79d-5a88-a6ca-9f9c6f3ecfe2
+		summarizeBy: none
+		sourceColumn: Doctor Key
+
+		annotation SummarizationSetBy = User
+
+	/// Scheduled or Cancelled.
+	column 'Session Status'
+		dataType: string
+		lineageTag: c1cdef9e-1e52-51aa-9d98-d0a24abc0992
+		summarizeBy: none
+		sourceColumn: Session Status
+
+		annotation SummarizationSetBy = User
+
+	/// Length of one appointment slot.
+	column 'Slot Length (minutes)'
+		dataType: int64
+		formatString: 0
+		lineageTag: bf288fae-2414-501f-bdac-e76fd3310ac0
+		summarizeBy: none
+		sourceColumn: Slot Length (minutes)
+
+		annotation SummarizationSetBy = User
+
+	/// Appointment slots planned in the session.
+	column 'Planned Slots'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 38c6660c-36fd-5e86-b607-dfe1f5de06f8
+		summarizeBy: none
+		sourceColumn: Planned Slots
+
+		annotation SummarizationSetBy = User
+
+	/// Slots blocked and not bookable.
+	column 'Blocked Slots'
+		dataType: int64
+		formatString: #,0
+		lineageTag: 123d47b9-1e43-599d-bd99-413d70a07026
+		summarizeBy: none
+		sourceColumn: Blocked Slots
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the session may be overbooked.
+	column 'Overbooking Allowed'
+		dataType: string
+		lineageTag: 254af7f4-ddcf-59c0-b3e7-fe40c51e6658
+		summarizeBy: none
+		sourceColumn: Overbooking Allowed
+
+		annotation SummarizationSetBy = User
+
+	partition 'Schedule Sessions' = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_schedule_sessions", {"session_date_key", "clinic_key", "doctor_key", "session_status", "slot_length_minutes", "planned_slots", "blocked_slots", "overbook_allowed"}, {"overbook_allowed"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"session_date_key", Int64.Type}, {"clinic_key", Int64.Type}, {"doctor_key", Int64.Type}, {"session_status", type text}, {"slot_length_minutes", Int64.Type}, {"planned_slots", Int64.Type}, {"blocked_slots", Int64.Type}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"session_date_key", "Session Date Key"}, {"clinic_key", "Clinic Key"}, {"doctor_key", "Doctor Key"}, {"session_status", "Session Status"}, {"slot_length_minutes", "Slot Length (minutes)"}, {"planned_slots", "Planned Slots"}, {"blocked_slots", "Blocked Slots"}, {"overbook_allowed", "Overbooking Allowed"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

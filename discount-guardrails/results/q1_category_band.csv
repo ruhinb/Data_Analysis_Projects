@@ -1,0 +1,12 @@
+CATEGORY,DISCOUNT_BAND,LINES,TOTAL_SALES,TOTAL_PROFIT,MARGIN_PCT,SHARE_OF_CATEGORY_SALES_PCT
+Furniture,1. No Discount,836,256025.27,58133.08,22.7,34.5
+Furniture,2. Standard (up to 20%),743,290823.78,14795.95,5.1,39.2
+Furniture,3. Deep (over 20% to 50%),389,186046.66,-44638.16,-24.0,25.1
+Furniture,4. Clearance (over 50%),153,9104.08,-9839.59,-108.1,1.2
+Office Supplies,1. No Discount,3129,442150.0,130506.11,29.5,61.5
+Office Supplies,2. Standard (up to 20%),2217,237373.89,39124.83,16.5,33.0
+Office Supplies,4. Clearance (over 50%),680,39523.15,-47140.14,-119.3,5.5
+Technology,1. No Discount,833,389733.2,132348.42,34.0,46.6
+Technology,2. Standard (up to 20%),843,318324.57,46864.69,14.7,38.1
+Technology,3. Deep (over 20% to 50%),148,112494.75,-14178.84,-12.6,13.5
+Technology,4. Clearance (over 50%),23,15601.51,-19579.32,-125.5,1.9

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "TradingDayInvestigation",
+  "displayName": "Trading Day Investigation",
+  "displayOption": "FitToPage",
+  "height": 900,
+  "width": 1600,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F6F7FB'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          },
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'background_trading.svg'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "background_trading.svg"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Fit'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#F6F7FB'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "53a9f8b0cb3f4ab82a4f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "976526965d6726067e30",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "adbcd1beee7f20792479",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "0669a97e467d3e63947d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "ba38183eba0b491c380d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "875bd35a3fbe9762e80c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "93d4ca8e8fc9e9757ce0",
+      "target": "fbd3738f11bfb75c5383",
+      "type": "NoFilter"
+    }
+  ]
+}

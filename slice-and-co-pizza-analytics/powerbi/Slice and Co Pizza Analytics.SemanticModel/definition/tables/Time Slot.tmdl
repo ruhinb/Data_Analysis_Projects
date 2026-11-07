@@ -1,0 +1,77 @@
+/// Dimension: the 48 half-hours of the day. Slot Key = minutes after midnight.
+table 'Time Slot'
+	lineageTag: b3f206a7-cb10-4b5d-8c2d-e46567af3c7e
+
+	column 'Slot Key'
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 23ea9c56-326a-4ab4-af41-9b2ab75ee333
+		summarizeBy: none
+		sourceColumn: Slot Key
+
+	column 'Slot Start'
+		dataType: dateTime
+		isHidden
+		formatString: h:mm AM/PM
+		lineageTag: f02d4eca-455c-4e51-8ff1-9cb875da7551
+		summarizeBy: none
+		sourceColumn: Slot Start
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	/// 9:30 AM
+	column 'Slot Label'
+		dataType: string
+		lineageTag: 38fbecac-533f-4b5d-af63-2cea3f269ae6
+		summarizeBy: none
+		sourceColumn: Slot Label
+		sortByColumn: 'Slot Key'
+
+	/// Hour of day, 0-23.
+	column Hour
+		dataType: int64
+		formatString: 0
+		lineageTag: ff0ea6a1-e8ee-461c-9213-e2a3bbc0d0fe
+		summarizeBy: none
+		sourceColumn: Hour
+
+	/// 12 PM
+	column 'Hour Label'
+		dataType: string
+		lineageTag: f387c778-9ea2-42c9-a01e-b8a739f94220
+		summarizeBy: none
+		sourceColumn: Hour Label
+		sortByColumn: Hour
+
+	column 'Day Part'
+		dataType: string
+		lineageTag: 0f6cbed5-7832-466b-b227-bff471e43bde
+		summarizeBy: none
+		sourceColumn: Day Part
+		sortByColumn: 'Day Part Sort'
+
+	column 'Day Part Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a6cc7499-05d7-4e2b-88ed-99783b5dda85
+		summarizeBy: none
+		sourceColumn: Day Part Sort
+
+	partition 'Time Slot' = m
+		mode: import
+		source =
+				let
+				    SlotKeys = List.Numbers(0, 48, 30),
+				    #"Converted to Table" = Table.FromList(SlotKeys, Splitter.SplitByNothing(), type table [#"Slot Key" = Int64.Type]),
+				    #"Added Slot Start" = Table.AddColumn(#"Converted to Table", "Slot Start", each #time(Number.IntegerDivide([Slot Key], 60), Number.Mod([Slot Key], 60), 0), type time),
+				    #"Added Slot Label" = Table.AddColumn(#"Added Slot Start", "Slot Label", each Time.ToText([Slot Start], "h:mm tt", "en-US"), type text),
+				    #"Added Hour" = Table.AddColumn(#"Added Slot Label", "Hour", each Time.Hour([Slot Start]), Int64.Type),
+				    #"Added Hour Label" = Table.AddColumn(#"Added Hour", "Hour Label", each Time.ToText(#time([Hour], 0, 0), "h tt", "en-US"), type text),
+				    #"Added Day Part" = Table.AddColumn(#"Added Hour Label", "Day Part", each if [Hour] < 11 then "Morning" else if [Hour] < 14 then "Lunch" else if [Hour] < 17 then "Afternoon" else if [Hour] < 21 then "Dinner" else "Late evening", type text),
+				    #"Added Day Part Sort" = Table.AddColumn(#"Added Day Part", "Day Part Sort", each List.PositionOf({"Morning", "Lunch", "Afternoon", "Dinner", "Late evening"}, [Day Part]) + 1, Int64.Type)
+				in
+				    #"Added Day Part Sort"
+

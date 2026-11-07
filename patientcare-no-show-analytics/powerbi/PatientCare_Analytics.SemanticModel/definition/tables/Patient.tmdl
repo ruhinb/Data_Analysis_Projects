@@ -1,0 +1,120 @@
+/// Registered patients, plus an Unknown row. Source: core.dim_patient.
+table Patient
+	lineageTag: ddb9a47f-cb89-5932-b3c1-88aa0add1f5e
+
+	/// Surrogate key; 0 is the Unknown row.
+	column 'Patient Key'
+		dataType: int64
+		isHidden
+		isKey
+		lineageTag: 064b619e-6a6a-506e-b360-0613520634fb
+		summarizeBy: none
+		sourceColumn: Patient Key
+
+		annotation SummarizationSetBy = User
+
+	/// Gender of the patient.
+	column 'Patient Gender'
+		dataType: string
+		lineageTag: 384569b5-5174-5a87-a8df-7f1e15e98b1b
+		summarizeBy: none
+		sourceColumn: Patient Gender
+
+		annotation SummarizationSetBy = User
+
+	/// Administrative division the patient lives in.
+	column 'Patient Division'
+		dataType: string
+		lineageTag: 97c8d038-9128-50fd-afb9-2159ad8d7885
+		summarizeBy: none
+		sourceColumn: Patient Division
+
+		annotation SummarizationSetBy = User
+
+	/// District the patient lives in.
+	column 'Patient District'
+		dataType: string
+		lineageTag: 09ffce6e-645c-559c-9a8c-2aab3287a58b
+		summarizeBy: none
+		sourceColumn: Patient District
+
+		annotation SummarizationSetBy = User
+
+	/// Urban or semi-urban, from the patient address.
+	column 'Patient Area'
+		dataType: string
+		lineageTag: 0cc6a913-b21f-5ee6-af3d-7609de0b3c2c
+		summarizeBy: none
+		sourceColumn: Patient Area
+
+		annotation SummarizationSetBy = User
+
+	/// Language the patient prefers for messages.
+	column 'Preferred Language'
+		dataType: string
+		lineageTag: ae99c5f2-d455-583e-9135-9bc7130f7da6
+		summarizeBy: none
+		sourceColumn: Preferred Language
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the patient agreed to SMS reminders.
+	column 'SMS Opt-in'
+		dataType: string
+		lineageTag: 9bf4b44a-3e72-5091-96bc-a85531f0c50d
+		summarizeBy: none
+		sourceColumn: SMS Opt-in
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the patient agreed to WhatsApp reminders.
+	column 'WhatsApp Opt-in'
+		dataType: string
+		lineageTag: e97bcd0f-fe3e-5095-bbc2-c962c48838cd
+		summarizeBy: none
+		sourceColumn: WhatsApp Opt-in
+
+		annotation SummarizationSetBy = User
+
+	/// Whether a chronic condition is recorded for the patient.
+	column 'Chronic Condition'
+		dataType: string
+		lineageTag: d00276f1-5352-50c8-93ef-2b7db431168d
+		summarizeBy: none
+		sourceColumn: Chronic Condition
+
+		annotation SummarizationSetBy = User
+
+	/// Register status: Active, Inactive, Dormant or Deceased.
+	column 'Patient Status'
+		dataType: string
+		lineageTag: aab46792-e9e4-5a32-bff1-993252538d2b
+		summarizeBy: none
+		sourceColumn: Patient Status
+
+		annotation SummarizationSetBy = User
+
+	hierarchy 'Patient Location'
+		lineageTag: 7b3f5f70-55ab-5d96-9ffa-4433b02a34e3
+
+		level 'Patient Division'
+			lineageTag: 56d3f849-6432-5f0f-9be3-cb16a411e05d
+			column: 'Patient Division'
+
+		level 'Patient District'
+			lineageTag: d22ebe68-7a0d-5eed-8c97-c8cd900d59ed
+			column: 'Patient District'
+
+	partition Patient = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = fnLoadTable("dim_patient", {"patient_key", "gender", "division", "district", "urban_rural", "preferred_language", "sms_opt_in", "whatsapp_opt_in", "chronic_condition_segment", "patient_status"}, {"sms_opt_in", "whatsapp_opt_in"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"patient_key", Int64.Type}, {"gender", type text}, {"division", type text}, {"district", type text}, {"urban_rural", type text}, {"preferred_language", type text}, {"chronic_condition_segment", type text}, {"patient_status", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"patient_key", "Patient Key"}, {"gender", "Patient Gender"}, {"division", "Patient Division"}, {"district", "Patient District"}, {"urban_rural", "Patient Area"}, {"preferred_language", "Preferred Language"}, {"sms_opt_in", "SMS Opt-in"}, {"whatsapp_opt_in", "WhatsApp Opt-in"}, {"chronic_condition_segment", "Chronic Condition"}, {"patient_status", "Patient Status"}})
+				in
+				    RenamedColumns
+
+	annotation PBI_ResultType = Table
+

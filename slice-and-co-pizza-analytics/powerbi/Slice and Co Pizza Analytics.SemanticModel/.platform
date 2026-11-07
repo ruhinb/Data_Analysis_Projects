@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Slice and Co Pizza Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "292c840f-e4de-57ba-bc68-6a59ffc21229"
+  }
+}

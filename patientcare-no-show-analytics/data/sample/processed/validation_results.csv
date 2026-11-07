@@ -1,0 +1,42 @@
+test_group,test_name,actual_value,expected_value,test_result
+Dates,missing days in calendar,0,0,PASS
+Dates,unknown date rows,1,1,PASS
+Mappings,unmapped appointment status,0,0,PASS
+Mappings,unmapped booking channel,0,0,PASS
+Mappings,unmapped consultation mode,0,0,PASS
+Mappings,unmapped payment status,0,0,PASS
+Mappings,unmapped reminder delivery status,0,0,PASS
+Mappings,unmapped telemedicine status,0,0,PASS
+Mappings,unmapped visit type,0,0,PASS
+Relationships,appointments without a clinic row,0,0,PASS
+Relationships,appointments without a doctor row,0,0,PASS
+Relationships,appointments without a patient row,0,0,PASS
+Relationships,appointments without a scheduled date row,0,0,PASS
+Relationships,pilot rows outside the target segment,0,0,PASS
+Relationships,pilot rows without an appointment,0,0,PASS
+Relationships,schedule sessions without a date row,0,0,PASS
+Row counts,data_quality_issues rows,150,4342,FAIL
+Row counts,dim_clinic rows,15,15,PASS
+Row counts,dim_date rows,547,576,FAIL
+Row counts,dim_doctor rows,116,116,PASS
+Row counts,dim_patient rows,499,34461,FAIL
+Row counts,fact_appointment_events rows,1723,257288,FAIL
+Row counts,fact_appointments rows,500,73715,FAIL
+Row counts,fact_feedback rows,136,18509,FAIL
+Row counts,fact_payments rows,376,57261,FAIL
+Row counts,fact_reminder_pilot_assignment rows,27,1409,FAIL
+Row counts,fact_reminders rows,567,86527,FAIL
+Row counts,fact_reporting_process_log rows,16,16,PASS
+Row counts,fact_schedule_sessions rows,500,17788,FAIL
+Row counts,fact_telemedicine_sessions rows,55,7652,FAIL
+Unique keys,duplicate appointment_id,0,0,PASS
+Unique keys,duplicate clinic_id,0,0,PASS
+Unique keys,duplicate doctor_id,0,0,PASS
+Unique keys,duplicate patient_id,0,0,PASS
+Unique keys,duplicate payment_id,0,0,PASS
+Unique keys,duplicate pilot appointment_id,0,0,PASS
+Unique keys,duplicate reminder_id,0,0,PASS
+Unknown rows,appointments with unknown clinic,1,41,FAIL
+Unknown rows,appointments with unknown doctor,1,220,FAIL
+Unknown rows,appointments with unknown patient,0,44,FAIL
+Unknown rows,appointments with unknown scheduled date,0,23,FAIL

@@ -1,0 +1,294 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "aef41e502757ab6784fa",
+  "position": {
+    "x": 34,
+    "y": 110,
+    "z": 1024,
+    "width": 1212,
+    "height": 68,
+    "tabOrder": 1024
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Semi-urban Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.Semi-urban Baseline No-show Rate",
+              "nativeQueryRef": "Semi-urban Baseline No-show Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Urban Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.Urban Baseline No-show Rate",
+              "nativeQueryRef": "Urban Baseline No-show Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Baseline Missed Visit Fees"
+                }
+              },
+              "queryRef": "_Measures.Baseline Missed Visit Fees",
+              "nativeQueryRef": "Baseline Missed Visit Fees"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Average Visit Fee"
+                }
+              },
+              "queryRef": "_Measures.Average Visit Fee",
+              "nativeQueryRef": "Average Visit Fee"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Baseline No-shows"
+                }
+              },
+              "queryRef": "_Measures.Baseline No-shows",
+              "nativeQueryRef": "Baseline No-shows"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "All-clinic Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.All-clinic Baseline No-show Rate",
+              "nativeQueryRef": "All-clinic Baseline No-show Rate"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Target Segment Baseline No-show Rate"
+                }
+              },
+              "queryRef": "_Measures.Target Segment Baseline No-show Rate",
+              "nativeQueryRef": "Target Segment Baseline No-show Rate"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"width\": 1212.0,\n  \"height\": 68,\n  \"autosize\": {\n    \"type\": \"none\"\n  },\n  \"padding\": 0,\n  \"layer\": [\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''Semi-urban vs urban no-show rate''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"color\": \"rgba(255,255,255,0.92)\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"format(datum[''Semi-urban Baseline No-show Rate''], ''.1%'')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 28,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 0\n        },\n        \"y\": {\n          \"value\": 48\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''vs '' + format(datum[''Urban Baseline No-show Rate''], ''.1%'')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 16,\n        \"fontWeight\": 600,\n        \"color\": \"rgba(255,255,255,0.88)\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 102.396\n        },\n        \"y\": {\n          \"value\": 48\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''semi-urban patients miss '' + format(datum[''Semi-urban Baseline No-show Rate''] / datum[''Urban Baseline No-show Rate''] - 1, ''.0%'') + '' more appointments''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 400,\n        \"color\": \"rgba(255,255,255,0.85)\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 0\n        },\n        \"y\": {\n          \"value\": 66\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 5,\n        \"color\": {\n          \"x1\": 0,\n          \"y1\": 0,\n          \"x2\": 1,\n          \"y2\": 1,\n          \"gradient\": \"linear\",\n          \"stops\": [\n            {\n              \"offset\": 0,\n              \"color\": \"rgba(237,161,0,0.65)\"\n            },\n            {\n              \"offset\": 1,\n              \"color\": \"#EDA100\"\n            }\n          ]\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 352.0\n        },\n        \"x2\": {\n          \"value\": 370.0\n        },\n        \"y\": {\n          \"value\": 1\n        },\n        \"y2\": {\n          \"value\": 19\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''\\u09f3''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"center\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 10,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 361.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''Missed-visit fees''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 377.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''\\u2248 '' + ((datum[''Baseline Missed Visit Fees'']) >= 1e6 ? ''BDT '' + format((datum[''Baseline Missed Visit Fees'']) / 1e6, ''.1f'') + ''M'' : ''BDT '' + format((datum[''Baseline Missed Visit Fees'']) / 1e3, ''.0f'') + ''k'')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 23,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 352.0\n        },\n        \"y\": {\n          \"value\": 43\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''no-shows \\u00d7 BDT '' + format(datum[''Average Visit Fee''], '',.0f'') + '' average fee''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 400,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 352.0\n        },\n        \"y\": {\n          \"value\": 66\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 5,\n        \"color\": {\n          \"x1\": 0,\n          \"y1\": 0,\n          \"x2\": 1,\n          \"y2\": 1,\n          \"gradient\": \"linear\",\n          \"stops\": [\n            {\n              \"offset\": 0,\n              \"color\": \"rgba(235,104,52,0.65)\"\n            },\n            {\n              \"offset\": 1,\n              \"color\": \"#EB6834\"\n            }\n          ]\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 577.0\n        },\n        \"x2\": {\n          \"value\": 595.0\n        },\n        \"y\": {\n          \"value\": 1\n        },\n        \"y2\": {\n          \"value\": 19\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''!''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"center\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 10,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 586.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''No-shows''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 602.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"format(datum[''Baseline No-shows''], '','')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 23,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 577.0\n        },\n        \"y\": {\n          \"value\": 43\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''in the baseline window''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 400,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 577.0\n        },\n        \"y\": {\n          \"value\": 66\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 5,\n        \"color\": {\n          \"x1\": 0,\n          \"y1\": 0,\n          \"x2\": 1,\n          \"y2\": 1,\n          \"gradient\": \"linear\",\n          \"stops\": [\n            {\n              \"offset\": 0,\n              \"color\": \"rgba(98,80,214,0.65)\"\n            },\n            {\n              \"offset\": 1,\n              \"color\": \"#6250D6\"\n            }\n          ]\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 802.0\n        },\n        \"x2\": {\n          \"value\": 820.0\n        },\n        \"y\": {\n          \"value\": 1\n        },\n        \"y2\": {\n          \"value\": 19\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''%''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"center\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 10,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 811.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''All-clinic no-show rate''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 827.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"format(datum[''All-clinic Baseline No-show Rate''], ''.1%'')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 23,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 802.0\n        },\n        \"y\": {\n          \"value\": 43\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''average of all 14 clinics''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 400,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 802.0\n        },\n        \"y\": {\n          \"value\": 66\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"mark\": {\n        \"type\": \"rect\",\n        \"cornerRadius\": 5,\n        \"color\": {\n          \"x1\": 0,\n          \"y1\": 0,\n          \"x2\": 1,\n          \"y2\": 1,\n          \"gradient\": \"linear\",\n          \"stops\": [\n            {\n              \"offset\": 0,\n              \"color\": \"rgba(232,123,164,0.65)\"\n            },\n            {\n              \"offset\": 1,\n              \"color\": \"#E87BA4\"\n            }\n          ]\n        }\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 1027.0\n        },\n        \"x2\": {\n          \"value\": 1045.0\n        },\n        \"y\": {\n          \"value\": 1\n        },\n        \"y2\": {\n          \"value\": 19\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''\\u25ce''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"center\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 10,\n        \"fontWeight\": 700,\n        \"color\": \"#FFFFFF\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 1036.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''Pilot segment rate''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 600,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 1052.0\n        },\n        \"y\": {\n          \"value\": 14\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"format(datum[''Target Segment Baseline No-show Rate''], ''.1%'')\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 23,\n        \"fontWeight\": 700,\n        \"color\": \"#101828\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 1027.0\n        },\n        \"y\": {\n          \"value\": 43\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"calculate\": \"''semi-urban, before 12:00''\",\n          \"as\": \"_t\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"alphabetic\",\n        \"fontSize\": 11,\n        \"fontWeight\": 400,\n        \"color\": \"#667085\",\n        \"opacity\": 1,\n        \"font\": \"Segoe UI\"\n      },\n      \"encoding\": {\n        \"x\": {\n          \"value\": 1027.0\n        },\n        \"y\": {\n          \"value\": 66\n        },\n        \"text\": {\n          \"field\": \"_t\"\n        }\n      }\n    }\n  ]\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"background\": null,\n  \"font\": \"Segoe UI\",\n  \"view\": {\n    \"stroke\": null\n  },\n  \"padding\": 2,\n  \"axis\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10,\n    \"labelColor\": \"#667085\",\n    \"titleFont\": \"Segoe UI\",\n    \"titleFontSize\": 10,\n    \"titleColor\": \"#667085\",\n    \"titleFontWeight\": \"normal\",\n    \"domain\": false,\n    \"ticks\": false,\n    \"gridColor\": \"#EEF0F4\",\n    \"labelPadding\": 6\n  },\n  \"legend\": {\n    \"labelFont\": \"Segoe UI\",\n    \"labelFontSize\": 10.5,\n    \"labelColor\": \"#344054\",\n    \"symbolType\": \"circle\",\n    \"symbolSize\": 70,\n    \"title\": null,\n    \"orient\": \"top\",\n    \"direction\": \"horizontal\",\n    \"columnPadding\": 14\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 11,\n    \"color\": \"#344054\"\n  },\n  \"title\": {\n    \"font\": \"Segoe UI\"\n  },\n  \"concat\": {\n    \"spacing\": 8\n  }\n}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "68D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1212.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

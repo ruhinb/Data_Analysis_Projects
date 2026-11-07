@@ -1,0 +1,314 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "013e7ab3921eb4b66d11",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "width": 1280,
+    "height": 720,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Latest Quarter Label"
+                }
+              },
+              "queryRef": "Orders.Latest Quarter Label",
+              "nativeQueryRef": "Latest Quarter Label"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Previous Quarter Label"
+                }
+              },
+              "queryRef": "Orders.Previous Quarter Label",
+              "nativeQueryRef": "Previous Quarter Label"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Latest Q Sales"
+                }
+              },
+              "queryRef": "Orders.Latest Q Sales",
+              "nativeQueryRef": "Latest Q Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Previous Q Sales"
+                }
+              },
+              "queryRef": "Orders.Previous Q Sales",
+              "nativeQueryRef": "Previous Q Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Latest Q Profit"
+                }
+              },
+              "queryRef": "Orders.Latest Q Profit",
+              "nativeQueryRef": "Latest Q Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Previous Q Profit"
+                }
+              },
+              "queryRef": "Orders.Previous Q Profit",
+              "nativeQueryRef": "Previous Q Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Latest Q Heavy Sales"
+                }
+              },
+              "queryRef": "Orders.Latest Q Heavy Sales",
+              "nativeQueryRef": "Latest Q Heavy Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Previous Q Heavy Sales"
+                }
+              },
+              "queryRef": "Orders.Previous Q Heavy Sales",
+              "nativeQueryRef": "Previous Q Heavy Sales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Quarterly check-up page: page text and latest-quarter figures\",\"width\":1280,\"height\":720,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"}],\"signals\":[{\"name\":\"m\",\"update\":\"data(''dataset'')[0] || {}\"}],\"marks\":[{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":33},\"fontSize\":{\"value\":15},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Discount Guardrails\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":49.5},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"Office supplies sales · 2014–2017\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":388.2},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Overview\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":497.6},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Product groups\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":627.2},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"What if we cap?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":770.1},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"value\":\"Quarterly check-up\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":24},\"y\":{\"value\":90.5},\"fontSize\":{\"value\":24},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Quarterly check-up: are heavy discounts coming down?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"value\":160.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Sales\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":354},\"y\":{\"value\":160.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Profit\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":665},\"y\":{\"value\":160.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Profit per $1 sold\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":976},\"y\":{\"value\":160.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Sales with more than 20% off\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":45},\"y\":{\"value\":278},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Report card by product group\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1143},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"m[''Latest Quarter Label'']\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":24},\"y\":{\"value\":116},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"signal\":\"''Latest quarter, '' + m[''Latest Quarter Label''] + '', compared with '' + m[''Previous Quarter Label''] + ''.''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"value\":187.5},\"fontSize\":{\"value\":26},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"(abs(m[''Latest Q Sales'']) >= 1e6 ? format(m[''Latest Q Sales''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Latest Q Sales'']) >= 1e5 ? format(m[''Latest Q Sales''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Latest Q Sales'']) >= 1e3 ? format(m[''Latest Q Sales''] / 1e3, ''$.1f'') + ''K'' : format(m[''Latest Q Sales''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":43},\"y\":{\"value\":214.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"(m[''Previous Q Sales''] ? (m[''Latest Q Sales''] - m[''Previous Q Sales'']) / abs(m[''Previous Q Sales'']) : 0) >= 0 ? ''#157347'' : ''#B42318''\"},\"text\":{\"signal\":\"((m[''Previous Q Sales''] ? (m[''Latest Q Sales''] - m[''Previous Q Sales'']) / abs(m[''Previous Q Sales'']) : 0) >= 0 ? ''▲ Up '' : ''▼ Down '') + format(abs((m[''Previous Q Sales''] ? (m[''Latest Q Sales''] - m[''Previous Q Sales'']) / abs(m[''Previous Q Sales'']) : 0)), ''.0%'') + '' vs last quarter''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":354},\"y\":{\"value\":187.5},\"fontSize\":{\"value\":26},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"(abs(m[''Latest Q Profit'']) >= 1e6 ? format(m[''Latest Q Profit''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Latest Q Profit'']) >= 1e5 ? format(m[''Latest Q Profit''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Latest Q Profit'']) >= 1e3 ? format(m[''Latest Q Profit''] / 1e3, ''$.1f'') + ''K'' : format(m[''Latest Q Profit''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":354},\"y\":{\"value\":214.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"(m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0) < 0 ? ''#B42318'' : ((m[''Previous Q Sales''] ? (m[''Latest Q Sales''] - m[''Previous Q Sales'']) / abs(m[''Previous Q Sales'']) : 0) > (m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0) + 0.1 ? ''#4B5563'' : ''#157347'')\"},\"text\":{\"signal\":\"((m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0) >= 0 ? ''▲ Up '' : ''▼ Down '') + format(abs((m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0)), ''.0%'') + ((m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0) >= 0 && (m[''Previous Q Sales''] ? (m[''Latest Q Sales''] - m[''Previous Q Sales'']) / abs(m[''Previous Q Sales'']) : 0) > (m[''Previous Q Profit''] ? (m[''Latest Q Profit''] - m[''Previous Q Profit'']) / abs(m[''Previous Q Profit'']) : 0) + 0.1 ? '' · despite more sales'' : '' vs last quarter'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":665},\"y\":{\"value\":187.5},\"fontSize\":{\"value\":26},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"(((m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0)) <= -1 ? ''−$'' + format(abs((m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0)), ''.2f'') : (((m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0)) < 0 ? ''−'' : '''') + format(abs((m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0)) * 100, ''.0f'') + ''¢'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":665},\"y\":{\"value\":214.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"(m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0) >= (m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0) ? ''#157347'' : ''#B42318''\"},\"text\":{\"signal\":\"((m[''Latest Q Sales''] ? m[''Latest Q Profit''] / m[''Latest Q Sales''] : 0) >= (m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0) ? ''▲ Up from '' : ''▼ Down from '') + (((m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0)) <= -1 ? ''−$'' + format(abs((m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0)), ''.2f'') : (((m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0)) < 0 ? ''−'' : '''') + format(abs((m[''Previous Q Sales''] ? m[''Previous Q Profit''] / m[''Previous Q Sales''] : 0)) * 100, ''.0f'') + ''¢'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":976},\"y\":{\"value\":187.5},\"fontSize\":{\"value\":26},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"signal\":\"format((m[''Latest Q Sales''] ? m[''Latest Q Heavy Sales''] / m[''Latest Q Sales''] : 0), ''.0%'')\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":976},\"y\":{\"value\":214.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"(m[''Latest Q Sales''] ? m[''Latest Q Heavy Sales''] / m[''Latest Q Sales''] : 0) > (m[''Previous Q Sales''] ? m[''Previous Q Heavy Sales''] / m[''Previous Q Sales''] : 0) ? ''#B42318'' : ''#157347''\"},\"text\":{\"signal\":\"((m[''Latest Q Sales''] ? m[''Latest Q Heavy Sales''] / m[''Latest Q Sales''] : 0) > (m[''Previous Q Sales''] ? m[''Previous Q Heavy Sales''] / m[''Previous Q Sales''] : 0) ? ''▲ Up from '' : ''▼ Down from '') + format((m[''Previous Q Sales''] ? m[''Previous Q Heavy Sales''] / m[''Previous Q Sales''] : 0), ''.0%'') + '' · goal: 0%''\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

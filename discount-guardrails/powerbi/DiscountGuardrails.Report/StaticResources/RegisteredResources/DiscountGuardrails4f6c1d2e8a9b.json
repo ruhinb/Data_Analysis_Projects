@@ -1,0 +1,41 @@
+{
+  "name": "DiscountGuardrails4f6c1d2e8a9b.json",
+  "dataColors": [
+    "#0F2744",
+    "#2E9E6A",
+    "#E05545",
+    "#E8A23A",
+    "#2563EB",
+    "#6B7280",
+    "#B42318",
+    "#157347"
+  ],
+  "foreground": "#111827",
+  "foregroundNeutralSecondary": "#4B5563",
+  "foregroundNeutralTertiary": "#6B7280",
+  "background": "#FFFFFF",
+  "backgroundLight": "#F3F4F6",
+  "backgroundNeutral": "#E5E7EB",
+  "tableAccent": "#0F2744",
+  "good": "#2E9E6A",
+  "neutral": "#E8A23A",
+  "bad": "#E05545",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI",
+      "color": "#111827"
+    },
+    "title": {
+      "fontFace": "Segoe UI",
+      "color": "#111827"
+    },
+    "header": {
+      "fontFace": "Segoe UI",
+      "color": "#111827"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "color": "#111827"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+source_file,source_system,table_grain,column_name,intended_data_type,nullable,business_definition
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,clinic_id,text,Conditional,Clinic id
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,clinic_name,text,Conditional,Anonymised clinic label; real facility reference is held separately and must not be published.
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,facility_type_raw,text,Conditional,Facility type
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,ownership_model_raw,text,Conditional,Ownership model
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,division,text,Conditional,Division
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,district,text,Conditional,District
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,city_area,text,Conditional,City area
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,urban_rural,text,Conditional,Urban rural
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,opening_date,date,Conditional,Opening date
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,operating_start_time,time,Conditional,Operating start time
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,operating_end_time,time,Conditional,Operating end time
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,consultation_room_count,numeric,Conditional,Consultation room count
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,telemedicine_enabled_raw,text,Conditional,Telemedicine enabled
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,active_flag_raw,text,Conditional,Active flag
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,source_updated_at,timestamp,Conditional,Source updated at
+raw_clinics.csv,Clinic operations ERP,One row per anonymised clinic,ingested_at,timestamp,Conditional,Ingested at
+raw_doctors.csv,Clinic operations ERP,One row per doctor,doctor_id,text,Conditional,Doctor id
+raw_doctors.csv,Clinic operations ERP,One row per doctor,doctor_name,text,Conditional,Doctor name
+raw_doctors.csv,Clinic operations ERP,One row per doctor,gender_raw,text,Conditional,Gender
+raw_doctors.csv,Clinic operations ERP,One row per doctor,specialty_raw,text,Conditional,Specialty
+raw_doctors.csv,Clinic operations ERP,One row per doctor,subspecialty_raw,text,Conditional,Subspecialty
+raw_doctors.csv,Clinic operations ERP,One row per doctor,designation_raw,text,Conditional,Designation
+raw_doctors.csv,Clinic operations ERP,One row per doctor,employment_type_raw,text,Conditional,Employment type
+raw_doctors.csv,Clinic operations ERP,One row per doctor,primary_clinic_id,text,Conditional,Primary clinic id
+raw_doctors.csv,Clinic operations ERP,One row per doctor,joining_date,date,Conditional,Joining date
+raw_doctors.csv,Clinic operations ERP,One row per doctor,leaving_date,date,Yes,Leaving date
+raw_doctors.csv,Clinic operations ERP,One row per doctor,telemedicine_enabled_raw,text,Conditional,Telemedicine enabled
+raw_doctors.csv,Clinic operations ERP,One row per doctor,standard_consultation_fee_bdt,numeric,Conditional,Standard consultation fee bdt
+raw_doctors.csv,Clinic operations ERP,One row per doctor,active_flag_raw,text,Conditional,Active flag
+raw_doctors.csv,Clinic operations ERP,One row per doctor,source_updated_at,timestamp,Conditional,Source updated at
+raw_doctors.csv,Clinic operations ERP,One row per doctor,ingested_at,timestamp,Conditional,Ingested at
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,patient_id,text,Conditional,Patient id
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,registration_date,date,Conditional,Registration date
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,birth_date,date,Conditional,Birth date
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,gender_raw,text,Conditional,Gender
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,marital_status_raw,text,Conditional,Marital status
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,division,text,Conditional,Division
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,district,text,Conditional,District
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,upazila,text,Conditional,Upazila
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,urban_rural,text,Conditional,Urban rural
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,preferred_language_raw,text,Conditional,Preferred language
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,contact_consent_raw,text,Conditional,Contact consent
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,sms_opt_in_raw,text,Conditional,Sms opt in
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,whatsapp_opt_in_raw,text,Conditional,Whatsapp opt in
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,chronic_condition_flag_raw,text,Conditional,Chronic condition flag
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,chronic_condition_group_raw,text,Conditional,Chronic condition group
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,disability_support_required_raw,text,Conditional,Disability support required
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,patient_status_raw,text,Conditional,Patient status
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,source_updated_at,timestamp,Conditional,Source updated at
+raw_patients.csv,PatientCare PostgreSQL,One row per pseudonymous patient,ingested_at,timestamp,Conditional,Ingested at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,appointment_record_id,text,Conditional,Appointment record id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,appointment_id,text,Conditional,Appointment id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,record_version,numeric,Conditional,Record version
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,patient_id,text,Conditional,Patient id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,clinic_id,text,Conditional,Clinic id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,doctor_id,text,Conditional,Doctor id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,specialty_raw,text,Conditional,Specialty
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,booked_at,timestamp,Conditional,Booked at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,scheduled_start_at,timestamp,Conditional,Scheduled start at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,scheduled_end_at,timestamp,Conditional,Scheduled end at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,check_in_at,timestamp,Yes,Check in at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,consultation_start_at,timestamp,Yes,Consultation start at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,consultation_end_at,timestamp,Yes,Consultation end at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,appointment_status_raw,text,Conditional,Appointment status
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,booking_channel_raw,text,Conditional,Booking channel
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,consultation_mode_raw,text,Conditional,Consultation mode
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,visit_type_raw,text,Conditional,Visit type
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,priority_level_raw,text,Conditional,Priority level
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,reason_code_raw,text,Conditional,Reason code
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,is_follow_up_raw,text,Conditional,Is follow up
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,parent_appointment_id,text,Conditional,Parent appointment id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,referral_source_raw,text,Conditional,Referral source
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,cancellation_at,timestamp,Yes,Cancellation at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,cancellation_reason_raw,text,Conditional,Cancellation reason
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,rescheduled_from_appointment_id,text,Conditional,Rescheduled from appointment id
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,source_system,text,Conditional,Source system
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,source_created_at,timestamp,Conditional,Source created at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,source_updated_at,timestamp,Conditional,Source updated at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,ingested_at,timestamp,Conditional,Ingested at
+raw_appointments.csv,PatientCare PostgreSQL,One raw appointment record version; duplicate extracts can exist,batch_id,text,Conditional,Batch id
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,event_id,text,Conditional,Event id
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,appointment_id,text,Conditional,Appointment id
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,event_sequence,numeric,Conditional,Event sequence
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,event_type_raw,text,Conditional,Event type
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,event_at,timestamp,Conditional,Event at
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,from_status_raw,text,Conditional,From status
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,to_status_raw,text,Conditional,To status
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,actor_type_raw,text,Conditional,Actor type
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,reason_code_raw,text,Conditional,Reason code
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,source_updated_at,timestamp,Conditional,Source updated at
+raw_appointment_events.csv,PatientCare event store,One lifecycle event per appointment,ingested_at,timestamp,Conditional,Ingested at
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,schedule_session_id,text,Conditional,Schedule session id
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,session_date,date,Conditional,Session date
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,clinic_id,text,Conditional,Clinic id
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,doctor_id,text,Conditional,Doctor id
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,planned_start_time,time,Conditional,Planned start time
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,planned_end_time,time,Conditional,Planned end time
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,slot_length_minutes,numeric,Conditional,Slot length minutes
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,planned_slots,numeric,Conditional,Planned slots
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,blocked_slots,numeric,Conditional,Blocked slots
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,overbook_allowed_raw,text,Conditional,Overbook allowed
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,session_status_raw,text,Conditional,Session status
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,session_cancel_reason_raw,text,Conditional,Session cancel reason
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,roster_batch_id,text,Conditional,Roster batch id
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,source_updated_at,timestamp,Conditional,Source updated at
+raw_schedule_sessions.csv,Clinic roster system,One doctor session at one clinic on one date,ingested_at,timestamp,Conditional,Ingested at
+raw_reminders.csv,Messaging gateway API,One communication attempt,reminder_id,text,Conditional,Reminder id
+raw_reminders.csv,Messaging gateway API,One communication attempt,appointment_id,text,Conditional,Appointment id
+raw_reminders.csv,Messaging gateway API,One communication attempt,patient_id,text,Conditional,Patient id
+raw_reminders.csv,Messaging gateway API,One communication attempt,reminder_type_raw,text,Conditional,Reminder type
+raw_reminders.csv,Messaging gateway API,One communication attempt,channel_raw,text,Conditional,Channel
+raw_reminders.csv,Messaging gateway API,One communication attempt,provider_name,text,Conditional,Provider name
+raw_reminders.csv,Messaging gateway API,One communication attempt,attempt_number,numeric,Conditional,Attempt number
+raw_reminders.csv,Messaging gateway API,One communication attempt,scheduled_send_at,timestamp,Conditional,Scheduled send at
+raw_reminders.csv,Messaging gateway API,One communication attempt,sent_at,timestamp,Conditional,Sent at
+raw_reminders.csv,Messaging gateway API,One communication attempt,delivery_status_raw,text,Conditional,Delivery status
+raw_reminders.csv,Messaging gateway API,One communication attempt,delivered_at,timestamp,Conditional,Delivered at
+raw_reminders.csv,Messaging gateway API,One communication attempt,read_at,timestamp,Yes,Read at
+raw_reminders.csv,Messaging gateway API,One communication attempt,failure_reason_raw,text,Yes,Failure reason
+raw_reminders.csv,Messaging gateway API,One communication attempt,template_code,text,Conditional,Template code
+raw_reminders.csv,Messaging gateway API,One communication attempt,language_raw,text,Conditional,Language
+raw_reminders.csv,Messaging gateway API,One communication attempt,provider_message_id,text,Conditional,Provider message id
+raw_reminders.csv,Messaging gateway API,One communication attempt,source_updated_at,timestamp,Conditional,Source updated at
+raw_reminders.csv,Messaging gateway API,One communication attempt,ingested_at,timestamp,Conditional,Ingested at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,telemedicine_session_id,text,Conditional,Telemedicine session id
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,appointment_id,text,Conditional,Appointment id
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,platform_name,text,Conditional,Platform name
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,scheduled_start_at,timestamp,Conditional,Scheduled start at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,patient_join_at,timestamp,Conditional,Patient join at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,doctor_join_at,timestamp,Conditional,Doctor join at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,session_start_at,timestamp,Conditional,Session start at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,session_end_at,timestamp,Conditional,Session end at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,session_status_raw,text,Conditional,Session status
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,disconnect_count,numeric,Conditional,Disconnect count
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,average_latency_ms,numeric,Conditional,Average latency ms
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,audio_quality_score,numeric,Conditional,Audio quality score
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,video_quality_score,numeric,Conditional,Video quality score
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,technical_issue_flag_raw,text,Conditional,Technical issue flag
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,issue_category_raw,text,Conditional,Issue category
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,device_type_raw,text,Conditional,Device type
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,network_type_raw,text,Conditional,Network type
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,recording_consent_raw,text,Conditional,Recording consent
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,source_updated_at,timestamp,Conditional,Source updated at
+raw_telemedicine_sessions.csv,PatientCare video event logs,One telemedicine session attempt,ingested_at,timestamp,Conditional,Ingested at
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,payment_record_id,text,Conditional,Payment record id
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,payment_id,text,Conditional,Payment id
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,record_version,numeric,Conditional,Record version
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,appointment_id,text,Conditional,Appointment id
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,invoice_id,text,Conditional,Invoice id
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,payer_type_raw,text,Conditional,Payer type
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,payment_method_raw,text,Conditional,Payment method
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,gross_amount_bdt,numeric,Conditional,Gross amount bdt
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,discount_amount_bdt,numeric,Conditional,Discount amount bdt
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,net_amount_bdt,numeric,Conditional,Net amount bdt
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,amount_paid_bdt,numeric,Conditional,Amount paid bdt
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,payment_status_raw,text,Conditional,Payment status
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,transaction_at,timestamp,Conditional,Transaction at
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,refund_amount_bdt,numeric,Conditional,Refund amount bdt
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,refund_at,timestamp,Yes,Refund at
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,insurance_claim_id,text,Conditional,Insurance claim id
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,claim_status_raw,text,Conditional,Claim status
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,source_updated_at,timestamp,Conditional,Source updated at
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,ingested_at,timestamp,Conditional,Ingested at
+raw_payments.csv,Billing ERP and payment gateway,One raw payment record version,batch_id,text,Conditional,Batch id
+raw_feedback.csv,Patient survey platform,One submitted survey response,survey_id,text,Conditional,Survey id
+raw_feedback.csv,Patient survey platform,One submitted survey response,appointment_id,text,Conditional,Appointment id
+raw_feedback.csv,Patient survey platform,One submitted survey response,patient_id,text,Conditional,Patient id
+raw_feedback.csv,Patient survey platform,One submitted survey response,survey_sent_at,timestamp,Conditional,Survey sent at
+raw_feedback.csv,Patient survey platform,One submitted survey response,responded_at,timestamp,Conditional,Responded at
+raw_feedback.csv,Patient survey platform,One submitted survey response,overall_rating,numeric,Conditional,Overall rating
+raw_feedback.csv,Patient survey platform,One submitted survey response,wait_time_rating,numeric,Conditional,Wait time rating
+raw_feedback.csv,Patient survey platform,One submitted survey response,doctor_rating,numeric,Conditional,Doctor rating
+raw_feedback.csv,Patient survey platform,One submitted survey response,booking_experience_rating,numeric,Conditional,Booking experience rating
+raw_feedback.csv,Patient survey platform,One submitted survey response,telemedicine_rating,numeric,Yes,Telemedicine rating
+raw_feedback.csv,Patient survey platform,One submitted survey response,recommend_score_nps,numeric,Conditional,Recommend score nps
+raw_feedback.csv,Patient survey platform,One submitted survey response,complaint_flag_raw,text,Conditional,Complaint flag
+raw_feedback.csv,Patient survey platform,One submitted survey response,complaint_category_raw,text,Yes,Complaint category
+raw_feedback.csv,Patient survey platform,One submitted survey response,follow_up_required_raw,text,Conditional,Follow up required
+raw_feedback.csv,Patient survey platform,One submitted survey response,source_updated_at,timestamp,Conditional,Source updated at
+raw_feedback.csv,Patient survey platform,One submitted survey response,ingested_at,timestamp,Conditional,Ingested at

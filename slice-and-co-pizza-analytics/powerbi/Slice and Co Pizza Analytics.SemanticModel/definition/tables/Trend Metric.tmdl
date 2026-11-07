@@ -1,0 +1,27 @@
+/// Disconnected slicer table: metric shown by the monthly trend chart.
+table 'Trend Metric'
+	lineageTag: 070a688e-aa00-4154-9298-bddc2dca53d5
+
+	column Metric
+		dataType: string
+		lineageTag: def01bb1-8bf2-4439-8858-0223b19d9f6a
+		summarizeBy: none
+		sourceColumn: Metric
+		sortByColumn: 'Metric Sort'
+
+	column 'Metric Sort'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4dcdae62-a01b-4463-9813-c521fda2cb41
+		summarizeBy: none
+		sourceColumn: Metric Sort
+
+	partition 'Trend Metric' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Metric = text, #"Metric Sort" = Int64.Type], {{"Revenue", 1}, {"Orders", 2}, {"Pizzas Sold", 3}, {"Average Order Value", 4}})
+				in
+				    Source
+

@@ -1,0 +1,92 @@
+/// Fact: one row per order line (order x pizza). Grain matches the raw file; descriptive attributes moved to Pizza.
+table Sales
+	lineageTag: de471d31-78c2-41ee-b159-a71d2cce50db
+
+	/// Degenerate dimension: order number.
+	column 'Order ID'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 601f6c1a-dd18-4700-9a97-996deb3f5e93
+		summarizeBy: none
+		sourceColumn: Order ID
+
+	/// Foreign key to Date.
+	column 'Order Date'
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 4fd71d63-5719-45a1-b135-d1353b0cba10
+		summarizeBy: none
+		sourceColumn: Order Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Foreign key to Time Slot (minutes after midnight, rounded down to the half-hour).
+	column 'Slot Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5a1e2e3b-ec16-422d-867c-cdadf331c1b6
+		summarizeBy: none
+		sourceColumn: Slot Key
+
+	/// Foreign key to Pizza.
+	column 'Pizza Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 16b88397-baba-4789-a0d9-5c610f59f323
+		summarizeBy: none
+		sourceColumn: Pizza Key
+
+	column Quantity
+		dataType: int64
+		isHidden
+		formatString: #,##0
+		lineageTag: 9bfc32d2-8625-4124-83f1-dbac0713a39d
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+	column 'Unit Price'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: 8fa87128-b85c-486d-a5c8-42a75928bae6
+		summarizeBy: none
+		sourceColumn: Unit Price
+
+	/// Quantity x unit price.
+	column 'Line Revenue'
+		dataType: decimal
+		isHidden
+		formatString: $#,##0.00
+		lineageTag: 25bf13cc-f0e1-4f0f-90b8-660ffa0f1e79
+		summarizeBy: sum
+		sourceColumn: Line Revenue
+
+	/// Pizzas in the whole order; used to classify single-pizza orders.
+	column 'Order Pizza Count'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa116d38-bfe4-42a4-943f-30886bd4208a
+		summarizeBy: none
+		sourceColumn: Order Pizza Count
+
+	partition Sales = m
+		mode: import
+		source =
+				let
+				    Source = #"Raw Sales",
+				    PizzaKeys = Table.SelectColumns(#"Pizza Staging", {"Pizza ID", "Pizza Key"}),
+				    #"Merged Pizza" = Table.NestedJoin(Source, {"Pizza ID"}, PizzaKeys, {"Pizza ID"}, "Pizza", JoinKind.LeftOuter),
+				    #"Expanded Pizza Key" = Table.ExpandTableColumn(#"Merged Pizza", "Pizza", {"Pizza Key"}, {"Pizza Key"}),
+				    OrderSizes = Table.SelectColumns(#"Order Header", {"Order ID", "Order Pizzas"}),
+				    #"Merged Order Size" = Table.NestedJoin(#"Expanded Pizza Key", {"Order ID"}, OrderSizes, {"Order ID"}, "Order", JoinKind.LeftOuter),
+				    #"Expanded Order Size" = Table.ExpandTableColumn(#"Merged Order Size", "Order", {"Order Pizzas"}, {"Order Pizza Count"}),
+				    #"Removed Redundant Attributes" = Table.SelectColumns(#"Expanded Order Size", {"Order ID", "Order Date", "Slot Key", "Pizza Key", "Quantity", "Unit Price", "Line Revenue", "Order Pizza Count"}),
+				    #"Changed Types" = Table.TransformColumnTypes(#"Removed Redundant Attributes", {{"Pizza Key", Int64.Type}, {"Order Pizza Count", Int64.Type}})
+				in
+				    #"Changed Types"
+

@@ -1,0 +1,37 @@
+/// Stages of the reminder pilot funnel. Helper table typed in Power Query, hidden from the field list.
+table 'Pilot Stage'
+	isHidden
+	lineageTag: 7071b8da-7d88-5d06-9185-926951db6cad
+
+	/// Funnel stage: assigned, attendance-eligible, attended.
+	column Stage
+		dataType: string
+		isHidden
+		lineageTag: e85a7255-ff9a-55e2-a992-4f92c121e5ef
+		summarizeBy: none
+		sourceColumn: Stage
+		sortByColumn: 'Stage Order'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Stage.
+	column 'Stage Order'
+		dataType: int64
+		isHidden
+		lineageTag: aadaeba3-eb56-52be-aafb-c38f84c76066
+		summarizeBy: none
+		sourceColumn: Stage Order
+
+		annotation SummarizationSetBy = User
+
+	partition 'Pilot Stage' = m
+		mode: import
+		queryGroup: Helpers
+		source =
+				let
+				    Source = #table(type table [#"Stage" = text, #"Stage Order" = Int64.Type], {{"Assigned", 1}, {"Attendance-eligible", 2}, {"Attended", 3}})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

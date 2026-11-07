@@ -1,0 +1,52 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Parameters
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Functions
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup Dimensions
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Facts
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup Helpers
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["SourceType","DataFolder","PostgreSQLServer","PostgreSQLDatabase","fnLoadTable","Date","Clinic","Doctor","Patient","Appointments","Payments","Reminders","Telemedicine Sessions","Schedule Sessions","Pilot Assignments","Reporting Weeks","Data Quality Issues","Pilot Stage","Pilot Period","Reporting Step","_Measures"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Date
+ref table Clinic
+ref table Doctor
+ref table Patient
+ref table Appointments
+ref table Payments
+ref table Reminders
+ref table 'Telemedicine Sessions'
+ref table 'Schedule Sessions'
+ref table 'Pilot Assignments'
+ref table 'Reporting Weeks'
+ref table 'Data Quality Issues'
+ref table 'Pilot Stage'
+ref table 'Pilot Period'
+ref table 'Reporting Step'
+ref table _Measures
+

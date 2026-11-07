@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "customTheme": {
+      "name": "SliceAndCoTheme.json",
+      "reportVersionAtImport": {
+        "visual": "2.13.0",
+        "report": "3.4.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "publicCustomVisuals": [
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
+  ],
+  "resourcePackages": [
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "background_demand.svg",
+          "path": "background_demand.svg",
+          "type": "Image"
+        },
+        {
+          "name": "background_executive.svg",
+          "path": "background_executive.svg",
+          "type": "Image"
+        },
+        {
+          "name": "background_menu.svg",
+          "path": "background_menu.svg",
+          "type": "Image"
+        },
+        {
+          "name": "background_trading.svg",
+          "path": "background_trading.svg",
+          "type": "Image"
+        },
+        {
+          "name": "background_workforce.svg",
+          "path": "background_workforce.svg",
+          "type": "Image"
+        },
+        {
+          "name": "SliceAndCoTheme.json",
+          "path": "SliceAndCoTheme.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

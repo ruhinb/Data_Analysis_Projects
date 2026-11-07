@@ -1,0 +1,244 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "1e58de08dd9a6a5d0cea",
+  "position": {
+    "x": 481,
+    "y": 292.8,
+    "z": 1000,
+    "width": 378,
+    "height": 388.3,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Max Discount"
+                    }
+                  },
+                  "Property": "Cap Label"
+                }
+              },
+              "queryRef": "Max Discount.Cap Label",
+              "nativeQueryRef": "Cap Label"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Max Discount"
+                    }
+                  },
+                  "Property": "Cap Sort"
+                }
+              },
+              "queryRef": "Max Discount.Cap Sort",
+              "nativeQueryRef": "Cap Sort"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit Change at Cap"
+                }
+              },
+              "queryRef": "Orders.Profit Change at Cap",
+              "nativeQueryRef": "Profit Change at Cap"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Modelled extra profit for each cap (modelled)\",\"width\":378,\"height\":388.3,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"},{\"name\":\"rows\",\"source\":\"dataset\",\"transform\":[{\"type\":\"collect\",\"sort\":{\"field\":\"Cap Sort\"}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"formula\",\"as\":\"v\",\"expr\":\"datum[''Profit Change at Cap''] || 0\"},{\"type\":\"joinaggregate\",\"fields\":[\"v\"],\"ops\":[\"max\"],\"as\":[\"best\"]},{\"type\":\"formula\",\"as\":\"isBest\",\"expr\":\"datum.v == datum.best\"},{\"type\":\"formula\",\"as\":\"cy\",\"expr\":\"101.2 + (datum.r1 - 1) * 40 + 13\"}]},{\"name\":\"ext\",\"source\":\"rows\",\"transform\":[{\"type\":\"aggregate\",\"fields\":[\"v\"],\"ops\":[\"max\"],\"as\":[\"mx\"]}]},{\"name\":\"bestrow\",\"source\":\"rows\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.isBest\"}]}],\"signals\":[{\"name\":\"mx\",\"update\":\"data(''ext'')[0] && data(''ext'')[0].mx > 0 ? data(''ext'')[0].mx : 1\"}],\"marks\":[{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"field\":\"cy\"},\"text\":{\"field\":\"Cap Label\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"signal\":\"datum.isBest ? 700 : 400\"},\"fill\":{\"signal\":\"datum.isBest ? ''#111827'' : ''#374151''\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":108},\"x2\":{\"value\":296},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":26},\"fill\":{\"value\":\"#F3F4F6\"},\"cornerRadius\":{\"value\":6}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":108},\"width\":{\"signal\":\"max(0, datum.v) / mx * 188\"},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":26},\"fill\":{\"signal\":\"datum.isBest ? ''#2E9E6A'' : ''#B8C2CE''\"},\"cornerRadius\":{\"value\":6}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":378},\"align\":{\"value\":\"right\"},\"y\":{\"field\":\"cy\"},\"text\":{\"signal\":\"((datum.v) >= 0 ? ''+'' : '''') + (abs(datum.v) >= 1e6 ? format(datum.v / 1e6, ''$.2f'') + ''M'' : (abs(datum.v) >= 1e5 ? format(datum.v / 1e3, ''$.0f'') + ''K'' : (abs(datum.v) >= 1e3 ? format(datum.v / 1e3, ''$.1f'') + ''K'' : format(datum.v, ''$.0f''))))\"},\"fontSize\":{\"value\":14},\"fontWeight\":{\"value\":700},\"fill\":{\"signal\":\"datum.v < 0 ? ''#B42318'' : (datum.isBest ? ''#157347'' : ''#374151'')\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"value\":376.3},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"data(''bestrow'')[0] ? (data(''bestrow'')[0][''Cap Sort''] == 1 ? ''The 20% cap comes out on top for your choice above.'' : data(''bestrow'')[0][''Cap Label''] + '' comes out on top for your choice above.'') : ''''\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

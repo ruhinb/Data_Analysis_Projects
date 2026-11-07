@@ -1,0 +1,314 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "f2a177a78ebbed8611a9",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "width": 1280,
+    "height": 720,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit"
+                }
+              },
+              "queryRef": "Orders.Profit",
+              "nativeQueryRef": "Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit Change 20"
+                }
+              },
+              "queryRef": "Orders.Profit Change 20",
+              "nativeQueryRef": "Profit Change 20"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Modelled Profit 20"
+                }
+              },
+              "queryRef": "Orders.Modelled Profit 20",
+              "nativeQueryRef": "Modelled Profit 20"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Kept Label"
+                }
+              },
+              "queryRef": "Orders.Kept Label",
+              "nativeQueryRef": "Kept Label"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Kept Share"
+                }
+              },
+              "queryRef": "Orders.Kept Share",
+              "nativeQueryRef": "Kept Share"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Change All Kept"
+                }
+              },
+              "queryRef": "Orders.Change All Kept",
+              "nativeQueryRef": "Change All Kept"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Change None Kept"
+                }
+              },
+              "queryRef": "Orders.Change None Kept",
+              "nativeQueryRef": "Change None Kept"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Change Whole Orders Lost"
+                }
+              },
+              "queryRef": "Orders.Change Whole Orders Lost",
+              "nativeQueryRef": "Change Whole Orders Lost"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"What-if page: page text, before/after profit and the range of outcomes (modelled)\",\"width\":1280,\"height\":720,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"}],\"signals\":[{\"name\":\"m\",\"update\":\"data(''dataset'')[0] || {}\"},{\"name\":\"maxV\",\"update\":\"max(1, m[''Profit''] || 0, m[''Modelled Profit 20''] || 0)\"}],\"marks\":[{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":33},\"fontSize\":{\"value\":15},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Discount Guardrails\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":64},\"y\":{\"value\":49.5},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"Office supplies sales · 2014–2017\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":388.5},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Overview\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":497.9},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Product groups\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":627.9},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(255, 255, 255)\"},\"text\":{\"value\":\"What if we cap?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":770.6},\"y\":{\"value\":40},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":500},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Quarterly check-up\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1100.8},\"y\":{\"value\":40},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 65, 0)\"},\"text\":{\"value\":\"Estimate, not a promise\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":49},\"y\":{\"value\":109.5},\"fontSize\":{\"value\":24},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"What if no discount could go above 20%?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":49},\"y\":{\"value\":138},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"We replayed every 2014–2017 sale with the bigger discounts cut back to 20%.\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":49},\"y\":{\"value\":158.3},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"The answer depends on one thing we can''t know from the data:\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":49},\"y\":{\"value\":178.5},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"how many customers would still buy.\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":671},\"y\":{\"value\":113.9},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Of the customers who''d lose their big discount, how many still buy?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":47},\"y\":{\"value\":250.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Profit, 2014–2017\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":47},\"y\":{\"value\":271.3},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"What we made vs. what we''d have made with the cap\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":481},\"y\":{\"value\":250.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Which cap works best?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":481},\"y\":{\"value\":271.3},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Extra profit for each possible cap, using your choice above\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":919},\"y\":{\"value\":250.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"How sure can we be?\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":919},\"y\":{\"value\":271.3},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(75, 85, 99)\"},\"text\":{\"value\":\"Extra profit with a 20% cap\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":919},\"y\":{\"value\":302.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Best case\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":982.8},\"y\":{\"value\":302.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"· everyone still buys\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":919},\"y\":{\"value\":345.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"No one still buys\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1024.7},\"y\":{\"value\":345.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"· those sales lost\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":919},\"y\":{\"value\":388.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(17, 24, 39)\"},\"text\":{\"value\":\"Worse\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":961.9},\"y\":{\"value\":388.8},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(107, 114, 128)\"},\"text\":{\"value\":\"· whole orders cancelled\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":957},\"y\":{\"value\":440.3},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(74, 46, 0)\"},\"text\":{\"value\":\"The real risk is losing customers altogether.\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":957},\"y\":{\"value\":458.4},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(74, 46, 0)\"},\"text\":{\"value\":\"That''s why we''d test the cap in 2 regions\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":957},\"y\":{\"value\":476.5},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"rgb(74, 46, 0)\"},\"text\":{\"value\":\"before rolling it out.\"}}}},{\"type\":\"rect\",\"encode\":{\"update\":{\"xc\":{\"value\":156.0},\"width\":{\"value\":84},\"y2\":{\"value\":597.1},\"y\":{\"signal\":\"597.1 - max(0, m[''Profit'']) / maxV * 220\"},\"fill\":{\"value\":\"#CBD2DC\"},\"cornerRadius\":{\"value\":8}}}},{\"type\":\"rect\",\"encode\":{\"update\":{\"xc\":{\"value\":312.0},\"width\":{\"value\":84},\"y2\":{\"value\":597.1},\"y\":{\"signal\":\"597.1 - max(0, m[''Modelled Profit 20'']) / maxV * 220\"},\"fill\":{\"value\":\"#2E9E6A\"},\"cornerRadius\":{\"value\":8}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":156.0},\"y\":{\"signal\":\"597.1 - max(0, m[''Profit'']) / maxV * 220 - 16\"},\"fontSize\":{\"value\":20},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#111827\"},\"text\":{\"signal\":\"(abs(m[''Profit'']) >= 1e6 ? format(m[''Profit''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Profit'']) >= 1e5 ? format(m[''Profit''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Profit'']) >= 1e3 ? format(m[''Profit''] / 1e3, ''$.1f'') + ''K'' : format(m[''Profit''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":312.0},\"y\":{\"signal\":\"597.1 - max(0, m[''Modelled Profit 20'']) / maxV * 220 - 16\"},\"fontSize\":{\"value\":20},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#157347\"},\"text\":{\"signal\":\"(abs(m[''Modelled Profit 20'']) >= 1e6 ? format(m[''Modelled Profit 20''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Modelled Profit 20'']) >= 1e5 ? format(m[''Modelled Profit 20''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Modelled Profit 20'']) >= 1e3 ? format(m[''Modelled Profit 20''] / 1e3, ''$.1f'') + ''K'' : format(m[''Modelled Profit 20''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":156.0},\"y\":{\"value\":613.1},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"value\":\"What we made\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":312.0},\"y\":{\"value\":613.1},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"value\":\"With a 20% cap\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":248.0},\"y\":{\"value\":659.0},\"fontSize\":{\"value\":22},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#157347\"},\"text\":{\"signal\":\"((m[''Profit Change 20'']) >= 0 ? ''+'' : '''') + (abs(m[''Profit Change 20'']) >= 1e6 ? format(m[''Profit Change 20''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Profit Change 20'']) >= 1e5 ? format(m[''Profit Change 20''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Profit Change 20'']) >= 1e3 ? format(m[''Profit Change 20''] / 1e3, ''$.1f'') + ''K'' : format(m[''Profit Change 20''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":256.0},\"y\":{\"value\":660.0},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#0F4D30\"},\"text\":{\"signal\":\"''more profit ('' + (m[''Profit''] != 0 ? format(m[''Profit Change 20''] / abs(m[''Profit'']), ''+.0%'') : '''') + '')''\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1233},\"y\":{\"value\":300.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"m[''Change All Kept''] >= 0 ? ''#157347'' : ''#B42318''\"},\"text\":{\"signal\":\"((m[''Change All Kept'']) >= 0 ? ''+'' : '''') + (abs(m[''Change All Kept'']) >= 1e6 ? format(m[''Change All Kept''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Change All Kept'']) >= 1e5 ? format(m[''Change All Kept''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Change All Kept'']) >= 1e3 ? format(m[''Change All Kept''] / 1e3, ''$.1f'') + ''K'' : format(m[''Change All Kept''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1233},\"y\":{\"value\":343.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"m[''Change None Kept''] >= 0 ? ''#157347'' : ''#B42318''\"},\"text\":{\"signal\":\"((m[''Change None Kept'']) >= 0 ? ''+'' : '''') + (abs(m[''Change None Kept'']) >= 1e6 ? format(m[''Change None Kept''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Change None Kept'']) >= 1e5 ? format(m[''Change None Kept''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Change None Kept'']) >= 1e3 ? format(m[''Change None Kept''] / 1e3, ''$.1f'') + ''K'' : format(m[''Change None Kept''], ''$.0f''))))\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1233},\"y\":{\"value\":386.8},\"fontSize\":{\"value\":16},\"fontWeight\":{\"value\":700},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"m[''Change Whole Orders Lost''] >= 0 ? ''#157347'' : ''#B42318''\"},\"text\":{\"signal\":\"((m[''Change Whole Orders Lost'']) >= 0 ? ''+'' : '''') + (abs(m[''Change Whole Orders Lost'']) >= 1e6 ? format(m[''Change Whole Orders Lost''] / 1e6, ''$.2f'') + ''M'' : (abs(m[''Change Whole Orders Lost'']) >= 1e5 ? format(m[''Change Whole Orders Lost''] / 1e3, ''$.0f'') + ''K'' : (abs(m[''Change Whole Orders Lost'']) >= 1e3 ? format(m[''Change Whole Orders Lost''] / 1e3, ''$.1f'') + ''K'' : format(m[''Change Whole Orders Lost''], ''$.0f''))))\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

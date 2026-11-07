@@ -1,0 +1,347 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "801f723df5772c01ea3c",
+  "position": {
+    "x": 47,
+    "y": 311.5,
+    "z": 1000,
+    "height": 283.5,
+    "width": 772,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Discount Band"
+                    }
+                  },
+                  "Property": "Band"
+                }
+              },
+              "queryRef": "Discount Band.Band",
+              "nativeQueryRef": "Band"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Discount Band"
+                    }
+                  },
+                  "Property": "Band Detail"
+                }
+              },
+              "queryRef": "Discount Band.Band Detail",
+              "nativeQueryRef": "Band Detail"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Discount Band"
+                    }
+                  },
+                  "Property": "Band Sort"
+                }
+              },
+              "queryRef": "Discount Band.Band Sort",
+              "nativeQueryRef": "Band Sort"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Sales"
+                }
+              },
+              "queryRef": "Orders.Sales",
+              "nativeQueryRef": "Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit"
+                }
+              },
+              "queryRef": "Orders.Profit",
+              "nativeQueryRef": "Profit"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Same Products Full Price per Dollar"
+                }
+              },
+              "queryRef": "Orders.Same Products Full Price per Dollar",
+              "nativeQueryRef": "Same Products Full Price per Dollar"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Profit per $1 sold by discount band\",\"width\":772,\"height\":283.5,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"},{\"name\":\"rows\",\"source\":\"dataset\",\"transform\":[{\"type\":\"collect\",\"sort\":{\"field\":\"Band Sort\"}},{\"type\":\"formula\",\"as\":\"v\",\"expr\":\"datum.Sales ? datum.Profit / datum.Sales : 0\"},{\"type\":\"joinaggregate\",\"fields\":[\"Sales\"],\"ops\":[\"sum\"],\"as\":[\"tot\"]},{\"type\":\"formula\",\"as\":\"share\",\"expr\":\"format(datum.Sales / datum.tot, ''.0%'') + '' of sales''\"},{\"type\":\"formula\",\"as\":\"detail\",\"expr\":\"datum[''Band Sort''] == 1 ? datum.share : lower(datum[''Band Detail'']) + '' · '' + datum.share\"},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r\"]},{\"type\":\"formula\",\"as\":\"cy\",\"expr\":\"36.8 + (datum.r - 1) * 44 + 15\"}]},{\"name\":\"heavy\",\"source\":\"rows\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum[''Band Sort''] >= 3\"},{\"type\":\"aggregate\",\"fields\":[\"Same Products Full Price per Dollar\",\"Same Products Full Price per Dollar\"],\"ops\":[\"min\",\"max\"],\"as\":[\"lo\",\"hi\"]}]},{\"name\":\"ext\",\"source\":\"rows\",\"transform\":[{\"type\":\"aggregate\",\"fields\":[\"v\",\"v\"],\"ops\":[\"min\",\"max\"],\"as\":[\"lo\",\"hi\"]}]}],\"signals\":[{\"name\":\"lo\",\"update\":\"data(''ext'')[0] ? min(0, data(''ext'')[0].lo) : -1\"},{\"name\":\"hi\",\"update\":\"data(''ext'')[0] ? max(0, data(''ext'')[0].hi) : 1\"},{\"name\":\"h\",\"update\":\"data(''heavy'')[0] || {}\"}],\"scales\":[{\"name\":\"x\",\"type\":\"linear\",\"domain\":{\"signal\":\"[lo, hi]\"},\"range\":[184,772],\"zero\":true,\"nice\":false}],\"marks\":[{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":184},\"x2\":{\"value\":772},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":30},\"fill\":{\"value\":\"#F9FAFB\"},\"cornerRadius\":{\"value\":6}}}},{\"type\":\"rule\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"scale\":\"x\",\"value\":0},\"y\":{\"signal\":\"datum.cy - 19\"},\"y2\":{\"signal\":\"datum.cy + 19\"},\"stroke\":{\"value\":\"#9CA3AF\"},\"strokeWidth\":{\"value\":1}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"scale\":\"x\",\"value\":0},\"x2\":{\"scale\":\"x\",\"field\":\"v\"},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":22},\"fill\":{\"signal\":\"datum.v >= 0 ? ''#2E9E6A'' : ''#E05545''\"},\"cornerRadius\":{\"value\":5}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"signal\":\"datum.cy - 8\"},\"text\":{\"field\":\"Band\"},\"fontSize\":{\"value\":13.5},\"fontWeight\":{\"value\":600},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"signal\":\"datum.cy + 9\"},\"text\":{\"field\":\"detail\"},\"fontSize\":{\"value\":12},\"fill\":{\"value\":\"#6B7280\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"signal\":\"datum.v >= 0 ? (scale(''x'', datum.v) - scale(''x'', 0) > 60 ? scale(''x'', datum.v) - 8 : scale(''x'', datum.v) + 6) : (scale(''x'', 0) - scale(''x'', datum.v) > 240 ? scale(''x'', datum.v) + 12 : scale(''x'', datum.v) - 6)\"},\"align\":{\"signal\":\"datum.v >= 0 ? (scale(''x'', datum.v) - scale(''x'', 0) > 60 ? ''right'' : ''left'') : (scale(''x'', 0) - scale(''x'', datum.v) > 240 ? ''left'' : ''right'')\"},\"y\":{\"field\":\"cy\"},\"baseline\":{\"value\":\"middle\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":700},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"signal\":\"datum.v >= 0 ? (scale(''x'', datum.v) - scale(''x'', 0) > 60 ? ''#06281A'' : ''#157347'') : (scale(''x'', 0) - scale(''x'', datum.v) > 240 ? ''#3B0A06'' : ''#B42318'')\"},\"text\":{\"signal\":\"((datum.v) <= -1 ? ''−$'' + format(abs(datum.v), ''.2f'') : ((datum.v) < 0 ? ''−'' : '''') + format(abs(datum.v) * 100, ''.0f'') + ''¢'') + (datum.v <= -1 ? '' · more than the sale itself'' : '''')\"}}}},{\"type\":\"rect\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"x2\":{\"value\":772},\"y\":{\"value\":249.5},\"height\":{\"value\":34},\"fill\":{\"value\":\"#F9FAFB\"},\"cornerRadius\":{\"value\":8}}}},{\"type\":\"symbol\",\"encode\":{\"update\":{\"x\":{\"value\":19},\"y\":{\"value\":266.5},\"shape\":{\"value\":\"circle\"},\"size\":{\"value\":144},\"fill\":{\"value\":\"transparent\"},\"stroke\":{\"value\":\"#6B7280\"},\"strokeWidth\":{\"value\":1.3}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":19},\"y\":{\"value\":267.0},\"text\":{\"value\":\"i\"},\"fontSize\":{\"value\":10},\"fontWeight\":{\"value\":700},\"fill\":{\"value\":\"#6B7280\"},\"align\":{\"value\":\"center\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":34},\"y\":{\"value\":266.5},\"fontSize\":{\"value\":12},\"fill\":{\"value\":\"#4B5563\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"text\":{\"signal\":\"isValid(h.lo) ? \\\"This isn''t because cheap products get discounted: at full price, the same products earn \\\" + format(h.lo * 100, ''.0f'') + ''¢ to '' + format(h.hi * 100, ''.0f'') + ''¢ per $1.'' : ''No sales had more than 20% off in this selection.''\"}}}}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.0'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "284D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "772D"
+                }
+              }
+            },
+            "supportFieldConfiguration": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"Band\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Band Detail\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Band Sort\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":false,\"formatted\":false,\"names\":false},\"Sales\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"Profit\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false},\"Same Products Full Price per Dollar\":{\"highlight\":false,\"highlightStatus\":false,\"highlightComparator\":false,\"format\":true,\"formatted\":true,\"names\":false}}'"
+                }
+              }
+            },
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "consolidateFieldParameters": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "01a7bfca301528a89832",
+  "position": {
+    "x": 45,
+    "y": 294,
+    "z": 1000,
+    "width": 1190,
+    "height": 389,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Sub-category"
+                }
+              },
+              "queryRef": "Product.Sub-category",
+              "nativeQueryRef": "Sub-category"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Quarter Index"
+                }
+              },
+              "queryRef": "Orders.Quarter Index",
+              "nativeQueryRef": "Quarter Index"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Sales"
+                }
+              },
+              "queryRef": "Orders.Sales",
+              "nativeQueryRef": "Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Heavy Sales"
+                }
+              },
+              "queryRef": "Orders.Heavy Sales",
+              "nativeQueryRef": "Heavy Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Profit"
+                }
+              },
+              "queryRef": "Orders.Profit",
+              "nativeQueryRef": "Profit"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega/v5.json\",\"description\":\"Report card: share of sales above 20% off by product group, last 6 quarters\",\"width\":1190,\"height\":389,\"padding\":0,\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"data\":[{\"name\":\"dataset\"},{\"name\":\"base\",\"source\":\"dataset\",\"transform\":[{\"type\":\"formula\",\"as\":\"hs\",\"expr\":\"datum[''Heavy Sales''] || 0\"},{\"type\":\"formula\",\"as\":\"qi\",\"expr\":\"datum[''Quarter Index'']\"}]},{\"name\":\"qext\",\"source\":\"base\",\"transform\":[{\"type\":\"aggregate\",\"fields\":[\"qi\"],\"ops\":[\"max\"],\"as\":[\"mq\"]}]},{\"name\":\"allsubs\",\"source\":\"base\",\"transform\":[{\"type\":\"aggregate\",\"groupby\":[\"Sub-category\"]}]},{\"name\":\"recent\",\"source\":\"base\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.qi > maxQ - 6\"}]},{\"name\":\"latest\",\"source\":\"base\",\"transform\":[{\"type\":\"filter\",\"expr\":\"datum.qi == maxQ\"},{\"type\":\"formula\",\"as\":\"lpct\",\"expr\":\"datum.Sales ? datum.hs / datum.Sales * 100 : 0\"},{\"type\":\"formula\",\"as\":\"lppd\",\"expr\":\"datum.Sales ? datum.Profit / datum.Sales : 0\"}]},{\"name\":\"rows\",\"source\":\"recent\",\"transform\":[{\"type\":\"aggregate\",\"groupby\":[\"Sub-category\"],\"fields\":[\"hs\"],\"ops\":[\"sum\"],\"as\":[\"h6\"]},{\"type\":\"filter\",\"expr\":\"datum.h6 > 0\"},{\"type\":\"lookup\",\"from\":\"latest\",\"key\":\"Sub-category\",\"fields\":[\"Sub-category\"],\"values\":[\"lpct\",\"lppd\"],\"default\":0},{\"type\":\"formula\",\"as\":\"pct\",\"expr\":\"datum.lpct || 0\"},{\"type\":\"collect\",\"sort\":{\"field\":[\"pct\",\"Sub-category\"],\"order\":[\"descending\",\"ascending\"]}},{\"type\":\"window\",\"ops\":[\"row_number\"],\"as\":[\"r1\"]},{\"type\":\"formula\",\"as\":\"cy\",\"expr\":\"76 + (datum.r1 - 1) * 34\"},{\"type\":\"formula\",\"as\":\"status\",\"expr\":\"datum.pct > 25 ? ''Act now'' : (datum.pct >= 10 ? ''Watch'' : ''OK'')\"},{\"type\":\"formula\",\"as\":\"col\",\"expr\":\"datum.status == ''Act now'' ? ''#E05545'' : (datum.status == ''Watch'' ? ''#E8A23A'' : ''#2E9E6A'')\"},{\"type\":\"formula\",\"as\":\"tint\",\"expr\":\"datum.status == ''Act now'' ? ''#FDE7E4'' : (datum.status == ''Watch'' ? ''#FDF1DC'' : ''#E3F4EA'')\"},{\"type\":\"formula\",\"as\":\"tcol\",\"expr\":\"datum.status == ''Act now'' ? ''#B42318'' : (datum.status == ''Watch'' ? ''#8A5300'' : ''#157347'')\"},{\"type\":\"formula\",\"as\":\"bw\",\"expr\":\"datum.status == ''Act now'' ? 70 : (datum.status == ''Watch'' ? 56 : 36)\"}]},{\"name\":\"series\",\"source\":\"recent\",\"transform\":[{\"type\":\"lookup\",\"from\":\"rows\",\"key\":\"Sub-category\",\"fields\":[\"Sub-category\"],\"values\":[\"r1\",\"col\"]},{\"type\":\"filter\",\"expr\":\"datum.r1 != null\"},{\"type\":\"formula\",\"as\":\"p\",\"expr\":\"datum.Sales ? datum.hs / datum.Sales * 100 : 0\"}]}],\"signals\":[{\"name\":\"maxQ\",\"update\":\"data(''qext'')[0] ? data(''qext'')[0].mq : 0\"},{\"name\":\"others\",\"update\":\"length(data(''allsubs'')) - length(data(''rows''))\"}],\"scales\":[{\"name\":\"sx\",\"type\":\"linear\",\"domain\":{\"signal\":\"[maxQ - 5, maxQ]\"},\"range\":[3,107],\"zero\":false},{\"name\":\"sy\",\"type\":\"linear\",\"domain\":[0,70],\"range\":[22,2],\"clamp\":true}],\"marks\":[{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"value\":8},\"fontSize\":{\"value\":12.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"signal\":\"''Groups that gave heavy discounts in the last 6 quarters.'' + (others > 0 ? '' The other '' + others + '' gave none.'' : '''')\"}}}},{\"type\":\"symbol\",\"encode\":{\"update\":{\"x\":{\"value\":752},\"y\":{\"value\":8},\"size\":{\"value\":100},\"fill\":{\"value\":\"#E05545\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":760},\"y\":{\"value\":8},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"value\":\"Act now: over 25% of sales\"}}}},{\"type\":\"symbol\",\"encode\":{\"update\":{\"x\":{\"value\":930},\"y\":{\"value\":8},\"size\":{\"value\":100},\"fill\":{\"value\":\"#E8A23A\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":938},\"y\":{\"value\":8},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"value\":\"Watch: 10–25%\"}}}},{\"type\":\"symbol\",\"encode\":{\"update\":{\"x\":{\"value\":1050},\"y\":{\"value\":8},\"size\":{\"value\":100},\"fill\":{\"value\":\"#2E9E6A\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1058},\"y\":{\"value\":8},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#4B5563\"},\"text\":{\"value\":\"OK: under 10%\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"value\":40},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Product group\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":166},\"y\":{\"value\":40},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Status\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":302},\"y\":{\"value\":40},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Sales with more than 20% off, this quarter\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":874},\"y\":{\"value\":40},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"left\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Last 6 quarters\"}}}},{\"type\":\"text\",\"encode\":{\"update\":{\"x\":{\"value\":1190},\"y\":{\"value\":40},\"fontSize\":{\"value\":11.5},\"fontWeight\":{\"value\":400},\"align\":{\"value\":\"right\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"},\"fill\":{\"value\":\"#6B7280\"},\"text\":{\"value\":\"Profit per $1, this quarter\"}}}},{\"type\":\"rule\",\"encode\":{\"update\":{\"x\":{\"value\":0},\"x2\":{\"value\":1190},\"y\":{\"value\":54},\"stroke\":{\"value\":\"#E5E7EB\"}}}},{\"type\":\"rule\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":0},\"x2\":{\"value\":1190},\"y\":{\"signal\":\"datum.cy + 17\"},\"stroke\":{\"value\":\"#F3F4F6\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":0},\"y\":{\"field\":\"cy\"},\"text\":{\"field\":\"Sub-category\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":166},\"width\":{\"field\":\"bw\"},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":22},\"fill\":{\"field\":\"tint\"},\"cornerRadius\":{\"value\":11}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"signal\":\"166 + datum.bw / 2\"},\"align\":{\"value\":\"center\"},\"y\":{\"field\":\"cy\"},\"text\":{\"field\":\"status\"},\"fontSize\":{\"value\":12},\"fontWeight\":{\"value\":600},\"fill\":{\"field\":\"tcol\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":302},\"x2\":{\"value\":812},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":10},\"fill\":{\"value\":\"#F3F4F6\"},\"cornerRadius\":{\"value\":5}}}},{\"type\":\"rect\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":302},\"width\":{\"signal\":\"max(2, min(datum.pct, 100) / 100 * 510)\"},\"yc\":{\"field\":\"cy\"},\"height\":{\"value\":10},\"fill\":{\"field\":\"col\"},\"cornerRadius\":{\"value\":5}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":858},\"align\":{\"value\":\"right\"},\"y\":{\"field\":\"cy\"},\"text\":{\"signal\":\"datum.pct > 0 && datum.pct < 1 ? format(datum.pct, ''.1f'') + ''%'' : format(datum.pct, ''.0f'') + ''%''\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":600},\"fill\":{\"value\":\"#111827\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"text\",\"from\":{\"data\":\"rows\"},\"encode\":{\"update\":{\"x\":{\"value\":1190},\"align\":{\"value\":\"right\"},\"y\":{\"field\":\"cy\"},\"text\":{\"signal\":\"(datum.lppd >= 0 ? ''+'' : '''') + ((datum.lppd) <= -1 ? ''−$'' + format(abs(datum.lppd), ''.2f'') : ((datum.lppd) < 0 ? ''−'' : '''') + format(abs(datum.lppd) * 100, ''.0f'') + ''¢'')\"},\"fontSize\":{\"value\":13},\"fontWeight\":{\"value\":700},\"fill\":{\"signal\":\"datum.lppd >= 0 ? ''#157347'' : ''#B42318''\"},\"baseline\":{\"value\":\"middle\"},\"font\":{\"value\":\"Segoe UI\"}}}},{\"type\":\"group\",\"from\":{\"facet\":{\"name\":\"ser\",\"data\":\"series\",\"groupby\":[\"Sub-category\"],\"aggregate\":{\"fields\":[\"r1\"],\"ops\":[\"min\"],\"as\":[\"r1\"]}}},\"encode\":{\"update\":{\"x\":{\"value\":874},\"y\":{\"signal\":\"76 + (datum.r1 - 1) * 34 - 12\"},\"width\":{\"value\":110},\"height\":{\"value\":24}}},\"marks\":[{\"type\":\"line\",\"from\":{\"data\":\"ser\"},\"sort\":{\"field\":\"datum.qi\"},\"encode\":{\"update\":{\"x\":{\"scale\":\"sx\",\"field\":\"qi\"},\"y\":{\"scale\":\"sy\",\"field\":\"p\"},\"stroke\":{\"value\":\"#6B7280\"},\"strokeWidth\":{\"value\":1.6},\"strokeJoin\":{\"value\":\"round\"}}}},{\"type\":\"symbol\",\"from\":{\"data\":\"ser\"},\"encode\":{\"update\":{\"x\":{\"scale\":\"sx\",\"field\":\"qi\"},\"y\":{\"scale\":\"sy\",\"field\":\"p\"},\"size\":{\"signal\":\"datum.qi == maxQ ? 30 : 0\"},\"fill\":{\"field\":\"col\"}}}}]}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"background\":\"transparent\",\"font\":\"Segoe UI\",\"text\":{\"font\":\"Segoe UI\"},\"group\":{\"fill\":null,\"stroke\":null}}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vega'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

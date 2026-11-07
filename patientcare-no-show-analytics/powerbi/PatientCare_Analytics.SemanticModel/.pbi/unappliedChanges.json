@@ -1,0 +1,428 @@
+{
+  "version": "1.0",
+  "conceptualSchemaSettings": {},
+  "queries": [
+    {
+      "name": "SourceType",
+      "lineageTag": "923e1f4e-30f3-53eb-9459-bddebe5f25fb",
+      "description": "Where the tables load from: CSV (the files in DataFolder) or PostgreSQL (the core schema of the warehouse).",
+      "queryGroupId": "bd707ce0-4d4a-4457-abfb-9cb78e09dc00",
+      "text": [
+        "\"CSV\" meta [IsParameterQuery=true, List={\"CSV\", \"PostgreSQL\"}, DefaultValue=\"CSV\", Type=\"Text\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Text",
+      "isHidden": false
+    },
+    {
+      "name": "DataFolder",
+      "lineageTag": "6414f57e-700b-507a-b8b1-f709656936a7",
+      "description": "Folder that holds the CSV files exported by the SQL pipeline (data/processed). Used when SourceType is CSV.",
+      "queryGroupId": "bd707ce0-4d4a-4457-abfb-9cb78e09dc00",
+      "text": [
+        "\"D:\\Projects\\patientcare-no-show-analytics\\data\\sample\\processed\\\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Text",
+      "isHidden": false
+    },
+    {
+      "name": "PostgreSQLServer",
+      "lineageTag": "c58fb631-5006-52e5-ac9a-3d9665640bb6",
+      "description": "PostgreSQL server, optionally with a port, for example localhost or localhost:5432. Used when SourceType is PostgreSQL.",
+      "queryGroupId": "bd707ce0-4d4a-4457-abfb-9cb78e09dc00",
+      "text": [
+        "\"localhost\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Text",
+      "isHidden": false
+    },
+    {
+      "name": "PostgreSQLDatabase",
+      "lineageTag": "99d61dc1-3271-5a14-ae0b-1cdecf097117",
+      "description": "PostgreSQL database created by the SQL pipeline. Used when SourceType is PostgreSQL.",
+      "queryGroupId": "bd707ce0-4d4a-4457-abfb-9cb78e09dc00",
+      "text": [
+        "\"patientcare_analytics\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Text",
+      "isHidden": false
+    },
+    {
+      "name": "fnLoadTable",
+      "lineageTag": "ba2dd56e-ccc2-5ba8-9c5f-15ac6bda7ca9",
+      "description": "Loads one table from the CSV folder or from PostgreSQL (core schema), keeps the listed columns and turns true/false columns into Yes/No.",
+      "queryGroupId": "41142e9d-a717-4be6-8cef-ccb0f44e7a41",
+      "text": [
+        "(tableName as text, columns as list, optional yesNoColumns as list) as table =>",
+        "let",
+        "    // One loader for every table, so switching between the CSV export and the PostgreSQL warehouse is a single parameter",
+        "    FromPostgreSQL = () => PostgreSQL.Database(PostgreSQLServer, PostgreSQLDatabase){[Schema = \"core\", Item = tableName]}[Data],",
+        "    FromCsv = () =>",
+        "        Table.PromoteHeaders(",
+        "            Csv.Document(",
+        "                File.Contents(Text.TrimEnd(DataFolder, \"\\\") & \"\\\" & tableName & \".csv\"),",
+        "                [Delimiter = \",\", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]",
+        "            ),",
+        "            [PromoteAllScalars = true]",
+        "        ),",
+        "    Source = if SourceType = \"PostgreSQL\" then FromPostgreSQL() else FromCsv(),",
+        "    KeptColumns = Table.SelectColumns(Source, columns),",
+        "    // true/false (PostgreSQL) and t/f (CSV) both become Yes/No",
+        "    ToYesNo = (value) =>",
+        "        if value = true or value = \"t\" or value = \"true\" then \"Yes\"",
+        "        else if value = false or value = \"f\" or value = \"false\" then \"No\"",
+        "        else null,",
+        "    YesNoColumns = Table.TransformColumns(",
+        "        KeptColumns,",
+        "        List.Transform(if yesNoColumns = null then {} else yesNoColumns, (name) => {name, ToYesNo, type text})",
+        "    )",
+        "in",
+        "    YesNoColumns"
+      ],
+      "loadAsTableDisabled": true,
+      "resultType": "Function",
+      "isHidden": false
+    },
+    {
+      "name": "Date",
+      "lineageTag": "d39c7e54-5f69-5ead-abd2-04bd7eb470f5",
+      "description": "Calendar, one row per day, plus an Unknown row for appointments with an unreadable date. Source: core.dim_date.",
+      "queryGroupId": "06a3288f-26f6-43dc-8f26-d9d96e206d13",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"dim_date\", {\"date_key\", \"full_date\", \"day_of_week_number\", \"day_name\", \"month_year\", \"month_year_sort\", \"quarter_number\", \"quarter_label\", \"year_number\", \"project_analysis_period\", \"project_period_sort\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"date_key\", Int64.Type}, {\"full_date\", type date}, {\"day_of_week_number\", Int64.Type}, {\"day_name\", type text}, {\"month_year\", type text}, {\"month_year_sort\", Int64.Type}, {\"quarter_number\", Int64.Type}, {\"quarter_label\", type text}, {\"year_number\", Int64.Type}, {\"project_analysis_period\", type text}, {\"project_period_sort\", Int64.Type}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"date_key\", \"Date Key\"}, {\"full_date\", \"Date\"}, {\"day_of_week_number\", \"Day Number\"}, {\"day_name\", \"Day\"}, {\"month_year\", \"Month\"}, {\"month_year_sort\", \"Month Sort\"}, {\"quarter_number\", \"Quarter Number\"}, {\"quarter_label\", \"Quarter\"}, {\"year_number\", \"Year\"}, {\"project_analysis_period\", \"Analysis Period\"}, {\"project_period_sort\", \"Analysis Period Sort\"}}),",
+        "    AddedWeekday = Table.AddColumn(RenamedColumns, \"Weekday\", each if [Day] = null then null else Text.Start([Day], 3), type text),",
+        "    AddedMonthStart = Table.AddColumn(AddedWeekday, \"Month Start\", each if [Date] = null then null else Date.StartOfMonth([Date]), type date),",
+        "    AddedWeekStart = Table.AddColumn(AddedMonthStart, \"Week Start\", each if [Date] = null then null else Date.StartOfWeek([Date], Day.Monday), type date),",
+        "    AddedQuarterSort = Table.AddColumn(AddedWeekStart, \"Quarter Sort\", each if [Year] = null then 0 else [Year] * 10 + [Quarter Number], Int64.Type)",
+        "in",
+        "    AddedQuarterSort"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"dim_date\\\", {\\\"date_key\\\", \\\"full_date\\\", \\\"day_of_week_number\\\", \\\"day_name\\\", \\\"month_year\\\", \\\"month_year_sort\\\", \\\"quarter_number\\\", \\\"quarter_label\\\", \\\"year_number\\\", \\\"project_analysis_period\\\", \\\"project_period_sort\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"date_key\\\", Int64.Type}, {\\\"full_date\\\", type date}, {\\\"day_of_week_number\\\", Int64.Type}, {\\\"day_name\\\", type text}, {\\\"month_year\\\", type text}, {\\\"month_year_sort\\\", Int64.Type}, {\\\"quarter_number\\\", Int64.Type}, {\\\"quarter_label\\\", type text}, {\\\"year_number\\\", Int64.Type}, {\\\"project_analysis_period\\\", type text}, {\\\"project_period_sort\\\", Int64.Type}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"date_key\\\", \\\"Date Key\\\"}, {\\\"full_date\\\", \\\"Date\\\"}, {\\\"day_of_week_number\\\", \\\"Day Number\\\"}, {\\\"day_name\\\", \\\"Day\\\"}, {\\\"month_year\\\", \\\"Month\\\"}, {\\\"month_year_sort\\\", \\\"Month Sort\\\"}, {\\\"quarter_number\\\", \\\"Quarter Number\\\"}, {\\\"quarter_label\\\", \\\"Quarter\\\"}, {\\\"year_number\\\", \\\"Year\\\"}, {\\\"project_analysis_period\\\", \\\"Analysis Period\\\"}, {\\\"project_period_sort\\\", \\\"Analysis Period Sort\\\"}}),\\n    AddedWeekday = Table.AddColumn(RenamedColumns, \\\"Weekday\\\", each if [Day] = null then null else Text.Start([Day], 3), type text),\\n    AddedMonthStart = Table.AddColumn(AddedWeekday, \\\"Month Start\\\", each if [Date] = null then null else Date.StartOfMonth([Date]), type date),\\n    AddedWeekStart = Table.AddColumn(AddedMonthStart, \\\"Week Start\\\", each if [Date] = null then null else Date.StartOfWeek([Date], Day.Monday), type date),\\n    AddedQuarterSort = Table.AddColumn(AddedWeekStart, \\\"Quarter Sort\\\", each if [Year] = null then 0 else [Year] * 10 + [Quarter Number], Int64.Type)\\nin\\n    AddedQuarterSort\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Clinic",
+      "lineageTag": "88c035a4-61e8-5473-a329-bd3eab88f253",
+      "description": "The 14 clinics, plus an Unknown row. Source: core.dim_clinic.",
+      "queryGroupId": "06a3288f-26f6-43dc-8f26-d9d96e206d13",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"dim_clinic\", {\"clinic_key\", \"clinic_name\", \"facility_type\", \"division\", \"district\", \"consultation_room_count\", \"telemedicine_enabled\"}, {\"telemedicine_enabled\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"clinic_key\", Int64.Type}, {\"clinic_name\", type text}, {\"facility_type\", type text}, {\"division\", type text}, {\"district\", type text}, {\"consultation_room_count\", Int64.Type}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"clinic_key\", \"Clinic Key\"}, {\"clinic_name\", \"Clinic\"}, {\"facility_type\", \"Facility Type\"}, {\"division\", \"Clinic Division\"}, {\"district\", \"Clinic District\"}, {\"consultation_room_count\", \"Consultation Rooms\"}, {\"telemedicine_enabled\", \"Telemedicine Enabled\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"dim_clinic\\\", {\\\"clinic_key\\\", \\\"clinic_name\\\", \\\"facility_type\\\", \\\"division\\\", \\\"district\\\", \\\"consultation_room_count\\\", \\\"telemedicine_enabled\\\"}, {\\\"telemedicine_enabled\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"clinic_key\\\", Int64.Type}, {\\\"clinic_name\\\", type text}, {\\\"facility_type\\\", type text}, {\\\"division\\\", type text}, {\\\"district\\\", type text}, {\\\"consultation_room_count\\\", Int64.Type}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"clinic_key\\\", \\\"Clinic Key\\\"}, {\\\"clinic_name\\\", \\\"Clinic\\\"}, {\\\"facility_type\\\", \\\"Facility Type\\\"}, {\\\"division\\\", \\\"Clinic Division\\\"}, {\\\"district\\\", \\\"Clinic District\\\"}, {\\\"consultation_room_count\\\", \\\"Consultation Rooms\\\"}, {\\\"telemedicine_enabled\\\", \\\"Telemedicine Enabled\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Doctor",
+      "lineageTag": "58e5e1d5-60cc-5894-9d37-d5b2648478c0",
+      "description": "Doctors on the register, plus an Unknown row. Source: core.dim_doctor.",
+      "queryGroupId": "06a3288f-26f6-43dc-8f26-d9d96e206d13",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"dim_doctor\", {\"doctor_key\", \"doctor_name\", \"gender\", \"specialty\", \"designation\", \"employment_type\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"doctor_key\", Int64.Type}, {\"doctor_name\", type text}, {\"gender\", type text}, {\"specialty\", type text}, {\"designation\", type text}, {\"employment_type\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"doctor_key\", \"Doctor Key\"}, {\"doctor_name\", \"Doctor\"}, {\"gender\", \"Doctor Gender\"}, {\"specialty\", \"Doctor Specialty\"}, {\"designation\", \"Designation\"}, {\"employment_type\", \"Employment Type\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"dim_doctor\\\", {\\\"doctor_key\\\", \\\"doctor_name\\\", \\\"gender\\\", \\\"specialty\\\", \\\"designation\\\", \\\"employment_type\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"doctor_key\\\", Int64.Type}, {\\\"doctor_name\\\", type text}, {\\\"gender\\\", type text}, {\\\"specialty\\\", type text}, {\\\"designation\\\", type text}, {\\\"employment_type\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"doctor_key\\\", \\\"Doctor Key\\\"}, {\\\"doctor_name\\\", \\\"Doctor\\\"}, {\\\"gender\\\", \\\"Doctor Gender\\\"}, {\\\"specialty\\\", \\\"Doctor Specialty\\\"}, {\\\"designation\\\", \\\"Designation\\\"}, {\\\"employment_type\\\", \\\"Employment Type\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Patient",
+      "lineageTag": "ddb9a47f-cb89-5932-b3c1-88aa0add1f5e",
+      "description": "Registered patients, plus an Unknown row. Source: core.dim_patient.",
+      "queryGroupId": "06a3288f-26f6-43dc-8f26-d9d96e206d13",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"dim_patient\", {\"patient_key\", \"gender\", \"division\", \"district\", \"urban_rural\", \"preferred_language\", \"sms_opt_in\", \"whatsapp_opt_in\", \"chronic_condition_segment\", \"patient_status\"}, {\"sms_opt_in\", \"whatsapp_opt_in\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"patient_key\", Int64.Type}, {\"gender\", type text}, {\"division\", type text}, {\"district\", type text}, {\"urban_rural\", type text}, {\"preferred_language\", type text}, {\"chronic_condition_segment\", type text}, {\"patient_status\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"patient_key\", \"Patient Key\"}, {\"gender\", \"Patient Gender\"}, {\"division\", \"Patient Division\"}, {\"district\", \"Patient District\"}, {\"urban_rural\", \"Patient Area\"}, {\"preferred_language\", \"Preferred Language\"}, {\"sms_opt_in\", \"SMS Opt-in\"}, {\"whatsapp_opt_in\", \"WhatsApp Opt-in\"}, {\"chronic_condition_segment\", \"Chronic Condition\"}, {\"patient_status\", \"Patient Status\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"dim_patient\\\", {\\\"patient_key\\\", \\\"gender\\\", \\\"division\\\", \\\"district\\\", \\\"urban_rural\\\", \\\"preferred_language\\\", \\\"sms_opt_in\\\", \\\"whatsapp_opt_in\\\", \\\"chronic_condition_segment\\\", \\\"patient_status\\\"}, {\\\"sms_opt_in\\\", \\\"whatsapp_opt_in\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"patient_key\\\", Int64.Type}, {\\\"gender\\\", type text}, {\\\"division\\\", type text}, {\\\"district\\\", type text}, {\\\"urban_rural\\\", type text}, {\\\"preferred_language\\\", type text}, {\\\"chronic_condition_segment\\\", type text}, {\\\"patient_status\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"patient_key\\\", \\\"Patient Key\\\"}, {\\\"gender\\\", \\\"Patient Gender\\\"}, {\\\"division\\\", \\\"Patient Division\\\"}, {\\\"district\\\", \\\"Patient District\\\"}, {\\\"urban_rural\\\", \\\"Patient Area\\\"}, {\\\"preferred_language\\\", \\\"Preferred Language\\\"}, {\\\"sms_opt_in\\\", \\\"SMS Opt-in\\\"}, {\\\"whatsapp_opt_in\\\", \\\"WhatsApp Opt-in\\\"}, {\\\"chronic_condition_segment\\\", \\\"Chronic Condition\\\"}, {\\\"patient_status\\\", \\\"Patient Status\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Appointments",
+      "lineageTag": "0dc368cf-b7bf-5d54-a264-017394c14c4c",
+      "description": "One row per appointment, including the analysis bands calculated in SQL. Source: core.fact_appointments.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_appointments\", {\"appointment_key\", \"patient_key\", \"clinic_key\", \"doctor_key\", \"scheduled_date_key\", \"specialty\", \"appointment_status\", \"booking_channel\", \"consultation_mode\", \"visit_type\", \"priority_level\", \"referral_source\", \"cancellation_reason\", \"is_follow_up\", \"scheduled_start_valid\", \"has_data_quality_issue\", \"lead_time_days\", \"lead_time_band\", \"lead_time_band_sort\", \"scheduled_time_band\", \"scheduled_time_band_sort\", \"patient_age_at_appointment\", \"patient_age_band\", \"patient_age_band_sort\", \"pilot_target_segment\", \"reminder_delivery_group\"}, {\"is_follow_up\", \"scheduled_start_valid\", \"has_data_quality_issue\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"appointment_key\", Int64.Type}, {\"patient_key\", Int64.Type}, {\"clinic_key\", Int64.Type}, {\"doctor_key\", Int64.Type}, {\"scheduled_date_key\", Int64.Type}, {\"specialty\", type text}, {\"appointment_status\", type text}, {\"booking_channel\", type text}, {\"consultation_mode\", type text}, {\"visit_type\", type text}, {\"priority_level\", type text}, {\"referral_source\", type text}, {\"cancellation_reason\", type text}, {\"lead_time_days\", Int64.Type}, {\"lead_time_band\", type text}, {\"lead_time_band_sort\", Int64.Type}, {\"scheduled_time_band\", type text}, {\"scheduled_time_band_sort\", Int64.Type}, {\"patient_age_at_appointment\", Int64.Type}, {\"patient_age_band\", type text}, {\"patient_age_band_sort\", Int64.Type}, {\"pilot_target_segment\", type text}, {\"reminder_delivery_group\", type text}}, \"en-US\"),",
+        "    FilledSpecialty = Table.TransformColumns(TypedColumns, {{\"specialty\", each if _ = null or _ = \"\" then \"Not recorded\" else _, type text}}),",
+        "    RenamedColumns = Table.RenameColumns(FilledSpecialty, {{\"appointment_key\", \"Appointment Key\"}, {\"patient_key\", \"Patient Key\"}, {\"clinic_key\", \"Clinic Key\"}, {\"doctor_key\", \"Doctor Key\"}, {\"scheduled_date_key\", \"Scheduled Date Key\"}, {\"specialty\", \"Specialty\"}, {\"appointment_status\", \"Appointment Status\"}, {\"booking_channel\", \"Booking Channel\"}, {\"consultation_mode\", \"Consultation Mode\"}, {\"visit_type\", \"Visit Type\"}, {\"priority_level\", \"Priority\"}, {\"referral_source\", \"Referral Source\"}, {\"cancellation_reason\", \"Cancellation Reason\"}, {\"is_follow_up\", \"Is Follow-up\"}, {\"scheduled_start_valid\", \"Has Valid Scheduled Date\"}, {\"has_data_quality_issue\", \"Has Data Quality Issue\"}, {\"lead_time_days\", \"Lead Time (days)\"}, {\"lead_time_band\", \"Lead Time Band\"}, {\"lead_time_band_sort\", \"Lead Time Band Sort\"}, {\"scheduled_time_band\", \"Time Band\"}, {\"scheduled_time_band_sort\", \"Time Band Sort\"}, {\"patient_age_at_appointment\", \"Patient Age\"}, {\"patient_age_band\", \"Age Band\"}, {\"patient_age_band_sort\", \"Age Band Sort\"}, {\"pilot_target_segment\", \"Target Segment\"}, {\"reminder_delivery_group\", \"Reminder Outcome\"}}),",
+        "    AddedTimeofDay = Table.AddColumn(RenamedColumns, \"Time of Day\", each if [Time Band] = \"Early morning (before 10:00)\" then \"Early AM\" else if [Time Band] = \"Late morning (10:00-11:59)\" then \"Late AM\" else if [Time Band] = \"Early afternoon (12:00-13:59)\" then \"Midday\" else if [Time Band] = \"Late afternoon (14:00-16:59)\" then \"Afternoon\" else if [Time Band] = \"Evening (17:00+)\" then \"Evening\" else \"Unknown\", type text)",
+        "in",
+        "    AddedTimeofDay"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_appointments\\\", {\\\"appointment_key\\\", \\\"patient_key\\\", \\\"clinic_key\\\", \\\"doctor_key\\\", \\\"scheduled_date_key\\\", \\\"specialty\\\", \\\"appointment_status\\\", \\\"booking_channel\\\", \\\"consultation_mode\\\", \\\"visit_type\\\", \\\"priority_level\\\", \\\"referral_source\\\", \\\"cancellation_reason\\\", \\\"is_follow_up\\\", \\\"scheduled_start_valid\\\", \\\"has_data_quality_issue\\\", \\\"lead_time_days\\\", \\\"lead_time_band\\\", \\\"lead_time_band_sort\\\", \\\"scheduled_time_band\\\", \\\"scheduled_time_band_sort\\\", \\\"patient_age_at_appointment\\\", \\\"patient_age_band\\\", \\\"patient_age_band_sort\\\", \\\"pilot_target_segment\\\", \\\"reminder_delivery_group\\\"}, {\\\"is_follow_up\\\", \\\"scheduled_start_valid\\\", \\\"has_data_quality_issue\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"appointment_key\\\", Int64.Type}, {\\\"patient_key\\\", Int64.Type}, {\\\"clinic_key\\\", Int64.Type}, {\\\"doctor_key\\\", Int64.Type}, {\\\"scheduled_date_key\\\", Int64.Type}, {\\\"specialty\\\", type text}, {\\\"appointment_status\\\", type text}, {\\\"booking_channel\\\", type text}, {\\\"consultation_mode\\\", type text}, {\\\"visit_type\\\", type text}, {\\\"priority_level\\\", type text}, {\\\"referral_source\\\", type text}, {\\\"cancellation_reason\\\", type text}, {\\\"lead_time_days\\\", Int64.Type}, {\\\"lead_time_band\\\", type text}, {\\\"lead_time_band_sort\\\", Int64.Type}, {\\\"scheduled_time_band\\\", type text}, {\\\"scheduled_time_band_sort\\\", Int64.Type}, {\\\"patient_age_at_appointment\\\", Int64.Type}, {\\\"patient_age_band\\\", type text}, {\\\"patient_age_band_sort\\\", Int64.Type}, {\\\"pilot_target_segment\\\", type text}, {\\\"reminder_delivery_group\\\", type text}}, \\\"en-US\\\"),\\n    FilledSpecialty = Table.TransformColumns(TypedColumns, {{\\\"specialty\\\", each if _ = null or _ = \\\"\\\" then \\\"Not recorded\\\" else _, type text}}),\\n    RenamedColumns = Table.RenameColumns(FilledSpecialty, {{\\\"appointment_key\\\", \\\"Appointment Key\\\"}, {\\\"patient_key\\\", \\\"Patient Key\\\"}, {\\\"clinic_key\\\", \\\"Clinic Key\\\"}, {\\\"doctor_key\\\", \\\"Doctor Key\\\"}, {\\\"scheduled_date_key\\\", \\\"Scheduled Date Key\\\"}, {\\\"specialty\\\", \\\"Specialty\\\"}, {\\\"appointment_status\\\", \\\"Appointment Status\\\"}, {\\\"booking_channel\\\", \\\"Booking Channel\\\"}, {\\\"consultation_mode\\\", \\\"Consultation Mode\\\"}, {\\\"visit_type\\\", \\\"Visit Type\\\"}, {\\\"priority_level\\\", \\\"Priority\\\"}, {\\\"referral_source\\\", \\\"Referral Source\\\"}, {\\\"cancellation_reason\\\", \\\"Cancellation Reason\\\"}, {\\\"is_follow_up\\\", \\\"Is Follow-up\\\"}, {\\\"scheduled_start_valid\\\", \\\"Has Valid Scheduled Date\\\"}, {\\\"has_data_quality_issue\\\", \\\"Has Data Quality Issue\\\"}, {\\\"lead_time_days\\\", \\\"Lead Time (days)\\\"}, {\\\"lead_time_band\\\", \\\"Lead Time Band\\\"}, {\\\"lead_time_band_sort\\\", \\\"Lead Time Band Sort\\\"}, {\\\"scheduled_time_band\\\", \\\"Time Band\\\"}, {\\\"scheduled_time_band_sort\\\", \\\"Time Band Sort\\\"}, {\\\"patient_age_at_appointment\\\", \\\"Patient Age\\\"}, {\\\"patient_age_band\\\", \\\"Age Band\\\"}, {\\\"patient_age_band_sort\\\", \\\"Age Band Sort\\\"}, {\\\"pilot_target_segment\\\", \\\"Target Segment\\\"}, {\\\"reminder_delivery_group\\\", \\\"Reminder Outcome\\\"}}),\\n    AddedTimeofDay = Table.AddColumn(RenamedColumns, \\\"Time of Day\\\", each if [Time Band] = \\\"Early morning (before 10:00)\\\" then \\\"Early AM\\\" else if [Time Band] = \\\"Late morning (10:00-11:59)\\\" then \\\"Late AM\\\" else if [Time Band] = \\\"Early afternoon (12:00-13:59)\\\" then \\\"Midday\\\" else if [Time Band] = \\\"Late afternoon (14:00-16:59)\\\" then \\\"Afternoon\\\" else if [Time Band] = \\\"Evening (17:00+)\\\" then \\\"Evening\\\" else \\\"Unknown\\\", type text)\\nin\\n    AddedTimeofDay\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Payments",
+      "lineageTag": "c0fb997c-7609-5161-8ad4-ecf99272e7cd",
+      "description": "One row per payment (latest version). Used to price a missed visit. Source: core.fact_payments.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_payments\", {\"appointment_key\", \"net_amount_bdt\", \"payment_status\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"appointment_key\", Int64.Type}, {\"net_amount_bdt\", Currency.Type}, {\"payment_status\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"appointment_key\", \"Appointment Key\"}, {\"net_amount_bdt\", \"Net Amount (BDT)\"}, {\"payment_status\", \"Payment Status\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_payments\\\", {\\\"appointment_key\\\", \\\"net_amount_bdt\\\", \\\"payment_status\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"appointment_key\\\", Int64.Type}, {\\\"net_amount_bdt\\\", Currency.Type}, {\\\"payment_status\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"appointment_key\\\", \\\"Appointment Key\\\"}, {\\\"net_amount_bdt\\\", \\\"Net Amount (BDT)\\\"}, {\\\"payment_status\\\", \\\"Payment Status\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Reminders",
+      "lineageTag": "ed4cd89b-6106-59a9-96b0-2d57d6802e76",
+      "description": "One row per reminder attempt (SMS, WhatsApp or call). Source: core.fact_reminders.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_reminders\", {\"appointment_key\", \"reminder_type\", \"channel\", \"provider_name\", \"attempt_number\", \"delivery_status\", \"failure_reason\", \"language\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"appointment_key\", Int64.Type}, {\"reminder_type\", type text}, {\"channel\", type text}, {\"provider_name\", type text}, {\"attempt_number\", Int64.Type}, {\"delivery_status\", type text}, {\"failure_reason\", type text}, {\"language\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"appointment_key\", \"Appointment Key\"}, {\"reminder_type\", \"Reminder Type\"}, {\"channel\", \"Reminder Channel\"}, {\"provider_name\", \"Message Provider\"}, {\"attempt_number\", \"Attempt Number\"}, {\"delivery_status\", \"Delivery Status\"}, {\"failure_reason\", \"Failure Reason\"}, {\"language\", \"Message Language\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_reminders\\\", {\\\"appointment_key\\\", \\\"reminder_type\\\", \\\"channel\\\", \\\"provider_name\\\", \\\"attempt_number\\\", \\\"delivery_status\\\", \\\"failure_reason\\\", \\\"language\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"appointment_key\\\", Int64.Type}, {\\\"reminder_type\\\", type text}, {\\\"channel\\\", type text}, {\\\"provider_name\\\", type text}, {\\\"attempt_number\\\", Int64.Type}, {\\\"delivery_status\\\", type text}, {\\\"failure_reason\\\", type text}, {\\\"language\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"appointment_key\\\", \\\"Appointment Key\\\"}, {\\\"reminder_type\\\", \\\"Reminder Type\\\"}, {\\\"channel\\\", \\\"Reminder Channel\\\"}, {\\\"provider_name\\\", \\\"Message Provider\\\"}, {\\\"attempt_number\\\", \\\"Attempt Number\\\"}, {\\\"delivery_status\\\", \\\"Delivery Status\\\"}, {\\\"failure_reason\\\", \\\"Failure Reason\\\"}, {\\\"language\\\", \\\"Message Language\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Telemedicine Sessions",
+      "lineageTag": "0610dc61-818f-5092-8f00-f6f08853edbe",
+      "description": "One row per video consultation. Source: core.fact_telemedicine_sessions.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_telemedicine_sessions\", {\"appointment_key\", \"platform_name\", \"session_status\", \"device_type\", \"network_type\", \"technical_issue_flag\", \"issue_category\", \"average_latency_ms\", \"audio_quality_score\", \"video_quality_score\"}, {\"technical_issue_flag\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"appointment_key\", Int64.Type}, {\"platform_name\", type text}, {\"session_status\", type text}, {\"device_type\", type text}, {\"network_type\", type text}, {\"issue_category\", type text}, {\"average_latency_ms\", Int64.Type}, {\"audio_quality_score\", type number}, {\"video_quality_score\", type number}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"appointment_key\", \"Appointment Key\"}, {\"platform_name\", \"Platform\"}, {\"session_status\", \"Session Status\"}, {\"device_type\", \"Device Type\"}, {\"network_type\", \"Network Type\"}, {\"technical_issue_flag\", \"Had Technical Issue\"}, {\"issue_category\", \"Issue Category\"}, {\"average_latency_ms\", \"Average Latency (milliseconds)\"}, {\"audio_quality_score\", \"Audio Quality Score\"}, {\"video_quality_score\", \"Video Quality Score\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_telemedicine_sessions\\\", {\\\"appointment_key\\\", \\\"platform_name\\\", \\\"session_status\\\", \\\"device_type\\\", \\\"network_type\\\", \\\"technical_issue_flag\\\", \\\"issue_category\\\", \\\"average_latency_ms\\\", \\\"audio_quality_score\\\", \\\"video_quality_score\\\"}, {\\\"technical_issue_flag\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"appointment_key\\\", Int64.Type}, {\\\"platform_name\\\", type text}, {\\\"session_status\\\", type text}, {\\\"device_type\\\", type text}, {\\\"network_type\\\", type text}, {\\\"issue_category\\\", type text}, {\\\"average_latency_ms\\\", Int64.Type}, {\\\"audio_quality_score\\\", type number}, {\\\"video_quality_score\\\", type number}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"appointment_key\\\", \\\"Appointment Key\\\"}, {\\\"platform_name\\\", \\\"Platform\\\"}, {\\\"session_status\\\", \\\"Session Status\\\"}, {\\\"device_type\\\", \\\"Device Type\\\"}, {\\\"network_type\\\", \\\"Network Type\\\"}, {\\\"technical_issue_flag\\\", \\\"Had Technical Issue\\\"}, {\\\"issue_category\\\", \\\"Issue Category\\\"}, {\\\"average_latency_ms\\\", \\\"Average Latency (milliseconds)\\\"}, {\\\"audio_quality_score\\\", \\\"Audio Quality Score\\\"}, {\\\"video_quality_score\\\", \\\"Video Quality Score\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Schedule Sessions",
+      "lineageTag": "4f3ec678-45e4-5561-ba8a-ac2ec11d0cfa",
+      "description": "One row per planned doctor session at a clinic. Source: core.fact_schedule_sessions.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_schedule_sessions\", {\"session_date_key\", \"clinic_key\", \"doctor_key\", \"session_status\", \"slot_length_minutes\", \"planned_slots\", \"blocked_slots\", \"overbook_allowed\"}, {\"overbook_allowed\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"session_date_key\", Int64.Type}, {\"clinic_key\", Int64.Type}, {\"doctor_key\", Int64.Type}, {\"session_status\", type text}, {\"slot_length_minutes\", Int64.Type}, {\"planned_slots\", Int64.Type}, {\"blocked_slots\", Int64.Type}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"session_date_key\", \"Session Date Key\"}, {\"clinic_key\", \"Clinic Key\"}, {\"doctor_key\", \"Doctor Key\"}, {\"session_status\", \"Session Status\"}, {\"slot_length_minutes\", \"Slot Length (minutes)\"}, {\"planned_slots\", \"Planned Slots\"}, {\"blocked_slots\", \"Blocked Slots\"}, {\"overbook_allowed\", \"Overbooking Allowed\"}})",
+        "in",
+        "    RenamedColumns"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_schedule_sessions\\\", {\\\"session_date_key\\\", \\\"clinic_key\\\", \\\"doctor_key\\\", \\\"session_status\\\", \\\"slot_length_minutes\\\", \\\"planned_slots\\\", \\\"blocked_slots\\\", \\\"overbook_allowed\\\"}, {\\\"overbook_allowed\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"session_date_key\\\", Int64.Type}, {\\\"clinic_key\\\", Int64.Type}, {\\\"doctor_key\\\", Int64.Type}, {\\\"session_status\\\", type text}, {\\\"slot_length_minutes\\\", Int64.Type}, {\\\"planned_slots\\\", Int64.Type}, {\\\"blocked_slots\\\", Int64.Type}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"session_date_key\\\", \\\"Session Date Key\\\"}, {\\\"clinic_key\\\", \\\"Clinic Key\\\"}, {\\\"doctor_key\\\", \\\"Doctor Key\\\"}, {\\\"session_status\\\", \\\"Session Status\\\"}, {\\\"slot_length_minutes\\\", \\\"Slot Length (minutes)\\\"}, {\\\"planned_slots\\\", \\\"Planned Slots\\\"}, {\\\"blocked_slots\\\", \\\"Blocked Slots\\\"}, {\\\"overbook_allowed\\\", \\\"Overbooking Allowed\\\"}})\\nin\\n    RenamedColumns\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Pilot Assignments",
+      "lineageTag": "92206345-b7d8-52ee-8c99-7e41b8e63f8c",
+      "description": "One row per appointment in the reminder pilot, with its group and outcome. Source: core.fact_reminder_pilot_assignment.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_reminder_pilot_assignment\", {\"appointment_key\", \"assignment_date\", \"scheduled_date\", \"assignment_month\", \"assignment_group\", \"intervention_type\", \"intervention_delivery_status\", \"pilot_outcome\", \"attendance_eligible_flag\", \"no_show_flag\", \"analysis_exclusion_reason\"}, {\"attendance_eligible_flag\", \"no_show_flag\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"appointment_key\", Int64.Type}, {\"assignment_date\", type date}, {\"scheduled_date\", type date}, {\"assignment_month\", type text}, {\"assignment_group\", type text}, {\"intervention_type\", type text}, {\"intervention_delivery_status\", type text}, {\"pilot_outcome\", type text}, {\"analysis_exclusion_reason\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"appointment_key\", \"Appointment Key\"}, {\"assignment_date\", \"Assignment Date\"}, {\"scheduled_date\", \"Appointment Date\"}, {\"assignment_month\", \"Assignment Month\"}, {\"assignment_group\", \"Reminder Group\"}, {\"intervention_type\", \"Reminder Type\"}, {\"intervention_delivery_status\", \"Delivery Status\"}, {\"pilot_outcome\", \"Pilot Outcome\"}, {\"attendance_eligible_flag\", \"Attendance Eligible\"}, {\"no_show_flag\", \"Is No-show\"}, {\"analysis_exclusion_reason\", \"Exclusion Reason\"}}),",
+        "    AddedReminderGroupSort = Table.AddColumn(RenamedColumns, \"Reminder Group Sort\", each if [Reminder Group] = \"Standard reminder\" then 1 else 2, Int64.Type)",
+        "in",
+        "    AddedReminderGroupSort"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_reminder_pilot_assignment\\\", {\\\"appointment_key\\\", \\\"assignment_date\\\", \\\"scheduled_date\\\", \\\"assignment_month\\\", \\\"assignment_group\\\", \\\"intervention_type\\\", \\\"intervention_delivery_status\\\", \\\"pilot_outcome\\\", \\\"attendance_eligible_flag\\\", \\\"no_show_flag\\\", \\\"analysis_exclusion_reason\\\"}, {\\\"attendance_eligible_flag\\\", \\\"no_show_flag\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"appointment_key\\\", Int64.Type}, {\\\"assignment_date\\\", type date}, {\\\"scheduled_date\\\", type date}, {\\\"assignment_month\\\", type text}, {\\\"assignment_group\\\", type text}, {\\\"intervention_type\\\", type text}, {\\\"intervention_delivery_status\\\", type text}, {\\\"pilot_outcome\\\", type text}, {\\\"analysis_exclusion_reason\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"appointment_key\\\", \\\"Appointment Key\\\"}, {\\\"assignment_date\\\", \\\"Assignment Date\\\"}, {\\\"scheduled_date\\\", \\\"Appointment Date\\\"}, {\\\"assignment_month\\\", \\\"Assignment Month\\\"}, {\\\"assignment_group\\\", \\\"Reminder Group\\\"}, {\\\"intervention_type\\\", \\\"Reminder Type\\\"}, {\\\"intervention_delivery_status\\\", \\\"Delivery Status\\\"}, {\\\"pilot_outcome\\\", \\\"Pilot Outcome\\\"}, {\\\"attendance_eligible_flag\\\", \\\"Attendance Eligible\\\"}, {\\\"no_show_flag\\\", \\\"Is No-show\\\"}, {\\\"analysis_exclusion_reason\\\", \\\"Exclusion Reason\\\"}}),\\n    AddedReminderGroupSort = Table.AddColumn(RenamedColumns, \\\"Reminder Group Sort\\\", each if [Reminder Group] = \\\"Standard reminder\\\" then 1 else 2, Int64.Type)\\nin\\n    AddedReminderGroupSort\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Reporting Weeks",
+      "lineageTag": "09ecc18d-e73f-5ced-af62-1f74fd00b705",
+      "description": "One row per logged weekly reporting cycle, with minutes per stage. Source: core.fact_reporting_process_log.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"fact_reporting_process_log\", {\"reporting_week_start\", \"process_phase\", \"reporting_method\", \"data_preparation_minutes\", \"validation_minutes\", \"formatting_minutes\", \"distribution_minutes\", \"total_reporting_minutes\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"reporting_week_start\", type date}, {\"process_phase\", type text}, {\"reporting_method\", type text}, {\"data_preparation_minutes\", Int64.Type}, {\"validation_minutes\", Int64.Type}, {\"formatting_minutes\", Int64.Type}, {\"distribution_minutes\", Int64.Type}, {\"total_reporting_minutes\", Int64.Type}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"reporting_week_start\", \"Week Starting\"}, {\"process_phase\", \"Process Phase\"}, {\"reporting_method\", \"Reporting Method\"}, {\"data_preparation_minutes\", \"Preparation (minutes)\"}, {\"validation_minutes\", \"Validation (minutes)\"}, {\"formatting_minutes\", \"Formatting (minutes)\"}, {\"distribution_minutes\", \"Distribution (minutes)\"}, {\"total_reporting_minutes\", \"Total (minutes)\"}}),",
+        "    AddedProcessPhaseSort = Table.AddColumn(RenamedColumns, \"Process Phase Sort\", each if [Process Phase] = \"Before automation\" then 1 else 2, Int64.Type)",
+        "in",
+        "    AddedProcessPhaseSort"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"fact_reporting_process_log\\\", {\\\"reporting_week_start\\\", \\\"process_phase\\\", \\\"reporting_method\\\", \\\"data_preparation_minutes\\\", \\\"validation_minutes\\\", \\\"formatting_minutes\\\", \\\"distribution_minutes\\\", \\\"total_reporting_minutes\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"reporting_week_start\\\", type date}, {\\\"process_phase\\\", type text}, {\\\"reporting_method\\\", type text}, {\\\"data_preparation_minutes\\\", Int64.Type}, {\\\"validation_minutes\\\", Int64.Type}, {\\\"formatting_minutes\\\", Int64.Type}, {\\\"distribution_minutes\\\", Int64.Type}, {\\\"total_reporting_minutes\\\", Int64.Type}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"reporting_week_start\\\", \\\"Week Starting\\\"}, {\\\"process_phase\\\", \\\"Process Phase\\\"}, {\\\"reporting_method\\\", \\\"Reporting Method\\\"}, {\\\"data_preparation_minutes\\\", \\\"Preparation (minutes)\\\"}, {\\\"validation_minutes\\\", \\\"Validation (minutes)\\\"}, {\\\"formatting_minutes\\\", \\\"Formatting (minutes)\\\"}, {\\\"distribution_minutes\\\", \\\"Distribution (minutes)\\\"}, {\\\"total_reporting_minutes\\\", \\\"Total (minutes)\\\"}}),\\n    AddedProcessPhaseSort = Table.AddColumn(RenamedColumns, \\\"Process Phase Sort\\\", each if [Process Phase] = \\\"Before automation\\\" then 1 else 2, Int64.Type)\\nin\\n    AddedProcessPhaseSort\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Data Quality Issues",
+      "lineageTag": "1ade3a4c-34c8-587b-a060-b68c0ced138d",
+      "description": "One row per data-quality issue the SQL pipeline logged. Issues are kept visible, not deleted. Source: core.data_quality_issues.",
+      "queryGroupId": "285cd422-d437-4668-9588-9b2272014ea1",
+      "text": [
+        "let",
+        "    Source = fnLoadTable(\"data_quality_issues\", {\"source_table\", \"column_name\", \"issue_type\", \"severity\"}),",
+        "    TypedColumns = Table.TransformColumnTypes(Source, {{\"source_table\", type text}, {\"column_name\", type text}, {\"issue_type\", type text}, {\"severity\", type text}}, \"en-US\"),",
+        "    RenamedColumns = Table.RenameColumns(TypedColumns, {{\"source_table\", \"Source Table\"}, {\"column_name\", \"Source Column\"}, {\"issue_type\", \"Issue Type\"}, {\"severity\", \"Severity\"}}),",
+        "    AddedIssue = Table.AddColumn(RenamedColumns, \"Issue\", each Text.Proper(Text.Replace([Issue Type], \"_\", \" \")), type text)",
+        "in",
+        "    AddedIssue"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = fnLoadTable(\\\"data_quality_issues\\\", {\\\"source_table\\\", \\\"column_name\\\", \\\"issue_type\\\", \\\"severity\\\"}),\\n    TypedColumns = Table.TransformColumnTypes(Source, {{\\\"source_table\\\", type text}, {\\\"column_name\\\", type text}, {\\\"issue_type\\\", type text}, {\\\"severity\\\", type text}}, \\\"en-US\\\"),\\n    RenamedColumns = Table.RenameColumns(TypedColumns, {{\\\"source_table\\\", \\\"Source Table\\\"}, {\\\"column_name\\\", \\\"Source Column\\\"}, {\\\"issue_type\\\", \\\"Issue Type\\\"}, {\\\"severity\\\", \\\"Severity\\\"}}),\\n    AddedIssue = Table.AddColumn(RenamedColumns, \\\"Issue\\\", each Text.Proper(Text.Replace([Issue Type], \\\"_\\\", \\\" \\\")), type text)\\nin\\n    AddedIssue\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Pilot Stage",
+      "lineageTag": "7071b8da-7d88-5d06-9185-926951db6cad",
+      "description": "Stages of the reminder pilot funnel. Helper table typed in Power Query, hidden from the field list.",
+      "queryGroupId": "2e087fbd-473e-4ee1-b3b2-ec603c0d5a60",
+      "text": [
+        "let",
+        "    Source = #table(type table [#\"Stage\" = text, #\"Stage Order\" = Int64.Type], {{\"Assigned\", 1}, {\"Attendance-eligible\", 2}, {\"Attended\", 3}})",
+        "in",
+        "    Source"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = #table(type table [#\\\"Stage\\\" = text, #\\\"Stage Order\\\" = Int64.Type], {{\\\"Assigned\\\", 1}, {\\\"Attendance-eligible\\\", 2}, {\\\"Attended\\\", 3}})\\nin\\n    Source\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Pilot Period",
+      "lineageTag": "540a8b28-d602-5578-9891-d6fc0f346cc6",
+      "description": "Rows of the pilot confidence-interval table: all pilot weeks, then each month. Helper table typed in Power Query, hidden from the field list.",
+      "queryGroupId": "2e087fbd-473e-4ee1-b3b2-ec603c0d5a60",
+      "text": [
+        "let",
+        "    Source = #table(type table [#\"Period\" = text, #\"Period Order\" = Int64.Type], {{\"All pilot weeks\", 1}, {\"May 2023\", 2}, {\"June 2023\", 3}})",
+        "in",
+        "    Source"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = #table(type table [#\\\"Period\\\" = text, #\\\"Period Order\\\" = Int64.Type], {{\\\"All pilot weeks\\\", 1}, {\\\"May 2023\\\", 2}, {\\\"June 2023\\\", 3}})\\nin\\n    Source\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "Reporting Step",
+      "lineageTag": "893665a8-0553-52c0-afe5-0241663353b0",
+      "description": "Weekly reporting stages, plus the starting total used by the waterfall chart. Helper table typed in Power Query, hidden from the field list.",
+      "queryGroupId": "2e087fbd-473e-4ee1-b3b2-ec603c0d5a60",
+      "text": [
+        "let",
+        "    Source = #table(type table [#\"Step\" = text, #\"Step Order\" = Int64.Type], {{\"Before automation\", 1}, {\"Preparation\", 2}, {\"Validation\", 3}, {\"Formatting\", 4}, {\"Distribution\", 5}})",
+        "in",
+        "    Source"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = #table(type table [#\\\"Step\\\" = text, #\\\"Step Order\\\" = Int64.Type], {{\\\"Before automation\\\", 1}, {\\\"Preparation\\\", 2}, {\\\"Validation\\\", 3}, {\\\"Formatting\\\", 4}, {\\\"Distribution\\\", 5}})\\nin\\n    Source\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    },
+    {
+      "name": "_Measures",
+      "lineageTag": "2e12dbdd-0d5d-5dbe-849b-1b93ed978b88",
+      "description": "Holds every measure, grouped into numbered display folders.",
+      "queryGroupId": "2e087fbd-473e-4ee1-b3b2-ec603c0d5a60",
+      "text": [
+        "let",
+        "    Source = #table(type table [Placeholder = Int64.Type], {})",
+        "in",
+        "    Source"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    Source = #table(type table [Placeholder = Int64.Type], {})\\nin\\n    Source\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Table",
+      "isHidden": false
+    }
+  ],
+  "queryGroups": [
+    {
+      "name": "Parameters",
+      "id": "bd707ce0-4d4a-4457-abfb-9cb78e09dc00",
+      "description": ""
+    },
+    {
+      "name": "Functions",
+      "id": "41142e9d-a717-4be6-8cef-ccb0f44e7a41",
+      "order": 1,
+      "description": ""
+    },
+    {
+      "name": "Dimensions",
+      "id": "06a3288f-26f6-43dc-8f26-d9d96e206d13",
+      "order": 2,
+      "description": ""
+    },
+    {
+      "name": "Facts",
+      "id": "285cd422-d437-4668-9588-9b2272014ea1",
+      "order": 3,
+      "description": ""
+    },
+    {
+      "name": "Helpers",
+      "id": "2e087fbd-473e-4ee1-b3b2-ec603c0d5a60",
+      "order": 4,
+      "description": ""
+    }
+  ],
+  "culture": "en-US",
+  "firewallEnabled": true
+}

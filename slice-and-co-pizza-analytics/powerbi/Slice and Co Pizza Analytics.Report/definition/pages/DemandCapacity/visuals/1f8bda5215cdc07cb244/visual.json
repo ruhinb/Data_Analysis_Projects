@@ -1,0 +1,373 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "1f8bda5215cdc07cb244",
+  "position": {
+    "x": 561,
+    "y": 114,
+    "z": 1003,
+    "height": 128,
+    "width": 329,
+    "tabOrder": 1003
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "Day of Week Number"
+                }
+              },
+              "queryRef": "Date.Day of Week Number",
+              "nativeQueryRef": "Day of Week Number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Orders per Trading Day"
+                }
+              },
+              "queryRef": "_Measures.Orders per Trading Day",
+              "nativeQueryRef": "Orders per Trading Day"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "KPI Peak Day"
+                }
+              },
+              "queryRef": "_Measures.KPI Peak Day",
+              "nativeQueryRef": "KPI Peak Day"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"$schema\":\"https://vega.github.io/schema/vega-lite/v5.json\",\"data\":{\"name\":\"dataset\"},\"width\":\"container\",\"height\":\"container\",\"autosize\":{\"type\":\"none\",\"contains\":\"padding\"},\"padding\":{\"left\":0,\"right\":0,\"top\":0,\"bottom\":0},\"config\":{\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"background\":\"transparent\",\"view\":{\"stroke\":null},\"axis\":{\"labelFont\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"titleFont\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"labelColor\":\"#6B7590\",\"titleColor\":\"#6B7590\",\"labelFontSize\":11,\"titleFontSize\":11,\"titleFontWeight\":400,\"gridColor\":\"#EEF0F6\",\"domain\":false,\"ticks\":false,\"labelPadding\":6},\"title\":{\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"subtitleFont\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"fontSize\":16,\"fontWeight\":700,\"color\":\"#0D1B3D\",\"subtitleFontSize\":12,\"subtitleColor\":\"#6B7590\",\"subtitlePadding\":5,\"anchor\":\"start\",\"frame\":\"bounds\",\"offset\":14},\"text\":{\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"color\":\"#0D1B3D\"},\"legend\":{\"disable\":true},\"tooltipFormat\":{\"numberFormat\":\",.2f\"}},\"layer\":[{\"transform\":[{\"filter\":\"isValid(datum[''Orders per Trading Day''])\"},{\"window\":[{\"op\":\"row_number\",\"as\":\"__i\"}],\"sort\":[{\"field\":\"Day of Week Number\"}]},{\"joinaggregate\":[{\"op\":\"count\",\"as\":\"__n\"},{\"op\":\"min\",\"field\":\"Orders per Trading Day\",\"as\":\"__min\"},{\"op\":\"max\",\"field\":\"Orders per Trading Day\",\"as\":\"__max\"}]},{\"calculate\":\"(width * 0.69) + (datum.__n > 1 ? (datum.__i - 1) / (datum.__n - 1) : 0.5) * ((width - 16) - (width * 0.69))\",\"as\":\"__px\"},{\"calculate\":\"height * 0.62\",\"as\":\"__base\"},{\"calculate\":\"(height * 0.62) - (datum.__max > datum.__min ? (datum[''Orders per Trading Day''] - datum.__min) / (datum.__max - datum.__min) : 0.5) * ((height * 0.62) - (height * 0.26))\",\"as\":\"__py\"},{\"calculate\":\"datum.__px + max(2, ((width - 16) - (width * 0.69)) / max(datum.__n, 1) * 0.62)\",\"as\":\"__px2\"}],\"mark\":{\"type\":\"rect\",\"color\":\"#E8559A\",\"opacity\":0.3,\"cornerRadius\":1.5},\"encoding\":{\"x\":{\"field\":\"__px\",\"type\":\"quantitative\",\"scale\":null},\"x2\":{\"field\":\"__px2\"},\"y\":{\"field\":\"__py\",\"type\":\"quantitative\",\"scale\":null},\"y2\":{\"value\":{\"expr\":\"height * 0.62\"}}}},{\"transform\":[{\"window\":[{\"op\":\"row_number\",\"as\":\"__row\"}]},{\"filter\":\"datum.__row === 1\"}],\"layer\":[{\"mark\":{\"type\":\"point\",\"shape\":\"circle\",\"size\":2907.1062,\"filled\":true,\"fill\":\"#FDDCEC\",\"opacity\":1,\"strokeWidth\":0},\"encoding\":{\"x\":{\"value\":46},\"y\":{\"value\":{\"expr\":\"height / 2 - 6\"}}}},{\"mark\":{\"type\":\"point\",\"shape\":\"circle\",\"size\":1595.1200000000001,\"filled\":true,\"fill\":\"#E8559A\",\"opacity\":1,\"strokeWidth\":0},\"encoding\":{\"x\":{\"value\":46},\"y\":{\"value\":{\"expr\":\"height / 2 - 6\"}}}},{\"mark\":{\"type\":\"point\",\"shape\":\"M-0.82,-0.6 L0.82,-0.6 L0.82,0.85 L-0.82,0.85 Z M-0.82,-0.18 L0.82,-0.18 M-0.42,-0.92 L-0.42,-0.42 M0.42,-0.92 L0.42,-0.42\",\"size\":361,\"filled\":false,\"stroke\":\"#FFFFFF\",\"strokeWidth\":2.1,\"strokeCap\":\"round\",\"strokeJoin\":\"round\",\"opacity\":1},\"encoding\":{\"x\":{\"value\":46},\"y\":{\"value\":{\"expr\":\"height / 2 - 6\"}}}},{\"mark\":{\"type\":\"text\",\"align\":\"left\",\"baseline\":\"alphabetic\",\"fontSize\":13,\"fontWeight\":700,\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"color\":\"#C2306F\"},\"encoding\":{\"x\":{\"value\":90},\"y\":{\"value\":{\"expr\":\"height / 2 - 30\"}},\"text\":{\"value\":\"Peak Day\"}}},{\"mark\":{\"type\":\"text\",\"align\":\"left\",\"baseline\":\"alphabetic\",\"fontSize\":27,\"fontWeight\":700,\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"color\":\"#0D1B3D\",\"limit\":{\"expr\":\"width * 0.69 - 94\"}},\"encoding\":{\"x\":{\"value\":89},\"y\":{\"value\":{\"expr\":\"height / 2 + 6\"}},\"text\":{\"field\":\"__t16\"}},\"transform\":[{\"calculate\":\"datum[''KPI Peak Day'']\",\"as\":\"__t16\"}]},{\"mark\":{\"type\":\"text\",\"align\":\"left\",\"baseline\":\"alphabetic\",\"fontSize\":11,\"fontWeight\":400,\"font\":\"Segoe UI, wf_segoe-ui_normal, helvetica, arial, sans-serif\",\"color\":\"#6B7590\",\"limit\":{\"expr\":\"width - 104\"}},\"encoding\":{\"x\":{\"value\":90},\"y\":{\"value\":{\"expr\":\"height / 2 + 30\"}},\"text\":{\"field\":\"__t17\"}},\"transform\":[{\"calculate\":\"''Busiest trading day''\",\"as\":\"__t17\"}]}]}]}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "renderMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'svg'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "126D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "327D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFF1F7'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBD9E9'"
+                    }
+                  }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E2A55'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "92D"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "90D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "altText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Peak day'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

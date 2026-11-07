@@ -1,0 +1,426 @@
+CATEGORY,SUB_CATEGORY,MAX_DISCOUNT,VOLUME_RETAINED,CAPPED_LINES,OBSERVED_PROFIT,MODELLED_PROFIT,PROFIT_CHANGE,SALES_CHANGE
+Furniture,Bookcases,0.2,1.0,70.0,-3472.56,8180.97,11653.53,11653.53
+Furniture,Bookcases,0.2,0.75,70.0,-3472.56,8042.03,11514.59,1604.15
+Furniture,Bookcases,0.2,0.5,70.0,-3472.56,7903.09,11375.65,-8445.23
+Furniture,Bookcases,0.2,0.25,70.0,-3472.56,7764.15,11236.7,-18494.62
+Furniture,Bookcases,0.2,0.0,70.0,-3472.56,7625.21,11097.76,-28544.0
+Furniture,Bookcases,0.3,1.0,60.0,-3472.56,3156.28,6628.84,6628.84
+Furniture,Bookcases,0.3,0.75,60.0,-3472.56,4134.54,7607.1,-1093.7
+Furniture,Bookcases,0.3,0.5,60.0,-3472.56,5112.81,8585.36,-8816.23
+Furniture,Bookcases,0.3,0.25,60.0,-3472.56,6091.07,9563.63,-16538.77
+Furniture,Bookcases,0.3,0.0,60.0,-3472.56,7069.33,10541.89,-24261.3
+Furniture,Bookcases,0.4,1.0,33.0,-3472.56,448.52,3921.07,3921.07
+Furniture,Bookcases,0.4,0.75,33.0,-3472.56,1505.94,4978.49,498.84
+Furniture,Bookcases,0.4,0.5,33.0,-3472.56,2563.36,6035.91,-2923.38
+Furniture,Bookcases,0.4,0.25,33.0,-3472.56,3620.78,7093.33,-6345.61
+Furniture,Bookcases,0.4,0.0,33.0,-3472.56,4678.2,8150.75,-9767.84
+Furniture,Bookcases,0.5,1.0,15.0,-3472.56,-1832.97,1639.59,1639.59
+Furniture,Bookcases,0.5,0.75,15.0,-3472.56,-1269.13,2203.43,614.85
+Furniture,Bookcases,0.5,0.5,15.0,-3472.56,-705.29,2767.26,-409.9
+Furniture,Bookcases,0.5,0.25,15.0,-3472.56,-141.45,3331.1,-1434.64
+Furniture,Bookcases,0.5,0.0,15.0,-3472.56,422.38,3894.94,-2459.38
+Furniture,Bookcases,0.8,1.0,0.0,-3472.56,-3472.56,0.0,-0.0
+Furniture,Bookcases,0.8,0.75,0.0,-3472.56,-3472.56,0.0,-0.0
+Furniture,Bookcases,0.8,0.5,0.0,-3472.56,-3472.56,0.0,-0.0
+Furniture,Bookcases,0.8,0.25,0.0,-3472.56,-3472.56,0.0,-0.0
+Furniture,Bookcases,0.8,0.0,0.0,-3472.56,-3472.56,0.0,-0.0
+Furniture,Chairs,0.2,1.0,158.0,26590.17,36590.95,10000.79,10000.79
+Furniture,Chairs,0.2,0.75,158.0,26590.17,35775.03,9184.87,-10000.79
+Furniture,Chairs,0.2,0.5,158.0,26590.17,34959.12,8368.95,-30002.36
+Furniture,Chairs,0.2,0.25,158.0,26590.17,34143.2,7553.03,-50003.93
+Furniture,Chairs,0.2,0.0,158.0,26590.17,33327.28,6737.12,-70005.5
+Furniture,Chairs,0.3,1.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.3,0.75,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.3,0.5,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.3,0.25,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.3,0.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.4,1.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.4,0.75,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.4,0.5,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.4,0.25,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.4,0.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.5,1.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.5,0.75,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.5,0.5,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.5,0.25,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.5,0.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.8,1.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.8,0.75,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.8,0.5,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.8,0.25,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Chairs,0.8,0.0,0.0,26590.17,26590.17,0.0,0.0
+Furniture,Furnishings,0.2,1.0,138.0,13059.14,19703.84,6644.7,6644.7
+Furniture,Furnishings,0.2,0.75,138.0,13059.14,19528.83,6469.69,3322.35
+Furniture,Furnishings,0.2,0.5,138.0,13059.14,19353.82,6294.68,0.0
+Furniture,Furnishings,0.2,0.25,138.0,13059.14,19178.81,6119.67,-3322.35
+Furniture,Furnishings,0.2,0.0,138.0,13059.14,19003.8,5944.66,-6644.7
+Furniture,Furnishings,0.3,1.0,138.0,13059.14,18042.67,4983.52,4983.53
+Furniture,Furnishings,0.3,0.75,138.0,13059.14,18282.95,5223.81,2076.47
+Furniture,Furnishings,0.3,0.5,138.0,13059.14,18523.23,5464.09,-830.59
+Furniture,Furnishings,0.3,0.25,138.0,13059.14,18763.52,5704.37,-3737.64
+Furniture,Furnishings,0.3,0.0,138.0,13059.14,19003.8,5944.66,-6644.7
+Furniture,Furnishings,0.4,1.0,138.0,13059.14,16381.49,3322.35,3322.35
+Furniture,Furnishings,0.4,0.75,138.0,13059.14,17037.07,3977.93,830.59
+Furniture,Furnishings,0.4,0.5,138.0,13059.14,17692.65,4633.5,-1661.17
+Furniture,Furnishings,0.4,0.25,138.0,13059.14,18348.22,5289.08,-4152.94
+Furniture,Furnishings,0.4,0.0,138.0,13059.14,19003.8,5944.66,-6644.7
+Furniture,Furnishings,0.5,1.0,138.0,13059.14,14720.32,1661.17,1661.18
+Furniture,Furnishings,0.5,0.75,138.0,13059.14,15791.19,2732.05,-415.29
+Furniture,Furnishings,0.5,0.5,138.0,13059.14,16862.06,3802.92,-2491.76
+Furniture,Furnishings,0.5,0.25,138.0,13059.14,17932.93,4873.79,-4568.23
+Furniture,Furnishings,0.5,0.0,138.0,13059.14,19003.8,5944.66,-6644.7
+Furniture,Furnishings,0.8,1.0,0.0,13059.14,13059.14,-0.0,0.0
+Furniture,Furnishings,0.8,0.75,0.0,13059.14,13059.14,-0.0,0.0
+Furniture,Furnishings,0.8,0.5,0.0,13059.14,13059.14,-0.0,0.0
+Furniture,Furnishings,0.8,0.25,0.0,13059.14,13059.14,-0.0,0.0
+Furniture,Furnishings,0.8,0.0,0.0,13059.14,13059.14,-0.0,0.0
+Furniture,Tables,0.2,1.0,176.0,-17725.48,11774.95,29500.43,29500.43
+Furniture,Tables,0.2,0.75,176.0,-17725.48,12074.4,29799.88,-363.81
+Furniture,Tables,0.2,0.5,176.0,-17725.48,12373.84,30099.33,-30228.06
+Furniture,Tables,0.2,0.25,176.0,-17725.48,12673.29,30398.77,-60092.3
+Furniture,Tables,0.2,0.0,176.0,-17725.48,12972.74,30698.22,-89956.54
+Furniture,Tables,0.3,1.0,122.0,-17725.48,-3157.17,14568.31,14568.31
+Furniture,Tables,0.3,0.75,122.0,-17725.48,24.72,17750.2,-5267.37
+Furniture,Tables,0.3,0.5,122.0,-17725.48,3206.62,20932.1,-25103.04
+Furniture,Tables,0.3,0.25,122.0,-17725.48,6388.52,24114.0,-44938.72
+Furniture,Tables,0.3,0.0,122.0,-17725.48,9570.41,27295.9,-64774.39
+Furniture,Tables,0.4,1.0,47.0,-17725.48,-14491.85,3233.64,3233.64
+Furniture,Tables,0.4,0.75,47.0,-17725.48,-12523.13,5202.35,-2364.77
+Furniture,Tables,0.4,0.5,47.0,-17725.48,-10554.41,7171.07,-7963.17
+Furniture,Tables,0.4,0.25,47.0,-17725.48,-8585.7,9139.78,-13561.58
+Furniture,Tables,0.4,0.0,47.0,-17725.48,-6616.98,11108.5,-19159.98
+Furniture,Tables,0.5,1.0,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.5,0.75,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.5,0.5,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.5,0.25,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.5,0.0,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.8,1.0,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.8,0.75,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.8,0.5,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.8,0.25,0.0,-17725.48,-17725.48,-0.0,0.0
+Furniture,Tables,0.8,0.0,0.0,-17725.48,-17725.48,-0.0,0.0
+Office Supplies,Appliances,0.2,1.0,67.0,18138.01,28285.61,10147.6,10147.6
+Office Supplies,Appliances,0.2,0.75,67.0,18138.01,27906.12,9768.11,6765.07
+Office Supplies,Appliances,0.2,0.5,67.0,18138.01,27526.63,9388.62,3382.53
+Office Supplies,Appliances,0.2,0.25,67.0,18138.01,27147.14,9009.13,0.0
+Office Supplies,Appliances,0.2,0.0,67.0,18138.01,26767.65,8629.64,-3382.53
+Office Supplies,Appliances,0.3,1.0,67.0,18138.01,26594.34,8456.33,8456.33
+Office Supplies,Appliances,0.3,0.75,67.0,18138.01,26637.67,8499.66,5496.62
+Office Supplies,Appliances,0.3,0.5,67.0,18138.01,26680.99,8542.99,2536.9
+Office Supplies,Appliances,0.3,0.25,67.0,18138.01,26724.32,8586.31,-422.82
+Office Supplies,Appliances,0.3,0.0,67.0,18138.01,26767.65,8629.64,-3382.53
+Office Supplies,Appliances,0.4,1.0,67.0,18138.01,24903.07,6765.07,6765.07
+Office Supplies,Appliances,0.4,0.75,67.0,18138.01,25369.22,7231.21,4228.17
+Office Supplies,Appliances,0.4,0.5,67.0,18138.01,25835.36,7697.35,1691.27
+Office Supplies,Appliances,0.4,0.25,67.0,18138.01,26301.5,8163.5,-845.63
+Office Supplies,Appliances,0.4,0.0,67.0,18138.01,26767.65,8629.64,-3382.53
+Office Supplies,Appliances,0.5,1.0,67.0,18138.01,23211.81,5073.8,5073.8
+Office Supplies,Appliances,0.5,0.75,67.0,18138.01,24100.77,5962.76,2959.72
+Office Supplies,Appliances,0.5,0.5,67.0,18138.01,24989.73,6851.72,845.63
+Office Supplies,Appliances,0.5,0.25,67.0,18138.01,25878.69,7740.68,-1268.45
+Office Supplies,Appliances,0.5,0.0,67.0,18138.01,26767.65,8629.64,-3382.53
+Office Supplies,Appliances,0.8,1.0,0.0,18138.01,18138.01,-0.0,0.0
+Office Supplies,Appliances,0.8,0.75,0.0,18138.01,18138.01,-0.0,0.0
+Office Supplies,Appliances,0.8,0.5,0.0,18138.01,18138.01,-0.0,0.0
+Office Supplies,Appliances,0.8,0.25,0.0,18138.01,18138.01,-0.0,0.0
+Office Supplies,Appliances,0.8,0.0,0.0,18138.01,18138.01,-0.0,0.0
+Office Supplies,Art,0.2,1.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.2,0.75,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.2,0.5,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.2,0.25,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.2,0.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.3,1.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.3,0.75,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.3,0.5,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.3,0.25,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.3,0.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.4,1.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.4,0.75,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.4,0.5,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.4,0.25,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.4,0.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.5,1.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.5,0.75,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.5,0.5,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.5,0.25,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.5,0.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.8,1.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.8,0.75,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.8,0.5,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.8,0.25,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Art,0.8,0.0,0.0,6527.79,6527.79,-0.0,-0.0
+Office Supplies,Binders,0.2,1.0,613.0,30221.76,108564.41,78342.65,78342.65
+Office Supplies,Binders,0.2,0.75,613.0,30221.76,98606.38,68384.61,49721.84
+Office Supplies,Binders,0.2,0.5,613.0,30221.76,88648.34,58426.57,21101.02
+Office Supplies,Binders,0.2,0.25,613.0,30221.76,78690.3,48468.54,-7519.8
+Office Supplies,Binders,0.2,0.0,613.0,30221.76,68732.26,38510.5,-36140.61
+Office Supplies,Binders,0.3,1.0,613.0,30221.76,94254.01,64032.24,64032.24
+Office Supplies,Binders,0.3,0.75,613.0,30221.76,87873.57,57651.81,38989.03
+Office Supplies,Binders,0.3,0.5,613.0,30221.76,81493.13,51271.37,13945.81
+Office Supplies,Binders,0.3,0.25,613.0,30221.76,75112.7,44890.93,-11097.4
+Office Supplies,Binders,0.3,0.0,613.0,30221.76,68732.26,38510.5,-36140.61
+Office Supplies,Binders,0.4,1.0,613.0,30221.76,79943.6,49721.83,49721.84
+Office Supplies,Binders,0.4,0.75,613.0,30221.76,77140.76,46919.0,28256.22
+Office Supplies,Binders,0.4,0.5,613.0,30221.76,74337.93,44116.17,6790.61
+Office Supplies,Binders,0.4,0.25,613.0,30221.76,71535.09,41313.33,-14675.0
+Office Supplies,Binders,0.4,0.0,613.0,30221.76,68732.26,38510.5,-36140.61
+Office Supplies,Binders,0.5,1.0,613.0,30221.76,65633.19,35411.43,35411.43
+Office Supplies,Binders,0.5,0.75,613.0,30221.76,66407.96,36186.19,17523.42
+Office Supplies,Binders,0.5,0.5,613.0,30221.76,67182.72,36960.96,-364.59
+Office Supplies,Binders,0.5,0.25,613.0,30221.76,67957.49,37735.73,-18252.6
+Office Supplies,Binders,0.5,0.0,613.0,30221.76,68732.26,38510.5,-36140.61
+Office Supplies,Binders,0.8,1.0,0.0,30221.76,30221.76,-0.0,0.0
+Office Supplies,Binders,0.8,0.75,0.0,30221.76,30221.76,-0.0,0.0
+Office Supplies,Binders,0.8,0.5,0.0,30221.76,30221.76,-0.0,0.0
+Office Supplies,Binders,0.8,0.25,0.0,30221.76,30221.76,-0.0,0.0
+Office Supplies,Binders,0.8,0.0,0.0,30221.76,30221.76,-0.0,0.0
+Office Supplies,Envelopes,0.2,1.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.2,0.75,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.2,0.5,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.2,0.25,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.2,0.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.3,1.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.3,0.75,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.3,0.5,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.3,0.25,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.3,0.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.4,1.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.4,0.75,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.4,0.5,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.4,0.25,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.4,0.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.5,1.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.5,0.75,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.5,0.5,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.5,0.25,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.5,0.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.8,1.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.8,0.75,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.8,0.5,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.8,0.25,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Envelopes,0.8,0.0,0.0,6964.18,6964.18,0.0,0.0
+Office Supplies,Fasteners,0.2,1.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.2,0.75,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.2,0.5,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.2,0.25,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.2,0.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.3,1.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.3,0.75,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.3,0.5,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.3,0.25,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.3,0.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.4,1.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.4,0.75,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.4,0.5,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.4,0.25,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.4,0.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.5,1.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.5,0.75,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.5,0.5,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.5,0.25,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.5,0.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.8,1.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.8,0.75,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.8,0.5,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.8,0.25,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Fasteners,0.8,0.0,0.0,949.52,949.52,-0.0,-0.0
+Office Supplies,Labels,0.2,1.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.2,0.75,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.2,0.5,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.2,0.25,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.2,0.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.3,1.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.3,0.75,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.3,0.5,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.3,0.25,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.3,0.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.4,1.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.4,0.75,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.4,0.5,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.4,0.25,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.4,0.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.5,1.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.5,0.75,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.5,0.5,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.5,0.25,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.5,0.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.8,1.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.8,0.75,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.8,0.5,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.8,0.25,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Labels,0.8,0.0,0.0,5546.25,5546.25,-0.0,0.0
+Office Supplies,Paper,0.2,1.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.2,0.75,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.2,0.5,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.2,0.25,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.2,0.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.3,1.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.3,0.75,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.3,0.5,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.3,0.25,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.3,0.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.4,1.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.4,0.75,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.4,0.5,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.4,0.25,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.4,0.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.5,1.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.5,0.75,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.5,0.5,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.5,0.25,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.5,0.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.8,1.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.8,0.75,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.8,0.5,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.8,0.25,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Paper,0.8,0.0,0.0,34053.57,34053.57,-0.0,0.0
+Office Supplies,Storage,0.2,1.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.2,0.75,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.2,0.5,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.2,0.25,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.2,0.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.3,1.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.3,0.75,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.3,0.5,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.3,0.25,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.3,0.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.4,1.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.4,0.75,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.4,0.5,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.4,0.25,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.4,0.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.5,1.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.5,0.75,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.5,0.5,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.5,0.25,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.5,0.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.8,1.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.8,0.75,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.8,0.5,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.8,0.25,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Storage,0.8,0.0,0.0,21278.83,21278.83,-0.0,0.0
+Office Supplies,Supplies,0.2,1.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.2,0.75,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.2,0.5,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.2,0.25,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.2,0.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.3,1.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.3,0.75,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.3,0.5,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.3,0.25,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.3,0.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.4,1.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.4,0.75,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.4,0.5,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.4,0.25,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.4,0.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.5,1.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.5,0.75,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.5,0.5,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.5,0.25,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.5,0.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.8,1.0,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.8,0.75,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.8,0.5,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.8,0.25,0.0,-1189.1,-1189.1,0.0,0.0
+Office Supplies,Supplies,0.8,0.0,0.0,-1189.1,-1189.1,0.0,0.0
+Technology,Accessories,0.2,1.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.2,0.75,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.2,0.5,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.2,0.25,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.2,0.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.3,1.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.3,0.75,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.3,0.5,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.3,0.25,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.3,0.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.4,1.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.4,0.75,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.4,0.5,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.4,0.25,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.4,0.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.5,1.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.5,0.75,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.5,0.5,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.5,0.25,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.5,0.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.8,1.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.8,0.75,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.8,0.5,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.8,0.25,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Accessories,0.8,0.0,0.0,41936.64,41936.64,-0.0,0.0
+Technology,Copiers,0.2,1.0,9.0,55617.82,61257.76,5639.93,5639.93
+Technology,Copiers,0.2,0.75,9.0,55617.82,59302.03,3684.21,-0.0
+Technology,Copiers,0.2,0.5,9.0,55617.82,57346.3,1728.48,-5639.93
+Technology,Copiers,0.2,0.25,9.0,55617.82,55390.58,-227.25,-11279.87
+Technology,Copiers,0.2,0.0,9.0,55617.82,53434.85,-2182.98,-16919.8
+Technology,Copiers,0.3,1.0,9.0,55617.82,58437.79,2819.97,2819.97
+Technology,Copiers,0.3,0.75,9.0,55617.82,57187.06,1569.23,-2114.98
+Technology,Copiers,0.3,0.5,9.0,55617.82,55936.32,318.5,-7049.92
+Technology,Copiers,0.3,0.25,9.0,55617.82,54685.59,-932.24,-11984.86
+Technology,Copiers,0.3,0.0,9.0,55617.82,53434.85,-2182.98,-16919.8
+Technology,Copiers,0.4,1.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.4,0.75,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.4,0.5,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.4,0.25,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.4,0.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.5,1.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.5,0.75,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.5,0.5,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.5,0.25,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.5,0.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.8,1.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.8,0.75,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.8,0.5,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.8,0.25,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Copiers,0.8,0.0,0.0,55617.82,55617.82,0.0,-0.0
+Technology,Machines,0.2,1.0,53.0,3384.76,59200.34,55815.58,55815.58
+Technology,Machines,0.2,0.75,53.0,3384.76,52635.28,49250.52,22651.91
+Technology,Machines,0.2,0.5,53.0,3384.76,46070.22,42685.47,-10511.76
+Technology,Machines,0.2,0.25,53.0,3384.76,39505.17,36120.41,-43675.44
+Technology,Machines,0.2,0.0,53.0,3384.76,32940.11,29555.35,-76839.11
+Technology,Machines,0.3,1.0,48.0,3384.76,42618.5,39233.74,39233.74
+Technology,Machines,0.3,0.75,48.0,3384.76,40280.41,36895.66,11154.61
+Technology,Machines,0.3,0.5,48.0,3384.76,37942.32,34557.57,-16924.53
+Technology,Machines,0.3,0.25,48.0,3384.76,35604.24,32219.48,-45003.67
+Technology,Machines,0.3,0.0,48.0,3384.76,33266.15,29881.39,-73082.8
+Technology,Machines,0.4,1.0,35.0,3384.76,26573.28,23188.52,23188.52
+Technology,Machines,0.4,0.75,35.0,3384.76,27579.79,24195.03,4007.25
+Technology,Machines,0.4,0.5,35.0,3384.76,28586.29,25201.54,-15174.03
+Technology,Machines,0.4,0.25,35.0,3384.76,29592.8,26208.04,-34355.3
+Technology,Machines,0.4,0.0,35.0,3384.76,30599.31,27214.55,-53536.58
+Technology,Machines,0.5,1.0,23.0,3384.76,13785.76,10401.01,10401.01
+Technology,Machines,0.5,0.75,23.0,3384.76,16080.34,12695.58,3900.38
+Technology,Machines,0.5,0.5,23.0,3384.76,18374.92,14990.16,-2600.25
+Technology,Machines,0.5,0.25,23.0,3384.76,20669.5,17284.74,-9100.88
+Technology,Machines,0.5,0.0,23.0,3384.76,22964.08,19579.32,-15601.51
+Technology,Machines,0.8,1.0,0.0,3384.76,3384.76,0.0,-0.0
+Technology,Machines,0.8,0.75,0.0,3384.76,3384.76,0.0,-0.0
+Technology,Machines,0.8,0.5,0.0,3384.76,3384.76,0.0,-0.0
+Technology,Machines,0.8,0.25,0.0,3384.76,3384.76,0.0,-0.0
+Technology,Machines,0.8,0.0,0.0,3384.76,3384.76,0.0,-0.0
+Technology,Phones,0.2,1.0,109.0,44515.73,55961.51,11445.78,11445.78
+Technology,Phones,0.2,0.75,109.0,44515.73,54696.51,10180.78,0.0
+Technology,Phones,0.2,0.5,109.0,44515.73,53431.52,8915.78,-11445.78
+Technology,Phones,0.2,0.25,109.0,44515.73,52166.52,7650.79,-22891.57
+Technology,Phones,0.2,0.0,109.0,44515.73,50901.52,6385.79,-34337.35
+Technology,Phones,0.3,1.0,109.0,44515.73,50238.62,5722.89,5722.89
+Technology,Phones,0.3,0.75,109.0,44515.73,50404.35,5888.62,-4292.17
+Technology,Phones,0.3,0.5,109.0,44515.73,50570.07,6054.34,-14307.23
+Technology,Phones,0.3,0.25,109.0,44515.73,50735.79,6220.06,-24322.29
+Technology,Phones,0.3,0.0,109.0,44515.73,50901.52,6385.79,-34337.35
+Technology,Phones,0.4,1.0,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.4,0.75,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.4,0.5,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.4,0.25,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.4,0.0,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.5,1.0,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.5,0.75,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.5,0.5,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.5,0.25,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.5,0.0,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.8,1.0,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.8,0.75,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.8,0.5,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.8,0.25,0.0,44515.73,44515.73,0.0,0.0
+Technology,Phones,0.8,0.0,0.0,44515.73,44515.73,0.0,0.0

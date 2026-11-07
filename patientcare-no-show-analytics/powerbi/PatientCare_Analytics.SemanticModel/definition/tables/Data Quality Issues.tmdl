@@ -1,0 +1,65 @@
+/// One row per data-quality issue the SQL pipeline logged. Issues are kept visible, not deleted. Source: core.data_quality_issues.
+table 'Data Quality Issues'
+	lineageTag: 1ade3a4c-34c8-587b-a060-b68c0ced138d
+
+	/// Raw table the issue was found in.
+	column 'Source Table'
+		dataType: string
+		lineageTag: d125164c-868a-544d-acea-5e7835604c99
+		summarizeBy: none
+		sourceColumn: Source Table
+
+		annotation SummarizationSetBy = User
+
+	/// Column the issue was found in.
+	column 'Source Column'
+		dataType: string
+		lineageTag: c1202239-a490-5da5-a6af-811599ab08dc
+		summarizeBy: none
+		sourceColumn: Source Column
+
+		annotation SummarizationSetBy = User
+
+	/// Issue code from the pipeline, for example EVENT_SEQUENCE_MISMATCH.
+	column 'Issue Type'
+		dataType: string
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: b02aa525-0ed9-5695-945f-dd8a684c1b41
+		summarizeBy: none
+		sourceColumn: Issue Type
+
+		annotation SummarizationSetBy = User
+
+	/// Warning or error.
+	column Severity
+		dataType: string
+		lineageTag: e7a86d4a-e163-5f57-ab36-f901026d8c27
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = User
+
+	/// Readable issue name, for example Event Sequence Mismatch.
+	column Issue
+		dataType: string
+		lineageTag: 8482836a-9276-5e11-b1ec-4f9a08eb17ce
+		summarizeBy: none
+		sourceColumn: Issue
+
+		annotation SummarizationSetBy = User
+
+	partition 'Data Quality Issues' = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("data_quality_issues", {"source_table", "column_name", "issue_type", "severity"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"source_table", type text}, {"column_name", type text}, {"issue_type", type text}, {"severity", type text}}, "en-US"),
+				    RenamedColumns = Table.RenameColumns(TypedColumns, {{"source_table", "Source Table"}, {"column_name", "Source Column"}, {"issue_type", "Issue Type"}, {"severity", "Severity"}}),
+				    AddedIssue = Table.AddColumn(RenamedColumns, "Issue", each Text.Proper(Text.Replace([Issue Type], "_", " ")), type text)
+				in
+				    AddedIssue
+
+	annotation PBI_ResultType = Table
+

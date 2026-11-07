@@ -1,0 +1,282 @@
+/// One row per appointment, including the analysis bands calculated in SQL. Source: core.fact_appointments.
+table Appointments
+	lineageTag: 0dc368cf-b7bf-5d54-a264-017394c14c4c
+
+	/// Surrogate key of the appointment.
+	column 'Appointment Key'
+		dataType: int64
+		isHidden
+		lineageTag: 2641cf76-b6b7-5819-a5e3-2ee5d489dad5
+		summarizeBy: none
+		sourceColumn: Appointment Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Patient.
+	column 'Patient Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: be950dd2-e28d-5037-8b2c-1ebe1f44051a
+		summarizeBy: none
+		sourceColumn: Patient Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Clinic.
+	column 'Clinic Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 482020ed-8060-53d6-9f1d-85c2585cb7b8
+		summarizeBy: none
+		sourceColumn: Clinic Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Doctor.
+	column 'Doctor Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 6407e070-0bc7-5dfd-99f9-3f81741e97e5
+		summarizeBy: none
+		sourceColumn: Doctor Key
+
+		annotation SummarizationSetBy = User
+
+	/// Links to Date (scheduled date); 0 when the date could not be read.
+	column 'Scheduled Date Key'
+		dataType: int64
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: 263b3a88-4471-52ee-8327-c07b7ccdb6ca
+		summarizeBy: none
+		sourceColumn: Scheduled Date Key
+
+		annotation SummarizationSetBy = User
+
+	/// Specialty of the visit; Not recorded when missing in the source.
+	column Specialty
+		dataType: string
+		lineageTag: 1b17adee-6ebb-5d30-bb56-6ff52e222600
+		summarizeBy: none
+		sourceColumn: Specialty
+
+		annotation SummarizationSetBy = User
+
+	/// Final status: Completed, No-show, Cancelled, Rescheduled or Status review required.
+	column 'Appointment Status'
+		dataType: string
+		lineageTag: 763a5ec3-4e1d-506a-b5ff-058645a4fbca
+		summarizeBy: none
+		sourceColumn: Appointment Status
+
+		annotation SummarizationSetBy = User
+
+	/// How the appointment was booked, for example app or walk-in.
+	column 'Booking Channel'
+		dataType: string
+		lineageTag: 8378e3ff-4e00-5bfc-82cf-ba533f3697c7
+		summarizeBy: none
+		sourceColumn: Booking Channel
+
+		annotation SummarizationSetBy = User
+
+	/// In person or telemedicine.
+	column 'Consultation Mode'
+		dataType: string
+		lineageTag: c2790641-c678-530b-a4f6-16c0eaf96d27
+		summarizeBy: none
+		sourceColumn: Consultation Mode
+
+		annotation SummarizationSetBy = User
+
+	/// Visit type, for example New consultation or Follow-up.
+	column 'Visit Type'
+		dataType: string
+		lineageTag: dc3a828e-3e29-555b-af0e-98aea756d80e
+		summarizeBy: none
+		sourceColumn: Visit Type
+
+		annotation SummarizationSetBy = User
+
+	/// Booking priority: Routine, Priority or Urgent.
+	column Priority
+		dataType: string
+		lineageTag: 64994e80-c7a1-5f6c-9d13-78193ec4dff1
+		summarizeBy: none
+		sourceColumn: Priority
+
+		annotation SummarizationSetBy = User
+
+	/// Who referred the patient.
+	column 'Referral Source'
+		dataType: string
+		lineageTag: 4e8d6fc4-e39f-50ec-b768-c9435ccbf418
+		summarizeBy: none
+		sourceColumn: Referral Source
+
+		annotation SummarizationSetBy = User
+
+	/// Reason given when the appointment was cancelled.
+	column 'Cancellation Reason'
+		dataType: string
+		lineageTag: d2f87021-6da2-50c2-a970-abe18dc1e3ed
+		summarizeBy: none
+		sourceColumn: Cancellation Reason
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the visit follows an earlier appointment.
+	column 'Is Follow-up'
+		dataType: string
+		lineageTag: 1d64eedf-b40b-531a-866b-8f2692a19bdb
+		summarizeBy: none
+		sourceColumn: Is Follow-up
+
+		annotation SummarizationSetBy = User
+
+	/// No for the 23 appointments whose scheduled date could not be read. Measures count valid appointments only.
+	column 'Has Valid Scheduled Date'
+		dataType: string
+		isHidden
+		isAvailableInMdx: false
+		lineageTag: fb954a6d-6d05-5203-8ea9-3d9a6009f8e3
+		summarizeBy: none
+		sourceColumn: Has Valid Scheduled Date
+
+		annotation SummarizationSetBy = User
+
+	/// Yes when the SQL pipeline logged at least one issue for this appointment.
+	column 'Has Data Quality Issue'
+		dataType: string
+		lineageTag: af8c16ca-3364-59ab-bbf4-51be7515a198
+		summarizeBy: none
+		sourceColumn: Has Data Quality Issue
+
+		annotation SummarizationSetBy = User
+
+	/// Days from booking to the scheduled visit.
+	column 'Lead Time (days)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aeb4b9b-daf1-59b4-b203-1f25e27f4349
+		summarizeBy: none
+		sourceColumn: Lead Time (days)
+
+		annotation SummarizationSetBy = User
+
+	/// Lead time grouped into bands, for example Same day or 31+ days.
+	column 'Lead Time Band'
+		dataType: string
+		lineageTag: ada618a5-aa12-58ca-9649-887afce9bba8
+		summarizeBy: none
+		sourceColumn: Lead Time Band
+		sortByColumn: 'Lead Time Band Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Lead Time Band.
+	column 'Lead Time Band Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 9a3f00e2-a965-5083-8fa4-31ad3d82de95
+		summarizeBy: none
+		sourceColumn: Lead Time Band Sort
+
+		annotation SummarizationSetBy = User
+
+	/// Scheduled start time grouped into bands.
+	column 'Time Band'
+		dataType: string
+		lineageTag: e141cd13-c90e-5054-b889-885381d3e88f
+		summarizeBy: none
+		sourceColumn: Time Band
+		sortByColumn: 'Time Band Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Time Band and Time of Day.
+	column 'Time Band Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 3c72b5b7-dabc-59ac-973f-6e6f78156e0b
+		summarizeBy: none
+		sourceColumn: Time Band Sort
+
+		annotation SummarizationSetBy = User
+
+	/// Age of the patient on the appointment date.
+	column 'Patient Age'
+		dataType: int64
+		formatString: 0
+		lineageTag: 29010cc5-0b7e-5831-8197-2ed244332385
+		summarizeBy: none
+		sourceColumn: Patient Age
+
+		annotation SummarizationSetBy = User
+
+	/// Patient age grouped into bands.
+	column 'Age Band'
+		dataType: string
+		lineageTag: 3a198d3e-b505-573d-bed9-0bcd5320bb5b
+		summarizeBy: none
+		sourceColumn: Age Band
+		sortByColumn: 'Age Band Sort'
+
+		annotation SummarizationSetBy = User
+
+	/// Sorts Age Band.
+	column 'Age Band Sort'
+		dataType: int64
+		isHidden
+		lineageTag: 942b0cae-7c2a-5577-860e-e0872ad7a8fe
+		summarizeBy: none
+		sourceColumn: Age Band Sort
+
+		annotation SummarizationSetBy = User
+
+	/// Whether the appointment is in the pilot target segment (semi-urban patient, morning slot).
+	column 'Target Segment'
+		dataType: string
+		lineageTag: 6e58065f-14dc-5e8d-880b-fe7b8e10218b
+		summarizeBy: none
+		sourceColumn: Target Segment
+
+		annotation SummarizationSetBy = User
+
+	/// Overall result of the reminders for this appointment: Delivered, Failed, Pending or unknown, or No reminder record.
+	column 'Reminder Outcome'
+		dataType: string
+		lineageTag: dd92272f-5b68-5114-a098-d18a636078b2
+		summarizeBy: none
+		sourceColumn: Reminder Outcome
+
+		annotation SummarizationSetBy = User
+
+	/// Short form of Time Band for chart axes: Early AM, Late AM, Midday, Afternoon, Evening.
+	column 'Time of Day'
+		dataType: string
+		lineageTag: 1473a683-558f-5c1c-a8d3-cd2f83fb6f5f
+		summarizeBy: none
+		sourceColumn: Time of Day
+		sortByColumn: 'Time Band Sort'
+
+		annotation SummarizationSetBy = User
+
+	partition Appointments = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = fnLoadTable("fact_appointments", {"appointment_key", "patient_key", "clinic_key", "doctor_key", "scheduled_date_key", "specialty", "appointment_status", "booking_channel", "consultation_mode", "visit_type", "priority_level", "referral_source", "cancellation_reason", "is_follow_up", "scheduled_start_valid", "has_data_quality_issue", "lead_time_days", "lead_time_band", "lead_time_band_sort", "scheduled_time_band", "scheduled_time_band_sort", "patient_age_at_appointment", "patient_age_band", "patient_age_band_sort", "pilot_target_segment", "reminder_delivery_group"}, {"is_follow_up", "scheduled_start_valid", "has_data_quality_issue"}),
+				    TypedColumns = Table.TransformColumnTypes(Source, {{"appointment_key", Int64.Type}, {"patient_key", Int64.Type}, {"clinic_key", Int64.Type}, {"doctor_key", Int64.Type}, {"scheduled_date_key", Int64.Type}, {"specialty", type text}, {"appointment_status", type text}, {"booking_channel", type text}, {"consultation_mode", type text}, {"visit_type", type text}, {"priority_level", type text}, {"referral_source", type text}, {"cancellation_reason", type text}, {"lead_time_days", Int64.Type}, {"lead_time_band", type text}, {"lead_time_band_sort", Int64.Type}, {"scheduled_time_band", type text}, {"scheduled_time_band_sort", Int64.Type}, {"patient_age_at_appointment", Int64.Type}, {"patient_age_band", type text}, {"patient_age_band_sort", Int64.Type}, {"pilot_target_segment", type text}, {"reminder_delivery_group", type text}}, "en-US"),
+				    FilledSpecialty = Table.TransformColumns(TypedColumns, {{"specialty", each if _ = null or _ = "" then "Not recorded" else _, type text}}),
+				    RenamedColumns = Table.RenameColumns(FilledSpecialty, {{"appointment_key", "Appointment Key"}, {"patient_key", "Patient Key"}, {"clinic_key", "Clinic Key"}, {"doctor_key", "Doctor Key"}, {"scheduled_date_key", "Scheduled Date Key"}, {"specialty", "Specialty"}, {"appointment_status", "Appointment Status"}, {"booking_channel", "Booking Channel"}, {"consultation_mode", "Consultation Mode"}, {"visit_type", "Visit Type"}, {"priority_level", "Priority"}, {"referral_source", "Referral Source"}, {"cancellation_reason", "Cancellation Reason"}, {"is_follow_up", "Is Follow-up"}, {"scheduled_start_valid", "Has Valid Scheduled Date"}, {"has_data_quality_issue", "Has Data Quality Issue"}, {"lead_time_days", "Lead Time (days)"}, {"lead_time_band", "Lead Time Band"}, {"lead_time_band_sort", "Lead Time Band Sort"}, {"scheduled_time_band", "Time Band"}, {"scheduled_time_band_sort", "Time Band Sort"}, {"patient_age_at_appointment", "Patient Age"}, {"patient_age_band", "Age Band"}, {"patient_age_band_sort", "Age Band Sort"}, {"pilot_target_segment", "Target Segment"}, {"reminder_delivery_group", "Reminder Outcome"}}),
+				    AddedTimeofDay = Table.AddColumn(RenamedColumns, "Time of Day", each if [Time Band] = "Early morning (before 10:00)" then "Early AM" else if [Time Band] = "Late morning (10:00-11:59)" then "Late AM" else if [Time Band] = "Early afternoon (12:00-13:59)" then "Midday" else if [Time Band] = "Late afternoon (14:00-16:59)" then "Afternoon" else if [Time Band] = "Evening (17:00+)" then "Evening" else "Unknown", type text)
+				in
+				    AddedTimeofDay
+
+	annotation PBI_ResultType = Table
+

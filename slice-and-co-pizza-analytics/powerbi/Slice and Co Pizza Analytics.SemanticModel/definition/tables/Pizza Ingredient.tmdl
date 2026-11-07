@@ -1,0 +1,36 @@
+/// Bridge: which ingredients each pizza contains. Filters flow Ingredient -> bridge; measures enable the bridge -> Pizza direction only where needed (CROSSFILTER).
+table 'Pizza Ingredient'
+	isHidden
+	lineageTag: f7b89003-52ff-43f0-8634-799670f140d8
+
+	column 'Pizza Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 74840593-3f2d-4bd7-8e0a-01f7c81ca2ba
+		summarizeBy: none
+		sourceColumn: Pizza Key
+
+	column 'Ingredient Key'
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f7eaa862-5aeb-43b6-8fc0-67f26542c4dc
+		summarizeBy: none
+		sourceColumn: Ingredient Key
+
+	partition 'Pizza Ingredient' = m
+		mode: import
+		source =
+				let
+				    Source = Table.SelectColumns(#"Pizza Staging", {"Pizza Key", "Ingredients"}),
+				    #"Split Ingredients" = Table.TransformColumns(Source, {{"Ingredients", each List.Transform(Text.Split(_, ","), Text.Trim), type list}}),
+				    #"Expanded Ingredients" = Table.ExpandListColumn(#"Split Ingredients", "Ingredients"),
+				    #"Merged Ingredient Key" = Table.NestedJoin(#"Expanded Ingredients", {"Ingredients"}, Ingredient, {"Ingredient"}, "Ingredient", JoinKind.LeftOuter),
+				    #"Expanded Ingredient Key" = Table.ExpandTableColumn(#"Merged Ingredient Key", "Ingredient", {"Ingredient Key"}, {"Ingredient Key"}),
+				    #"Removed Redundant Attributes" = Table.SelectColumns(#"Expanded Ingredient Key", {"Pizza Key", "Ingredient Key"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Redundant Attributes"),
+				    #"Changed Types" = Table.TransformColumnTypes(#"Removed Duplicates", {{"Pizza Key", Int64.Type}, {"Ingredient Key", Int64.Type}})
+				in
+				    #"Changed Types"
+

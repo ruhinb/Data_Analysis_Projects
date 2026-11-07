@@ -1,0 +1,26 @@
+{
+    // SQLTools connections for this project.
+    // Copy this file to settings.json (git-ignored) and set "username" to your PostgreSQL user.
+    // Use "1 - postgres (setup)" for script 01 only, then "2 - patientcare_analytics" for scripts 02-18.
+    "sqltools.connections": [
+        {
+            "name": "1 - postgres (setup)",
+            "driver": "PostgreSQL",
+            "server": "localhost",
+            "port": 5432,
+            "database": "postgres",
+            "username": "postgres",
+            "askForPassword": true
+        },
+        {
+            "name": "2 - patientcare_analytics",
+            "driver": "PostgreSQL",
+            "server": "localhost",
+            "port": 5432,
+            "database": "patientcare_analytics",
+            "username": "postgres",
+            "askForPassword": true
+        }
+    ],
+    "sqltools.results.limit": 200
+}

@@ -1,0 +1,900 @@
+/// Home for every explicit measure. Organised in numbered display folders.
+table _Measures
+	lineageTag: e59381b2-161a-4bae-a37e-05fa622c080b
+
+	/// Sum of quantity x unit price for every order line.
+	measure 'Total Revenue' = SUM ( Sales[Line Revenue] )
+		formatString: $#,##0
+		displayFolder: 1 Sales
+		lineageTag: 938cb0b5-f25d-46ed-8704-49fb379e6768
+
+	/// Number of pizzas sold.
+	measure 'Total Quantity Sold' = SUM ( Sales[Quantity] )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: 117be9e3-c0d4-4f95-8dff-0f1661b80dbb
+
+	/// Distinct orders. Counted on the Sales fact so it responds to pizza, category and size filters.
+	measure 'Total Orders' = DISTINCTCOUNT ( Sales[Order ID] )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: b3dc4641-5e07-47c7-b733-818133c06c95
+
+	/// Revenue per order.
+	measure 'Average Order Value' = DIVIDE ( [Total Revenue], [Total Orders] )
+		formatString: $#,##0.00
+		displayFolder: 1 Sales
+		lineageTag: 1db70243-bedb-4f70-aeb0-cc0349d38b3f
+
+	/// Pizzas per order.
+	measure 'Average Pizzas per Order' = DIVIDE ( [Total Quantity Sold], [Total Orders] )
+		formatString: #,##0.00
+		displayFolder: 1 Sales
+		lineageTag: f4d69b51-c827-4f91-bc05-30d899283229
+
+	/// Revenue per pizza sold (quantity-weighted price).
+	measure 'Average Selling Price' = DIVIDE ( [Total Revenue], [Total Quantity Sold] )
+		formatString: $#,##0.00
+		displayFolder: 1 Sales
+		lineageTag: 145f5c59-01e2-40b1-bde8-b62021a5e322
+
+	/// Share of revenue within the pizzas currently selected by slicers.
+	measure 'Revenue Share' = DIVIDE ( [Total Revenue], CALCULATE ( [Total Revenue], ALLSELECTED ( Pizza ) ) )
+		formatString: 0.0%
+		displayFolder: 1 Sales
+		lineageTag: aac6fcdf-c64e-48b0-a592-cb3f75ec0c56
+
+	/// Share of pizzas sold within the pizzas currently selected by slicers.
+	measure 'Quantity Share' = DIVIDE ( [Total Quantity Sold], CALCULATE ( [Total Quantity Sold], ALLSELECTED ( Pizza ) ) )
+		formatString: 0.0%
+		displayFolder: 1 Sales
+		lineageTag: 52095fd2-2e42-41ab-9c7d-14130e8bb05d
+
+	/// Rank of a category by revenue.
+	measure 'Category Revenue Rank' = IF ( NOT ISBLANK ( [Total Revenue] ), RANKX ( ALLSELECTED ( Pizza[Category] ), [Total Revenue], , DESC, DENSE ) )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: db5fe362-c0b9-40cd-8cf6-61d8656da8ca
+
+	/// Rank of a category by pizzas sold.
+	measure 'Category Quantity Rank' = IF ( NOT ISBLANK ( [Total Quantity Sold] ), RANKX ( ALLSELECTED ( Pizza[Category] ), [Total Quantity Sold], , DESC, DENSE ) )
+		formatString: #,##0
+		displayFolder: 1 Sales
+		lineageTag: e43435dc-5f3f-401d-a5ff-9152cac612ef
+
+	/// Days with at least one recorded order.
+	measure 'Trading Days' = CALCULATE ( COUNTROWS ( 'Date' ), KEEPFILTERS ( 'Date'[Is Trading Day] = TRUE () ) )
+		formatString: #,##0
+		displayFolder: 2 Orders & Timing
+		lineageTag: 571d0bce-0450-4661-89e6-290c7c8fb4c2
+
+	/// Average orders per trading day. Used for day x time heatmaps, so closed days do not dilute averages.
+	measure 'Orders per Trading Day' = DIVIDE ( [Total Orders], [Trading Days] )
+		formatString: #,##0.0
+		displayFolder: 2 Orders & Timing
+		lineageTag: 4f73b8b0-6885-4e8b-8c2e-55067f4acda1
+
+	/// Average revenue per trading day.
+	measure 'Revenue per Trading Day' = DIVIDE ( [Total Revenue], [Trading Days] )
+		formatString: $#,##0
+		displayFolder: 2 Orders & Timing
+		lineageTag: 7f0d021c-fb5e-4774-b0ce-861229fcddaf
+
+	/// Orders containing exactly one pizza.
+	measure 'Single Pizza Orders' = CALCULATE ( [Total Orders], KEEPFILTERS ( Sales[Order Pizza Count] = 1 ) )
+		formatString: #,##0
+		displayFolder: 2 Orders & Timing
+		lineageTag: 96b830ec-c843-4c28-9b9e-165b99c21769
+
+	/// Share of orders containing exactly one pizza.
+	measure 'Single Pizza Order %' = DIVIDE ( [Single Pizza Orders], [Total Orders] )
+		formatString: 0.0%
+		displayFolder: 2 Orders & Timing
+		lineageTag: d5d14c3d-d99d-4002-bc01-6b654b712e3a
+
+	/// Average minutes between consecutive orders on the same trading day (orders sorted chronologically).
+	measure 'Average Order Gap (min)' = AVERAGE ( Orders[Minutes Since Previous Order] )
+		formatString: #,##0.0
+		displayFolder: 2 Orders & Timing
+		lineageTag: d8a51388-10cf-4dc7-8a97-43e15230743f
+
+	/// Hour of the day with the most orders.
+	measure 'Peak Hour' =
+			VAR _hours = FILTER ( ADDCOLUMNS ( VALUES ( 'Time Slot'[Hour] ), "@orders", [Total Orders] ), NOT ISBLANK ( [@orders] ) )
+			VAR _top = TOPN ( 1, _hours, [@orders], DESC, 'Time Slot'[Hour], ASC )
+			VAR _hour = MAXX ( _top, 'Time Slot'[Hour] )
+			RETURN
+			    IF ( NOT ISBLANK ( _hour ), FORMAT ( TIME ( _hour, 0, 0 ), "h AM/PM" ) )
+		displayFolder: 2 Orders & Timing
+		lineageTag: db869150-8691-4acb-812d-36478daf210a
+
+	/// Average orders per trading day in the peak hour.
+	measure 'Peak Hour Orders per Day' =
+			VAR _hours = FILTER ( ADDCOLUMNS ( VALUES ( 'Time Slot'[Hour] ), "@orders", [Orders per Trading Day] ), NOT ISBLANK ( [@orders] ) )
+			RETURN
+			    MAXX ( _hours, [@orders] )
+		formatString: #,##0.0
+		displayFolder: 2 Orders & Timing
+		lineageTag: d463b5c8-1aba-43c2-8d47-8872e252aa1c
+
+	/// Weekday with the highest average orders per trading day.
+	measure 'Peak Day' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( 'Date'[Weekday Name] ), "@value", [Orders per Trading Day] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, 'Date'[Weekday Name], ASC )
+			RETURN
+			    MAXX ( _top, 'Date'[Weekday Name] )
+		displayFolder: 2 Orders & Timing
+		lineageTag: 215c227b-2504-4606-9437-790eae222630
+
+	/// Average orders on the peak weekday.
+	measure 'Peak Day Orders per Day' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( 'Date'[Weekday Name] ), "@value", [Orders per Trading Day] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, 'Date'[Weekday Name], ASC )
+			RETURN
+			    MAXX ( _top, [@value] )
+		formatString: #,##0.0
+		displayFolder: 2 Orders & Timing
+		lineageTag: 4f64e918-3014-4d86-a8ea-d51634fb8c74
+
+	/// Share of orders placed on Saturday or Sunday.
+	measure 'Weekend Order Share' = DIVIDE ( CALCULATE ( [Total Orders], KEEPFILTERS ( 'Date'[Day Type] = "Weekend" ) ), [Total Orders] )
+		formatString: 0.0%
+		displayFolder: 2 Orders & Timing
+		lineageTag: db031831-934d-43ca-99e7-35b904d67b23
+
+	/// Share of orders placed on the peak weekday.
+	measure 'Peak Day Order Share' =
+			VAR _day = [Peak Day]
+			RETURN
+			    DIVIDE ( CALCULATE ( [Total Orders], KEEPFILTERS ( 'Date'[Weekday Name] = _day ) ), [Total Orders] )
+		formatString: 0.0%
+		displayFolder: 2 Orders & Timing
+		lineageTag: c7da4703-67d1-494a-83ee-bae787bb02d6
+
+	/// Revenue change versus the comparison period (see Comparison Label).
+	measure 'Revenue Change %' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Revenue], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, DIVIDE ( _current - _baseline, _baseline ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: d0646d18-40d0-4924-811d-3a96ab7f2dcf
+
+	/// Order change versus the comparison period.
+	measure 'Orders Change %' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Orders], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Total Orders], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Orders], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Total Orders], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, DIVIDE ( _current - _baseline, _baseline ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: 0b1adb2f-638e-4370-8b04-1701907682a7
+
+	/// Pizzas-sold change versus the comparison period.
+	measure 'Quantity Change %' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Quantity Sold], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Total Quantity Sold], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Total Quantity Sold], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Total Quantity Sold], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, DIVIDE ( _current - _baseline, _baseline ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: 9d2fd0cb-2e8a-4452-8d9a-c61d60ca5f15
+
+	/// Average order value change versus the comparison period.
+	measure 'Average Order Value Change %' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Average Order Value], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Average Order Value], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Average Order Value], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Average Order Value], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, DIVIDE ( _current - _baseline, _baseline ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: 1516f215-115d-4c11-99da-549bb7b7be90
+
+	/// Average selling price change versus the comparison period.
+	measure 'Average Selling Price Change %' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Average Selling Price], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Average Selling Price], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Average Selling Price], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Average Selling Price], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, DIVIDE ( _current - _baseline, _baseline ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: 3a0536ea-ad2f-41de-a9fe-deba5ebb7ef2
+
+	/// Change in single-pizza order share, in percentage points.
+	measure 'Single Pizza Order % Change (pp)' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _last = MAXX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _half = INT ( _n / 2 )
+			VAR _current =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Single Pizza Order %], ALLSELECTED ( 'Date' ) ),
+			        CALCULATE ( [Single Pizza Order %], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] > _last - _half, 'Date'[Month Index] <= _last )
+			    )
+			VAR _baseline =
+			    IF (
+			        _hasPrevious,
+			        CALCULATE ( [Single Pizza Order %], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first - _n, 'Date'[Month Index] < _first ),
+			        CALCULATE ( [Single Pizza Order %], REMOVEFILTERS ( 'Date' ), 'Date'[Month Index] >= _first, 'Date'[Month Index] < _first + _half )
+			    )
+			RETURN
+			    IF ( _hasPrevious || _n >= 2, _current - _baseline )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 3 Period Comparison
+		lineageTag: 8518f247-ed92-40cd-b223-14bdfce5affe
+
+	/// Describes the period used by the change measures.
+	measure 'Comparison Label' =
+			VAR _months = CALCULATETABLE ( VALUES ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _n = COUNTROWS ( _months )
+			VAR _first = MINX ( _months, 'Date'[Month Index] )
+			VAR _dataFirst = CALCULATE ( MIN ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			VAR _hasPrevious = _first - _n >= _dataFirst
+			VAR _previousMonth = DATE ( INT ( ( _first - 2 ) / 12 ), MOD ( _first - 2, 12 ) + 1, 1 )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        _hasPrevious && _n = 1, "vs " & FORMAT ( _previousMonth, "mmm yyyy" ),
+			        _hasPrevious, "vs previous " & _n & " months",
+			        _n = 12, "H2 vs H1",
+			        _n >= 2, "later vs earlier months",
+			        "no earlier month"
+			    )
+		displayFolder: 3 Period Comparison
+		lineageTag: 9db76dce-cb0f-4e72-8cad-fc3d37d5bd6b
+
+	/// Short description of the months selected.
+	measure 'Selection Label' =
+			VAR _n = CALCULATE ( DISTINCTCOUNT ( 'Date'[Month Index] ), ALLSELECTED ( 'Date' ) )
+			VAR _all = CALCULATE ( DISTINCTCOUNT ( 'Date'[Month Index] ), REMOVEFILTERS ( 'Date' ) )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        _n = _all, "All months",
+			        _n = 1, CALCULATE ( MAX ( 'Date'[Month Year] ), ALLSELECTED ( 'Date' ) ),
+			        _n & " months"
+			    )
+		displayFolder: 3 Period Comparison
+		lineageTag: b1f7361b-cfd7-4bee-a103-3be8cd264cd9
+
+	/// Revenue for the full selection, used by KPI cards that also plot a weekly sparkline.
+	measure 'KPI Revenue' = CALCULATE ( [Total Revenue], ALLSELECTED ( 'Date' ) )
+		formatString: $#,##0
+		displayFolder: 3 Period Comparison
+		lineageTag: 1b2dbb64-8ce3-488f-a9ee-ae007c79f74a
+
+	/// Orders for the full selection (KPI cards).
+	measure 'KPI Orders' = CALCULATE ( [Total Orders], ALLSELECTED ( 'Date' ) )
+		formatString: #,##0
+		displayFolder: 3 Period Comparison
+		lineageTag: 7a8fc4d9-2308-45b8-81f3-99767b9f3cdf
+
+	/// Pizzas sold for the full selection (KPI cards).
+	measure 'KPI Quantity Sold' = CALCULATE ( [Total Quantity Sold], ALLSELECTED ( 'Date' ) )
+		formatString: #,##0
+		displayFolder: 3 Period Comparison
+		lineageTag: e021ed42-6d30-4ead-9e70-f52af9871e04
+
+	/// Average order value for the full selection (KPI cards).
+	measure 'KPI Average Order Value' = CALCULATE ( [Average Order Value], ALLSELECTED ( 'Date' ) )
+		formatString: $#,##0.00
+		displayFolder: 3 Period Comparison
+		lineageTag: 24e23c5a-a2d5-42f9-b909-237de895c582
+
+	/// Pizzas per order for the full selection (KPI cards).
+	measure 'KPI Average Pizzas per Order' = CALCULATE ( [Average Pizzas per Order], ALLSELECTED ( 'Date' ) )
+		formatString: #,##0.00
+		displayFolder: 3 Period Comparison
+		lineageTag: 61e93e16-c0d3-46e1-8b43-ec7a54ae5082
+
+	/// Metric chosen in the trend chart switcher (default Revenue).
+	measure 'Selected Trend Metric' = SELECTEDVALUE ( 'Trend Metric'[Metric], "Revenue" )
+		displayFolder: 4 Trend Switcher
+		lineageTag: 03acee8f-4e66-4e3e-af49-b2e02d5ec8f0
+
+	/// Numerator of the selected trend metric. Average Order Value uses revenue / orders.
+	measure 'Trend Numerator' =
+			SWITCH (
+			    [Selected Trend Metric],
+			    "Orders", [Total Orders],
+			    "Pizzas Sold", [Total Quantity Sold],
+			    [Total Revenue]
+			)
+		formatString: #,##0.00
+		displayFolder: 4 Trend Switcher
+		lineageTag: 4b104318-2c39-4c81-af75-6d9fec9b683c
+
+	/// Denominator of the selected trend metric (orders for Average Order Value, otherwise 1).
+	measure 'Trend Denominator' = IF ( [Selected Trend Metric] = "Average Order Value", [Total Orders], 1 )
+		formatString: #,##0
+		displayFolder: 4 Trend Switcher
+		lineageTag: 5c3767cf-e4b7-4cb8-93c0-6a2b690af1bb
+
+	/// Pizza with the highest revenue.
+	measure 'Top Revenue Pizza' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Short Name] ), "@value", [Total Revenue] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, Pizza[Short Name], ASC )
+			RETURN
+			    MAXX ( _top, Pizza[Short Name] )
+		displayFolder: 5 Menu
+		lineageTag: 431cc6a6-312c-4f0d-b150-fc49fa2bc494
+
+	/// Revenue of the top revenue pizza.
+	measure 'Top Revenue Pizza Revenue' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Short Name] ), "@value", [Total Revenue] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, Pizza[Short Name], ASC )
+			RETURN
+			    MAXX ( _top, [@value] )
+		formatString: $#,##0
+		displayFolder: 5 Menu
+		lineageTag: ca5d6105-7920-47c7-b73c-082261c07317
+
+	/// Revenue change of the top revenue pizza versus the comparison period.
+	measure 'Top Revenue Pizza Change %' =
+			VAR _pizza = [Top Revenue Pizza]
+			RETURN
+			    CALCULATE ( [Revenue Change %], KEEPFILTERS ( Pizza[Short Name] = _pizza ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5 Menu
+		lineageTag: ec2be900-d453-4c41-af3d-6e1d29f28096
+
+	/// Pizza with the most units sold.
+	measure 'Top Volume Pizza' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Short Name] ), "@value", [Total Quantity Sold] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, Pizza[Short Name], ASC )
+			RETURN
+			    MAXX ( _top, Pizza[Short Name] )
+		displayFolder: 5 Menu
+		lineageTag: 68765095-c8bd-443a-aae1-75ddcbfd5e0f
+
+	/// Units sold of the top volume pizza.
+	measure 'Top Volume Pizza Quantity' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Short Name] ), "@value", [Total Quantity Sold] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, Pizza[Short Name], ASC )
+			RETURN
+			    MAXX ( _top, [@value] )
+		formatString: #,##0
+		displayFolder: 5 Menu
+		lineageTag: f7d40345-5898-4174-acec-7d22a8f5ccd2
+
+	/// Units-sold change of the top volume pizza versus the comparison period.
+	measure 'Top Volume Pizza Change %' =
+			VAR _pizza = [Top Volume Pizza]
+			RETURN
+			    CALCULATE ( [Quantity Change %], KEEPFILTERS ( Pizza[Short Name] = _pizza ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5 Menu
+		lineageTag: 31180546-c35b-4525-a935-885dde36b5e1
+
+	/// Ranking basis for the top and bottom five tables (Revenue or Quantity).
+	measure 'Selected Rank By' = SELECTEDVALUE ( 'Rank By'[Rank By], "Revenue" )
+		displayFolder: 5 Menu
+		lineageTag: e6a0c338-59e4-46db-a68f-d5fbc6f177f2
+
+	/// Pizzas sold that contain the ingredient (bridge filter applied only inside this measure).
+	measure 'Ingredient Pizzas Sold' = CALCULATE ( [Total Quantity Sold], CROSSFILTER ( 'Pizza Ingredient'[Pizza Key], Pizza[Pizza Key], BOTH ) )
+		formatString: #,##0
+		displayFolder: 5 Menu
+		lineageTag: ec9089d3-d795-4eb1-b31a-00ceba580fa0
+
+	/// Ingredient found in the most pizzas sold for the current selection.
+	measure 'Most Popular Ingredient' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Ingredient[Ingredient] ), "@qty", [Ingredient Pizzas Sold] ), [@qty] > 0 )
+			RETURN
+			    MAXX ( TOPN ( 1, _items, [@qty], DESC, Ingredient[Ingredient], ASC ), Ingredient[Ingredient] )
+		displayFolder: 5 Menu
+		lineageTag: d351bdbe-fd40-4b6f-b0aa-bf6cea1b89b7
+
+	/// Ingredient found in the fewest pizzas sold for the current selection (ingredients with no sales excluded).
+	measure 'Least Popular Ingredient' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Ingredient[Ingredient] ), "@qty", [Ingredient Pizzas Sold] ), [@qty] > 0 )
+			RETURN
+			    MAXX ( TOPN ( 1, _items, [@qty], ASC, Ingredient[Ingredient], ASC ), Ingredient[Ingredient] )
+		displayFolder: 5 Menu
+		lineageTag: f78cef58-ac72-44a4-8bef-5a31e9255af5
+
+	/// Pizzas sold containing the most popular ingredient.
+	measure 'Most Popular Ingredient Pizzas' =
+			VAR _ingredient = [Most Popular Ingredient]
+			RETURN
+			    CALCULATE ( [Ingredient Pizzas Sold], KEEPFILTERS ( Ingredient[Ingredient] = _ingredient ) )
+		formatString: #,##0
+		displayFolder: 5 Menu
+		lineageTag: 09998895-0f98-42b9-9c08-54b0de7a31e4
+
+	/// Pizzas sold containing the least popular ingredient.
+	measure 'Least Popular Ingredient Pizzas' =
+			VAR _ingredient = [Least Popular Ingredient]
+			RETURN
+			    CALCULATE ( [Ingredient Pizzas Sold], KEEPFILTERS ( Ingredient[Ingredient] = _ingredient ) )
+		formatString: #,##0
+		displayFolder: 5 Menu
+		lineageTag: c79690d6-b9bd-4a65-b95b-adfac41a5564
+
+	/// Category with the highest revenue.
+	measure 'Top Category' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Category] ), "@value", [Total Revenue] ), NOT ISBLANK ( [@value] ) )
+			VAR _top = TOPN ( 1, _items, [@value], DESC, Pizza[Category], ASC )
+			RETURN
+			    MAXX ( _top, Pizza[Category] )
+		displayFolder: 5 Menu
+		lineageTag: 0f08d67e-c9ec-4158-926d-fb43a271a648
+
+	/// Revenue share of the top category.
+	measure 'Top Category Revenue Share' =
+			VAR _category = [Top Category]
+			RETURN
+			    DIVIDE ( CALCULATE ( [Total Revenue], KEEPFILTERS ( Pizza[Category] = _category ) ), [Total Revenue] )
+		formatString: 0.0%
+		displayFolder: 5 Menu
+		lineageTag: 6fb6c365-f0ef-4dde-a4a6-e1fb599f70cb
+
+	/// Date chosen in the Investigate a date slicer; defaults to the day with the largest revenue z-score.
+	measure 'Investigated Date' =
+			VAR _picked = SELECTEDVALUE ( 'Investigation Date'[Date] )
+			VAR _tradingDays = CALCULATETABLE ( 'Date', REMOVEFILTERS ( 'Date' ), 'Date'[Is Trading Day] = TRUE () )
+			VAR _strongest = MAXX ( TOPN ( 1, _tradingDays, ABS ( 'Date'[Revenue Z-Score] ), DESC ), 'Date'[Date] )
+			RETURN
+			    COALESCE ( _picked, _strongest )
+		formatString: ddd d mmm yyyy
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 39239c86-98f0-4541-86bf-8d92c5688686
+
+	/// Investigated date as text.
+	measure 'Investigated Date Label' = FORMAT ( [Investigated Date], "ddd d mmm yyyy" )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 86d55d3d-f24c-42d2-8556-4b7711c78016
+
+	/// Anomaly classification of the investigated date.
+	measure 'Investigated Anomaly Type' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( MAX ( 'Date'[Anomaly Type] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: cf4c511f-28ab-418b-94dd-c58122ac5b37
+
+	/// Revenue on the investigated date.
+	measure 'Investigated Revenue' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: $#,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 460b3e07-505b-4fab-9436-be111c5c0389
+
+	/// Orders on the investigated date.
+	measure 'Investigated Orders' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( [Total Orders], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: #,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 78d856ac-37cf-480c-8b66-df6315e9b02f
+
+	/// Pizzas sold on the investigated date.
+	measure 'Investigated Pizzas' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( [Total Quantity Sold], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: #,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: d823b36f-447e-402e-93b2-6bbe15505390
+
+	/// Average order value on the investigated date.
+	measure 'Investigated Average Order Value' = DIVIDE ( [Investigated Revenue], [Investigated Orders] )
+		formatString: $#,##0.00
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 527c67b2-8336-49ec-bc53-019fa96333ef
+
+	/// Revenue z-score of the investigated date against other days of the same weekday.
+	measure 'Investigated Revenue Z-Score' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( MAX ( 'Date'[Revenue Z-Score] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: 0.0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: b09ad180-d3d0-4912-bea5-6bcbc6a20cc2
+
+	/// Average revenue of the same weekday, excluding the investigated date.
+	measure 'Typical Weekday Revenue' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( MAX ( 'Date'[Typical Weekday Revenue] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: $#,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: f5aa7b1f-2be0-47cd-9705-d6fc9541c2ee
+
+	/// Average orders of the same weekday, excluding the investigated date.
+	measure 'Typical Weekday Orders' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( MAX ( 'Date'[Typical Weekday Orders] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		formatString: #,##0.0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 5654a961-b2f8-4088-8961-249473c8a246
+
+	/// Average order value of a typical same weekday.
+	measure 'Typical Weekday Average Order Value' = DIVIDE ( [Typical Weekday Revenue], [Typical Weekday Orders] )
+		formatString: $#,##0.00
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: b7dd44f4-ccee-429f-b439-ea5d251eb87d
+
+	/// Revenue above (+) or below (-) a typical same weekday.
+	measure 'Revenue Variance vs Typical' = [Investigated Revenue] - [Typical Weekday Revenue]
+		formatString: +$#,##0;-$#,##0;$0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: fc86fb10-199e-4655-89b6-10781f9c2409
+
+	/// Revenue variance as a share of a typical same weekday.
+	measure 'Revenue Variance vs Typical %' = DIVIDE ( [Revenue Variance vs Typical], [Typical Weekday Revenue] )
+		formatString: +0%;-0%;0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 6deb35a1-9e05-4716-907a-7ec63ed017db
+
+	/// Order variance as a share of a typical same weekday.
+	measure 'Orders Variance vs Typical %' = DIVIDE ( [Investigated Orders] - [Typical Weekday Orders], [Typical Weekday Orders] )
+		formatString: +0%;-0%;0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 69510b34-e32d-4a4d-95bb-9847cb0f2ef5
+
+	/// Basket-size variance as a share of a typical same weekday.
+	measure 'Average Order Value Variance vs Typical %' = DIVIDE ( [Investigated Average Order Value] - [Typical Weekday Average Order Value], [Typical Weekday Average Order Value] )
+		formatString: +0%;-0%;0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 7300056c-f491-4abe-9d74-3979479e3470
+
+	/// Part of the revenue variance explained by the number of orders.
+	measure 'Order Volume Effect' = ( [Investigated Orders] - [Typical Weekday Orders] ) * [Typical Weekday Average Order Value]
+		formatString: +$#,##0;-$#,##0;$0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 753ffa3f-3d10-4fca-8db4-5bbe2c8cb236
+
+	/// Part of the revenue variance explained by spend per order.
+	measure 'Basket Size Effect' = [Investigated Orders] * ( [Investigated Average Order Value] - [Typical Weekday Average Order Value] )
+		formatString: +$#,##0;-$#,##0;$0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: c3e32c9a-1ff7-42d7-9bd4-e0743e4ac3b4
+
+	/// Category with the most revenue on the investigated date.
+	measure 'Investigated Top Category' =
+			VAR _day = [Investigated Date]
+			VAR _categories = ADDCOLUMNS ( VALUES ( Pizza[Category] ), "@revenue", CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day ) )
+			RETURN
+			    MAXX ( TOPN ( 1, _categories, [@revenue], DESC, Pizza[Category], ASC ), Pizza[Category] )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 9bfc0f63-bffb-4b15-a506-18ce408fa7a7
+
+	/// Revenue share of that category on the investigated date.
+	measure 'Investigated Top Category Share' =
+			VAR _day = [Investigated Date]
+			VAR _category = [Investigated Top Category]
+			RETURN
+			    DIVIDE (
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day, Pizza[Category] = _category ),
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+			    )
+		formatString: 0.0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: c2b4ab90-457c-4755-b069-83cca8023111
+
+	/// Revenue share of the same category on a typical same weekday.
+	measure 'Typical Top Category Share' =
+			VAR _day = [Investigated Date]
+			VAR _weekday = WEEKDAY ( _day, 2 )
+			VAR _typicalDays =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Date] ),
+			        REMOVEFILTERS ( 'Date' ),
+			        'Date'[Day of Week Number] = _weekday,
+			        'Date'[Is Trading Day] = TRUE (),
+			        'Date'[Date] <> _day
+			    )
+			VAR _category = [Investigated Top Category]
+			RETURN
+			    DIVIDE (
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), _typicalDays, Pizza[Category] = _category ),
+			        CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), _typicalDays )
+			    )
+		formatString: 0.0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 1c04f320-3963-468d-8ad8-f9ec4901d81e
+
+	/// Hour with the most revenue on the investigated date (0-23).
+	measure 'Investigated Peak Hour' =
+			VAR _day = [Investigated Date]
+			VAR _hours = FILTER ( ADDCOLUMNS ( VALUES ( 'Time Slot'[Hour] ), "@revenue", CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day ) ), NOT ISBLANK ( [@revenue] ) )
+			RETURN
+			    MAXX ( TOPN ( 1, _hours, [@revenue], DESC, 'Time Slot'[Hour], ASC ), 'Time Slot'[Hour] )
+		formatString: 0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 8380a679-bfea-4ec6-b83b-92e704928b16
+
+	/// Peak hour of the investigated date as a range, for example 6–7 PM.
+	measure 'Investigated Peak Hour Label' =
+			VAR _hour = [Investigated Peak Hour]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _hour ),
+			        ( MOD ( _hour + 11, 12 ) + 1 ) & "–" & ( MOD ( _hour, 12 ) + 1 ) & IF ( _hour + 1 >= 12 && _hour + 1 < 24, " PM", " AM" )
+			    )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 020a2c1c-83dd-4a45-922d-2d70fb2f4c0a
+
+	/// Revenue in the peak hour of the investigated date.
+	measure 'Investigated Peak Hour Revenue' =
+			VAR _day = [Investigated Date]
+			VAR _hour = [Investigated Peak Hour]
+			RETURN
+			    CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day, 'Time Slot'[Hour] = _hour )
+		formatString: $#,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 9f546950-c883-4173-85e2-7ac54f1664df
+
+	/// Average revenue in the same hour on a typical same weekday.
+	measure 'Typical Peak Hour Revenue' =
+			VAR _day = [Investigated Date]
+			VAR _weekday = WEEKDAY ( _day, 2 )
+			VAR _typicalDays =
+			    CALCULATETABLE (
+			        VALUES ( 'Date'[Date] ),
+			        REMOVEFILTERS ( 'Date' ),
+			        'Date'[Day of Week Number] = _weekday,
+			        'Date'[Is Trading Day] = TRUE (),
+			        'Date'[Date] <> _day
+			    )
+			VAR _hour = [Investigated Peak Hour]
+			RETURN
+			    DIVIDE ( CALCULATE ( [Total Revenue], REMOVEFILTERS ( 'Date' ), _typicalDays, 'Time Slot'[Hour] = _hour ), COUNTROWS ( _typicalDays ) )
+		formatString: $#,##0
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 5c2aea1f-d995-42ee-91b8-b9e121d613a5
+
+	/// Row-level revenue variance against a typical same weekday (used in the flagged-day table).
+	measure 'Day Revenue Variance %' =
+			VAR _typical = MAX ( 'Date'[Typical Weekday Revenue] )
+			RETURN
+			    IF ( HASONEVALUE ( 'Date'[Date] ), DIVIDE ( [Total Revenue] - _typical, _typical ) )
+		formatString: +0%;-0%;0%
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: 42be1068-9028-45e2-80cf-a37f5c1bdacc
+
+	/// Cost of the baseline roster.
+	measure 'Baseline Labour Cost' = SUM ( Staffing[Scheduled Labour Cost] )
+		formatString: $#,##0
+		displayFolder: 7 Workforce
+		lineageTag: 448b02ae-1a0b-462c-85ac-7f1d31eb2509
+
+	/// Cost of the demand-based recommended roster.
+	measure 'Recommended Labour Cost' = SUM ( Staffing[Recommended Labour Cost] )
+		formatString: $#,##0
+		displayFolder: 7 Workforce
+		lineageTag: d2837cc9-28bc-4e4f-973c-e5d463cd079e
+
+	/// Baseline minus recommended labour cost.
+	measure 'Potential Labour Savings' = [Baseline Labour Cost] - [Recommended Labour Cost]
+		formatString: $#,##0
+		displayFolder: 7 Workforce
+		lineageTag: 39571a3f-396d-4743-a61b-f689c6d93bf9
+
+	/// Savings as a share of baseline labour cost.
+	measure 'Potential Labour Savings %' = DIVIDE ( [Potential Labour Savings], [Baseline Labour Cost] )
+		formatString: 0.0%
+		displayFolder: 7 Workforce
+		lineageTag: de4d2265-d2e2-4025-af1e-424d7e570d69
+
+	/// Revenue in the staffed half-hours (responds to the demand band slicer).
+	measure 'Staffing Revenue' = SUM ( Staffing[Slot Revenue] )
+		formatString: $#,##0
+		displayFolder: 7 Workforce
+		lineageTag: 8585479b-8166-4dab-adb9-151277f49889
+
+	/// Baseline labour cost as a share of revenue.
+	measure 'Baseline Labour Cost %' = DIVIDE ( [Baseline Labour Cost], [Staffing Revenue] )
+		formatString: 0.0%
+		displayFolder: 7 Workforce
+		lineageTag: 615eef4c-5cc7-43d3-aa76-bca8e98ac41e
+
+	/// Recommended labour cost as a share of revenue.
+	measure 'Recommended Labour Cost %' = DIVIDE ( [Recommended Labour Cost], [Staffing Revenue] )
+		formatString: 0.0%
+		displayFolder: 7 Workforce
+		lineageTag: 690217ce-fddd-46c6-b562-edd10bcd59ff
+
+	/// Paid hours in the baseline roster.
+	measure 'Baseline Labour Hours' = SUM ( Staffing[Scheduled Labour Hours] )
+		formatString: #,##0
+		displayFolder: 7 Workforce
+		lineageTag: 63d536d5-262d-421e-9787-942000cc4c66
+
+	/// Paid hours in the recommended roster.
+	measure 'Recommended Labour Hours' = SUM ( Staffing[Recommended Labour Hours] )
+		formatString: #,##0
+		displayFolder: 7 Workforce
+		lineageTag: 0fbc3da0-5fca-47f5-8e3c-ad1bf7421b74
+
+	/// People on shift per half-hour in the baseline roster.
+	measure 'Average Scheduled Staff' = AVERAGE ( Staffing[Scheduled Staff] )
+		formatString: #,##0.0
+		displayFolder: 7 Workforce
+		lineageTag: af9d6a17-be71-498c-8986-b13e043ac7f2
+
+	/// People needed per half-hour under the recommended roster.
+	measure 'Average Recommended Staff' = AVERAGE ( Staffing[Recommended Staff] )
+		formatString: #,##0.0
+		displayFolder: 7 Workforce
+		lineageTag: b0899071-59e1-44a9-ad0f-7dc51f366df1
+
+	/// Orders per half-hour.
+	measure 'Average Slot Orders' = AVERAGE ( Staffing[Slot Orders] )
+		formatString: #,##0.0
+		displayFolder: 7 Workforce
+		lineageTag: 3f4eb6b8-f311-4625-81f0-7edcb31a3735
+
+	/// Scheduled minus recommended people per half-hour (positive = overstaffed).
+	measure 'Average Staffing Gap' = AVERAGE ( Staffing[Staffing Gap] )
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 7 Workforce
+		lineageTag: ef83a0ad-3530-4c3c-b804-96b6197d1c28
+
+	/// Peak hour for the full selection (KPI cards).
+	measure 'KPI Peak Hour' = CALCULATE ( [Peak Hour], ALLSELECTED ( 'Date' ), ALLSELECTED ( 'Time Slot' ) )
+		displayFolder: 3 Period Comparison
+		lineageTag: 61aec10d-e052-4a7a-8b43-fffa95a702cb
+
+	/// Peak weekday for the full selection (KPI cards).
+	measure 'KPI Peak Day' = CALCULATE ( [Peak Day], ALLSELECTED ( 'Date' ), ALLSELECTED ( 'Time Slot' ) )
+		displayFolder: 3 Period Comparison
+		lineageTag: f82dd45a-8520-4627-babe-63267d34a860
+
+	/// Orders per trading day for the full selection (KPI cards).
+	measure 'KPI Orders per Trading Day' = CALCULATE ( [Orders per Trading Day], ALLSELECTED ( 'Date' ), ALLSELECTED ( 'Time Slot' ) )
+		formatString: #,##0.0
+		displayFolder: 3 Period Comparison
+		lineageTag: 2ff8ed5b-23c7-400b-b542-13a595e93d3c
+
+	/// Average order gap for the full selection (KPI cards).
+	measure 'KPI Average Order Gap' = CALCULATE ( [Average Order Gap (min)], ALLSELECTED ( 'Date' ), ALLSELECTED ( 'Time Slot' ) )
+		formatString: #,##0.0
+		displayFolder: 3 Period Comparison
+		lineageTag: c555e8f7-e140-4b20-b4a7-0664f875ffc6
+
+	/// Pizza with the lowest revenue (among pizzas with sales).
+	measure 'Bottom Revenue Pizza' =
+			VAR _items = FILTER ( ADDCOLUMNS ( VALUES ( Pizza[Short Name] ), "@value", [Total Revenue] ), NOT ISBLANK ( [@value] ) )
+			RETURN
+			    MAXX ( TOPN ( 1, _items, [@value], ASC, Pizza[Short Name], ASC ), Pizza[Short Name] )
+		displayFolder: 5 Menu
+		lineageTag: 6639c664-8386-4e3a-b2d3-e1b84abf669a
+
+	/// Revenue of the lowest-revenue pizza.
+	measure 'Bottom Revenue Pizza Revenue' =
+			VAR _pizza = [Bottom Revenue Pizza]
+			RETURN
+			    CALCULATE ( [Total Revenue], KEEPFILTERS ( Pizza[Short Name] = _pizza ) )
+		formatString: $#,##0
+		displayFolder: 5 Menu
+		lineageTag: 18e1d054-74f1-4603-8160-31dce89d1306
+
+	/// Revenue change of the lowest-revenue pizza versus the comparison period.
+	measure 'Bottom Revenue Pizza Change %' =
+			VAR _pizza = [Bottom Revenue Pizza]
+			RETURN
+			    CALCULATE ( [Revenue Change %], KEEPFILTERS ( Pizza[Short Name] = _pizza ) )
+		formatString: +0.0%;-0.0%;0.0%
+		displayFolder: 5 Menu
+		lineageTag: 4ffd1ff7-8893-42ce-bbd6-7f2eef08fbdb
+
+	/// Holiday or notable retail date on the investigated date, if any.
+	measure 'Investigated Calendar Event' =
+			VAR _day = [Investigated Date]
+			RETURN
+			    CALCULATE ( MAX ( 'Date'[Calendar Event] ), REMOVEFILTERS ( 'Date' ), 'Date'[Date] = _day )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: d962400d-645e-4cbb-803b-d267ed370f64
+
+	/// Weekday name of the investigated date.
+	measure 'Investigated Weekday' = FORMAT ( [Investigated Date], "dddd" )
+		displayFolder: 6 Trading Day Investigation
+		lineageTag: a50bef49-50db-4dd2-a319-46fa652db84f
+
+	column Value
+		dataType: string
+		isHidden
+		lineageTag: b3038d12-4f61-4958-9095-a3df7380e33f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Value", BLANK())
+
