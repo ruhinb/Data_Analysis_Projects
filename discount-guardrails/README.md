@@ -1,5 +1,7 @@
 # Discount Guardrails: where deep discounts erode retail profit
 
+**Case study:** [rubaiyat.dev/projects/discount](https://rubaiyat.dev/projects/discount)
+
 ---
 
 ## Background

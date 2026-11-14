@@ -1,5 +1,7 @@
 # Slice & Co. — Pizza Operations Analytics
 
+**Case study:** [rubaiyat.dev/projects/slice](https://rubaiyat.dev/projects/slice)
+
 ---
 
 ## Background

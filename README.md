@@ -1,5 +1,7 @@
 # Data Analysis Portfolio
 
+**Case studies and portfolio:** [rubaiyat.dev](https://rubaiyat.dev)
+
 Welcome to my **data analysis portfolio**. Each project here goes end to end: from raw business data, through **SQL** pipelines and **Power BI** reports, to clear recommendations for a business decision-maker, with the financial impact estimated where possible.
 
 Every project folder has its own README with the full story: background, executive summary, insights, recommendations and how to run it.

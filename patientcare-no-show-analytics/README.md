@@ -1,5 +1,7 @@
 # PatientCare — Reducing Missed Appointments
 
+**Case study:** [rubaiyat.dev/projects/patientcare](https://rubaiyat.dev/projects/patientcare)
+
 ---
 
 ## Background
