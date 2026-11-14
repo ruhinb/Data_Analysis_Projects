@@ -204,11 +204,11 @@ Four tables, one row per order line in ORDERS. Every analysis reads from one SQL
 
 ## About this project
 
-- **Contribution:** by Rubaiyat Alam Ruhin. The project extends a SQL Server exercise set I completed on this dataset. AI (Claude) utilised exclusively for workthrough efficiency.
+- **Contribution:** by Rubaiyat (Ru) Ruhin. The project extends a SQL Server exercise set I completed on this dataset. AI (Claude) utilised exclusively for workthrough efficiency.
 
 ---
 
-**Rubaiyat Alam Ruhin** · Data Analyst · Master of Data Science, University of Adelaide
-[LinkedIn](https://linkedin.com/in/rubaiyatalamruhin) · [GitHub](https://github.com/ruhinb) · rubaiyatalam.ruhin@gmail.com
+**Rubaiyat (Ru) Ruhin** · Data Analyst · Master of Data Science, University of Adelaide
+[rubaiyat.dev](https://rubaiyat.dev) · [LinkedIn](https://linkedin.com/in/rubaiyatalamruhin) · [GitHub](https://github.com/ruhinb) · rubaiyatalam.ruhin@gmail.com
 
 <sub>Penwick Office Supply is a fictional name. The data is a four-table version of the public "Sample – Superstore" retail dataset (US, 2014–2017), and the Head of Sales is a simulated stakeholder.</sub>

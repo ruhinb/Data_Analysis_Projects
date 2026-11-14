@@ -192,7 +192,7 @@ Field definitions are in the [Data dictionary](docs/data_dictionary.md).
 
 ---
 
-**Rubaiyat Alam Ruhin** · Data Analyst · Master of Data Science, University of Adelaide
-[LinkedIn](https://linkedin.com/in/rubaiyatalamruhin) · [GitHub](https://github.com/ruhinb) · rubaiyatalam.ruhin@gmail.com
+**Rubaiyat (Ru) Ruhin** · Data Analyst · Master of Data Science, University of Adelaide
+[rubaiyat.dev](https://rubaiyat.dev) · [LinkedIn](https://linkedin.com/in/rubaiyatalamruhin) · [GitHub](https://github.com/ruhinb) · rubaiyatalam.ruhin@gmail.com
 
 <sub>Slice & Co. is a sample business. The 2015 sales data was supplied with the project brief and remains the property of its original provider. Released under the [MIT License](LICENSE).</sub>
