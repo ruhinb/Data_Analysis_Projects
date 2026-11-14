@@ -201,4 +201,4 @@ Source field definitions are in the [source data dictionary](docs/source_data_di
 **Rubaiyat Alam Ruhin** · Data Analyst · Master of Data Science, University of Adelaide
 [LinkedIn](https://linkedin.com/in/rubaiyatalamruhin) · [GitHub](https://github.com/ruhinb) · rubaiyatalam.ruhin@gmail.com
 
-<sub>This project is the appointment-reporting and reminder-pilot work from my time as a Data Analyst at Fieldbooster (2022–2023). The original data is confidential, so this version only revelas the sample dataset to display that work: the same structure, volumes and data-quality problems. See [data/README.md](data/README.md).</sub>
+<sub>This project is the appointment-reporting and reminder-pilot work from my time as a Data Analyst at Fieldbooster (2022–2023). The original data is confidential, so this repository holds only a sample dataset with the same structure and data-quality problems. See [data/README.md](data/README.md).</sub>
