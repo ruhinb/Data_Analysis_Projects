@@ -34,7 +34,8 @@ SELECT
     CAST(appointment.booked_at AS TIMESTAMP) AS booked_at,
     -- every valid value looks like 'YYYY-MM-DD HH:MM:SS'. 24 rows contain
     -- '31/02/2023 09:00' (not a real date). They become NULL instead of
-    -- stopping the script, and are logged in script 13.
+    -- stopping the script. After de-duplication they are 23 appointments,
+    -- which script 13 logs.
     CASE
         WHEN appointment.scheduled_start_at LIKE '____-__-__ __:__:__'
         THEN CAST(appointment.scheduled_start_at AS TIMESTAMP)

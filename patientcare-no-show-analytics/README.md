@@ -25,6 +25,8 @@ Working with the network's operations team, I consolidated 12 operational data s
 |---:|---:|---:|---:|---:|
 | **73,692** | **13.9%** | **−5.9 pts** | **≈ BDT 0.87M** | **244 → 62.5 min** |
 
+<sub>13.9% is the pre-pilot baseline: 3,415 no-shows in 24,620 attended or missed appointments from 3 Oct 2022 to 29 Apr 2023. The 14.5% on the Overview dashboard page covers every date from January 2022 to mid-June 2023, including the pilot weeks (9,560 of 65,759).</sub>
+
 - **Semi-urban patients are the problem group:** they missed **15.9%** of appointments against **11.9%** for urban patients, in every month and every time slot. They hold about half of the baseline appointments and **56%** of the missed fees.
 - **The enhanced reminder works:** a 24-hour message plus a 2-hour follow-up cut their no-show rate from **26.0% to 20.1%** in a six-week pilot (95% confidence interval 1.2 to 10.6 points, **p = 0.013**).
 - **No-shows are expensive:** at BDT 1,139 per missed visit, they cost about **BDT 3.9M** in fees over the seven-month baseline. The pilot kept about **BDT 42k** in six weeks.
@@ -188,7 +190,7 @@ Source field definitions are in the [source data dictionary](docs/source_data_di
 - The pilot ran six weeks on morning slots only, so seasonal effects and afternoon slots are untested.
 - Money figures price each no-show at the average fee of a completed visit (BDT 1,139). They exclude the cost of sending reminders and slots that walk-ins refill.
 - The yearly projections assume the 22.7% relative reduction holds and baseline volumes stay the same.
-- The 23 appointments with an unreadable date are kept in the data but excluded from rates.
+- The 23 appointments with an unreadable date are kept in the data but excluded from rates. The raw extract has 24 such rows; one is a duplicate copy or older version of the same appointment, removed during de-duplication.
 
 ## Technical files
 
