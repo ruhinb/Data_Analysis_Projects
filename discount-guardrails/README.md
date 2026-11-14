@@ -204,7 +204,7 @@ Four tables, one row per order line in ORDERS. Every analysis reads from one SQL
 
 ## About this project
 
-- **Contribution:** by Rubaiyat (Ru) Ruhin. The project extends a SQL Server exercise set I completed on this dataset. AI (Claude) utilised exclusively for workthrough efficiency.
+- **Contribution:** by Rubaiyat (Ru) Ruhin. The project extends a SQL Server exercise set I completed on this dataset. I used Claude to speed up drafting and checking. The analysis, the SQL and the recommendations are mine.
 
 ---
 
